@@ -73,3 +73,4 @@
 * Should there be a function to report impostors? (e.g. if an advertiser asks for money before a visit)
 * Which features of the platform are available/visible to users who are not signed in?
 * Do you want extra functionality like "casual searching" or "successometer"?
+* Do you want a user friendly "Ratgeber" to tell you how to improve your changes? What the do's and dont's are...
