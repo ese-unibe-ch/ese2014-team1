@@ -7,6 +7,7 @@
 
 * Is the platform *only* for *shared* apartments?
 * What is a shared apartment? Everything with at least one flatmate?
+* How much information do you want to share (***)
 
 ###As a user I want to search for relevant ads in a specific area
 
@@ -14,6 +15,7 @@
 * What is meant by 'relevant' (see below)?
 * You said users can place ads and search ads. Is there one user type for both functions or do you sign up explicitly only as one of them?
 * If you can search and advert with the same account, how exactly do you want us to design the interfaces for both?
+* Tracking, cookies? Sign up with Google to know even more?
 
 ###As a user I want to get exhaustive information about a room (e.g. pictures, location, roommate profiles, ..)
 
@@ -23,6 +25,7 @@
 * Which of those informations are compulsory for an ad placer/roommate to give?
 * Is there a minimum/maximum of pictures ad placers can/must upload?
 * Should there be a minimal picture resolution/quality or are all sizes accepted?
+* Do you want a link or a window showing it on google maps?
 
 ###As a user I want to quickly send an enquiry to the ad placer
 
@@ -33,27 +36,32 @@
 ###As an ad placer I want to conveniently manage enquiries and organize on-site visits
 
 * What do you mean by 'conveniently manage' and 'organize'? Please give us a full list of the functionality you expect.
+* Do you want to be manageing it on the go? Mobile App required?
 
 ###As a user I want to manage scheduled visits
 
 * If you enter a visit into your schedule, does the ad placer have to confirm it?
 * What does the "schedule" form look like? Date, time, duration, and a comment field? Will there be a direct link to the flat in question?
 * Should the system warn you if it's not/hardly possible to visit several apartments in a row? (e.g. far away locations within a short time)
+* Do you want special extra interface (doodle like)
 
 ###As an ad placer I want to compile a list of the most promising candidates
 
 * Besides picking your favorite candidates yourself, should there be a possibility to let the system create a list? If yes, which would be the criteria to determine whether somebody is a promising candidate? 
 * What does the ad placer do with that list? Just display it once or save it for later? Or is there any other additional functionality concerning that list?
+* Creation of webbased mailing lists for invitations (possibly with above mentioned special doodle interface?)
 
 ###As a user I want to bookmark interesting ads
 
 * Should there be a "favorite" function (the ad is saved in the profile of the user) or do you literally mean "bookmarking" as in the browser function bookmarking?
 * Do you expect us to include social media interfaces, e.g. for 'sharing' a flat on Facebook etc.?
+* Send button for sending ads to your predefined email address
 
 ###As a user I want to subscribe to alerts to be informed about relevant ads
 
-* Which are the criteria for an ad to be considered relevant? The same as if you would search an apartment? (e.g. price, max. distance from zipcode x, ...)
+* Which are the criteria for an ad to be considered relevant? The same as if you would search an apartment? (e.g. price, max. distance from zipcode x, ...) 
 * How is the alert delivered to you? Email or a notification within the platform?
+* Do you want direct syncing with your parship profile? Extended payable functionality only...
 
 ## Additional questions 
 
@@ -64,3 +72,4 @@
 * What is a flat identified by? A name, or a number, or a thumbnail, or just the address? For example in the contexts of: showing a list of search results, showing a list of bookmarked flats, or showing a list of scheduled visits.
 * Should there be a function to report impostors? (e.g. if an advertiser asks for money before a visit)
 * Which features of the platform are available/visible to users who are not signed in?
+* Do you want extra functionality like "casual searching" or "successometer"?
