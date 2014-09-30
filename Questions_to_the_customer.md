@@ -22,6 +22,7 @@
 * Of the above mentioned properties: By which of those do you want to be able to search the database?
 * Which of those informations are compulsory for an ad placer/roommate to give?
 * Is there a minimum/maximum of pictures ad placers can/must upload?
+* Should there be a minimal picture resolution/quality or are all sizes accepted?
 
 ###As a user I want to quickly send an enquiry to the ad placer
 
@@ -42,6 +43,7 @@
 ###As an ad placer I want to compile a list of the most promising candidates
 
 * Besides picking your favorite candidates yourself, should there be a possibility to let the system create a list? If yes, which would be the criteria to determine whether somebody is a promising candidate? 
+* What does the ad placer do with that list? Just display it once or save it for later? Or is there any other additional functionality concerning that list?
 
 ###As a user I want to bookmark interesting ads
 
@@ -51,6 +53,7 @@
 ###As a user I want to subscribe to alerts to be informed about relevant ads
 
 * Which are the criteria for an ad to be considered relevant? The same as if you would search an apartment? (e.g. price, max. distance from zipcode x, ...)
+* How is the alert delivered to you? Email or a notification within the platform?
 
 ## Additional questions 
 
@@ -60,3 +63,4 @@
 * Do you also expect us implement some kind of "documents" function, where users can upload relevant data, like salary statements and other official documents? If so, what are the exact specifications, especially concerning visibility?
 * What is a flat identified by? A name, or a number, or a thumbnail, or just the address? For example in the contexts of: showing a list of search results, showing a list of bookmarked flats, or showing a list of scheduled visits.
 * Should there be a function to report impostors? (e.g. if an advertiser asks for money before a visit)
+* Which features of the platform are available/visible to users who are not signed in?
