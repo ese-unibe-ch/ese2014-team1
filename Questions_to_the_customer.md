@@ -11,9 +11,6 @@
 
 ###As a user I want to search for relevant ads in a specific area
 
-
-* What is meant by area? Is this a city, a zip code, a region or a combination of those
-=======
 * What is meant by area? Is this a city, a zip code, a region or a combination of those? _Range around city (up to 20-40km)_
 
 * What is meant by 'relevant' (see below)?
