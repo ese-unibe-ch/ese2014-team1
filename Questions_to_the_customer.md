@@ -11,11 +11,14 @@
 
 ###As a user I want to search for relevant ads in a specific area
 
-* What is meant by area? Is this a city, a zip code, a region or a combination of those?
+* What is meant by area? Is this a city, a zip code, a region or a combination of those
 * What is meant by 'relevant' (see below)?
 * You said users can place ads and search ads. Is there one user type for both functions or do you sign up explicitly only as one of them?
 * If you can search and advert with the same account, how exactly do you want us to design the interfaces for both?
 * Tracking, cookies? Sign up with Google to know even more?
+
+
+
 
 ###As a user I want to get exhaustive information about a room (e.g. pictures, location, roommate profiles, ..)
 
