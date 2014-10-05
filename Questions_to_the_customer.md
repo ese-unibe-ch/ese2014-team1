@@ -48,7 +48,6 @@
 
 ###As an ad placer I want to compile a list of the most promising candidates
 
-* Besides picking your favorite candidates yourself, should there be a possibility to let the system create a list? If yes, which would be the criteria to determine whether somebody is a promising candidate? 
 * What does the ad placer do with that list? Just display it once or save it for later? Or is there any other additional functionality concerning that list? _start with a large list (e.g. all that filled out the form) and you can then kick out those that you don't want. Ad-placer picks about 4, after the visits, he can make a ranking (annotating a list like a comment for the publisher of the ad)_
 * Creation of webbased mailing lists for invitations (possibly with above mentioned special doodle interface?)
 
