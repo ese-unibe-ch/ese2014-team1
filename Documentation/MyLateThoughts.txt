@@ -1,0 +1,12 @@
+07 4b reset password
+2.4 b1 why there needs to be a message sent already?
+3 Making appointements: accept the other calendar should be possible
+or link a calendar with the advertisement. Per Ad one calendar. Sync
+later with private calendar (per user).
+4.4 Precondition. User has performed a search before. I think that is
+since you I can send you a link to something withouth the need of
+searching it. I guess that is restricting the flow too much.
+10.4 a2 again too much of a restriction. If you very much like sb's
+profile you need first to write a meaningless email in order to add
+him or her to your list of favourites.
+Therefore I would really change the hole Main Scenario
