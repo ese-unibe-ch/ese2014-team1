@@ -1,0 +1,19 @@
+Meeting with the customer on the 8th of October 2014
+
+Customer wants to give unregistered users the possibility to search
+the DB for ads. If the user likes a flat s/he can pm the ad placer.
+This allows a bigger range of user to use the page.
+
+The ad placer suggests some dates on which s/he is free for visits.
+This dates are public (also to unregistered users?). The customer
+insists that the ad searcher needs to request a meeting and that the
+ad placer needs to accept the request. The ad placer has clearly more
+privileges.
+
+When submitting the request, the ad searcher will have to fill in the
+date and some other information?!. The customer mentioned a free text
+field for a short letter, describing the person's motivation/background.
+Let's put it into the prototype and check with customer again.
+
+Ad searcher and ad placer have a possibility to look up all their dates.
+Calendar would be nice.
