@@ -19,7 +19,7 @@
 
 <body>
 <header>
-	<div id="searchHeader">
+	<div id="searcher">
 	<h1>FlatAttack</h1> <p>The place to find IT</p> 
 	<nav>
 		<ul>

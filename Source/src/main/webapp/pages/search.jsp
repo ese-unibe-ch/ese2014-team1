@@ -19,7 +19,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Search</title>
 
-<h1> That is our first Try </h1>
+<h1> <br> That is our first Try </h1>
 
 
 
