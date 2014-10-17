@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.unibe.ese.team1.controller.pojos.LoginForm;
 import ch.unibe.ese.team1.controller.pojos.PlaceAdForm;
 
 @Controller
@@ -18,7 +19,9 @@ public class IndexController {
 
 	@RequestMapping(value="/login")
 	public ModelAndView loginPage(){
-		return new ModelAndView("login");
+		ModelAndView model = new ModelAndView("login");
+		model.addObject("loginForm", new LoginForm());
+		return model;
 	}
 
 	// TODO: To be deleted after header and footer work

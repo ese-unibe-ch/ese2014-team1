@@ -125,7 +125,6 @@
 						</configuration>
 
 						<executions>
-
 							<execution>
 								<id>drop-user-role-table</id>
 								<phase>process-test-resources</phase>
@@ -134,7 +133,6 @@
 								</goals>
 								<configuration>
 									<sqlCommand>drop table user_roles</sqlCommand>
-									<!-- ignore error when database is not available -->
 									<onError>continue</onError>
 								</configuration>
 							</execution>
@@ -147,7 +145,6 @@
 								</goals>
 								<configuration>
 									<sqlCommand>drop table users</sqlCommand>
-									<!-- ignore error when database is not available -->
 									<onError>continue</onError>
 								</configuration>
 							</execution>
