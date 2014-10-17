@@ -10,7 +10,6 @@
 <title>Test-Title</title>
 </head>
 <body>
-<h1>Yoloyoloyoloyolo</h1>
-<h3>swagswagswagswag</h3>
+<h1>If you can read this, the test was successful!</h1>
 </body>
 </html>
