@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.pojos.LoginForm;
 import ch.unibe.ese.team1.controller.pojos.PlaceAdForm;
+import ch.unibe.ese.team1.controller.pojos.SignupForm;
 
 @Controller
 public class IndexController {
@@ -21,6 +22,13 @@ public class IndexController {
 	public ModelAndView loginPage(){
 		ModelAndView model = new ModelAndView("login");
 		model.addObject("loginForm", new LoginForm());
+		return model;
+	}
+	
+	@RequestMapping(value="/signup")
+	public ModelAndView signupPage(){
+		ModelAndView model = new ModelAndView("signup");
+		model.addObject("signupForm", new SignupForm());
 		return model;
 	}
 
