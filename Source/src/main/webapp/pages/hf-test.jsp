@@ -1,4 +1,7 @@
 
+<%--TODO: Delete this file as soon as header and footer work--%>
+<%--TODO: Also, change the indexcontroller file - nothing should point here anymore--%>
+
 
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html;charset=utf-8"%>
@@ -21,5 +24,4 @@
 <body>
 <h1>If you can read this, the test was successful!</h1>
 </body>
-</html> 
-	
+</html>

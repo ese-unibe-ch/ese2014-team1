@@ -12,7 +12,12 @@ public class IndexController {
 		return new ModelAndView("index");
 	}
 	
-	// TODO: To be deleted afterwards
+	@RequestMapping(value="/login")
+	public ModelAndView loginPage(){
+		return new ModelAndView("login");
+	}
+
+	// TODO: To be deleted after header and footer work
 	@RequestMapping(value="/hf-test")
 	public ModelAndView testerObject(){
 		return new ModelAndView("hf-test");
