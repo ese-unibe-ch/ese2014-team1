@@ -36,6 +36,12 @@ public class IndexController {
 		return new ModelAndView("search");
 	}
 	
+	// TODO: To be deleted after header and footer work
+	@RequestMapping(value="/LL")
+	public ModelAndView privateLLObject(){
+		return new ModelAndView("ll");
+	}
+	
 	@RequestMapping(value="/placeAd", method = RequestMethod.GET)
 	public ModelAndView placeAd(){
 		
