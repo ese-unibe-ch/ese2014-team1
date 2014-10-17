@@ -12,6 +12,7 @@ public class IndexController {
 		return new ModelAndView("index");
 	}
 	
+
 	@RequestMapping(value="/login")
 	public ModelAndView loginPage(){
 		return new ModelAndView("login");
@@ -21,5 +22,10 @@ public class IndexController {
 	@RequestMapping(value="/hf-test")
 	public ModelAndView testerObject(){
 		return new ModelAndView("hf-test");
+	}
+	
+	@RequestMapping(value="/placeAd")
+	public ModelAndView placeAd(){
+		return new ModelAndView("index");
 	}
 }
