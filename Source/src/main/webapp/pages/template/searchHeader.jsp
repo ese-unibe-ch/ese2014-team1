@@ -16,15 +16,20 @@
     
 </head>
 
+
 <body>
-<nav>
-	<h2 class="hidden">search</h2>
-	<ul> <li><a href="javascript:void(0)">Home</a></li>
-		<li><a href="javascript:void(0)">Search</a></li>
-		<li><a href="javascript:void(0)">Place</a></li>
-		<li><a href="javascript:void(0)">Account</a></li>
-	</ul>
-</nav>
+<header>
+	<div id="searchHeader">
+	<h1>FlatAttack</h1> <p>The place to find IT</p> 
+	<nav>
+		<ul>
+			<li><a href="javascript:void(0)">Home</a></li>
+			<li><a href="javascript:void(0)">Search</a></li>
+			<li><a href="javascript:void(0)">Place</a></li>
+			<li><a href="javascript:void(0)">Account</a></li>
+		</ul>
+	</nav>
+	</div>
+</header>
 
-
-<div class="container">
+<%-- <div class="container"> --%>

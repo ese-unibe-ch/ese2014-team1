@@ -24,8 +24,8 @@ strong {
 
 /* defines the style within the header*/
 
-.searchHeader {
-	background: #00ff00;
+#searchHeader {
+	background: #2dc16d;
 }
 
 header {
