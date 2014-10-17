@@ -30,6 +30,12 @@ public class IndexController {
 		return new ModelAndView("hf-test");
 	}
 	
+	// TODO: To be deleted after header and footer work
+	@RequestMapping(value="/search")
+	public ModelAndView privateSearchObject(){
+		return new ModelAndView("search");
+	}
+	
 	@RequestMapping(value="/placeAd", method = RequestMethod.GET)
 	public ModelAndView placeAd(){
 		

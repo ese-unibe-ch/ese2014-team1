@@ -6,7 +6,7 @@
 
     <title>TestApp</title>
 
-    <link rel="stylesheet" type="text/css" href="/Source/css/main.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="/css/Tester.css" media="all"/>
     <script type="text/javascript"  src="dn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
@@ -21,19 +21,21 @@
         }
     </style>
 </head>
-<body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            
 
-        </div>
-    </div>
-</div>
+<header> <h1>Lingulo HTML5</h1>
+<p>A responsive website tutorial</p>
+<select id="alternative_menu" size="1">
+<option>Home</option> <option>Mitmachen</option>
+<option>Archiv</option> <option>Kontakt</option>
+<option>Datenschutz</option> <option>Haftungsausschluss</option>
+<option>Impressum</option> </select> <nav> <h2 class="hidden">Our navigation</h2>
+<ul> <li><a href="javascript:void(0)">Home</a></li>
+<li><a href="javascript:void(0)">Porfolio</a></li>
+<li><a href="javascript:void(0)">About</a></li>
+<li><a href="javascript:void(0)">Contact</a></li> </ul> </nav> </header>
+
+
+<body>
+
 
 <div class="container">

@@ -1,7 +1,7 @@
 
 /* defines the general style of the page*/
 body {
-	border-top: 5px solid #e56038;
+	/*border-top: 50px solid #e56038;*/
 	background: #ebe8de;
 	font-family: 'Open Sans', sans-serif;
 	color: #333333;
@@ -23,6 +23,11 @@ strong {
 }
 
 /* defines the style within the header*/
+
+.searchHeader {
+	background: #00ff00;
+}
+
 header {
 	position:relative;
 	width:auto;
