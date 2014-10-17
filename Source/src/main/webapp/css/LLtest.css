@@ -23,6 +23,13 @@ footer
 
 body
 {
-	background: #FAD6A5;
+	background: gray;
 	color: blue;
+}
+
+nav li
+{
+	display:block;
+	float: right;
+	padding:0px 15px;
 }
