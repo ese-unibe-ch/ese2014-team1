@@ -1,3 +1,6 @@
+<%--TODO: Delete this file as soon as header and footer work--%>
+<%--TODO: Also, change the indexcontroller file - nothing should point here anymore--%>
+
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
