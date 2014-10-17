@@ -2,6 +2,7 @@ package ch.unibe.ese.team1.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -24,8 +25,11 @@ public class IndexController {
 		return new ModelAndView("hf-test");
 	}
 	
-	@RequestMapping(value="/placeAd")
+	@RequestMapping(value="/placeAd", method = RequestMethod.GET)
 	public ModelAndView placeAd(){
-		return new ModelAndView("index");
+		
+		ModelAndView model = new ModelAndView("placeAd");
+		//model.addObject("signupForm", new SignupForm());    
+		return model;
 	}
 }
