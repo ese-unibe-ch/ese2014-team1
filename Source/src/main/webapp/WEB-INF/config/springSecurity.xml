@@ -18,9 +18,9 @@
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service
-				data-source-ref="userDataSource"
+				data-source-ref="mainDataSource"
 				users-by-username-query="select username,password, enabled from users where username=?"
-				authorities-by-username-query="select username, role from user_roles where username =?" />
+				authorities-by-username-query="select u.username, ur.role from users u inner join `user_roles` ur on (u.id = ur.user_id) where username = ?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 

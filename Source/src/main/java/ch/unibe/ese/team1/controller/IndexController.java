@@ -17,21 +17,6 @@ public class IndexController {
 		return new ModelAndView("index");
 	}
 	
-
-	@RequestMapping(value="/login")
-	public ModelAndView loginPage(){
-		ModelAndView model = new ModelAndView("login");
-		model.addObject("loginForm", new LoginForm());
-		return model;
-	}
-	
-	@RequestMapping(value="/signup")
-	public ModelAndView signupPage(){
-		ModelAndView model = new ModelAndView("signup");
-		model.addObject("signupForm", new SignupForm());
-		return model;
-	}
-
 	// TODO: To be deleted after header and footer work
 	@RequestMapping(value="/hf-test")
 	public ModelAndView testerObject(){
