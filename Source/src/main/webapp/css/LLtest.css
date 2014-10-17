@@ -1,2 +1,28 @@
-h1 {color: white;}
-header {color: white; background: #2dc16d;}
+h1
+{
+	color: white;
+}
+
+header 
+{
+	padding-left: 20px;
+	color: white; 
+	background: #2dc16d;
+	position: fixed;
+	top: 0px; left: 0px; right: 0px; height: 60px;
+}
+
+footer 
+{
+	padding-left: 20px;
+	color: white; 
+	background: #2dc16d;
+	position: fixed;
+	bottom: 0px; left: 0px; right: 0px; height: 40px;
+}
+
+body
+{
+	background: #FAD6A5;
+	color: blue;
+}

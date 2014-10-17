@@ -1,18 +1,9 @@
 <head>
-
+	<Title>WGs finden</Title>
 </head>
+
 <body> <!-- will be closed in footer-->
-<div id="header">
+
 <header>
-<h1>Hallo</h1>
-
-	<ol> 
-		<li>Oans</li>
-		<li>Zwoa</li>
-		<li>Drei</li>
-		<li>LOL</li>
-	</ol>
+	<h1>Hallo</h1>
 </header>
-</div>
-
-<!-- <div class="container"> -->
