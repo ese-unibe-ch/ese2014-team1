@@ -11,4 +11,10 @@ public class IndexController {
 	public ModelAndView index(){
 		return new ModelAndView("index");
 	}
+	
+	// TODO: To be deleted afterwards
+	@RequestMapping(value="/hf-test")
+	public ModelAndView testerObject(){
+		return new ModelAndView("hf-test");
+	}
 }
