@@ -8,7 +8,10 @@
 
 <c:import url="template/LLheader.jsp" />
 
-<h1>Ab hier ist nicht mehr Header</h1>
+<%-- body tag already opened in header, will be closed in footer --%>
+
+<p>Ab hier ist nicht mehr Header.</p>
+<p>Try to scroll a bit!</p>
+<p>Header and footer will stay in place, rest scrolls.</p>
 
 <c:import url="template/LLfooter.jsp" />
-</body>
