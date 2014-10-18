@@ -11,11 +11,13 @@ public class PlaceAdForm {
     private int monthMoveOut;
     private int yearMoveOut;
     private int prize;
+    private int squareFootage;
     private int region;
     private String roomDescription;
+    private String preferences;
+    private String roommates;
     
     public Long getId() {
-    	
         return id;
     }
 
@@ -101,5 +103,29 @@ public class PlaceAdForm {
 
 	public void setRoomDescription(String roomDescription) {
 		this.roomDescription = roomDescription;
+	}
+
+	public String getPreferences() {
+		return preferences;
+	}
+
+	public void setPreferences(String preferences) {
+		this.preferences = preferences;
+	}
+
+	public int getSquareFootage() {
+		return squareFootage;
+	}
+
+	public void setSquareFootage(int squareFootage) {
+		this.squareFootage = squareFootage;
+	}
+
+	public String getRoommates() {
+		return roommates;
+	}
+
+	public void setRoommates(String roommates) {
+		this.roommates = roommates;
 	}
 }
