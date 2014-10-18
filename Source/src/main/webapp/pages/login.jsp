@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<c:import url="template/searchHeader.jsp" />
+<c:import url="template/LLheader.jsp" />
 
 <h1>Login</h1>
 
@@ -22,4 +22,4 @@
 <br />
 <p><a href="<c:url value="/signup" />">Sign up as a new user</a> instead. </p>
 
-<c:import url="template/searchFooter.jsp" />
+<c:import url="template/LLfooter.jsp" />

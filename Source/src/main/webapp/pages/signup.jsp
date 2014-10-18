@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<c:import url="template/searchHeader.jsp" />
+<c:import url="template/LLheader.jsp" />
 
 <h1>Sign up</h1>
 
@@ -16,15 +16,24 @@
 				<legend>Enter Your Information</legend>
 				<label for="field-username">Username:</label>
 				<form:input path="username" id="field-username" />
+				<form:errors path="username" />
+								
+				<label for="field-password">Password:</label>
+				<form:input path="password" id="field-password" type ="password"/>
+				<form:errors path="password" />
 
-				<label for="field-email">Email</label>
+				<label for="field-email">Email:</label>
 				<form:input path="email" id="field-email" />
+				<form:errors path="email" />
 
 				<label for="field-firstName">First Name</label>
 				<form:input path="firstName" id="field-firstName" />
+				<form:errors path="firstName" />
 
-				<label for="field-lastName">First Name</label>
+				<label for="field-lastName">Last Name</label>
 				<form:input path="lastName" id="field-lastName" />
+				<form:errors path="lastName" />
+				
 
 				<button type="submit" class="btn btn-primary">Sign up</button>
 			</fieldset>
@@ -38,4 +47,4 @@
 
 
 
-<c:import url="template/searchFooter.jsp" />
+<c:import url="template/LLfooter.jsp" />

@@ -18,12 +18,11 @@ import ch.unibe.ese.team1.model.dao.UserDao;
 public class UserTestDataSeeder implements InitializingBean {
 
 	@Autowired
-	UserDao userDao;
+	private UserDao userDao;
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		User user = new User();
-		user.setId(1);
 		user.setUsername("johndoe");
 		user.setPassword("password");
 		user.setEmail("john@doe.com");
@@ -32,7 +31,6 @@ public class UserTestDataSeeder implements InitializingBean {
 		user.setEnabled(true);
 		Set<UserRole> userRoles = new HashSet<>();
 		UserRole role = new UserRole();
-		role.setId(1);
 		role.setRole("ROLE_USER");
 		role.setUser(user);
 		userRoles.add(role);
