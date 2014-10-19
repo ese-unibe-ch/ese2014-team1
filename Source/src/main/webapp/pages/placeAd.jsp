@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <c:import url="template/LLheader.jsp" />
 
@@ -131,7 +131,7 @@
 			<option value="12">Dez</option>
 			</form:select>
 			
-		<label for="field-YearMoveOut" tabindex="4">Year</label>
+		<label for="field-YearMoveOut">Year</label>
 			<form:select id="field-YearMoveOut" path="yearMoveOut" tabindex="8">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
@@ -157,29 +157,29 @@
 		<br>
 		<fieldset>
 			<legend>Roommates</legend>
-			<form:textarea path="roommates" rows="10" cols="100" tabindex="15" 
+			<form:textarea path="roommates" rows="10" cols="100" tabindex="12" 
 				placeholder="Roommates"></form:textarea>
 		</fieldset>
 		
 		<br>
 		<fieldset>
 			<legend>Preferences</legend>
-			<form:textarea path="preferences" rows="5" cols="100" tabindex="14" 
+			<form:textarea path="preferences" rows="5" cols="100" tabindex="13" 
 				placeholder="Preferences"></form:textarea>
 		</fieldset>
 		
 		<form action="demo_form.asp">
 			<label for="form-Pictures">Pictures</label>
-  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="12">
+  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="14">
   			<input type="submit" tabindex="13">
 		</form>
 		
 		<br>
-		<input type="checkbox" path="smokers" value="1">Smokers
-		<input type="checkbox" path="animals" value="1">Animals
+		<input type="checkbox" path="smokers" value="1" tabindex="15">Smokers
+		<input type="checkbox" path="animals" value="1" tabindex="16">Animals
 		
 		<div class="form-actions">
-            <button type="submit" class="btn btn-primary">Place Ad</button>
+            <button type="submit" class="btn btn-primary" tabindex="17">Place Ad</button>
             <button type="button" class="btn">Cancel</button>
         </div>
 		
