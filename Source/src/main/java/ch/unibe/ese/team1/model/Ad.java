@@ -38,6 +38,14 @@ public class Ad {
 	private int squareFootage;
 	
 	// TODO: add further fields: text roommates...
+	@Column(nullable = false)
+	private String roomDescription;
+	
+	@Column(nullable = false)
+	private String preferences;
+	
+	@Column(nullable = false)
+	private String roommates;
 	
 	@Column(nullable = true)
 	private boolean smoker;
@@ -112,5 +120,29 @@ public class Ad {
 	
 	public void setAnimals(boolean animals) {
 		this.animals = animals;
+	}
+	
+	public String getRoomDescription() {
+		return roomDescription;
+	}
+	
+	public void setRoomDescription(String roomDescription) {
+		this.roomDescription = roomDescription;
+	}
+	
+	public String getPreferences() {
+		return preferences;
+	}
+	
+	public void setPreferences(String preferences) {
+		this.preferences = preferences;
+	}
+	
+	public String getRoommates() {
+		return roommates;
+	}
+	
+	public void setRoommates(String roommates) {
+		this.roommates = roommates;
 	}
 }

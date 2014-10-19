@@ -34,6 +34,10 @@ public class PlaceAdService {
 		ad.setPrizePerMonth(placeAdForm.getPrize());
 		ad.setSquareFootage(placeAdForm.getSquareFootage());
 		
+		ad.setRoomDescription(placeAdForm.getRoomDescription());
+		ad.setPreferences(placeAdForm.getPreferences());
+		ad.setRoommates(placeAdForm.getRoommates());
+		
 		ad.setSmoker(placeAdForm.isSmoker());
 		ad.setAnimals(placeAdForm.isSmoker());
 		
