@@ -16,7 +16,7 @@ public class PlaceAdForm {
     private String roomDescription;
     private String preferences;
     private String roommates;
-    private boolean smokers;
+    private boolean smoker;
     private boolean animals;
     
     public Long getId() {
@@ -131,12 +131,12 @@ public class PlaceAdForm {
 		this.roommates = roommates;
 	}
 
-	public boolean isSmokers() {
-		return smokers;
+	public boolean isSmoker() {
+		return smoker;
 	}
 
-	public void setSmokers(boolean smokers) {
-		this.smokers = smokers;
+	public void setSmoker(boolean smoker) {
+		this.smoker = smoker;
 	}
 
 	public boolean isAnimals() {
@@ -146,6 +146,5 @@ public class PlaceAdForm {
 	public void setAnimals(boolean animals) {
 		this.animals = animals;
 	}
-	
-	
+
 }

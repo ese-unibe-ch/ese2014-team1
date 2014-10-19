@@ -34,6 +34,9 @@ public class PlaceAdService {
 		ad.setPrizePerMonth(placeAdForm.getPrize());
 		ad.setSquareFootage(placeAdForm.getSquareFootage());
 		
+		ad.setSmoker(placeAdForm.isSmoker());
+		ad.setAnimals(placeAdForm.isSmoker());
+		
 		adDao.save(ad);
 	}
 }

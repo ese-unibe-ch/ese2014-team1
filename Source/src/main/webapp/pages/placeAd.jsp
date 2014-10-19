@@ -70,8 +70,8 @@
 			<option value="12">December</option>
 			</form:select>
 			
-		<label for="field-YearMoveIn" tabindex="4">Year</label>
-			<form:select id="field-YearMoveIn" path="yearMoveIn" tabindex="5">
+		<label for="field-YearMoveIn">Year</label>
+			<form:select id="field-YearMoveIn" path="yearMoveIn" tabindex="4">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
@@ -80,7 +80,7 @@
 		
 		<h4>Move out date (optional)</h4>
 		<label for="field-DayMoveOut">Day</label>
-			<form:select id="field-DayMoveOut" path="dayMoveOut" tabindex="6">
+			<form:select id="field-DayMoveOut" path="dayMoveOut" tabindex="5">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -116,7 +116,7 @@
 		
 				
 		<label for="field-MonthMoveOut">Month</label>
-			<form:select id="field-MonthMoveOut" path="monthMoveOut" tabindex="7">
+		<form:select id="field-MonthMoveOut" path="monthMoveOut" tabindex="6">
 			<option value="1">January</option>
 			<option value="2">February</option>
 			<option value="3">March</option>
@@ -132,7 +132,7 @@
 			</form:select>
 			
 		<label for="field-YearMoveOut">Year</label>
-			<form:select id="field-YearMoveOut" path="yearMoveOut" tabindex="8">
+			<form:select id="field-YearMoveOut" path="yearMoveOut" tabindex="7">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
@@ -141,47 +141,45 @@
 		
 		<br>
 		<label for="field-Prize">Prize per month</label>
-			<form:input id="field-Prize" type="number" path="prize" min="1" tabindex="9" placeholder="Prize per month" ></form:input>
+			<form:input id="field-Prize" type="number" path="prize" min="1" tabindex="8" placeholder="Prize per month" ></form:input>
 		
 		<label for="field-SquareFootage">Square Footage</label>
-			<form:input id="field-SquareFootage" type="number" path="squareFootage" min="1" tabindex="10" placeholder="Prize per month" ></form:input>
+			<form:input id="field-SquareFootage" type="number" path="squareFootage" min="1" tabindex="9" placeholder="Prize per month" ></form:input>
 		
 		
 		<br>
 		<fieldset>
 			<legend>Room Description</legend>
-			<form:textarea path="roomDescription" rows="10" cols="100" tabindex="11" 
+			<form:textarea path="roomDescription" rows="10" cols="100" tabindex="10" 
 				placeholder="Room Description"></form:textarea>
 		</fieldset>
 		
 		<br>
 		<fieldset>
 			<legend>Roommates</legend>
-			<form:textarea path="roommates" rows="10" cols="100" tabindex="12" 
+			<form:textarea path="roommates" rows="10" cols="100" tabindex="11" 
 				placeholder="Roommates"></form:textarea>
 		</fieldset>
 		
 		<br>
 		<fieldset>
 			<legend>Preferences</legend>
-			<form:textarea path="preferences" rows="5" cols="100" tabindex="13" 
+			<form:textarea path="preferences" rows="5" cols="100" tabindex="12" 
 				placeholder="Preferences"></form:textarea>
 		</fieldset>
 		
-		<%-- TODO complete implementation, doesn't do anything yet like that --%>
 	<form action="demo_form.asp">
 			<label for="form-Pictures">Pictures</label>
-  			<input type="file" accept="image/*" tabindex="14">
-  			<input type="submit" tabindex="13">
+  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="13">
+  			<input type="submit" tabindex="14">
 		</form>
 		
 		<br>
-		<label for="field-smokers">Smokers</label><form:checkbox id="field-smokers" path="smokers" tabindex="15" />
-		<label for="field-animals">Animals</label><form:checkbox id="field-animals" path="animals" tabindex="16" />
-		
-		<div>
-            <button type="submit" tabindex="17">Place Ad</button>
-            <button type="button">Cancel</button>
+		<input type="checkbox" name="smoker" value="1" tabindex="15">Smokers
+		<input type="checkbox" name="animals" value="1" tabindex="16">Animals
+		<div class="form-actions">
+            <button type="submit" class="btn btn-primary" tabindex="17">Place Ad</button>
+            <button type="button" class="btn" tabindex="18">Cancel</button>
         </div>
 		
 	</fieldset>
