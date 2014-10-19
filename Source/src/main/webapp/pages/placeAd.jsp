@@ -7,7 +7,7 @@
 
 <c:import url="template/LLheader.jsp" />
 
-<form:form method="post" modelAttribute="placeAdForm" action="index" id="placeAdForm" autocomplete="off">
+<form:form method="post" modelAttribute="placeAdForm" action="/AdDescription" id="placeAdForm" autocomplete="off">
 	
 	<%-- Design isn't final, feel free to change. --%>
 	
@@ -106,6 +106,15 @@
 		
 		<input type="checkbox" path="smokers" value="1">Smokers
 		<input type="checkbox" path="animals" value="1">Animals 
+		
+		<div class="form-actions">
+			
+			<%--Mit <input type="submit"> definieren Sie einen Absendebutton. Beim Anklicken dieses Buttons werden die Formulardaten 
+			abgeschickt, und es wird die Adresse aufgerufen, die im einleitenden <form>-Tag beim Attribut action angegeben ist. --%>
+            <button type="submit" class="btn btn-primary">Place Ad</button>
+			
+            <button type="button" class="btn">Cancel</button>
+        </div>
 		
 	</fieldset>
 
