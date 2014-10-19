@@ -7,9 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.pojos.PlaceAdForm;
 
-
-
-
+/**
+ * Controller for PlaceAd and SearchAd? Other suggestions?
+ */
 @Controller
 public class PlaceAdController {
 

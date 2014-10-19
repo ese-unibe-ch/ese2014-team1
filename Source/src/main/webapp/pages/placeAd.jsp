@@ -5,12 +5,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<c:import url="template/LLheader.jsp" />
+<c:import url="template/searchHeader.jsp" />
 
 <form:form method="post" modelAttribute="placeAdForm" action="index" id="placeAdForm" autocomplete="off">
 	
+	<%-- Design isn't final, feel free to change. --%>
+	
 	<fieldset>
-		
 		<label>City</label>
 			<form:input path="city" tabindex="1" placeholder="City"></form:input>
 		<label for="field-Regon">Region</label>
