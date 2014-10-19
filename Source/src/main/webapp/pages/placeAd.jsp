@@ -182,8 +182,6 @@
             <button type="submit" class="btn btn-primary">Place Ad</button>
             <button type="button" class="btn">Cancel</button>
         </div>
-        
-        <br><br>
 		
 	</fieldset>
 </form:form>
