@@ -20,6 +20,7 @@
 	<button type="submit">Login</button>
 </form>
 <br />
+<p><i>Hint: I have a feeling that "johndoe", "password" would be a good login.</i></p>
 <p><a href="<c:url value="/signup" />">Sign up as a new user</a> instead. </p>
 
 <c:import url="template/LLfooter.jsp" />

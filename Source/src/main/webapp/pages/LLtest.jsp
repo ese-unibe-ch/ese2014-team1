@@ -4,8 +4,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<link rel="stylesheet" type="text/css" href="/css/LLtest.css">
-
 <c:import url="template/LLheader.jsp" />
 
 <%-- body tag already opened in header, will be closed in footer --%>

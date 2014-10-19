@@ -35,7 +35,7 @@
 				<form:errors path="lastName" />
 				
 
-				<button type="submit" class="btn btn-primary">Sign up</button>
+				<button type="submit">Sign up</button>
 			</fieldset>
 		</form:form>
 	</c:when>
