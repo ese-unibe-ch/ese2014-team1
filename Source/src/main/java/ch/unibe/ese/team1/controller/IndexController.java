@@ -14,18 +14,6 @@ public class IndexController {
 	}
 	
 	// TODO: To be deleted after header and footer work
-	@RequestMapping(value="/hf-test")
-	public ModelAndView testerObject(){
-		return new ModelAndView("hf-test");
-	}
-	
-	// TODO: To be deleted after header and footer work
-	@RequestMapping(value="/search")
-	public ModelAndView privateSearchObject(){
-		return new ModelAndView("search");
-	}
-	
-	// TODO: To be deleted after header and footer work
 	@RequestMapping(value="/ll")
 	public ModelAndView privateLLObject(){
 		return new ModelAndView("LLtest");
