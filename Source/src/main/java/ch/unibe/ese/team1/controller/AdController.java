@@ -31,33 +31,16 @@ public class AdController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/AdDescription", method = RequestMethod.POST)
+	@RequestMapping(value = "/placeAd", method = RequestMethod.POST)
     public ModelAndView create(@Valid PlaceAdForm placeAdForm, BindingResult result, RedirectAttributes redirectAttributes) {
-    	ModelAndView model = new ModelAndView("AdDescription");    	
+    	ModelAndView model = new ModelAndView("placeAd");
     	if (!result.hasErrors()) {
-            try {
-            	placeAdService.saveFrom(placeAdForm);
-            	//model.addObject("message", "Ad Placed!"); //diese message solls anzeigen wenns geklappt hat (bei signup.jsp im Fall von Mario)
-            } catch (Exception e) {
-            	model.addObject("placeAdForm", placeAdForm);
-            }
-        } 
+            placeAdService.saveFrom(placeAdForm);
+           	model = new ModelAndView("AdDescription");    	
+    	} else {
+        	model = new ModelAndView("placeAd");
+        	model.addObject("placeAdForm", placeAdForm);
+        }
     	return model;
     }
 }
-	
-	
-//	@RequestMapping(value = "/AdDescription", method = RequestMethod.POST)
-//    public ModelAndView create(@Valid PlaceAdForm placeAdForm, BindingResult result, RedirectAttributes redirectAttributes) {
-//    	ModelAndView model = new ModelAndView("AdDescription");    	
-//    	if (!result.hasErrors()) {
-//            try {
-//            	placeAdService.saveFrom(placeAdForm);
-//            	model.addObject("message", "Ad Placed!");
-//            } catch (Exception e) {
-//            	model.addObject("placeAdForm", placeAdForm);
-//            }
-//        } 
-//    	return model;
-//    }
-//}

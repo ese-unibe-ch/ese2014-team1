@@ -7,7 +7,7 @@
 
 <c:import url="template/LLheader.jsp" />
 
-<form:form method="post" modelAttribute="placeAdForm" action="/AdDescription" id="placeAdForm" autocomplete="off">
+<form:form method="post" modelAttribute="placeAdForm" action="/placeAd" id="placeAdForm" autocomplete="off">
 	
 	<%-- Rafi: Design isn't final, feel free to change (e.g. replace textareas by what eva) --%>
 	
@@ -24,7 +24,34 @@
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
-			<option value="etc">etc</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+			<option value="24">24</option>
+			<option value="25">25</option>
+			<option value="26">26</option>
+			<option value="27">27</option>
+			<option value="28">28</option>
+			<option value="29">29</option>
+			<option value="30">30</option>
+			<option value="31">31</option>
 			</form:select>
 				
 		<label for="field-MonthMoveIn">Month</label>
@@ -32,7 +59,15 @@
 			<option value="1">Jan</option>
 			<option value="2">Feb</option>
 			<option value="3">März</option>
-			<option value="etc">etc</option>
+			<option value="4">April</option>
+			<option value="5">Mai</option>
+			<option value="6">Juni</option>
+			<option value="7">Juli</option>
+			<option value="8">Aug</option>
+			<option value="9">Sep</option>
+			<option value="10">Okt</option>
+			<option value="11">Nov</option>
+			<option value="12">Dez</option>
 			</form:select>
 			
 		<label for="field-YearMoveIn" tabindex="4">Year</label>
@@ -40,7 +75,7 @@
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
-			<option value="etc">etc</option>
+			<option value="2017">2017</option>
 			</form:select>
 		
 		<h4>Move out date (optional)</h4>
@@ -49,7 +84,34 @@
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
-			<option value="etc">etc</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+			<option value="24">24</option>
+			<option value="25">25</option>
+			<option value="26">26</option>
+			<option value="27">27</option>
+			<option value="28">28</option>
+			<option value="29">29</option>
+			<option value="30">30</option>
+			<option value="31">31</option>
 			</form:select>
 		
 				
@@ -58,7 +120,15 @@
 			<option value="1">Jan</option>
 			<option value="2">Feb</option>
 			<option value="3">März</option>
-			<option value="etc">etc</option>
+			<option value="4">April</option>
+			<option value="5">Mai</option>
+			<option value="6">Juni</option>
+			<option value="7">Juli</option>
+			<option value="8">Aug</option>
+			<option value="9">Sep</option>
+			<option value="10">Okt</option>
+			<option value="11">Nov</option>
+			<option value="12">Dez</option>
 			</form:select>
 			
 		<label for="field-YearMoveOut" tabindex="4">Year</label>
@@ -66,7 +136,7 @@
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
-			<option value="etc">etc</option>
+			<option value="2017">2017</option>
 			</form:select>
 		
 		<br>
