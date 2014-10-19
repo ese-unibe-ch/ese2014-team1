@@ -9,7 +9,7 @@
 
 <form:form method="post" modelAttribute="placeAdForm" action="/AdDescription" id="placeAdForm" autocomplete="off">
 	
-	<%-- Design isn't final, feel free to change. --%>
+	<%-- Rafi: Design isn't final, feel free to change (e.g. replace textareas by what eva) --%>
 	
 	<fieldset>
 		<label>City</label>
@@ -28,20 +28,20 @@
 			</form:select>
 				
 		<label for="field-MonthMoveIn">Month</label>
-			<select id="field-MonthMoveIn" path="monthMoveIn" tabindex="3">
-			<option value="Jan">Jan</option>
-			<option value="Feb">Feb</option>
-			<option value="März">März</option>
+			<form:select id="field-MonthMoveIn" path="monthMoveIn" tabindex="3">
+			<option value="1">Jan</option>
+			<option value="2">Feb</option>
+			<option value="3">März</option>
 			<option value="etc">etc</option>
-			</select>
+			</form:select>
 			
 		<label for="field-YearMoveIn" tabindex="4">Year</label>
-			<select id="field-YearMoveIn" path="yearMoveIn" tabindex="4">
+			<form:select id="field-YearMoveIn" path="yearMoveIn" tabindex="4">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
 			<option value="etc">etc</option>
-			</select>
+			</form:select>
 		
 		<h4>Move out date (optional)</h4>
 		<label for="field-DayMoveOut">Day</label>
@@ -54,20 +54,20 @@
 		
 				
 		<label for="field-MonthMoveOut">Month</label>
-			<select id="field-MonthMoveOut" path="monthMoveOut" tabindex="6">
-			<option value="Jan">Jan</option>
-			<option value="Feb">Feb</option>
-			<option value="März">März</option>
+			<form:select id="field-MonthMoveOut" path="monthMoveOut" tabindex="6">
+			<option value="1">Jan</option>
+			<option value="2">Feb</option>
+			<option value="3">März</option>
 			<option value="etc">etc</option>
-			</select>
+			</form:select>
 			
 		<label for="field-YearMoveOut" tabindex="4">Year</label>
-			<select id="field-YearMoveOut" path="yearMoveOut" tabindex="7">
+			<form:select id="field-YearMoveOut" path="yearMoveOut" tabindex="7">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
 			<option value="etc">etc</option>
-			</select>
+			</form:select>
 		
 		<br>
 		<label for="field-Prize">Prize per month</label>
@@ -86,8 +86,8 @@
 		
 		<form action="demo_form.asp">
 			<label for="form-Pictures">Pictures</label>
-  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="12">
-  			<input type="submit" tabindex="13">
+  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="12"><input>
+  			<input type="submit" tabindex="13"><input>
 		</form>
 	
 		<br>
@@ -105,19 +105,16 @@
 		</fieldset>
 		
 		<input type="checkbox" path="smokers" value="1">Smokers
-		<input type="checkbox" path="animals" value="1">Animals 
+		<input type="checkbox" path="animals" value="1">Animals
 		
 		<div class="form-actions">
-			
-			<%--Mit <input type="submit"> definieren Sie einen Absendebutton. Beim Anklicken dieses Buttons werden die Formulardaten 
-			abgeschickt, und es wird die Adresse aufgerufen, die im einleitenden <form>-Tag beim Attribut action angegeben ist. --%>
             <button type="submit" class="btn btn-primary">Place Ad</button>
-			
             <button type="button" class="btn">Cancel</button>
         </div>
+        
+        <br><br>
 		
 	</fieldset>
-
 </form:form>
 
 <c:import url="template/LLfooter.jsp" />

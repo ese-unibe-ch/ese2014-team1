@@ -12,7 +12,7 @@ public class PlaceAdForm {
     private int yearMoveOut;
     private int prize;
     private int squareFootage;
-    private int region;
+    private String region;
     private String roomDescription;
     private String preferences;
     private String roommates;
@@ -89,11 +89,11 @@ public class PlaceAdForm {
 		this.prize = prize;
 	}
 
-	public int getRegion() {
+	public String getRegion() {
 		return region;
 	}
 
-	public void setRegion(int region) {
+	public void setRegion(String region) {
 		this.region = region;
 	}
 

@@ -1,5 +1,8 @@
 package ch.unibe.ese.team1.controller.service;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,15 @@ public class PlaceAdService {
 		Ad ad = new Ad();
 		
 		ad.setCity(placeAdForm.getCity());
+		ad.setRegion(placeAdForm.getRegion());
+		
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(placeAdForm.getYearMoveIn(), placeAdForm.getMonthMoveIn(), placeAdForm.getDayMoveIn());
+		
+		
+		ad.setMoveInDate(calendar.getTime());
+		
 		adDao.save(ad);
 	}
 }

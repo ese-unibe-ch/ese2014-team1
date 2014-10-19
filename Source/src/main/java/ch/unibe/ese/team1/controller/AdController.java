@@ -11,11 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.team1.controller.pojos.PlaceAdForm;
+import ch.unibe.ese.team1.controller.pojos.SignupForm;
 import ch.unibe.ese.team1.controller.service.PlaceAdService;
-import ch.unibe.ese.team1.controller.service.SignupService;
 
 /**
- * Controller for PlaceAd and SearchAd? Other suggestions?
+ * Rafi: Controller for PlaceAd and SearchAd? Other suggestions?
  */
 @Controller
 public class AdController {
@@ -33,18 +33,31 @@ public class AdController {
 	
 	@RequestMapping(value = "/AdDescription", method = RequestMethod.POST)
     public ModelAndView create(@Valid PlaceAdForm placeAdForm, BindingResult result, RedirectAttributes redirectAttributes) {
-    	ModelAndView model;    	
+    	ModelAndView model = new ModelAndView("AdDescription");    	
     	if (!result.hasErrors()) {
             try {
             	placeAdService.saveFrom(placeAdForm);
-            	model = new ModelAndView("AdDescription");
+            	//model.addObject("message", "Ad Placed!"); //diese message solls anzeigen wenns geklappt hat (bei signup.jsp im Fall von Mario)
             } catch (Exception e) {
-            	model = new ModelAndView("AdDescription");
-            	//model.addObject("page_error", e.getMessage());
+            	model.addObject("placeAdForm", placeAdForm);
             }
-        } else {
-        	model = new ModelAndView("AdDescription");
-        }   	
+        } 
     	return model;
     }
 }
+	
+	
+//	@RequestMapping(value = "/AdDescription", method = RequestMethod.POST)
+//    public ModelAndView create(@Valid PlaceAdForm placeAdForm, BindingResult result, RedirectAttributes redirectAttributes) {
+//    	ModelAndView model = new ModelAndView("AdDescription");    	
+//    	if (!result.hasErrors()) {
+//            try {
+//            	placeAdService.saveFrom(placeAdForm);
+//            	model.addObject("message", "Ad Placed!");
+//            } catch (Exception e) {
+//            	model.addObject("placeAdForm", placeAdForm);
+//            }
+//        } 
+//    	return model;
+//    }
+//}
