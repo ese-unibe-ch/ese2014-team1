@@ -1,0 +1,21 @@
+Customer liked the overall design of the page.
+
+the place field in the header is used to rarely and should not be that prominent on the page.
+The customer wants it hidden in account.
+
+The messaging system it good and the system should be able to send emails. OK.
+
+Andrea likes the myRooms page where you can see the ads placed and the bookmarked ads of
+other people. Since the two options will rarely be used at the same time it is important
+to dynamically hide the option where no entries are found in the DB.
+
+The button for subscribing to alerts from a search is missing. After searching the DB
+subscribing to such an filter should be possible.
+
+Checkmarks should be added to the calendar so that the searcher may tick the dates he can
+make it. The advertiser can see this selection and decide if it's ok or not.
+
+If somebody looks at a house, the advertiser should be linked through his picture to his profile.
+If many users have registered and all live in that house the advertiser should be able to add
+them so as the searcher may click on any of them.
+-> Andrea said it would be nice to see all of them as little thumbnails on the flat ad.
