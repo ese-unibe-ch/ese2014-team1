@@ -15,12 +15,12 @@
 		<label>City</label>
 			<form:input path="city" tabindex="1" placeholder="City"></form:input>
 		<label for="field-Regon">Region</label>
-			<form:input id="field-Region" type="text" path="region" tabindex="10" placeholder="Region"></form:input>
+			<form:input id="field-Region" type="text" path="region" tabindex="2" placeholder="Region"></form:input>
 		
 		<h4>Move in date</h4>
 		
 		<label for="field-DayMoveIn">Day</label>
-			<form:select id="field-DayMoveIn" path="dayMoveIn" tabindex="2">
+			<form:select id="field-DayMoveIn" path="dayMoveIn" tabindex="3">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -55,7 +55,7 @@
 			</form:select>
 				
 		<label for="field-MonthMoveIn">Month</label>
-			<form:select id="field-MonthMoveIn" path="monthMoveIn" tabindex="3">
+			<form:select id="field-MonthMoveIn" path="monthMoveIn" tabindex="4">
 			<option value="1">Jan</option>
 			<option value="2">Feb</option>
 			<option value="3">März</option>
@@ -71,7 +71,7 @@
 			</form:select>
 			
 		<label for="field-YearMoveIn" tabindex="4">Year</label>
-			<form:select id="field-YearMoveIn" path="yearMoveIn" tabindex="4">
+			<form:select id="field-YearMoveIn" path="yearMoveIn" tabindex="5">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
@@ -80,7 +80,7 @@
 		
 		<h4>Move out date (optional)</h4>
 		<label for="field-DayMoveOut">Day</label>
-			<form:select id="field-DayMoveOut" path="dayMoveOut" tabindex="5">
+			<form:select id="field-DayMoveOut" path="dayMoveOut" tabindex="6">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -116,7 +116,7 @@
 		
 				
 		<label for="field-MonthMoveOut">Month</label>
-			<form:select id="field-MonthMoveOut" path="monthMoveOut" tabindex="6">
+			<form:select id="field-MonthMoveOut" path="monthMoveOut" tabindex="7">
 			<option value="1">Jan</option>
 			<option value="2">Feb</option>
 			<option value="3">März</option>
@@ -132,7 +132,7 @@
 			</form:select>
 			
 		<label for="field-YearMoveOut" tabindex="4">Year</label>
-			<form:select id="field-YearMoveOut" path="yearMoveOut" tabindex="7">
+			<form:select id="field-YearMoveOut" path="yearMoveOut" tabindex="8">
 			<option value="2014">2014</option>
 			<option value="2015">2015</option>
 			<option value="2016">2016</option>
@@ -141,10 +141,10 @@
 		
 		<br>
 		<label for="field-Prize">Prize per month</label>
-			<form:input id="field-Prize" type="number" path="prize" min="1" tabindex="8" placeholder="Prize per month" ></form:input>
+			<form:input id="field-Prize" type="number" path="prize" min="1" tabindex="9" placeholder="Prize per month" ></form:input>
 		
 		<label for="field-SquareFootage">Square Footage</label>
-			<form:input id="field-SquareFootage" type="number" path="squareFootage" min="1" tabindex="9" placeholder="Prize per month" ></form:input>
+			<form:input id="field-SquareFootage" type="number" path="squareFootage" min="1" tabindex="10" placeholder="Prize per month" ></form:input>
 		
 		
 		<br>
@@ -170,7 +170,7 @@
 		<br>
 		<fieldset>
 			<legend>Roommates</legend>
-			<form:textarea path="roommates" rows="10" cols="100" tabindex="11" 
+			<form:textarea path="roommates" rows="10" cols="100" tabindex="15" 
 				placeholder="Roommates"></form:textarea>
 		</fieldset>
 		

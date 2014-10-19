@@ -24,13 +24,18 @@ public class PlaceAdService {
 		ad.setCity(placeAdForm.getCity());
 		ad.setRegion(placeAdForm.getRegion());
 		
-		
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(placeAdForm.getYearMoveIn(), placeAdForm.getMonthMoveIn(), placeAdForm.getDayMoveIn());
-		
-		
+		//java.util.Calendar uses a month range of 0-11 instead of the XMLGregorianCalendar which uses 1-12
+		calendar.set(placeAdForm.getYearMoveIn(), placeAdForm.getMonthMoveIn() - 1, placeAdForm.getDayMoveIn());
 		ad.setMoveInDate(calendar.getTime());
+		
+		calendar.set(placeAdForm.getYearMoveOut(), placeAdForm.getMonthMoveOut() - 1, placeAdForm.getDayMoveOut());
+		ad.setMoveOutDate(calendar.getTime());
+		
+		ad.setPrizePerMonth(placeAdForm.getPrize());
+		ad.setSquareFootage(placeAdForm.getSquareFootage());
 		
 		adDao.save(ad);
 	}
 }
+

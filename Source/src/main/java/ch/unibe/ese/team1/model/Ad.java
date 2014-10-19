@@ -26,6 +26,16 @@ public class Ad {
 	@Column(nullable = false)
 	private Date moveInDate;
 	
+	@Column(nullable = true)
+	private Date moveOutDate;
+	
+	@Column(nullable = false)
+	private int prizePerMonth;
+	
+	@Column(nullable = false)
+	private int squareFootage;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -57,6 +67,24 @@ public class Ad {
 	public void setMoveInDate(Date moveInDate) {
 		this.moveInDate = moveInDate;
 	}
-	
-	
+
+	public void setMoveOutDate(Date moveOutDate) {
+		this.moveOutDate = moveOutDate;
+	}
+
+	public int getPrizePerMonth() {
+		return prizePerMonth;
+	}
+
+	public void setPrizePerMonth(int prizePerMonth) {
+		this.prizePerMonth = prizePerMonth;
+	}
+
+	public int getSquareFootage() {
+		return squareFootage;
+	}
+
+	public void setSquareFootage(int squareFootage) {
+		this.squareFootage = squareFootage;
+	}
 }
