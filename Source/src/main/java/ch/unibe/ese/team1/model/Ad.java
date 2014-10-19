@@ -35,6 +35,14 @@ public class Ad {
 	@Column(nullable = false)
 	private int squareFootage;
 	
+	// TODO: add further fields: text roommates...
+	
+	@Column(nullable = true)
+	private boolean smoker;
+	
+	@Column(nullable = true)
+	private boolean animals;
+	
 	
 	public long getId() {
 		return id;
@@ -86,5 +94,21 @@ public class Ad {
 
 	public void setSquareFootage(int squareFootage) {
 		this.squareFootage = squareFootage;
+	}
+	
+	public boolean isSmoker() {
+		return smoker;
+	}
+	
+	public void setSmoker(boolean smoker) {
+		this.smoker = smoker;
+	}
+	
+	public boolean isAnimals() {
+		return animals;
+	}
+	
+	public void setAnimals(boolean animals) {
+		this.animals = animals;
 	}
 }

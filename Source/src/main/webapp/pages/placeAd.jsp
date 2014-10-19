@@ -175,9 +175,8 @@
 		</form>
 		
 		<br>
-		<input type="checkbox" path="smokers" value="1" tabindex="15">Smokers
-		<input type="checkbox" path="animals" value="1" tabindex="16">Animals
-		
+		<input type="checkbox" name="smoker" value="1" tabindex="15">Smokers
+		<input type="checkbox" name="animals" value="1" tabindex="16">Animals
 		<div class="form-actions">
             <button type="submit" class="btn btn-primary" tabindex="17">Place Ad</button>
             <button type="button" class="btn" tabindex="18">Cancel</button>
