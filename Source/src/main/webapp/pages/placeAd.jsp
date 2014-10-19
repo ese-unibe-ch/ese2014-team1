@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 
-<c:import url="template/LLheader.jsp" />
+<c:import url="template/header.jsp" />
 
 <form:form method="post" modelAttribute="placeAdForm" action="/placeAd" id="placeAdForm" autocomplete="off">
 	
@@ -56,18 +56,18 @@
 				
 		<label for="field-MonthMoveIn">Month</label>
 			<form:select id="field-MonthMoveIn" path="monthMoveIn" tabindex="4">
-			<option value="1">Jan</option>
-			<option value="2">Feb</option>
-			<option value="3">März</option>
+			<option value="1">January</option>
+			<option value="2">February</option>
+			<option value="3">March</option>
 			<option value="4">April</option>
-			<option value="5">Mai</option>
-			<option value="6">Juni</option>
-			<option value="7">Juli</option>
-			<option value="8">Aug</option>
-			<option value="9">Sep</option>
-			<option value="10">Okt</option>
-			<option value="11">Nov</option>
-			<option value="12">Dez</option>
+			<option value="5">May</option>
+			<option value="6">June</option>
+			<option value="7">July</option>
+			<option value="8">August</option>
+			<option value="9">September</option>
+			<option value="10">October</option>
+			<option value="11">November</option>
+			<option value="12">December</option>
 			</form:select>
 			
 		<label for="field-YearMoveIn" tabindex="4">Year</label>
@@ -117,18 +117,18 @@
 				
 		<label for="field-MonthMoveOut">Month</label>
 			<form:select id="field-MonthMoveOut" path="monthMoveOut" tabindex="7">
-			<option value="1">Jan</option>
-			<option value="2">Feb</option>
-			<option value="3">März</option>
+			<option value="1">January</option>
+			<option value="2">February</option>
+			<option value="3">March</option>
 			<option value="4">April</option>
-			<option value="5">Mai</option>
-			<option value="6">Juni</option>
-			<option value="7">Juli</option>
-			<option value="8">Aug</option>
-			<option value="9">Sep</option>
-			<option value="10">Okt</option>
-			<option value="11">Nov</option>
-			<option value="12">Dez</option>
+			<option value="5">May</option>
+			<option value="6">June</option>
+			<option value="7">July</option>
+			<option value="8">August</option>
+			<option value="9">September</option>
+			<option value="10">October</option>
+			<option value="11">November</option>
+			<option value="12">December</option>
 			</form:select>
 			
 		<label for="field-YearMoveOut">Year</label>
@@ -168,22 +168,23 @@
 				placeholder="Preferences"></form:textarea>
 		</fieldset>
 		
-		<form action="demo_form.asp">
+		<%-- TODO complete implementation, doesn't do anything yet like that --%>
+	<form action="demo_form.asp">
 			<label for="form-Pictures">Pictures</label>
-  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="14">
+  			<input type="file" accept="image/*" tabindex="14">
   			<input type="submit" tabindex="13">
 		</form>
 		
 		<br>
-		<input type="checkbox" path="smokers" value="1" tabindex="15">Smokers
-		<input type="checkbox" path="animals" value="1" tabindex="16">Animals
+		<label for="field-smokers">Smokers</label><form:checkbox id="field-smokers" path="smokers" tabindex="15" />
+		<label for="field-animals">Animals</label><form:checkbox id="field-animals" path="animals" tabindex="16" />
 		
-		<div class="form-actions">
-            <button type="submit" class="btn btn-primary" tabindex="17">Place Ad</button>
-            <button type="button" class="btn">Cancel</button>
+		<div>
+            <button type="submit" tabindex="17">Place Ad</button>
+            <button type="button">Cancel</button>
         </div>
 		
 	</fieldset>
 </form:form>
 
-<c:import url="template/LLfooter.jsp" />
+<c:import url="template/footer.jsp" />

@@ -7,10 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="ads")
 public class Ad {
 
 	@Id
@@ -24,8 +24,10 @@ public class Ad {
 	private String region;
 	
 	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date moveInDate;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(nullable = true)
 	private Date moveOutDate;
 	

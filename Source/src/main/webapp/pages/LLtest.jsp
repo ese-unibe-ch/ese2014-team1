@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<c:import url="template/LLheader.jsp" />
+<c:import url="template/header.jsp" />
 
 <%-- body tag already opened in header, will be closed in footer --%>
 
@@ -12,4 +12,4 @@
 <p>Try to scroll a bit!</p>
 <p>Header and footer will stay in place, rest scrolls.</p>
 
-<c:import url="template/LLfooter.jsp" />
+<c:import url="template/footer.jsp" />

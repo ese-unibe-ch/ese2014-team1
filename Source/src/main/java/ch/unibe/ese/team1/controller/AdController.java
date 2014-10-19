@@ -14,7 +14,7 @@ import ch.unibe.ese.team1.controller.pojos.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.PlaceAdService;
 
 /**
- * Rafi: Controller for PlaceAd and SearchAd? Other suggestions?
+ * This controllers handles all requests concerning placing ads.
  */
 @Controller
 public class AdController {
@@ -35,7 +35,7 @@ public class AdController {
     	ModelAndView model = new ModelAndView("placeAd");
     	if (!result.hasErrors()) {
             placeAdService.saveFrom(placeAdForm);
-           	model = new ModelAndView("AdDescription");    	
+           	model = new ModelAndView("adDescription");    	
     	} else {
         	model = new ModelAndView("placeAd");
         	model.addObject("placeAdForm", placeAdForm);

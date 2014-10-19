@@ -5,8 +5,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<c:import url="template/LLheader.jsp" />
+<c:import url="template/header.jsp" />
 
 <h1>Detailed Ad Description page here</h1>
 
-<c:import url="template/LLfooter.jsp" />
+<c:import url="template/footer.jsp" />
