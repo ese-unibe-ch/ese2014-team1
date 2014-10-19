@@ -26,7 +26,7 @@ we fix the body in the exactly right position*/
 body
 {
 	color: gray;
-	padding-top: 60px;
+	padding-top: 60px; padding-bottom: 40px;
 }
 
 nav ol li
