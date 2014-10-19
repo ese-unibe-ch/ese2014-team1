@@ -1,7 +1,6 @@
 package ch.unibe.ese.team1.controller.service;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

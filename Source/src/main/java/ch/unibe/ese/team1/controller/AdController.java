@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.team1.controller.pojos.PlaceAdForm;
-import ch.unibe.ese.team1.controller.pojos.SignupForm;
 import ch.unibe.ese.team1.controller.service.PlaceAdService;
 
 /**

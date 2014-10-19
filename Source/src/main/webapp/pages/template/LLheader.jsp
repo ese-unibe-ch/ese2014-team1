@@ -9,7 +9,7 @@
 		<nav>
 			<ol>
 				<li>Account</li>
-				<li>Place</li>
+				<li><a href="/placeAd" />Place</a></li>
 				<li>Search</li>
 				<li><a href="/login" />[Test]Login</a></li> <%-- This is what the link syntax looks like.
 															Link to login page can be deleted when rest is implemented. --%>

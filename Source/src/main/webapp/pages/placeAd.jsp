@@ -154,19 +154,6 @@
 				placeholder="Room Description"></form:textarea>
 		</fieldset>
 		
-		<form action="demo_form.asp">
-			<label for="form-Pictures">Pictures</label>
-  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="12"><input>
-  			<input type="submit" tabindex="13"><input>
-		</form>
-	
-		<br>
-		<fieldset>
-			<legend>Preferences</legend>
-			<form:textarea path="preferences" rows="5" cols="100" tabindex="14" 
-				placeholder="Preferences"></form:textarea>
-		</fieldset>
-	
 		<br>
 		<fieldset>
 			<legend>Roommates</legend>
@@ -174,6 +161,20 @@
 				placeholder="Roommates"></form:textarea>
 		</fieldset>
 		
+		<br>
+		<fieldset>
+			<legend>Preferences</legend>
+			<form:textarea path="preferences" rows="5" cols="100" tabindex="14" 
+				placeholder="Preferences"></form:textarea>
+		</fieldset>
+		
+		<form action="demo_form.asp">
+			<label for="form-Pictures">Pictures</label>
+  			<input type="file" name="pic" id="form-Pictures" accept="image/*" tabindex="12">
+  			<input type="submit" tabindex="13">
+		</form>
+		
+		<br>
 		<input type="checkbox" path="smokers" value="1">Smokers
 		<input type="checkbox" path="animals" value="1">Animals
 		
