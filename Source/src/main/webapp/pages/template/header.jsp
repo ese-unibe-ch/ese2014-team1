@@ -1,10 +1,10 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/LLtest.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<Title>Our flat search website!</Title>
 </head>
 
 <header>
-	<div class="left"><h1>LOGO</h1></div>
+	<div class="left"><a href="/"><h1>LOGO</h1></a></div>
 	<div class="right">
 		<nav>
 			<ol>
@@ -19,3 +19,4 @@
 </header>
 
 <body> <!-- will be closed in footer-->
+<div id="content">

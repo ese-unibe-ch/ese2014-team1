@@ -1,0 +1,112 @@
+/* Basic resets to equalize inconsistencies across browsers */
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, b, i, fieldset,
+	form, label, legend, caption, article, header, footer, menu, nav,
+	section, ol, ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+/* -------------------------------------------------------------------- */
+/* Global element styling & global classes */
+
+h1{
+	margin-bottom: 20px;
+}
+
+h4 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*Header is fixed to 60px from top, so with padding of 60px,
+we fix the body in the exactly right position*/
+body {
+	color: gray;
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+/* the main content on every page */
+#content {
+	padding: 30px;
+}
+
+/* These two guarantee that we can write stuff on the same line,
+but not in one String (i.e. in the header) */
+.left {
+	display: inline-block;
+	float: left;
+}
+
+.right {
+	display: inline-block;
+	float: right;
+}
+
+input, select {
+	margin-right: 30px;
+	margin-bottom: 10px;
+}
+
+label {
+	margin-right: 10px;
+}
+
+fieldset{
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+button{
+	margin-right: 20px;
+}
+
+/* -------------------------------------------------------------------- */
+/* Header & Footer */
+header {
+	color: white;
+	background: #2dc16d;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 60px;
+}
+
+header a {
+	text-decoration: none;
+}
+
+header h1 {
+	margin-top: 10px;
+	margin-left: 10px;
+	color: white;
+}
+
+header nav ol li {
+	display: block;
+	float: right;
+	padding: 0px 15px;
+}
+
+header nav{
+	margin-top: 35px;
+}
+
+footer {
+	color: white;
+	background: #2dc16d;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 30px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+footer nav ul li {
+	display: inline-block;
+	float: center;
+	padding: 0px 15px;
+}
