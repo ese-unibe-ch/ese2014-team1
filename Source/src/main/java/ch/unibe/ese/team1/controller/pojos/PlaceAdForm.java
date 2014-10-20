@@ -1,31 +1,35 @@
 package ch.unibe.ese.team1.controller.pojos;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class PlaceAdForm {
-    private Long id;
-    private String city;
-    private int dayMoveIn;
-    private int monthMoveIn;
-    private int yearMoveIn;
-    private int dayMoveOut;
-    private int monthMoveOut;
-    private int yearMoveOut;
-    private int prize;
-    private int squareFootage;
-    private String region;
-    private String roomDescription;
-    private String preferences;
-    private String roommates;
-    private boolean smoker;
-    private boolean animals;
-    
-    public Long getId() {
-        return id;
-    }
+	private Long id;
+	private String city;
+	private int dayMoveIn;
+	private int monthMoveIn;
+	private int yearMoveIn;
+	private int dayMoveOut;
+	private int monthMoveOut;
+	private int yearMoveOut;
+	private int prize;
+	private int squareFootage;
+	private String region;
+	private String roomDescription;
+	private String preferences;
+	private String roommates;
+	private boolean smoker;
+	private boolean animals;
+	private List<MultipartFile> pictures;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getCity() {
 		return city;
@@ -145,6 +149,14 @@ public class PlaceAdForm {
 
 	public void setAnimals(boolean animals) {
 		this.animals = animals;
+	}
+
+	public List<MultipartFile> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(List<MultipartFile> pictures) {
+		this.pictures = pictures;
 	}
 
 }

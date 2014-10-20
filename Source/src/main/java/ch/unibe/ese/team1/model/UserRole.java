@@ -8,16 +8,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_roles")
+@Table(name = "user_roles")
 public class UserRole {
 
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@ManyToOne
 	private User user;
-	
+
 	@Column(nullable = false)
 	private String role;
 
@@ -44,6 +44,5 @@ public class UserRole {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
+
 }

@@ -2,11 +2,14 @@ package ch.unibe.ese.team1.model;
 
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -47,12 +50,14 @@ public class Ad {
 	@Column(nullable = false)
 	private String roommates;
 	
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private boolean smoker;
 	
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private boolean animals;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Set<AdPicture> pictures;
 	
 	public long getId() {
 		return id;
@@ -144,5 +149,17 @@ public class Ad {
 	
 	public void setRoommates(String roommates) {
 		this.roommates = roommates;
+	}
+
+	public Set<AdPicture> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(Set<AdPicture> pictures) {
+		this.pictures = pictures;
+	}
+
+	public Date getMoveOutDate() {
+		return moveOutDate;
 	}
 }

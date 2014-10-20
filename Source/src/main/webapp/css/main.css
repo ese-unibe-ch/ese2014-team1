@@ -8,12 +8,11 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, b, i, fieldset,
 
 /* -------------------------------------------------------------------- */
 /* Global element styling & global classes */
-
-p{
+p {
 	margin-bottom: 10px;
 }
 
-h1{
+h1 {
 	margin-bottom: 20px;
 }
 
@@ -56,12 +55,12 @@ label {
 	margin-right: 10px;
 }
 
-fieldset{
+fieldset {
 	padding: 20px;
 	margin-bottom: 10px;
 }
 
-button{
+button {
 	margin-right: 20px;
 }
 
@@ -84,6 +83,9 @@ header a {
 header h1 {
 	margin-top: 10px;
 	margin-left: 10px;
+}
+
+header h1 a {
 	color: white;
 }
 
@@ -93,7 +95,7 @@ header nav ol li {
 	padding: 0px 15px;
 }
 
-header nav{
+header nav {
 	margin-top: 35px;
 }
 
