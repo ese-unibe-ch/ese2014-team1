@@ -13,6 +13,6 @@
 <title>Test-Title</title>
 </head>
 <body>
-<h1>If you can read this, the test was successful!</h1>
+<h1>Welcome!</h1>
 
 <c:import url="template/footer.jsp" />

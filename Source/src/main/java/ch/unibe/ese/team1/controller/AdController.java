@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,11 +31,11 @@ public class AdController {
 	@Autowired
 	private ServletContext servletContext;
 
+	private PlaceAdForm placeAdForm;
+
 	@RequestMapping(value = "/placeAd", method = RequestMethod.GET)
 	public ModelAndView placeAd() {
-
 		ModelAndView model = new ModelAndView("placeAd");
-		model.addObject("placeAdForm", new PlaceAdForm());
 		return model;
 	}
 
@@ -43,20 +44,28 @@ public class AdController {
 			BindingResult result, RedirectAttributes redirectAttributes) {
 		ModelAndView model = new ModelAndView("placeAd");
 		if (!result.hasErrors()) {
-			String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);
-			System.out.println("real Path: " + realPath);
-
+			
 			// Upload the pictures
+			String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);
 			PictureUploader pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
 			List<String> fileNames = pictureUploader.upload(placeAdForm.getPictures());
 			
 			placeAdService.saveFrom(placeAdForm, fileNames);
+			// reset the place ad form
+			placeAdForm= null;
 			model = new ModelAndView("adDescription");
 		} else {
 			model = new ModelAndView("placeAd");
-			model.addObject("placeAdForm", placeAdForm);
 		}
 		return model;
+	}
+	
+	@ModelAttribute("placeAdForm")
+	public PlaceAdForm placeAdForm(){
+		if(placeAdForm == null){
+			placeAdForm = new PlaceAdForm();
+		}
+		return placeAdForm;
 	}
 
 	

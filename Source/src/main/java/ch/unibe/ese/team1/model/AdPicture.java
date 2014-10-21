@@ -1,7 +1,6 @@
 package ch.unibe.ese.team1.model;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**

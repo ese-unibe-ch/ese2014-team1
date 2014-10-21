@@ -4,6 +4,8 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, b, i, fieldset,
 	section, ol, ul, li {
 	margin: 0;
 	padding: 0;
+	font-family: 'Helvetica', sans-serif;
+	font-size: 0.97em;
 }
 
 /* -------------------------------------------------------------------- */
@@ -14,6 +16,7 @@ p {
 
 h1 {
 	margin-bottom: 20px;
+	font-size: 2.8em;
 }
 
 h4 {
@@ -46,9 +49,14 @@ but not in one String (i.e. in the header) */
 	float: right;
 }
 
-input, select {
+input, select, textarea{
 	margin-right: 30px;
 	margin-bottom: 10px;
+	padding-left: 2px;
+}
+
+input[type="number"]{
+	width: 70px;
 }
 
 label {
@@ -62,6 +70,16 @@ fieldset {
 
 button {
 	margin-right: 20px;
+}
+
+.validationErrorText {
+	color: red;
+	background-color: #fee2ef;
+	border-radius: 5px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-left: -20px;
 }
 
 /* -------------------------------------------------------------------- */
@@ -78,6 +96,7 @@ header {
 
 header a {
 	text-decoration: none;
+	color: white;
 }
 
 header h1 {
@@ -93,10 +112,11 @@ header nav ol li {
 	display: block;
 	float: right;
 	padding: 0px 15px;
+	font-size: 1.3em;
 }
 
 header nav {
-	margin-top: 35px;
+	margin-top: 30px;
 }
 
 footer {
@@ -109,6 +129,10 @@ footer {
 	height: 30px;
 	text-align: center;
 	padding-top: 10px;
+}
+
+footer nav{
+	margin-top:8px;
 }
 
 footer nav ul li {
