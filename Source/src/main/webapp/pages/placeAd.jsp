@@ -6,7 +6,7 @@
 
 <c:import url="template/header.jsp" />
 
-<form:form method="post" modelAttribute="placeAdForm" action="/placeAd"
+<form:form method="post" modelAttribute="placeAdForm" action="/profile/placeAd"
 	id="placeAdForm" autocomplete="off" enctype="multipart/form-data">
 
 	<%-- Rafi: Design isn't final, feel free to change (e.g. replace textareas by what eva) --%>

@@ -1,5 +1,6 @@
 package ch.unibe.ese.team1.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.PlaceAdService;
+import ch.unibe.ese.team1.model.User;
 
 /**
  * This controllers handles all requests concerning placing ads.
@@ -33,24 +35,26 @@ public class AdController {
 
 	private PlaceAdForm placeAdForm;
 
-	@RequestMapping(value = "/placeAd", method = RequestMethod.GET)
+	@RequestMapping(value = "/profile/placeAd", method = RequestMethod.GET)
 	public ModelAndView placeAd() {
 		ModelAndView model = new ModelAndView("placeAd");
 		return model;
 	}
 
-	@RequestMapping(value = "/placeAd", method = RequestMethod.POST)
+	@RequestMapping(value = "/profile/placeAd", method = RequestMethod.POST)
 	public ModelAndView create(@Valid PlaceAdForm placeAdForm,
-			BindingResult result, RedirectAttributes redirectAttributes) {
+			BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
 		ModelAndView model = new ModelAndView("placeAd");
 		if (!result.hasErrors()) {
+			String username = principal.getName();
+			User user = placeAdService.findUserByUsername(username);
 			
 			// Upload the pictures
 			String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);
 			PictureUploader pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
 			List<String> fileNames = pictureUploader.upload(placeAdForm.getPictures());
 			
-			placeAdService.saveFrom(placeAdForm, fileNames);
+			placeAdService.saveFrom(placeAdForm, fileNames, user);
 			// reset the place ad form
 			this.placeAdForm = null;
 			model = new ModelAndView("adDescription");

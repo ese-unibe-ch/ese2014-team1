@@ -11,24 +11,27 @@ import org.springframework.stereotype.Service;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
+import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.AdDao;
+import ch.unibe.ese.team1.model.dao.UserDao;
 
 
 @Service
 public class PlaceAdService {
-
-	
 	
 	@Autowired
 	private AdDao adDao;
 
+	@Autowired
+	private UserDao userDao;
 
 	/** Handles persisting a new ad to the database.
 	 * 
 	 * @param placeAdForm the form to take the data from
 	 * @param a list of the file paths the pictures are saved under
+	 * @param the currently logged in user
 	 */
-	public void saveFrom(PlaceAdForm placeAdForm, List<String> filePaths) {
+	public void saveFrom(PlaceAdForm placeAdForm, List<String> filePaths, User user) {
 		Ad ad = new Ad();
 		
 		ad.setCity(placeAdForm.getCity());
@@ -65,7 +68,13 @@ public class PlaceAdService {
 		}
 		ad.setPictures(pictures);
 		
+		ad.setUser(user);
+		
 		adDao.save(ad);
+	}
+	
+	public User findUserByUsername(String username){
+		return userDao.findByUsername(username);
 	}
 	
 }

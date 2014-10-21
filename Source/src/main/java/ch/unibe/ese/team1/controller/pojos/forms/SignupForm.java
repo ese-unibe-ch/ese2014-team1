@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public class SignupForm {
 
-	@Pattern(regexp = "[a-zA-Z0-9]+", message = "Username can only contain characters and numbers")
+	@Pattern(regexp = "[a-zA-Z0-9]*", message = "Username can only contain characters and numbers")
 	@Size(min = 3, message = "Username must be at least 3 characters long")
 	@NotNull
 	private String username;

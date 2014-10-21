@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,7 +41,6 @@ public class Ad {
 	@Column(nullable = false)
 	private int squareFootage;
 	
-	// TODO: add further fields: text roommates...
 	@Column(nullable = false)
 	private String roomDescription;
 	
@@ -58,6 +58,9 @@ public class Ad {
 	
 	@OneToMany(mappedBy="ad",cascade = CascadeType.ALL)
 	private Set<AdPicture> pictures;
+	
+	@ManyToOne(optional= false)
+	private User user;
 	
 	public long getId() {
 		return id;
@@ -162,4 +165,13 @@ public class Ad {
 	public Date getMoveOutDate() {
 		return moveOutDate;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }
