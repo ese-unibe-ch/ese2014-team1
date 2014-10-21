@@ -56,7 +56,7 @@ public class Ad {
 	@Column(nullable = false)
 	private boolean animals;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="ad",cascade = CascadeType.ALL)
 	private Set<AdPicture> pictures;
 	
 	public long getId() {

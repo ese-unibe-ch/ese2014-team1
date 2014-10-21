@@ -12,3 +12,6 @@
 # Maven
 log/
 target
+
+#Uploaded images
+img/ads

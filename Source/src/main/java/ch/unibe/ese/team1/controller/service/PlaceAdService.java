@@ -2,13 +2,13 @@ package ch.unibe.ese.team1.controller.service;
 
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ch.unibe.ese.team1.controller.AdController;
-import ch.unibe.ese.team1.controller.pojos.PlaceAdForm;
+import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.dao.AdDao;
@@ -26,9 +26,9 @@ public class PlaceAdService {
 	/** Handles persisting a new ad to the database.
 	 * 
 	 * @param placeAdForm the form to take the data from
-	 * @param firstPictureIndex the index of the first picture, determines the file name of the pictures that are persisted
+	 * @param a list of the file paths the pictures are saved under
 	 */
-	public void saveFrom(PlaceAdForm placeAdForm, int firstPictureIndex) {
+	public void saveFrom(PlaceAdForm placeAdForm, List<String> filePaths) {
 		Ad ad = new Ad();
 		
 		ad.setCity(placeAdForm.getCity());
@@ -57,9 +57,10 @@ public class PlaceAdService {
 		 * the pictures are assumed to be uploaded at this point!
 		 */
 		Set<AdPicture> pictures = new HashSet<>();
-		for(int i = 0; i< placeAdForm.getPictures().size(); i++){
+		for(String filePath : filePaths){
 			AdPicture picture = new AdPicture();
-			picture.setFilePath(AdController.IMAGE_DIRECTORY + (firstPictureIndex + i));
+			picture.setFilePath(filePath);
+			picture.setAd(ad);
 			pictures.add(picture);
 		}
 		ad.setPictures(pictures);
