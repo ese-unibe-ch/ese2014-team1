@@ -20,7 +20,7 @@
 		<form:input id="field-Region" type="text" path="region" tabindex="2"
 			placeholder="Region" />
 		<form:errors path="region" cssClass="validationErrorText" />
-		<h4>Move in date</h4>
+		<h2>Move in date</h2>
 
 		<label for="field-DayMoveIn">Day</label>
 		<form:select id="field-DayMoveIn" path="dayMoveIn" tabindex="3">
@@ -83,7 +83,7 @@
 		</form:select>
 
 
-		<h4>Move out date (optional)</h4>
+		<h2>Move out date (optional)</h2>
 		<label for="field-DayMoveOut">Day</label>
 		<form:select id="field-DayMoveOut" path="dayMoveOut" tabindex="5">
 			<option value="1">1</option>
@@ -144,11 +144,10 @@
 			<option value="2017">2017</option>
 		</form:select>
 
-		<br /><br />
-		
-		<label for="field-Prize">Prize per month</label>
+		<br />
+		<br /> <label for="field-Prize">Prize per month</label>
 		<form:input id="field-Prize" type="number" path="prize" tabindex="8"
-			placeholder="Prize per month"/>
+			placeholder="Prize per month" />
 		<form:errors path="prize" cssClass="validationErrorText" />
 
 		<label for="field-SquareFootage">Square Footage</label>
@@ -156,9 +155,8 @@
 			path="squareFootage" tabindex="9" placeholder="Prize per month" />
 		<form:errors path="squareFootage" cssClass="validationErrorText" />
 
-		<br /><br />
-		
-		<label for="field-smoker">Smokers</label>
+		<br />
+		<br /> <label for="field-smoker">Smokers</label>
 		<form:checkbox id="field-smoker" path="smoker" value="1" tabindex="15" />
 		<label for="field-animals">Animals</label>
 		<form:checkbox id="field-animals" path="animals" value="1"
@@ -199,7 +197,7 @@
 	<br />
 	<div>
 		<button type="submit" tabindex="17">Place Ad</button>
-		<button type="button" tabindex="18">Cancel</button>
+		<button type="reset" tabindex="18">Cancel</button>
 	</div>
 
 </form:form>

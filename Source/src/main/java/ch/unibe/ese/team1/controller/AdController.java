@@ -52,7 +52,7 @@ public class AdController {
 			
 			placeAdService.saveFrom(placeAdForm, fileNames);
 			// reset the place ad form
-			placeAdForm= null;
+			this.placeAdForm = null;
 			model = new ModelAndView("adDescription");
 		} else {
 			model = new ModelAndView("placeAd");
