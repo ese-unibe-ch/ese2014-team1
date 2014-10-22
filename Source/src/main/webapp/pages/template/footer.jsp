@@ -4,7 +4,7 @@
 	<ul>
 		<li>About us</li>
 		<li>Disclaimer</li>
-		<li>&copy; 2014 by four extremely hot dudes. All rights reserved.</li>
+		<li>&copy;2014 by Team1. All rights reserved.</li>
 	</ul>
 </nav>
 </footer>
