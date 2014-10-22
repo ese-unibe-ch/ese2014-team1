@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.model.Ad;
@@ -31,6 +32,7 @@ public class PlaceAdService {
 	 * @param a list of the file paths the pictures are saved under
 	 * @param the currently logged in user
 	 */
+	@Transactional
 	public void saveFrom(PlaceAdForm placeAdForm, List<String> filePaths, User user) {
 		Ad ad = new Ad();
 		
@@ -73,6 +75,7 @@ public class PlaceAdService {
 		adDao.save(ad);
 	}
 	
+	@Transactional
 	public User findUserByUsername(String username){
 		return userDao.findByUsername(username);
 	}

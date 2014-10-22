@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.controller.pojos.forms.SignupForm;
 import ch.unibe.ese.team1.model.User;
@@ -20,6 +21,7 @@ public class SignupService {
 	private UserDao userDao;
 
 	/** Handles persisting a new user to the database. */
+	@Transactional
 	public void saveFrom(SignupForm signupForm) {
 		User user = new User();
 		user.setUsername(signupForm.getUsername());
