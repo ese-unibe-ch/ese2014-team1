@@ -151,6 +151,7 @@
 									<srcFiles>
 										<srcFile>src/main/sql/zipcodes.sql</srcFile>
 									</srcFiles>
+									<onError>continue</onError>
 								</configuration>
 							</execution>
 						</executions>

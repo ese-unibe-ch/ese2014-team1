@@ -27,11 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `zipcodes` (
-  `loc_id` int(11),
+  `loc_id` int(11) NOT NULL,
   `zip` varchar(255) CHARACTER SET utf8 NOT NULL,
   `location` varchar(255) CHARACTER SET utf8,
   `lat` double DEFAULT NULL,
-  `lon` double DEFAULT NULL
+  `lon` double DEFAULT NULL,
+  CONSTRAINT pk_zipcodes PRIMARY KEY (`loc_id`,`zip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
