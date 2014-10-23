@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.PlaceAdService;
+import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.User;
 
 /**
@@ -30,6 +31,8 @@ public class AdController {
 
 	@Autowired
 	private PlaceAdService placeAdService;
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private ServletContext servletContext;
 
@@ -47,7 +50,7 @@ public class AdController {
 		ModelAndView model = new ModelAndView("placeAd");
 		if (!result.hasErrors()) {
 			String username = principal.getName();
-			User user = placeAdService.findUserByUsername(username);
+			User user = userService.findUserByUsername(username);
 			
 			// Upload the pictures
 			String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);

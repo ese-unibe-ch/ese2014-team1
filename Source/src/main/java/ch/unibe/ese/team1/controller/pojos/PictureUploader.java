@@ -105,7 +105,6 @@ public class PictureUploader {
 				// ignore, we don't care about these files anyway
 			}
 		}
-		System.out.println("max: " + max);
 
 		return max;
 	}

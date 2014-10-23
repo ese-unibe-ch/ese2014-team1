@@ -120,7 +120,6 @@
 						</configuration>
 					</plugin>
 					<plugin>
-						<!-- Maybe still useful a bit later -->
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>sql-maven-plugin</artifactId>
 						<version>1.5</version>
@@ -141,7 +140,19 @@
 						</configuration>
 
 						<executions>
-							<!-- insert executions here -->
+							<execution>
+								<id>insert-zipcode-data</id>
+								<phase>process-test-resources</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<autocommit>true</autocommit>
+									<srcFiles>
+										<srcFile>src/main/sql/zipcodes.sql</srcFile>
+									</srcFiles>
+								</configuration>
+							</execution>
 						</executions>
 					</plugin>
 				</plugins>

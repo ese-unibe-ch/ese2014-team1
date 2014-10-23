@@ -14,7 +14,6 @@ import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.AdDao;
-import ch.unibe.ese.team1.model.dao.UserDao;
 
 
 @Service
@@ -22,9 +21,6 @@ public class PlaceAdService {
 	
 	@Autowired
 	private AdDao adDao;
-
-	@Autowired
-	private UserDao userDao;
 
 	/** Handles persisting a new ad to the database.
 	 * 
@@ -75,10 +71,7 @@ public class PlaceAdService {
 		adDao.save(ad);
 	}
 	
-	@Transactional
-	public User findUserByUsername(String username){
-		return userDao.findByUsername(username);
-	}
+	
 	
 }
 
