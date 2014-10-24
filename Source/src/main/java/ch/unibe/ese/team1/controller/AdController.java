@@ -80,20 +80,6 @@ public class AdController {
 		return model;
 	}
 	
-//	@RequestMapping(value = "/showProfile", method = RequestMethod.GET)
-//    public ModelAndView profilePage(@RequestParam("userId") long id) {  //userId ist der Substring von der url,
-//    	//dieser ist nötig, einfach .../showProfile aurufen geht nicht
-//    	ModelAndView model = new ModelAndView("profile"); //file profile.jsp
-//    	
-//    	//user aus db lesen
-//    	User user = sampleService.getUserById(id);
-//    	
-//    	//Variablenname für jsp
-//    	model.addObject("shownUser", user);
-//    	
-//        return model;
-//    }
-	
 	@ModelAttribute("placeAdForm")
 	public PlaceAdForm placeAdForm(){
 		if(placeAdForm == null){
