@@ -11,8 +11,17 @@
 
 	<fieldset>
 		<legend>General info</legend>
-		<label>City</label>
-		<form:input path="city" tabindex="1" placeholder="City" />
+		<label for="field-city">City</label>
+		<form:input id="field-city" path="city" tabindex="1" placeholder="City" />
+		
+		<script>
+		$(document).ready(function(){
+			$("#field-city").autocomplete();
+			$("#field-city").autocomplete({source: <c:import url="getzipcodes.jsp" />});
+			$("#field-city").autocomplete("enable");
+		});
+		</script>
+		
 		<form:errors path="city" cssClass="validationErrorText" />
 		<label for="field-Regon">Region</label>
 		<form:input id="field-Region" type="text" path="region" tabindex="2"
