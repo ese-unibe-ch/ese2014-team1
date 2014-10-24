@@ -29,7 +29,7 @@ public class AdService {
 	 * @param the currently logged in user
 	 */
 	@Transactional
-	public void saveFrom(PlaceAdForm placeAdForm, List<String> filePaths, User user) {
+	public Ad saveFrom(PlaceAdForm placeAdForm, List<String> filePaths, User user) {
 		Ad ad = new Ad();
 		
 		ad.setCity(placeAdForm.getCity());
@@ -69,6 +69,8 @@ public class AdService {
 		ad.setUser(user);
 		
 		adDao.save(ad);
+		
+		return ad;
 	}
 	
 	

@@ -59,11 +59,11 @@ public class AdController {
 			PictureUploader pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
 			List<String> fileNames = pictureUploader.upload(placeAdForm.getPictures());
 			
-			adService.saveFrom(placeAdForm, fileNames, user);
+			Ad ad = adService.saveFrom(placeAdForm, fileNames, user);
 			// reset the place ad form
 			this.placeAdForm = null;
-			model = new ModelAndView("adDescription");
-			//
+			
+			model = ad(ad.getId());
 		} else {
 			model = new ModelAndView("placeAd");
 		}
@@ -72,9 +72,6 @@ public class AdController {
 	
 	@RequestMapping(value = "/profile/ad", method = RequestMethod.GET)
 	public ModelAndView ad(@RequestParam("adId") long id) {
-		
-		System.out.println("called ad()");
-		
 		ModelAndView model = new ModelAndView("adDescription");
 		
 		Ad ad = adService.getAdById(id);

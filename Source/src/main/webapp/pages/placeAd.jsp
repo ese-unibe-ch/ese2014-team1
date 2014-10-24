@@ -5,6 +5,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:import url="template/header.jsp" />
+
+<script>
+		$(document).ready(function(){
+			$("#field-city").autocomplete();
+			$("#field-city").autocomplete({source: <c:import url="getzipcodes.jsp" />});
+			$("#field-city").autocomplete("enable");
+			$("#field-moveInDate").datepicker();
+			$("#field-moveOutDate").datepicker();
+		});
+</script>
 															
 <form:form method="post" modelAttribute="placeAdForm" action="/profile/placeAd"
 	id="placeAdForm" autocomplete="off" enctype="multipart/form-data">
@@ -14,20 +24,21 @@
 		<label for="field-city">City</label>
 		<form:input id="field-city" path="city" tabindex="1" placeholder="City" />
 		
-		<script>
-		$(document).ready(function(){
-			$("#field-city").autocomplete();
-			$("#field-city").autocomplete({source: <c:import url="getzipcodes.jsp" />});
-			$("#field-city").autocomplete("enable");
-		});
-		</script>
+		
 		
 		<form:errors path="city" cssClass="validationErrorText" />
-		<label for="field-Regon">Region</label>
+		<label for="field-Region">Region</label>
 		<form:input id="field-Region" type="text" path="region" tabindex="2"
 			placeholder="Region" />
 		<form:errors path="region" cssClass="validationErrorText" />
 		<h2>Move in date</h2>
+		
+		<label for="moveInDate">Move-in date:</label>
+		<input type="text" id="field-moveInDate" />
+		
+		<label for="moveOutDate">Move-out date:</label>
+		<input type="text" id="field-moveOutDate" />
+		
 		
 		<label for="fieldDayMoveIn">Day</label>
 			<form:select id="fieldDayMoveIn" path="dayMoveIn" tabindex="3">
