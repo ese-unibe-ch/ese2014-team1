@@ -43,6 +43,7 @@ but not in one String (i.e. in the header) */
 	display: inline-block;
 	float: left;
 	padding-left: 8px;
+	margin-top: -5px;
 }
 
 .right {
