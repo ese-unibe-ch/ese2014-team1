@@ -141,6 +141,18 @@
 
 						<executions>
 							<execution>
+								<id>drop-zipcodes-table</id>
+								<phase>process-test-resources</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<sqlCommand>drop table zipcodes</sqlCommand>
+									<onError>continue</onError>
+								</configuration>
+							</execution>
+							
+							<execution>
 								<id>insert-zipcode-data</id>
 								<phase>process-test-resources</phase>
 								<goals>

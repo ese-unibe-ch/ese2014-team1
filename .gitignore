@@ -13,5 +13,8 @@
 log/
 target
 
+#temporary word files
+~*.docx
+
 #Uploaded images
 Source/src/main/webapp/img/ads
