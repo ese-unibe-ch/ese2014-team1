@@ -37,12 +37,28 @@ public class AdService {
 		
 		Calendar calendar = Calendar.getInstance();
 		//java.util.Calendar uses a month range of 0-11 instead of the XMLGregorianCalendar which uses 1-12
-		calendar.set(placeAdForm.getYearMoveIn(), placeAdForm.getMonthMoveIn() - 1, placeAdForm.getDayMoveIn());
-		ad.setMoveInDate(calendar.getTime());
+		try {
+			if (placeAdForm.getMoveInDate().length() > 1) {
+				int dayMoveIn = Integer.parseInt(placeAdForm.getMoveInDate().substring(0, 2));
+				int monthMoveIn = Integer.parseInt(placeAdForm.getMoveInDate().substring(3, 5));
+				int yearMoveIn = Integer.parseInt(placeAdForm.getMoveInDate().substring(6, 10));
+				calendar.set(yearMoveIn, monthMoveIn - 1, dayMoveIn);
+				ad.setMoveInDate(calendar.getTime());
+			}
+			
+			if (placeAdForm.getMoveOutDate().length() > 1) {
+				int dayMoveOut = Integer.parseInt(placeAdForm.getMoveOutDate().substring(0, 2));
+				int monthMoveOut = Integer.parseInt(placeAdForm.getMoveOutDate().substring(3, 5));
+				int yearMoveOut = Integer.parseInt(placeAdForm.getMoveOutDate().substring(6, 10));
+				calendar.set(yearMoveOut, monthMoveOut - 1, dayMoveOut);
+				ad.setMoveOutDate(calendar.getTime());
+			}
+		} catch (NumberFormatException e) {
+		}
 		
-		calendar.set(placeAdForm.getYearMoveOut(), placeAdForm.getMonthMoveOut() - 1, placeAdForm.getDayMoveOut());
-		ad.setMoveOutDate(calendar.getTime());
-		
+//		calendar.set(placeAdForm.getYearMoveOut(), placeAdForm.getMonthMoveOut() - 1, placeAdForm.getDayMoveOut());
+//		ad.setMoveOutDate(calendar.getTime());
+
 		ad.setPrizePerMonth(placeAdForm.getPrize());
 		ad.setSquareFootage(placeAdForm.getSquareFootage());
 		

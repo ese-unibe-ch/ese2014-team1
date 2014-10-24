@@ -17,8 +17,6 @@ http://localhost:8080/profile/ad.?adId=1
 <h1>Id: ${shownAd.id}</h1>
 <h1>City: ${shownAd.city}</h1>
 
-<%-- mit ${shownUser.id} hole ich die variable id vom user welchen ich dem model unter dem Namen "shownUser" geaddet habe,
-Methode profilePage() in IndexController.java model.addObject("shownUser", user); --%>
  
 <%-- <h1>Id: ${shownUser.id}</h1>
 <h1>First Name: ${shownUser.firstName}</h1>
