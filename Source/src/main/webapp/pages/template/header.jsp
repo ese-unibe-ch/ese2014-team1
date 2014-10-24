@@ -40,7 +40,7 @@
 			<ul>
 				<li><c:choose>
 						<c:when test="${loggedIn}">
-						<a href="#">${pageContext.request.userPrincipal.name}</a>
+						<a href="#"><img src="/img/Girls-Red-Dress-icon.png"></br><c:import url="/pages/getFullName.jsp"/></a>
 						<ul>
 							<li><a href="#">My Rooms</a></li>
 							<li><a href="#">Messages (99)</a></li>
