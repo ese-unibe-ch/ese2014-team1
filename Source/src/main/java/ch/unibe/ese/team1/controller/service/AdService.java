@@ -30,10 +30,12 @@ public class AdService {
 	 */
 	@Transactional
 	public Ad saveFrom(PlaceAdForm placeAdForm, List<String> filePaths, User user) {
+		System.out.println("called");
 		Ad ad = new Ad();
 		
-		ad.setCity(placeAdForm.getCity());
-		ad.setRegion(placeAdForm.getRegion());
+		// take the zipcode - first four digits
+		String zip = placeAdForm.getCity().substring(0, 4);
+		ad.setZipcode(Integer.parseInt(zip));
 		
 		Calendar calendar = Calendar.getInstance();
 		//java.util.Calendar uses a month range of 0-11 instead of the XMLGregorianCalendar which uses 1-12

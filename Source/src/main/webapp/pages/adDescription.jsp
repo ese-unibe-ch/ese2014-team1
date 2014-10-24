@@ -15,7 +15,7 @@ http://localhost:8080/profile/ad.?adId=1
 
 <%-- Test --%>
 <h1>Id: ${shownAd.id}</h1>
-<h1>City: ${shownAd.city}</h1>
+<h1>Zipcode: ${shownAd.zipcode}</h1>
 
  
 <%-- <h1>Id: ${shownUser.id}</h1>

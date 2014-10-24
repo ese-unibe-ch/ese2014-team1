@@ -1,6 +1,5 @@
 package ch.unibe.ese.team1.model;
 
-
 import java.util.Date;
 import java.util.Set;
 
@@ -22,46 +21,43 @@ public class Ad {
 	private long id;
 
 	@Column(nullable = false)
-	private String city;
-	
-	@Column(nullable = false)
-	private String region;
-	
+	private int zipcode;
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date moveInDate;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = true)
 	private Date moveOutDate;
-	
+
 	@Column(nullable = false)
 	private int prizePerMonth;
-	
+
 	@Column(nullable = false)
 	private int squareFootage;
-	
+
 	@Column(nullable = false)
 	private String roomDescription;
-	
+
 	@Column(nullable = false)
 	private String preferences;
-	
+
 	@Column(nullable = false)
 	private String roommates;
-	
+
 	@Column(nullable = false)
 	private boolean smoker;
-	
+
 	@Column(nullable = false)
 	private boolean animals;
-	
-	@OneToMany(mappedBy="ad",cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL)
 	private Set<AdPicture> pictures;
-	
-	@ManyToOne(optional= false)
+
+	@ManyToOne(optional = false)
 	private User user;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -70,20 +66,12 @@ public class Ad {
 		this.id = id;
 	}
 
-	public String getCity() {
-		return city;
+	public int getZipcode() {
+		return zipcode;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getRegion() {
-		return region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
 	}
 
 	public Date getMoveInDate() {
@@ -113,43 +101,43 @@ public class Ad {
 	public void setSquareFootage(int squareFootage) {
 		this.squareFootage = squareFootage;
 	}
-	
+
 	public boolean isSmoker() {
 		return smoker;
 	}
-	
+
 	public void setSmoker(boolean smoker) {
 		this.smoker = smoker;
 	}
-	
+
 	public boolean isAnimals() {
 		return animals;
 	}
-	
+
 	public void setAnimals(boolean animals) {
 		this.animals = animals;
 	}
-	
+
 	public String getRoomDescription() {
 		return roomDescription;
 	}
-	
+
 	public void setRoomDescription(String roomDescription) {
 		this.roomDescription = roomDescription;
 	}
-	
+
 	public String getPreferences() {
 		return preferences;
 	}
-	
+
 	public void setPreferences(String preferences) {
 		this.preferences = preferences;
 	}
-	
+
 	public String getRoommates() {
 		return roommates;
 	}
-	
+
 	public void setRoommates(String roommates) {
 		this.roommates = roommates;
 	}

@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class PlaceAdForm {
 
-	@Pattern(regexp = "^[0-9]{4} - [A-Z][a-z]*", message = "Please pick a city from the list")
+	@Pattern(regexp = "^[0-9]{4} - [A-Z][-a-z]*", message = "Please pick a city from the list")
 	private String city;
 	
 	@NotBlank(message = "Required")
@@ -24,10 +24,6 @@ public class PlaceAdForm {
 
 	@Min(value = 1, message = "Has to be equal to 1 or more")
 	private int squareFootage;
-
-	@NotBlank(message = "Required")
-	@Pattern(regexp = "[A-Za-z]*", message = "Can only contain letters")
-	private String region;
 
 	@NotBlank(message = "Required")
 	private String roomDescription;
@@ -57,14 +53,6 @@ public class PlaceAdForm {
 
 	public void setPrize(int prize) {
 		this.prize = prize;
-	}
-
-	public String getRegion() {
-		return region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
 	}
 
 	public String getRoomDescription() {

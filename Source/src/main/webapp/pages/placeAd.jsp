@@ -63,7 +63,7 @@
 
 	<br />
 	<fieldset>
-		<legend>Roommates (optional)</legend>
+		<legend>Roommates</legend>
 		<form:textarea path="roommates" rows="10" cols="100" tabindex="11"
 			placeholder="Roommates" />
 		<form:errors path="roommates" cssClass="validationErrorText" />
@@ -71,7 +71,7 @@
 
 	<br />
 	<fieldset>
-		<legend>Preferences</legend>
+		<legend>Preferences (optional)</legend>
 		<form:textarea path="preferences" rows="5" cols="100" tabindex="12"
 			placeholder="Preferences"></form:textarea>
 	</fieldset>
