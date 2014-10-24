@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -19,6 +20,7 @@ import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.UserService;
+import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.User;
 
 /**
@@ -30,7 +32,7 @@ public class AdController {
 	public static final String IMAGE_DIRECTORY = "/img/ads";
 
 	@Autowired
-	private AdService placeAdService;
+	private AdService adService;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -57,7 +59,7 @@ public class AdController {
 			PictureUploader pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
 			List<String> fileNames = pictureUploader.upload(placeAdForm.getPictures());
 			
-			placeAdService.saveFrom(placeAdForm, fileNames, user);
+			adService.saveFrom(placeAdForm, fileNames, user);
 			// reset the place ad form
 			this.placeAdForm = null;
 			model = new ModelAndView("adDescription");
@@ -68,11 +70,32 @@ public class AdController {
 		return model;
 	}
 	
-//	@RequestMapping(value = "/profile/ad", method = RequestMethod.GET)
-//	public ModelAndView ad() {
-//		ModelAndView model = new ModelAndView("adDescription");
-//		return model;
-//	}
+	@RequestMapping(value = "/profile/ad", method = RequestMethod.GET)
+	public ModelAndView ad(@RequestParam("adId") long id) {
+		
+		System.out.println("called ad()");
+		
+		ModelAndView model = new ModelAndView("adDescription");
+		
+		Ad ad = adService.getAdById(id);
+		model.addObject("shownAd", ad);
+		
+		return model;
+	}
+	
+//	@RequestMapping(value = "/showProfile", method = RequestMethod.GET)
+//    public ModelAndView profilePage(@RequestParam("userId") long id) {  //userId ist der Substring von der url,
+//    	//dieser ist nötig, einfach .../showProfile aurufen geht nicht
+//    	ModelAndView model = new ModelAndView("profile"); //file profile.jsp
+//    	
+//    	//user aus db lesen
+//    	User user = sampleService.getUserById(id);
+//    	
+//    	//Variablenname für jsp
+//    	model.addObject("shownUser", user);
+//    	
+//        return model;
+//    }
 	
 	@ModelAttribute("placeAdForm")
 	public PlaceAdForm placeAdForm(){
@@ -81,6 +104,4 @@ public class AdController {
 		}
 		return placeAdForm;
 	}
-
-	
 }

@@ -9,4 +9,22 @@
 
 <h1>Detailed Ad Description page here</h1>
 
+<%-- call via:
+http://localhost:8080/profile/ad.?adId=1 
+--%>
+
+<%-- Test --%>
+<h1>Id: ${shownAd.id}</h1>
+<h1>City: ${shownAd.city}</h1>
+
+<%-- mit ${shownUser.id} hole ich die variable id vom user welchen ich dem model unter dem Namen "shownUser" geaddet habe,
+Methode profilePage() in IndexController.java model.addObject("shownUser", user); --%>
+ 
+<%-- <h1>Id: ${shownUser.id}</h1>
+<h1>First Name: ${shownUser.firstName}</h1>
+<h1>Last Name: ${shownUser.lastName}</h1>
+<h1>Email: ${shownUser.email}</h1>
+<h1>Teamname: ${shownUser.team.teamName}</h1> --%>
+
+
 <c:import url="template/footer.jsp" />

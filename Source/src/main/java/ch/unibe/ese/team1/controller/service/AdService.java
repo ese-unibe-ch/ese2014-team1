@@ -72,6 +72,9 @@ public class AdService {
 	}
 	
 	
-	
+	@Transactional
+    public Ad getAdById(long id) {
+    	return adDao.findOne(id);
+    }
 }
 
