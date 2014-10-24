@@ -89,6 +89,9 @@
 							<stopPort>9999</stopPort>
 							<useTestClasspath>true</useTestClasspath>
 							<contextPath>/</contextPath>
+						<webApp>
+							<tempDirectory>${basedir}/temp</tempDirectory>
+						</webApp>
 						</configuration>
 						<executions>
 							<execution>

@@ -12,6 +12,7 @@
 # Maven
 log/
 target
+temp
 
 #temporary word files
 ~*.docx

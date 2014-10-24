@@ -77,7 +77,7 @@
 	</fieldset>
 
 
-
+<%-- commented it out for the moment, because it breaks the page. If you fix it, you can remove the comment.
 	<script>
 	$(document).ready(function(){
 		        var scntDiv = $('#p_scents');
@@ -101,7 +101,7 @@
 	
 			});
 		</script>
-
+--%>
 
 	<fieldset id="p_scents">
 		<legend>Pictures (optional)</legend>
