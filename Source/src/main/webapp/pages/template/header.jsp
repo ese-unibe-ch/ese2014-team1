@@ -37,6 +37,7 @@
 							<li><a href="#">Calendar</a></li>
 							<li><a href="#">Alerts</a></li>
 							<li><a href="#">Public Profile</a></li>
+							<li><a href="/profile/placeAd">place Ad</a></li>
 							<li><a href="#">Settings</a></li>
 							<li><a href="/logout">Logout</a></li>
 						</ul>
@@ -45,7 +46,6 @@
 							<li><a href="/login">Login</a></li>
 						</c:otherwise>
 					</c:choose></li>
-				<li><a href="/profile/placeAd">Place</a></li>
 				<li><a href="#">Search</a></li>
 			</ul>
 		</nav>
