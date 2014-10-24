@@ -212,3 +212,10 @@ footer nav ul li {
 	width: 900px;
 	margin:auto;
 }
+
+#signupForm{
+	width: 350px;
+}
+
+#signupForm input{
+}

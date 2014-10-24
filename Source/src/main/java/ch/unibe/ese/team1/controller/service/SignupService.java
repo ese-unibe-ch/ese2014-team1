@@ -24,7 +24,7 @@ public class SignupService {
 	@Transactional
 	public void saveFrom(SignupForm signupForm) {
 		User user = new User();
-		user.setUsername(signupForm.getUsername());
+		user.setUsername(signupForm.getEmail());
 		user.setEmail(signupForm.getEmail());
 		user.setFirstName(signupForm.getFirstName());
 		user.setLastName(signupForm.getLastName());

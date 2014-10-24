@@ -25,7 +25,7 @@ public class UserTestDataSeeder implements InitializingBean {
 	@Transactional
 	public void afterPropertiesSet() throws Exception {
 		User user = new User();
-		user.setUsername("johndoe");
+		user.setUsername("john@doe.com");
 		user.setPassword("password");
 		user.setEmail("john@doe.com");
 		user.setFirstName("John");

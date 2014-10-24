@@ -19,20 +19,20 @@
 	</c:when>
 	<c:otherwise>
 		<c:if test="${!empty param.error}">
-			<p>Incorrect login name or password. Please retry using correct
-				login name and password.</p>
+			<p>Incorrect email or password. Please retry using correct
+				email and password.</p>
 			<br />
 		</c:if>
 		<form method="post" action="/j_spring_security_check">
-			<label for="field-username">Username:</label> <input
-				name="j_username" id="field-username" /> <label
+			<label for="field-email">Email:</label> <input
+				name="j_username" id="field-email" /> <label
 				for="field-password">Password:</label> <input name="j_password"
 				id="field-password" type="password" />
 			<button type="submit">Login</button>
 		</form>
 		<br />
 		<p>
-			<i>Hint: I have a feeling that "johndoe", "password" would be a
+			<i>Hint: I have a feeling that "john@doe.com", "password" would be a
 				good login.</i>
 		</p>
 		<p>
