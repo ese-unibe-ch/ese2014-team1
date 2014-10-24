@@ -145,14 +145,15 @@
 		</form:select>
 
 		<br />
-		<br /> <label for="field-Prize">Prize per month</label>
+		<br /> 
+		<label for="field-Prize">Prize per month</label>
 		<form:input id="field-Prize" type="number" path="prize" tabindex="8"
-			placeholder="Prize per month" />
+			placeholder="Prize per month" step="50"/>
 		<form:errors path="prize" cssClass="validationErrorText" />
 
-		<label for="field-SquareFootage">Square Footage</label>
+		<label for="field-SquareFootage">Square Meters</label>
 		<form:input id="field-SquareFootage" type="number"
-			path="squareFootage" tabindex="9" placeholder="Prize per month" />
+			path="squareFootage" tabindex="9" placeholder="Prize per month" step="5" />
 		<form:errors path="squareFootage" cssClass="validationErrorText" />
 
 		<br />
