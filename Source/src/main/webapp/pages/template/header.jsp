@@ -23,17 +23,21 @@
 	</div>
 	<div class="right">
 		<nav>
-			<ol>
+			<ul>
 				<li><c:choose>
 						<c:when test="${loggedIn}">
-						${pageContext.request.userPrincipal.name}
+						<a href="#">${pageContext.request.userPrincipal.name}</a>
+						<ul>
+							<li><a href="www.google.ch">google</a></li>
+							<li><a href="www.unibe.ch">unibe</a></li>
+						</ul>
 						</c:when>
 						<c:otherwise>
 						Account
 						</c:otherwise>
 					</c:choose></li>
 				<li><a href="/profile/placeAd">Place</a></li>
-				<li>Search</li>
+				<li><a href="#">Search</a></li>
 				<c:choose>
 						<c:when test="${loggedIn}">
 						<li><a href="/logout">Logout</a></li>
@@ -42,7 +46,7 @@
 						<li><a href="/login">Login</a></li>
 						</c:otherwise>
 					</c:choose>
-			</ol>
+			</ul>
 		</nav>
 	</div>
 </header>
