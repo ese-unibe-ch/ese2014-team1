@@ -12,10 +12,5 @@ public class IndexController {
 	public ModelAndView index(){
 		return new ModelAndView("index");
 	}
-	
-	// TODO: To be deleted after header and footer work
-	/*@RequestMapping(value="/ll")
-	public ModelAndView privateLLObject(){
-		return new ModelAndView("LLtest");
-	}*/
+
 }

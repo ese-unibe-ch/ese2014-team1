@@ -56,7 +56,7 @@
 							<li><a href="/login">Login</a></li>
 						</c:otherwise>
 					</c:choose></li>
-				<li><a href="#">Search</a></li>
+				<li><a href="<c:url value='/searchAd' />">Search</a></li>
 			</ul>
 		</nav>
 	</div>
