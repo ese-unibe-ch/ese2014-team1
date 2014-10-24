@@ -11,8 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class PlaceAdForm {
 
-	@NotBlank(message = "Required")
-	@Pattern(regexp = "[A-Za-z]*", message = "Can only contain letters")
+	@Pattern(regexp = "^[0-9]{4} - [A-Z][a-z]*", message = "Please pick a city from the list")
 	private String city;
 
 	private int dayMoveIn;

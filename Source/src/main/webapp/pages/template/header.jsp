@@ -13,6 +13,16 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+
+<style>
+/* ensure that autocomplete lists are not too long and have a scrollbar */
+.ui-autocomplete{
+	max-height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+</style>
+
 </head>
 
 <!-- check if user is logged in -->

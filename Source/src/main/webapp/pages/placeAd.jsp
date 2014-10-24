@@ -8,7 +8,7 @@
 
 <script>
 		$(document).ready(function(){
-			$("#field-city").autocomplete();
+			$("#field-city").autocomplete({minLength: 2});
 			$("#field-city").autocomplete({source: <c:import url="getzipcodes.jsp" />});
 			$("#field-city").autocomplete("enable");
 			$("#field-moveInDate").datepicker();
@@ -23,14 +23,8 @@
 		<legend>General info</legend>
 		<label for="field-city">City</label>
 		<form:input id="field-city" path="city" tabindex="1" placeholder="City" />
-		
-		
-		
 		<form:errors path="city" cssClass="validationErrorText" />
-		<label for="field-Region">Region</label>
-		<form:input id="field-Region" type="text" path="region" tabindex="2"
-			placeholder="Region" />
-		<form:errors path="region" cssClass="validationErrorText" />
+		
 		<h2>Move in date</h2>
 		
 		<label for="moveInDate">Move-in date:</label>
@@ -190,7 +184,7 @@
 
 	<br />
 	<fieldset>
-		<legend>Roommates</legend>
+		<legend>Roommates (optional)</legend>
 		<form:textarea path="roommates" rows="10" cols="100" tabindex="11"
 			placeholder="Roommates" />
 		<form:errors path="roommates" cssClass="validationErrorText" />
@@ -204,7 +198,7 @@
 	</fieldset>
 
 	<fieldset>
-		<legend>Pictures</legend>
+		<legend>Pictures (optional)</legend>
 		<label for="field-pictures">Pictures</label>
 		<form:input type="file" path="pictures" id="field-pictures"
 			accept="image/*" multiple="multiple" tabindex="13" />
