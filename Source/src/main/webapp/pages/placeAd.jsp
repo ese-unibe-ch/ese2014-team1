@@ -5,11 +5,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:import url="template/header.jsp" />
-
+															
 <form:form method="post" modelAttribute="placeAdForm" action="/profile/placeAd"
 	id="placeAdForm" autocomplete="off" enctype="multipart/form-data">
-
-	<%-- Rafi: Design isn't final, feel free to change (e.g. replace textareas by what eva) --%>
 
 	<fieldset>
 		<legend>General info</legend>
@@ -21,9 +19,9 @@
 			placeholder="Region" />
 		<form:errors path="region" cssClass="validationErrorText" />
 		<h2>Move in date</h2>
-
-		<label for="field-DayMoveIn">Day</label>
-		<form:select id="field-DayMoveIn" path="dayMoveIn" tabindex="3">
+		
+		<label for="fieldDayMoveIn">Day</label>
+			<form:select id="fieldDayMoveIn" path="dayMoveIn" tabindex="3">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -56,8 +54,7 @@
 			<option value="30">30</option>
 			<option value="31">31</option>
 		</form:select>
-
-
+		
 		<label for="field-MonthMoveIn">Month</label>
 		<form:select id="field-MonthMoveIn" path="monthMoveIn" tabindex="4">
 			<option value="1">January</option>
@@ -73,7 +70,7 @@
 			<option value="11">November</option>
 			<option value="12">December</option>
 		</form:select>
-
+		
 		<label for="field-YearMoveIn">Year</label>
 		<form:select id="field-YearMoveIn" path="yearMoveIn" tabindex="4">
 			<option value="2014">2014</option>
@@ -81,7 +78,6 @@
 			<option value="2016">2016</option>
 			<option value="2017">2017</option>
 		</form:select>
-
 
 		<h2>Move out date (optional)</h2>
 		<label for="field-DayMoveOut">Day</label>
@@ -194,7 +190,7 @@
 			accept="image/*" multiple="multiple" tabindex="13" />
 		<form:errors path="pictures" cssClass="validationErrorText" />
 	</fieldset>
-
+	
 	<br />
 	<div>
 		<button type="submit" tabindex="17">Place Ad</button>

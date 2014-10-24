@@ -17,7 +17,7 @@ import ch.unibe.ese.team1.model.dao.AdDao;
 
 
 @Service
-public class PlaceAdService {
+public class AdService {
 	
 	@Autowired
 	private AdDao adDao;

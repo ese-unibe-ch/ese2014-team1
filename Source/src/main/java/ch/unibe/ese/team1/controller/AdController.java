@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
-import ch.unibe.ese.team1.controller.service.PlaceAdService;
+import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.User;
 
@@ -30,7 +30,7 @@ public class AdController {
 	public static final String IMAGE_DIRECTORY = "/img/ads";
 
 	@Autowired
-	private PlaceAdService placeAdService;
+	private AdService placeAdService;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -61,11 +61,18 @@ public class AdController {
 			// reset the place ad form
 			this.placeAdForm = null;
 			model = new ModelAndView("adDescription");
+			//
 		} else {
 			model = new ModelAndView("placeAd");
 		}
 		return model;
 	}
+	
+//	@RequestMapping(value = "/profile/ad", method = RequestMethod.GET)
+//	public ModelAndView ad() {
+//		ModelAndView model = new ModelAndView("adDescription");
+//		return model;
+//	}
 	
 	@ModelAttribute("placeAdForm")
 	public PlaceAdForm placeAdForm(){
