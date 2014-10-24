@@ -80,13 +80,44 @@
 			placeholder="Preferences"></form:textarea>
 	</fieldset>
 
-	<fieldset>
+
+	<script>
+	$(document).ready(function(){
+		        var scntDiv = $('#p_scents');
+		        var i = $('#p_scents p').size() + 1;
+		        
+		        $('#addScnt').live('click', function() {
+		        
+		        		$('<label for="field-pictures"><form:input type="file" path="cauliflower" id="field-pictures" accept="image/*" name="field-pictures_' + i +'" value="" tabindex="13" /></label> <a href="#" id="remScnt">Remove</a></p>').appendTo(scntDiv);
+		                
+		                i++;
+		                return false;
+		        });
+		        
+		        $('#remScnt').live('click', function() { 
+		                if( i > 2 ) {
+		                        $(this).parents('p').remove();
+		                        i--;
+		                }
+		                return false;
+		        });
+	
+			});
+		</script>
+
+
+	<fieldset id="p_scents">
 		<legend>Pictures</legend>
+		
+		<a href="#" id="addScnt">Add more pictures</a>
 		<label for="field-pictures">Pictures</label>
 		<form:input type="file" path="pictures" id="field-pictures"
 			accept="image/*" multiple="multiple" tabindex="13" />
 		<form:errors path="pictures" cssClass="validationErrorText" />
+	
+		<br>
 	</fieldset>
+	
 	
 	<br />
 	<div>

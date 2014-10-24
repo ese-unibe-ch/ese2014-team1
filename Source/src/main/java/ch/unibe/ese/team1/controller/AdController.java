@@ -1,5 +1,6 @@
 package ch.unibe.ese.team1.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class AdController {
 	private PlaceAdForm placeAdForm;
 
 	@RequestMapping(value = "/profile/placeAd", method = RequestMethod.GET)
-	public ModelAndView placeAd() {
+	public ModelAndView placeAd() throws IOException {
 		ModelAndView model = new ModelAndView("placeAd");
 		return model;
 	}
@@ -60,6 +61,7 @@ public class AdController {
 			List<String> fileNames = pictureUploader.upload(placeAdForm.getPictures());
 			
 			Ad ad = adService.saveFrom(placeAdForm, fileNames, user);
+
 			// reset the place ad form
 			this.placeAdForm = null;
 			
