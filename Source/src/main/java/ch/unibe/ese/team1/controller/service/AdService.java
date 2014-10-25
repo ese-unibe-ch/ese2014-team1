@@ -81,8 +81,6 @@ public class AdService {
 			picture.setFilePath(filePath);
 			picture.setAd(ad);
 			pictures.add(picture);
-			
-			System.out.println(filePath);
 		}
 		ad.setPictures(pictures);
 		
