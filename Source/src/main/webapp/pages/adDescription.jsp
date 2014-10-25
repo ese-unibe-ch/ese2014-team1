@@ -17,12 +17,22 @@ http://localhost:8080/profile/ad.?adId=1
 <h1>Id: ${shownAd.id}</h1>
 <h1>Zipcode: ${shownAd.zipcode}</h1>
 
- 
-<%-- <h1>Id: ${shownUser.id}</h1>
-<h1>First Name: ${shownUser.firstName}</h1>
-<h1>Last Name: ${shownUser.lastName}</h1>
-<h1>Email: ${shownUser.email}</h1>
-<h1>Teamname: ${shownUser.team.teamName}</h1> --%>
 
+<!-- 
+	private long id;
+	private String title;
+	private int zipcode;
+	private Date moveInDate;
+	private Date moveOutDate;
+	private int prizePerMonth;
+	private int squareFootage;
+	private String roomDescription;
+	private String preferences;
+	private String roommates;
+	private boolean smoker;
+	private boolean animals;
+	private Set<AdPicture> pictures;
+	private User user;
+ -->
 
 <c:import url="template/footer.jsp" />

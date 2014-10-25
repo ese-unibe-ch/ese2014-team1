@@ -33,6 +33,8 @@ public class AdService {
 		System.out.println("called");
 		Ad ad = new Ad();
 		
+		ad.setTitle(placeAdForm.getTitle());
+		
 		// take the zipcode - first four digits
 		String zip = placeAdForm.getCity().substring(0, 4);
 		ad.setZipcode(Integer.parseInt(zip));
@@ -40,7 +42,7 @@ public class AdService {
 		Calendar calendar = Calendar.getInstance();
 		//java.util.Calendar uses a month range of 0-11 instead of the XMLGregorianCalendar which uses 1-12
 		try {
-			if (placeAdForm.getMoveInDate().length() > 1) {
+			if (placeAdForm.getMoveInDate().length() >= 1) {
 				int dayMoveIn = Integer.parseInt(placeAdForm.getMoveInDate().substring(0, 2));
 				int monthMoveIn = Integer.parseInt(placeAdForm.getMoveInDate().substring(3, 5));
 				int yearMoveIn = Integer.parseInt(placeAdForm.getMoveInDate().substring(6, 10));
@@ -48,7 +50,7 @@ public class AdService {
 				ad.setMoveInDate(calendar.getTime());
 			}
 			
-			if (placeAdForm.getMoveOutDate().length() > 1) {
+			if (placeAdForm.getMoveOutDate().length() >= 1) {
 				int dayMoveOut = Integer.parseInt(placeAdForm.getMoveOutDate().substring(0, 2));
 				int monthMoveOut = Integer.parseInt(placeAdForm.getMoveOutDate().substring(3, 5));
 				int yearMoveOut = Integer.parseInt(placeAdForm.getMoveOutDate().substring(6, 10));
@@ -57,9 +59,6 @@ public class AdService {
 			}
 		} catch (NumberFormatException e) {
 		}
-		
-//		calendar.set(placeAdForm.getYearMoveOut(), placeAdForm.getMonthMoveOut() - 1, placeAdForm.getDayMoveOut());
-//		ad.setMoveOutDate(calendar.getTime());
 
 		ad.setPrizePerMonth(placeAdForm.getPrize());
 		ad.setSquareFootage(placeAdForm.getSquareFootage());

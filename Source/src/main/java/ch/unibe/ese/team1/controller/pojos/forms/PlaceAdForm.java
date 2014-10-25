@@ -10,7 +10,10 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 public class PlaceAdForm {
-
+	
+	@NotBlank(message = "Required")
+	private String title;
+	
 	@Pattern(regexp = "^[0-9]{4} - [A-Z][-a-z]*", message = "Please pick a city from the list")
 	private String city;
 	
@@ -125,5 +128,13 @@ public class PlaceAdForm {
 
 	public void setMoveOutDate(String moveOutDate) {
 		this.moveOutDate = moveOutDate;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }

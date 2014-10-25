@@ -19,6 +19,9 @@ public class Ad {
 	@Id
 	@GeneratedValue
 	private long id;
+	
+	@Column(nullable = false)
+	private String title;
 
 	@Column(nullable = false)
 	private int zipcode;
@@ -160,5 +163,13 @@ public class Ad {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }
