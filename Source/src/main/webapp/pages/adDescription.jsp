@@ -17,7 +17,7 @@ http://localhost:8080/profile/ad.?adId=1
 <table style="width:50%">
   <tr>
     <td><h2>Address</h2></td>
-    <td>${shownAd.street}, ${shownAd.zipcode}</td>
+    <td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
   </tr>
   
   <tr>

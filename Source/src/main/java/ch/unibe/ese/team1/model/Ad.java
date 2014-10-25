@@ -28,6 +28,9 @@ public class Ad {
 
 	@Column(nullable = false)
 	private int zipcode;
+	
+	@Column(nullable = false)
+	private String city;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -182,5 +185,13 @@ public class Ad {
 
 	public void setStreet(String street) {
 		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 }
