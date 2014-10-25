@@ -33,7 +33,7 @@
 		<br />
 		<p>
 			<i>Hint: I have a feeling that "john@doe.com", "password" would be a
-				good login.</i>
+				good login.<br>Also, "user@bern.com" and "password" MIGHT work.</i>
 		</p>
 		<p>
 			<a href="<c:url value="/signup" />">Sign up as a new user</a>

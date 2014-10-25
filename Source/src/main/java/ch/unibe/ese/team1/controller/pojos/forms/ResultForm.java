@@ -5,7 +5,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-public class SearchForm
+public class ResultForm 
 {
 	private boolean room;
 	private boolean studio;
@@ -41,5 +41,4 @@ public class SearchForm
 	public int getPrize() { return prize; }
 	
 	public void setPrize(int prize) { this.prize = prize; }
-	
 }

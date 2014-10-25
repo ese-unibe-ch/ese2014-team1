@@ -5,7 +5,7 @@
 
 <c:import url="template/header.jsp" />
 															
-<form:form method="post" modelAttribute="searchForm" action="/searchAd"
+<form:form method="get" modelAttribute="searchForm" action="/results"
 	id="searchForm" autocomplete="off" enctype="multipart/form-data">
 
 	<fieldset>
