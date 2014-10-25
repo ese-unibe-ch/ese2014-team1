@@ -15,7 +15,8 @@
 			$("#field-moveOutDate").datepicker({ dateFormat: 'dd-mm-yy' });
 		});
 </script>
-															
+
+														
 <form:form method="post" modelAttribute="placeAdForm" action="/profile/placeAd"
 	id="placeAdForm" autocomplete="off" enctype="multipart/form-data">
 
