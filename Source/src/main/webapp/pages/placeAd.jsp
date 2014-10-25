@@ -24,6 +24,9 @@
 		<label for="field-title">Ad Title</label>
 		<form:input id="field-title" path="title" placeholder="Ad Title" />
 		
+		<br />
+		<label for="field-street">Street</label>
+		<form:input id="field-street" path="street" placeholder="Street" />
 		
 		<label for="field-city">City</label>
 		<form:input id="field-city" path="city" placeholder="City" />

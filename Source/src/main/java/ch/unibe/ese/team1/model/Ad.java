@@ -22,6 +22,9 @@ public class Ad {
 	
 	@Column(nullable = false)
 	private String title;
+	
+	@Column(nullable = false)
+	private String street;
 
 	@Column(nullable = false)
 	private int zipcode;
@@ -171,5 +174,13 @@ public class Ad {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
 	}
 }

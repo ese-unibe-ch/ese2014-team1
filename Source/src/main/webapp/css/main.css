@@ -24,6 +24,12 @@ h2 {
 	margin-bottom: 10px;
 }
 
+hr {
+  color: #2dc16d;
+  background-color: #2dc16d;
+  height: 4px;
+}
+
 /*Header is fixed to 60px from top, so with padding of 60px,
 we fix the body in the exactly right position*/
 body {

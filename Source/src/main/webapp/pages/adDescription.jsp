@@ -7,16 +7,39 @@
 
 <c:import url="template/header.jsp" />
 
-<h1>Detailed Ad Description page here</h1>
-
 <%-- call via:
 http://localhost:8080/profile/ad.?adId=1 
 --%>
 
-<%-- Test --%>
-<h1>Id: ${shownAd.id}</h1>
-<h1>Zipcode: ${shownAd.zipcode}</h1>
+<h1>${shownAd.title}</h1>
+<hr />
 
+<table style="width:50%">
+  <tr>
+    <td><h2>Address</h2></td>
+    <td>${shownAd.street}, ${shownAd.zipcode}</td>
+  </tr>
+  
+  <tr>
+    <td><h2>Move-in Date</h2></td>
+    <td>${shownAd.moveInDate}</td>
+  </tr>
+  
+  <tr>
+    <td><h2>Move-out Date</h2></td>
+    <td>${shownAd.moveInDate}</td>
+  </tr>
+  
+  <tr>
+    <td><h2>Prize</h2></td>
+    <td>${shownAd.prizePerMonth}</td>
+  </tr>
+  
+  <tr>
+    <td><h2>Square Footage</h2></td>
+    <td>${shownAd.squareFootage}</td>
+  </tr>
+</table> 
 
 <!-- 
 	private long id;

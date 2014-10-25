@@ -14,6 +14,9 @@ public class PlaceAdForm {
 	@NotBlank(message = "Required")
 	private String title;
 	
+	@NotBlank(message = "Required")
+	private String street;
+	
 	@Pattern(regexp = "^[0-9]{4} - [A-Z][-a-z]*", message = "Please pick a city from the list")
 	private String city;
 	
@@ -136,5 +139,13 @@ public class PlaceAdForm {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
 	}
 }

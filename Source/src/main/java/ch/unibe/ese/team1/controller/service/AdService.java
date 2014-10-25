@@ -34,6 +34,7 @@ public class AdService {
 		Ad ad = new Ad();
 		
 		ad.setTitle(placeAdForm.getTitle());
+		ad.setStreet(placeAdForm.getStreet());
 		
 		// take the zipcode - first four digits
 		String zip = placeAdForm.getCity().substring(0, 4);
