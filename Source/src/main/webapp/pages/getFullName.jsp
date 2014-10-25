@@ -1,6 +1,6 @@
 <%@page import="ch.unibe.ese.team1.model.User"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="ch.unibe.ese.team1.model.Zipcode"%>
+<%@page import="ch.unibe.ese.team1.model.Location"%>
 <%@page import="java.util.List"%>
 <%@page import="ch.unibe.ese.team1.controller.service.UserService"%>
 

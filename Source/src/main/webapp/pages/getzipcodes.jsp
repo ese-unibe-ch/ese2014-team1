@@ -1,5 +1,5 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="ch.unibe.ese.team1.model.Zipcode"%>
+<%@page import="ch.unibe.ese.team1.model.Location"%>
 <%@page import="java.util.List"%>
 <%@page import="ch.unibe.ese.team1.controller.service.GeoDataService"%>
 <%@page
@@ -9,14 +9,14 @@
 	pageEncoding="ISO-8859-1"%>
 <%
 	ApplicationContext ac = RequestContextUtils
-			.getWebApplicationContext(request);
+	.getWebApplicationContext(request);
 	GeoDataService geoDataService = (GeoDataService) ac
-			.getBean(GeoDataService.class);
+	.getBean(GeoDataService.class);
 	
-	List<Zipcode> zipCodes = geoDataService.getAllZipcodes();
-	Iterator<Zipcode> iterator = zipCodes.iterator();
+	List<Location> zipCodes = geoDataService.getAllLocations();
+	Iterator<Location> iterator = zipCodes.iterator();
 	out.print("[");
-	Zipcode zip = iterator.next();
+	Location zip = iterator.next();
 	out.print("\"" + zip.getZip() + " - " + zip.getCity() + "\"");
 	while(iterator.hasNext()){
 		zip = iterator.next();

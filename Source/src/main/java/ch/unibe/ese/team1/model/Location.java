@@ -4,7 +4,7 @@ package ch.unibe.ese.team1.model;
  * Represents a zip code and the data that belongs to it. Is not marked as
  * entity, since it is not used in Hibernate.
  */
-public class Zipcode {
+public class Location {
 
 	private int zip;
 	private String city;
