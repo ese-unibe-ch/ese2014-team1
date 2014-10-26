@@ -198,26 +198,4 @@ http://localhost:8080/profile/ad?adId=1
 </div>
 
 
-
-<!-- 
-	private long id;
-	private String title;
-	private int zipcode;
-	private Date moveInDate;
-	private Date moveOutDate;
-	private int prizePerMonth;
-	private int squareFootage;
-	private Set<AdPicture> pictures;
-	private User user;
-	private boolean smoker;
-	private boolean animals;
-	
-	
-	private String roomDescription;
-	private String roommates;
-	private String preferences;
-	type: room/studio
-	
- -->
-
 <c:import url="template/footer.jsp" />
