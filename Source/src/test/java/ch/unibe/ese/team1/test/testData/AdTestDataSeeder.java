@@ -62,20 +62,20 @@ public class AdTestDataSeeder implements InitializingBean
 		adBern.setCity("Bern");
 		adDao.save(adBern);
 		
-		Ad adZüri = new Ad();
-		adZüri.setZipcode(5001);
-		adZüri.setMoveInDate(date);
-		adZüri.setPrizePerMonth(1000);
-		adZüri.setSquareFootage(10);
-		adZüri.setSmoker(true);
-		adZüri.setAnimals(false);
-		adZüri.setRoomDescription("blahblah");
-		adZüri.setPreferences("blah");
-		adZüri.setRoommates("blah");
-		adZüri.setUser(user);
-		adZüri.setTitle("adZüri");
-		adZüri.setStreet("Hönggeberg");
-		adZüri.setCity("Züri");
-		adDao.save(adZüri);
+		Ad adZuri = new Ad();
+		adZuri.setZipcode(5001);
+		adZuri.setMoveInDate(date);
+		adZuri.setPrizePerMonth(1000);
+		adZuri.setSquareFootage(10);
+		adZuri.setSmoker(true);
+		adZuri.setAnimals(false);
+		adZuri.setRoomDescription("blahblah");
+		adZuri.setPreferences("blah");
+		adZuri.setRoommates("blah");
+		adZuri.setUser(user);
+		adZuri.setTitle("adZuri");
+		adZuri.setStreet("Hönggeberg");
+		adZuri.setCity("Zuri");
+		adDao.save(adZuri);
 	}
 }

@@ -28,5 +28,6 @@ public class GeoDataServiceTest {
 	public void getAllLocations() {
 		List<Location> locations = geoDataService.getAllLocations();
 		assertEquals(5000, locations.get(0).getZip());
+		assertEquals(3418, locations.size());
 	}
 }
