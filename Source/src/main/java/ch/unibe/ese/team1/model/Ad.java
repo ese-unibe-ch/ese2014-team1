@@ -61,11 +61,9 @@ public class Ad {
 	@Column(nullable = false)
 	private boolean animals;
 	
+	//"Room", "Studio" or "both"
 	@Column(nullable = false)
-	private boolean room;
-	
-	@Column(nullable = false)
-	private boolean studio;
+	private String type;
 
 	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL)
 	private Set<AdPicture> pictures;
@@ -133,29 +131,16 @@ public class Ad {
 		this.animals = animals;
 	}
 	
-	//room vs. studio
-	public boolean isRoom()
+	public String getType()
 	{
-		assert(room == !studio);
-		return room;
+		return type;
 	}
 	
-	public boolean isStudio()
+	//"both" type only used for searches
+	public void setType(String type)
 	{
-		assert(studio == !room);
-		return studio;
-	}
-	
-	public void setRoom()
-	{
-		this.studio = false;
-		this.room = true;
-	}
-	
-	public void setStudio()
-	{
-		this.room = false;
-		this.studio = true;
+		assert(type.equals("Room") || type.equals("Studio")  || type.equals("both"));
+		this.type=type;
 	}
 
 	public String getRoomDescription() {

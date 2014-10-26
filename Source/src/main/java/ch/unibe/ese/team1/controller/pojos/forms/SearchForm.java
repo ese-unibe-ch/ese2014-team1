@@ -7,9 +7,9 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class SearchForm
-{
-	private boolean room;
-	private boolean studio;
+{	
+	@NotBlank(message = "Required")
+	private String type;
 	
 	@NotBlank(message = "Required")
 	@Pattern(regexp = "[A-Za-z]*", message = "Can only contain letters")
@@ -18,20 +18,12 @@ public class SearchForm
 	@Max(value=50, message = "You can search only up to 50km")
 	private int radius;
 	
-	@Min(value = 1, message = "Don't think you will find something for that kind of money")
+	@Min(value = 0, message = "Don't think you will find something for that kind of money")
 	private int prize;
 	
 	///////////////////////
 	//Getters and setters//
 	///////////////////////
-	public boolean isRoom() { return room; }
-
-	public void setRoom(boolean room) { this.room = room; }
-
-	public boolean isStudio() { return studio; }
-
-	public void setStudio(boolean studio) { this.studio = studio; }
-
 	public String getCity() { return city; }
 	
 	public void setCity(String city) { this.city = city; }
@@ -44,4 +36,7 @@ public class SearchForm
 	
 	public void setPrize(int prize) { this.prize = prize; }
 	
+	public String getType() { return type; }
+	
+	public void setType(String type) { this.type = type; }	
 }

@@ -108,8 +108,16 @@ public class AdService {
 	@Transactional
 	public Iterable<Ad> queryResults(SearchForm searchForm)
 	{
-		Iterable<Ad> results = adDao.findByRoomOrStudioAndCityAndPrizePerMonthLessThan(searchForm.isRoom(), 
-				searchForm.isStudio(), searchForm.getCity(), searchForm.getPrize()+1);
+		Iterable<Ad> results = null;
+		
+		//we use this method if we are looking for rooms AND studios
+		if(searchForm.getType().equals("both"))
+			results = adDao.findByCityAndPrizePerMonthLessThan(searchForm.getCity(), searchForm.getPrize()+1);
+		
+		//we use this method if we are looking EITHER for rooms OR for studios
+		else
+			results = adDao.findByTypeAndCityAndPrizePerMonthLessThan(searchForm.getType(), 
+					searchForm.getCity(), searchForm.getPrize()+1);
 		return results;
 	}
 }

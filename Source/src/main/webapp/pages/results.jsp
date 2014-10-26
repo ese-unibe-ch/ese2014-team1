@@ -15,13 +15,13 @@
   	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
 	</c:forEach>
 	</table><p>
-	
+			
 	<h1>Actual search results:</h1>
 	
 	<table>
-	<tr><th>Title</th><th>Id</th></tr>
+	<tr><th>City</th><th>Title</th><th>Type</th><th>Price</th></tr>
 	<c:forEach var="ad" items="${results}">
-  	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
+  	<tr><td>${ad.city}</td><td>${ad.title} </td><td>${ad.type}</td><td>${ad.prizePerMonth}</td></tr>
 	</c:forEach>
 	</table>
 	

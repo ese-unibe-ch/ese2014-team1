@@ -10,10 +10,10 @@
 
 	<fieldset>
 		<legend>Search for a flat</legend>
-		<label for="type">Room</label>
-		<form:checkbox id="field-room" path="room" value="1" tabindex="1" />
-		<label for="field-room">Studio</label>
-		<form:checkbox id="field-studio" path="studio" value="1" tabindex="2" /><br />
+		
+		<form:radiobutton path="type" value="Room" checked="checked"/>Room 
+		<form:radiobutton path="type" value="Studio"/>Studio
+		<form:radiobutton path="type" value="both"/>Both<br>
 		
 		<label for="city">City</label>
 		<form:input type="text" name="city" id="city" path="city" placeholder="e.g. Bern" tabindex="3" />

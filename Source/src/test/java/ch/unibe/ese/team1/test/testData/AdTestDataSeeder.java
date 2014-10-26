@@ -60,7 +60,7 @@ public class AdTestDataSeeder implements InitializingBean
 		adBern.setTitle("adBern");
 		adBern.setStreet("Es promeniert 1");
 		adBern.setCity("Bern");
-		adBern.setRoom();
+		adBern.setType("room");
 		adDao.save(adBern);
 		
 		Ad adBern2 = new Ad();
@@ -77,7 +77,7 @@ public class AdTestDataSeeder implements InitializingBean
 		adBern2.setTitle("adBern2");
 		adBern2.setStreet("Es promeniert 2");
 		adBern2.setCity("Bern");
-		adBern2.setStudio();
+		adBern2.setType("studio");
 		adDao.save(adBern2);
 		
 		Ad adZuri = new Ad();
@@ -94,7 +94,7 @@ public class AdTestDataSeeder implements InitializingBean
 		adZuri.setTitle("adZuri");
 		adZuri.setStreet("Hönggeberg");
 		adZuri.setCity("Zuri");
-		adZuri.setStudio();
+		adZuri.setType("studio");
 		adDao.save(adZuri);
 	}
 }
