@@ -108,7 +108,7 @@ public class AdService {
 	@Transactional
 	public Iterable<Ad> queryResults(SearchForm searchForm)
 	{
-		Iterable<Ad> results = adDao.findByRoomAndStudioAndCityAndPrizePerMonthLessThan(searchForm.isRoom(), 
+		Iterable<Ad> results = adDao.findByRoomOrStudioAndCityAndPrizePerMonthLessThan(searchForm.isRoom(), 
 				searchForm.isStudio(), searchForm.getCity(), searchForm.getPrize()+1);
 		return results;
 	}
