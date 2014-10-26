@@ -55,7 +55,7 @@ public class PlaceAdForm {
 		return type;
 	}
 	
-	public void setString(String type){
+	public void setType(String type){
 		assert(type.equals("Room") || type.equals("Studio"));
 		this.type = type;
 	}

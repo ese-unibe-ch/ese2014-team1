@@ -72,6 +72,8 @@ public class AdService {
 		ad.setSmoker(placeAdForm.isSmoker());
 		ad.setAnimals(placeAdForm.isAnimals());
 		
+		ad.setType(placeAdForm.getType());
+		
 		/* 
 		 * Save the paths to the picture files,
 		 * the pictures are assumed to be uploaded at this point!
