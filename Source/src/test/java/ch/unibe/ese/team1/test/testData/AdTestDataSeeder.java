@@ -60,7 +60,25 @@ public class AdTestDataSeeder implements InitializingBean
 		adBern.setTitle("adBern");
 		adBern.setStreet("Es promeniert 1");
 		adBern.setCity("Bern");
+		adBern.setRoom();
 		adDao.save(adBern);
+		
+		Ad adBern2 = new Ad();
+		adBern2.setZipcode(3006);
+		adBern2.setMoveInDate(date);
+		adBern2.setPrizePerMonth(600);
+		adBern2.setSquareFootage(60);
+		adBern2.setSmoker(false);
+		adBern2.setAnimals(true);
+		adBern2.setRoomDescription("blahblah");
+		adBern2.setPreferences("blah");
+		adBern2.setRoommates("blah");
+		adBern2.setUser(user);
+		adBern2.setTitle("adBern2");
+		adBern2.setStreet("Es promeniert 2");
+		adBern2.setCity("Bern");
+		adBern2.setStudio();
+		adDao.save(adBern2);
 		
 		Ad adZuri = new Ad();
 		adZuri.setZipcode(5001);
@@ -76,6 +94,7 @@ public class AdTestDataSeeder implements InitializingBean
 		adZuri.setTitle("adZuri");
 		adZuri.setStreet("Hönggeberg");
 		adZuri.setCity("Zuri");
+		adZuri.setStudio();
 		adDao.save(adZuri);
 	}
 }

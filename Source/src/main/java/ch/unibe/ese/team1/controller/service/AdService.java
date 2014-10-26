@@ -104,11 +104,12 @@ public class AdService {
 		return adDao.findAll();
 	}
 	
-	//returns query results. So far, it only searches for cities.
+	//returns query results. It does not yet do the radius thing.
 	@Transactional
 	public Iterable<Ad> queryResults(SearchForm searchForm)
 	{
-		Iterable<Ad> results = adDao.findByCity(searchForm.getCity());
+		Iterable<Ad> results = adDao.findByRoomAndStudioAndCityAndPrizePerMonthLessThan(searchForm.isRoom(), 
+				searchForm.isStudio(), searchForm.getCity(), searchForm.getPrize()+1);
 		return results;
 	}
 }

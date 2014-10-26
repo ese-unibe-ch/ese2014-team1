@@ -11,6 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class PlaceAdForm {
 	
+	//TODO: implement booleans room and studio.
+	//It must be so that exactly one of these booleans is true.
+	
 	@NotBlank(message = "Required")
 	private String title;
 	

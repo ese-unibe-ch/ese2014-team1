@@ -5,17 +5,18 @@
 
 <c:import url="template/header.jsp" />
 			
+	<!-- TODO: Add filter function -->		
 			
-	<h1>Search results</h1>
+	<h1>All ads in DB:</h1>
 
 	<table>
 	<tr><th>Title</th><th>Id</th></tr>
 	<c:forEach var="ad" items="${allAds}">
   	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
 	</c:forEach>
-	</table>
+	</table><p>
 	
-	
+	<h1>Actual search results:</h1>
 	
 	<table>
 	<tr><th>Title</th><th>Id</th></tr>
@@ -23,16 +24,5 @@
   	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
 	</c:forEach>
 	</table>
-
-
-
-	<!-- 														
-	<form:form method="post" modelAttribute="resultForm" action="/results"
-	id="resultForm" autocomplete="off" enctype="multipart/form-data">
-
-	<!-- implement the filter function here. the action is already directed at /results
-	(ergo stays on the same page) -->
 	
-</form:form>
-
 <c:import url="template/footer.jsp" />
