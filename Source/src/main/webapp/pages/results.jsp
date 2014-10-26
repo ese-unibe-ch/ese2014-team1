@@ -4,11 +4,25 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:import url="template/header.jsp" />
-															
-<form:form method="post" modelAttribute="resultForm" action="/results"
+			
+			
+	<h1>Search results</h1>
+
+	<table>
+	<tr><th>Title</th><th>Id</th></tr>
+	<c:forEach var="ad" items="${allAds}">
+  	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
+	</c:forEach>
+	</table>
+
+
+
+	<!-- 														
+	<form:form method="post" modelAttribute="resultForm" action="/results"
 	id="resultForm" autocomplete="off" enctype="multipart/form-data">
 
-	You will see flats here.
+	<!-- implement the filter function here. the action is already directed at /results
+	(ergo stays on the same page) -->
 	
 </form:form>
 

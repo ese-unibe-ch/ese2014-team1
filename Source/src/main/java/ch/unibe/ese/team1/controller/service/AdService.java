@@ -91,10 +91,15 @@ public class AdService {
 		return ad;
 	}
 	
-	
 	@Transactional
     public Ad getAdById(long id) {
     	return adDao.findOne(id);
     }
+	
+	@Transactional
+	public Iterable<Ad> getAllAds()
+	{
+		return adDao.findAll();
+	}
 }
 
