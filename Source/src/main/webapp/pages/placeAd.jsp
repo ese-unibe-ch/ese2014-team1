@@ -21,43 +21,96 @@
 	id="placeAdForm" autocomplete="off" enctype="multipart/form-data">
 
 	<fieldset>
-		<legend>General info</legend>
-		<label for="field-title">Ad Title</label>
-		<form:input id="field-title" path="title" placeholder="Ad Title" />
-		
-		<br />
-		<label for="field-street">Street</label>
-		<form:input id="field-street" path="street" placeholder="Street" />
-		
-		<label for="field-city">City</label>
-		<form:input id="field-city" path="city" placeholder="City" />
-		<form:errors path="city" cssClass="validationErrorText" />
-		
-		<h2>Move in date</h2>
-		
-		<label for="moveInDate">Move-in date:</label>
-		<form:input type="text" id="field-moveInDate" path="moveInDate"/>
-		
-		<label for="moveOutDate">Move-out date:</label>
-		<form:input type="text" id="field-moveOutDate" path="moveOutDate"/>
-
-		<br />
-		<br /> 
-		<label for="field-Prize">Prize per month</label>
-		<form:input id="field-Prize" type="number" path="prize"	placeholder="Prize per month" step="50"/>
-		<form:errors path="prize" cssClass="validationErrorText" />
-
-		<label for="field-SquareFootage">Square Meters</label>
-		<form:input id="field-SquareFootage" type="number"
-			path="squareFootage" placeholder="Prize per month" step="5" />
-		<form:errors path="squareFootage" cssClass="validationErrorText" />
-
-		<br />
-		<br /> <label for="field-smoker">Smokers</label>
-		<form:checkbox id="field-smoker" path="smoker" value="1" />
-		<label for="field-animals">Animals</label>
-		<form:checkbox id="field-animals" path="animals" value="1" />
+	<legend>General info</legend>
+		<table style="width:50%">
+			<tr>
+				<td>
+					<label for="field-title">Ad Title</label>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<form:input id="field-title" path="title" placeholder="Ad Title" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<label for="field-street">Street</label>
+				</td>
+				<td>
+					<label for="field-city">City</label>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<form:input id="field-street" path="street" placeholder="Street" />
+				</td>
+				<td>
+					<form:input id="field-city" path="city" placeholder="City" />
+					<form:errors path="city" cssClass="validationErrorText" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<label for="moveInDate">Move-in date</label>
+				</td>
+				<td>
+					<label for="moveOutDate">Move-out date (optional)</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:input type="text" id="field-moveInDate" path="moveInDate"/>
+				</td>
+				<td>
+					<form:input type="text" id="field-moveOutDate" path="moveOutDate"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<label for="field-Prize">Prize per month</label>
+				</td>
+				<td>
+					<label for="field-SquareFootage">Square Meters</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:input id="field-Prize" type="number" path="prize"	placeholder="Prize per month" step="50"/>
+					<form:errors path="prize" cssClass="validationErrorText" />
+				</td>
+				<td>
+					<form:input id="field-SquareFootage" type="number"
+						path="squareFootage" placeholder="Prize per month" step="5" />
+					<form:errors path="squareFootage" cssClass="validationErrorText" />
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<label for="field-smoker">Smokers</label>
+				</td>
+				<td>
+					<label for="field-animals">Animals</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:checkbox id="field-smoker" path="smoker" value="1" />
+				</td>
+				<td>
+					<form:checkbox id="field-animals" path="animals" value="1" />
+				</td>
+			</tr>
+			
+		</table>
 	</fieldset>
+	
 
 	<br />
 	<fieldset>
