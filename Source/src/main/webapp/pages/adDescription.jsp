@@ -7,66 +7,64 @@
 
 <c:import url="template/header.jsp" />
 
-<%-- call via:
+<%-- ????? call via:
 http://localhost:8080/profile/ad.?adId=1 
 --%>
 
 <h1>${shownAd.title}</h1>
 <hr />
 
-<table style="width:50%">
-  <tr>
-    <td><h2>Address</h2></td>
-    <td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
-  </tr>
-  
-  <tr>
-    <td><h2>Available from</h2></td>
-    <td>${shownAd.moveInDate}</td>
-  </tr>
-  
-  <tr>
-    <td><h2>Move-out Date</h2></td>
-    <td>${shownAd.moveOutDate}</td>
-  </tr>
-  
-  <tr>
-    <td><h2>Prize</h2></td>
-    <td>${shownAd.prizePerMonth}</td>
-  </tr>
-  
-  <tr>
-    <td><h2>Square Footage</h2></td>
-    <td>${shownAd.squareFootage}</td>
-  </tr>
-</table> 
-
-
-
-
-
-<!-- Needed for image slider -->
-<script src="/js/jssor.js"></script>
-<script src="/js/jssor.slider.js"></script>
-
-<script>
-	jQuery(document).ready(function ($) {
-		var options = {
-        	$DragOrientation: 3,             //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-            $ArrowNavigatorOptions: {        //[Optional] Options to specify and enable arrow navigator or not
-            $Class: $JssorArrowNavigator$,   //[Requried] Class to create arrow navigator instance
-            $ChanceToShow: 2,                //[Required] 0 Never, 1 Mouse Over, 2 Always
-            $AutoCenter: 0,                  //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-            $Steps: 1                        //[Optional] Steps to go for each navigation request, default value is 1
-        }
-    };
-    var jssor_slider1 = new $JssorSlider$("slider1_container", options);
-    });
-</script>
-    
-    
- <!-- Slider Begin -->
-    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px;
+<section style="width: 100%">
+	<table style="width: 40%; float: left">
+	  <tr>
+	    <td><h2>Address</h2></td>
+	    <td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
+	  </tr>
+	  
+	  <tr>
+	    <td><h2>Available from</h2></td>
+	    <td>${shownAd.moveInDate}</td>
+	  </tr>
+	  
+	  <tr>
+	    <td><h2>Move-out Date</h2></td>
+	    <td>${shownAd.moveOutDate}</td>
+	  </tr>
+	  
+	  <tr>
+	    <td><h2>Prize</h2></td>
+	    <td>${shownAd.prizePerMonth}</td>
+	  </tr>
+	  
+	  <tr>
+	    <td><h2>Square Footage</h2></td>
+	    <td>${shownAd.squareFootage}</td>
+	  </tr>
+	</table> 
+	
+	
+	<!-- Needed for image slider -->
+	<script src="/js/jssor.js"></script>
+	<script src="/js/jssor.slider.js"></script>
+	
+	<script>
+		jQuery(document).ready(function ($) {
+			var options = {
+	        	$DragOrientation: 3,             //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+	            $ArrowNavigatorOptions: {        //[Optional] Options to specify and enable arrow navigator or not
+	            $Class: $JssorArrowNavigator$,   //[Requried] Class to create arrow navigator instance
+	            $ChanceToShow: 2,                //[Required] 0 Never, 1 Mouse Over, 2 Always
+	            $AutoCenter: 0,                  //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+	            $Steps: 1                        //[Optional] Steps to go for each navigation request, default value is 1
+	        }
+	    };
+	    var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+	    });
+	</script>
+	
+	    
+ 	<!-- Slider Begin -->
+    <div id="slider1_container" style="position: relative; top: 0px; left: 50%; width: 600px;
         height: 300px; ">
 
         <!-- Slides Container -->
@@ -107,10 +105,19 @@ http://localhost:8080/profile/ad.?adId=1
         <!-- Arrow Navigator Skin End -->
         <a style="display: none" href="http://www.jssor.com">sliders</a>
     </div>
-<!-- Slider End -->
+	<!-- Slider End -->	
+	
+	
+	
+</section>
+
+
+
+
 
     
 
+<hr />
 
 
 
@@ -123,12 +130,18 @@ http://localhost:8080/profile/ad.?adId=1
 	private Date moveOutDate;
 	private int prizePerMonth;
 	private int squareFootage;
+	private Set<AdPicture> pictures;
+	
+	
+	
 	private String roomDescription;
-	private String preferences;
 	private String roommates;
+	private String preferences;
+	
+	
 	private boolean smoker;
 	private boolean animals;
-	private Set<AdPicture> pictures;
+	
 	private User user;
  -->
 
