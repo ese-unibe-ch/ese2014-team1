@@ -47,6 +47,18 @@ public class PlaceAdForm {
 
 	@Size(max = 10, message = "You can upload up to 10 pictures")
 	private List<MultipartFile> pictures;
+	
+	@NotBlank(message = "Required")
+	private String type;
+	
+	public String getType() {
+		return type;
+	}
+	
+	public void setString(String type){
+		assert(type.equals("Room") || type.equals("Studio"));
+		this.type = type;
+	}
 
 	public String getCity() {
 		return city;

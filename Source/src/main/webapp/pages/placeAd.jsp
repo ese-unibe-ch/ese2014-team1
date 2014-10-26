@@ -27,11 +27,18 @@
 				<td>
 					<label for="field-title">Ad Title</label>
 				</td>
+				<td>
+					<label for="type-room">Type:</label>
+				</td>
 			</tr>
 			
 			<tr>
 				<td>
 					<form:input id="field-title" path="title" placeholder="Ad Title" />
+				</td>
+				<td>
+					<form:radiobutton id="type-room" path="type" value="Room" checked="checked"/>Room 
+					<form:radiobutton id="type-studio" path="type" value="Studio"/>Studio
 				</td>
 			</tr>
 			
