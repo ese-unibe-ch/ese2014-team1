@@ -20,14 +20,33 @@ import ch.unibe.ese.team1.model.Location;
 		"file:src/main/webapp/WEB-INF/config/springSecurity.xml"})
 @WebAppConfiguration
 public class GeoDataServiceTest {
+	
+	private List<Location> locations;
 
 	@Autowired
 	private GeoDataService geoDataService;
 
 	@Test
 	public void getAllLocations() {
-		List<Location> locations = geoDataService.getAllLocations();
+	 locations = geoDataService.getAllLocations();
 		assertEquals(5000, locations.get(0).getZip());
 		assertEquals(3418, locations.size());
+	}
+	
+	@Test
+	public void getSpecificLocationByCity(){
+		locations = geoDataService.getLocationsByCity("Aarau");
+		assertEquals(3, locations.size());
+		assertEquals(5000, locations.get(0).getZip());
+		assertEquals(5001, locations.get(1).getZip());
+		assertEquals(5004, locations.get(2).getZip());
+	}
+	
+	@Test
+	public void getSpecificLocationByZip(){
+		locations = geoDataService.getLocationsByZipcode(5600);
+		assertEquals(2, locations.size());
+		assertEquals("Lenzburg", locations.get(0).getCity());
+		assertEquals("Ammerswil", locations.get(1).getCity());
 	}
 }

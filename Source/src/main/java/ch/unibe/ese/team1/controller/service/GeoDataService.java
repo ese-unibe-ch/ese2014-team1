@@ -42,7 +42,7 @@ public class GeoDataService {
 		if (city.contains("\'")) {
 			city = "";
 		}
-		return executeQuery("SELECT zip.zip , zip.location, zip.lat, zip.lon FROM `zipcodes` zip WHERE city = '" + city + "';");
+		return executeQuery("SELECT zip.zip , zip.location, zip.lat, zip.lon FROM `zipcodes` zip WHERE location = '" + city + "';");
 
 	}
 
