@@ -14,6 +14,15 @@
   	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
 	</c:forEach>
 	</table>
+	
+	
+	
+	<table>
+	<tr><th>Title</th><th>Id</th></tr>
+	<c:forEach var="ad" items="${results}">
+  	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
+	</c:forEach>
+	</table>
 
 
 

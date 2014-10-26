@@ -15,7 +15,6 @@ public class SearchController
 	@Autowired
 	AdService adservice;
 	
-	//ok
 	@RequestMapping(value="/searchAd", method = RequestMethod.GET)
 	public ModelAndView searchAd()
 	{
@@ -29,14 +28,7 @@ public class SearchController
 	{
 		ModelAndView model = new ModelAndView("results");
 		model.addObject("allAds", adservice.getAllAds());
-		model.addObject(searchForm);
+		model.addObject("results", adservice.queryResults(searchForm));
 		return model;
 	}
-	
-	/*private ModelAndView evaluate(SearchForm searchForm)
-	{
-		ModelAndView model = new ModelAndView("evaluate");
-		model.addObject("allAds", adservice.getAllAds());
-		return model;
-	}*/
 }

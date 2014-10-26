@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
+import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.User;
@@ -96,10 +97,19 @@ public class AdService {
     	return adDao.findOne(id);
     }
 	
+	//returns all ads in DB. For testing purposes.
 	@Transactional
 	public Iterable<Ad> getAllAds()
 	{
 		return adDao.findAll();
+	}
+	
+	//returns query results. So far, it only searches for cities.
+	@Transactional
+	public Iterable<Ad> queryResults(SearchForm searchForm)
+	{
+		Iterable<Ad> results = adDao.findByCity(searchForm.getCity());
+		return results;
 	}
 }
 
