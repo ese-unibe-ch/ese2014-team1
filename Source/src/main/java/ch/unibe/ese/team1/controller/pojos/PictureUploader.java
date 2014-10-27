@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -62,13 +63,13 @@ public class PictureUploader {
 					String originalFileName = file.getOriginalFilename();
 					String extension = originalFileName
 							.substring(originalFileName.length()
-									- EXTENSION_LENGTH);
-					String abosoluteFileName = absoluteFilePath + "/"
+									- EXTENSION_LENGTH).toLowerCase(Locale.ROOT);
+					String absoluteFileName = absoluteFilePath + "/"
 							+ currentIndex + extension;
 					String relativeFileName = relativePath + "/" + currentIndex + extension;
 					fileNames.add(relativeFileName);
 					BufferedOutputStream outStream = new BufferedOutputStream(
-							new FileOutputStream(new File(abosoluteFileName)));
+							new FileOutputStream(new File(absoluteFileName)));
 					outStream.write(bytes);
 					outStream.close();
 					currentIndex++;
