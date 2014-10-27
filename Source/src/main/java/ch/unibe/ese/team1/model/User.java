@@ -38,6 +38,9 @@ public class User {
 
 	@OneToMany(mappedBy = "user", cascade= CascadeType.ALL)
 	private Set<UserRole> userRoles;
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<UserPicture> pictures;
 
 	
 	public long getId() {
@@ -102,5 +105,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Set<UserPicture> getPictures() {
+		return pictures;
+	}
+
+	public void setPictures(Set<UserPicture> pictures) {
+		this.pictures = pictures;
 	}
 }
