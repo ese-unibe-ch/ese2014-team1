@@ -100,10 +100,10 @@
 			
 			<tr>
 				<td>
-					<label for="field-smoker">Smokers</label>
+					<label for="field-smoker">Smoking inside allowed</label>
 				</td>
 				<td>
-					<label for="field-animals">Animals</label>
+					<label for="field-animals">Animals allowed</label>
 				</td>
 			</tr>
 			<tr>

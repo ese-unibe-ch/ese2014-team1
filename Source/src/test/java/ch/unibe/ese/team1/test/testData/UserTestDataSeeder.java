@@ -24,12 +24,16 @@ public class UserTestDataSeeder implements InitializingBean {
 	@Override
 	@Transactional
 	public void afterPropertiesSet() throws Exception {
+		createUser("john@doe.com", "password", "John", "Doe");
+	}
+	
+	public User createUser(String email, String password, String firstName, String lastName){
 		User user = new User();
-		user.setUsername("john@doe.com");
-		user.setPassword("password");
-		user.setEmail("john@doe.com");
-		user.setFirstName("John");
-		user.setLastName("Doe");
+		user.setUsername(email);
+		user.setPassword(password);
+		user.setEmail(email);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
 		user.setEnabled(true);
 		Set<UserRole> userRoles = new HashSet<>();
 		UserRole role = new UserRole();
@@ -38,6 +42,7 @@ public class UserTestDataSeeder implements InitializingBean {
 		userRoles.add(role);
 		user.setUserRoles(userRoles);
 		userDao.save(user);
+		return user;
 	}
 
 }
