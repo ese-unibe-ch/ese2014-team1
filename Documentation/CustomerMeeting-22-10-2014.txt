@@ -1,0 +1,33 @@
+City and region should be selected through auto completion -> ä ü ö and wrong input can be avoided.
+
+It would be easier to implement a standard widget as to avoid problems with the days in certain
+months. Also it will be easier to select the dates.
+
+specify further what it means to click on animals. E.g. it is not clear if there are animals or the
+wg / room is animal friendly (meaning you may bring your animals)
+
+Separate the different check boxes from each other in order to make it clearer.
+
+The text box with the room mates should have an additional add icon. Through that icon we will be able
+to add existing users to the text. That would display the users with their pictures who are living
+in that flat.
+
+upload several flat pictures at once or with the plus button... two different ways to implement
+
+add units for price and area.... increment steps in 10's or 100's
+
+the text box about preferences should be optional and that we will add in parenthesis.
+
+After publishing the ad we should get feedback... show the just added ad and give a green OK... two distinct feedbacks
+
+Instead of the Account field within the header, there should be a Login option and after the login there should be
+the picture of the logged person with his/her full name. All sub-menus can be accessed by hoovering over that box.
+
+Login through email address should be possible instead of the name
+
+send a confirmation email after having registered.
+
+
+
+as an extra exercise we were told to try to estimate how much time each person will need to accomplish his tasks.
+Try to distribute the work accordingly.

@@ -59,7 +59,9 @@ but not in one String (i.e. in the header) */
 }
 
 .profile_picture {
-	display: block;
+	
+	height: 70px;
+	width: 140px;
 	float: right;
 	padding-right: 8px;
 	margin-top: -10px
@@ -187,7 +189,7 @@ header nav {
 	display: block;
 	margin-top: 25px;
 	float: right;
-	padding: 0px 30px;
+	padding: 0px 15px;
 	font-size: 1.3em;
 }
 
