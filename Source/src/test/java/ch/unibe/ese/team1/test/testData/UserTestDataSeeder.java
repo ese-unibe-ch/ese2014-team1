@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ch.unibe.ese.team1.model.Ad;
+import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.UserRole;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
@@ -37,12 +40,21 @@ public class UserTestDataSeeder implements InitializingBean {
 		user.setEnabled(true);
 		Set<UserRole> userRoles = new HashSet<>();
 		UserRole role = new UserRole();
+		Set<UserPicture> pictures = new HashSet<>();
+		pictures.add(createPicture(user, "/img/user/userJohn.jpg"));
 		role.setRole("ROLE_USER");
 		role.setUser(user);
 		userRoles.add(role);
 		user.setUserRoles(userRoles);
 		userDao.save(user);
 		return user;
+	}
+	
+	private UserPicture createPicture(User user, String filePath) {
+		UserPicture picture = new UserPicture();
+		picture.setUser(user);
+		picture.setFilePath(filePath);
+		return picture;
 	}
 
 }
