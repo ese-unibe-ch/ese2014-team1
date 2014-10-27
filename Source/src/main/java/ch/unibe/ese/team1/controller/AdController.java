@@ -82,6 +82,17 @@ public class AdController {
 		return model;
 	}
 	
+	//BETA
+	@RequestMapping(value = "/ad", method = RequestMethod.GET)
+	public ModelAndView adWOLogin(@RequestParam("id") long id) {
+		ModelAndView model = new ModelAndView("adDescription");
+		
+		Ad ad = adService.getAdById(id);
+		model.addObject("shownAd", ad);
+		
+		return model;
+	}
+	
 	@ModelAttribute("placeAdForm")
 	public PlaceAdForm placeAdForm(){
 		if(placeAdForm == null){

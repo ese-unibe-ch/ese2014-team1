@@ -21,7 +21,7 @@
 	<table>
 	<tr><th>City</th><th>Title</th><th>Type</th><th>Price</th></tr>
 	<c:forEach var="ad" items="${results}">
-  	<tr><td>${ad.city}</td><td>${ad.title} </td><td>${ad.type}</td><td>${ad.prizePerMonth}</td></tr>
+  	<tr><td>${ad.city}</td><td><a href="<c:url value='/ad?id=${ad.id}' />">${ad.title}</a></td><td>${ad.type}</td><td>${ad.prizePerMonth}</td></tr>
 	</c:forEach>
 	</table>
 	
