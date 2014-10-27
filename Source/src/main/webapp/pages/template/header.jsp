@@ -33,7 +33,7 @@
 	<div class="left">
 		<h1>
 			<a href="/"><img src="/img/red-home-icon.png"></a>
-			<a href="/"><img src="img/home-page-icon.png"></a>
+			<a href="/"><img src="/img/home-page-icon.png"></a>
 		</h1>
 	</div>
 	<div class="right">
@@ -41,7 +41,9 @@
 			<ul>
 				<li><c:choose>
 						<c:when test="${loggedIn}">
-						<a href="#"><img src="/img/Girls-Red-Dress-icon.png"></br><c:import url="/pages/getFullName.jsp"/></a>
+						<div class="profile_picture">
+							<a href="#"><img src="/img/user/userJohn.jpg" height="50px" width="50px"><br><c:import url="/pages/getFullName.jsp"/></a>
+						</div>
 						<ul>
 							<li><a href="#">My Rooms</a></li>
 							<li><a href="#">Messages (99)</a></li>

@@ -42,6 +42,7 @@ public class UserTestDataSeeder implements InitializingBean {
 		UserRole role = new UserRole();
 		Set<UserPicture> pictures = new HashSet<>();
 		pictures.add(createPicture(user, "/img/user/userJohn.jpg"));
+		user.setPictures(pictures);
 		role.setRole("ROLE_USER");
 		role.setUser(user);
 		userRoles.add(role);
