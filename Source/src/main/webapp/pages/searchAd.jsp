@@ -4,13 +4,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:import url="template/header.jsp" />
+					
+<h1>Search for an ad</h1>
+<hr />
 															
 <form:form method="post" modelAttribute="searchForm" action="/results"
 	id="searchForm" autocomplete="off" enctype="multipart/form-data">
 
-	<fieldset>
-		<legend>Search for a flat</legend>
-		
+	<fieldset>	
 		<form:radiobutton path="type" value="Room" checked="checked"/>Room 
 		<form:radiobutton path="type" value="Studio"/>Studio
 		<form:radiobutton path="type" value="both"/>Both<br>

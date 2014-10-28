@@ -15,7 +15,7 @@ p {
 }
 
 h1 {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	font-size: 2em;
 }
 
@@ -25,9 +25,10 @@ h2 {
 }
 
 hr {
-  color: #2dc16d;
-  background-color: #2dc16d;
-  height: 4px;
+	color: #2dc16d;
+	background-color: #2dc16d;
+	height: 4px;
+	margin-bottom: 40px;
 }
 
 /*Header is fixed to 60px from top, so with padding of 60px,
@@ -58,15 +59,13 @@ but not in one String (i.e. in the header) */
 	padding-right: 8px;
 }
 
-
-
-input, select, textarea{
+input, select, textarea {
 	margin-right: 10px;
 	margin-bottom: 10px;
 	padding-left: 2px;
 }
 
-input[type="number"]{
+input[type="number"] {
 	width: 70px;
 }
 
@@ -74,9 +73,9 @@ label {
 	margin-right: 10px;
 }
 
-button{
+button {
 	background-color: #2dc16d;
-	color:white;
+	color: white;
 	padding: 5px 10px;
 	border-radius: 5px;
 	border-color: white;
@@ -84,8 +83,8 @@ button{
 	font-size: 1.1em;
 }
 
-button:hover{
-	color:#2dc16d;
+button:hover {
+	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
 }
@@ -95,7 +94,7 @@ fieldset {
 	margin-bottom: 10px;
 }
 
-legend{
+legend {
 	font-size: 1.1em;
 	font-weight: bold;
 	padding: 0 10px;
@@ -150,41 +149,41 @@ header ul {
 
 header ul li {
 	float: right;
-	width: 100px;
-	text-align: center;
+	width: 100px; text-align : center;
 	line-height: 21px;
 	margin-top: 20px;
+	text-align: center;
 }
 
-#profile_picture{
+#profile_picture {
 	width: 150px;
 	margin-top: 0px;
 }
 
-#profile_picture img{
+#profile_picture img {
 	width: 60px;
 	height: 60px;
-	float:left;
+	float: left;
 }
 
-#profile_picture a{
+#profile_picture a {
 	height: 60px;
 }
 
-#profile_picture .text{
-	float:right;
+#profile_picture .text {
+	float: right;
 	height: 100%;
 	margin-top: 10px;
 	margin-right: 10px;
 }
 
-#profile_picture ul li{
+#profile_picture ul li {
 	margin-top: 0px;
-	float:none;
+	float: none;
 	width: 100%;
 }
 
-#profile_picture ul li a{
+#profile_picture ul li a {
 	height: 25px;
 	text-align: left;
 }
@@ -212,14 +211,12 @@ header ul li:hover ul {
 	display: block;
 }
 
-
 header nav {
 	display: block;
 	float: right;
 	padding: 0px 15px;
 	font-size: 1.3em;
 }
-
 
 footer {
 	color: white;
@@ -233,8 +230,8 @@ footer {
 	padding-top: 10px;
 }
 
-footer nav{
-	margin-top:8px;
+footer nav {
+	margin-top: 8px;
 }
 
 footer nav ul li {
@@ -247,15 +244,17 @@ footer nav ul li {
 /* ----------------------------Individual pages------------------------ */
 /* -------------------------------------------------------------------- */
 
-
 /* -------------------------------------------------------------------- */
 /* Individual forms */
-
-#placeAdForm{
+#placeAdForm {
 	width: 900px;
-	margin:auto;
+	margin: auto;
 }
 
-#signupForm{
+#signupForm {
 	width: 350px;
+}
+
+#searchForm{
+	width: 600px;
 }

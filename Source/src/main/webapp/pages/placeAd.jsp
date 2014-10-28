@@ -16,6 +16,8 @@
 		});
 </script>
 
+<h1>Place an ad</h1>
+<hr />
 														
 <form:form method="post" modelAttribute="placeAdForm" action="/profile/placeAd"
 	id="placeAdForm" autocomplete="off" enctype="multipart/form-data">
