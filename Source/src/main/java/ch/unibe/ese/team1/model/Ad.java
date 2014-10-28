@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -68,7 +69,7 @@ public class Ad {
 	@Column(nullable = false)
 	private String type;
 
-	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
 	private Set<AdPicture> pictures;
 
 	@ManyToOne(optional = false)

@@ -132,6 +132,7 @@ header {
 	left: 0px;
 	right: 0px;
 	height: 70px;
+	z-index: 1;
 }
 
 header a {
@@ -230,7 +231,4 @@ footer nav ul li {
 
 #signupForm{
 	width: 350px;
-}
-
-#signupForm input{
 }

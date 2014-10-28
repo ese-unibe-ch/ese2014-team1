@@ -13,5 +13,4 @@
 </head>
 <body>
 <h1>Welcome!</h1>
-
 <c:import url="template/footer.jsp" />
