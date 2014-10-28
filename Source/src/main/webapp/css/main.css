@@ -171,7 +171,7 @@ header ul li {
 }
 
 #profile_picture .text {
-	float: right;
+	float: center;
 	height: 100%;
 	margin-top: 10px;
 	margin-right: 10px;
