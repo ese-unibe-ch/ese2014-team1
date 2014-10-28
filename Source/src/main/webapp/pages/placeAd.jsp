@@ -112,6 +112,24 @@
 	<br />
 	<fieldset>
 		<legend>Roommates</legend>
+		<p>If your roommates have an account, simply add them by email.</p>
+		
+		<table style="width: 80%">
+			<tr>
+				<td><label for="room_friends">Add by email</label></td>
+			</tr>
+
+			<tr>
+				<td><form:input type="text" id="room_friends" path="room_friends"
+						placeholder="email"/> <!-- tabindex="x" -->
+			
+						<a href="#" target="#" class="addbutton">+</a>
+   						<!--  <span class="addbutton-text">addbutton</span></a> -->
+				</td>
+			</tr>
+		</table>
+
+
 		<form:textarea path="roommates" rows="10" cols="100"
 			placeholder="Roommates" />
 		<form:errors path="roommates" cssClass="validationErrorText" />

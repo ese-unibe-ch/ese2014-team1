@@ -83,7 +83,25 @@ button {
 	font-size: 1.1em;
 }
 
+.addbutton {
+	font-decoration: none;
+	background-color: #2dc16d;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border-color: white;
+	border-style: solid;
+	font-size: 1.5em;
+	
+}
+
 button:hover {
+	color: #2dc16d;
+	background-color: white;
+	border-color: #2dc16d;
+}
+
+.addbutton:hover {
 	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
