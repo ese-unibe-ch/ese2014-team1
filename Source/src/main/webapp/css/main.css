@@ -149,14 +149,14 @@ header ul {
 
 header ul li {
 	float: right;
-	width: 100px; text-align : center;
+	width: 120px; text-align : center;
 	line-height: 21px;
 	margin-top: 20px;
 	text-align: center;
 }
 
 #profile_picture {
-	width: 150px;
+	width: 170px;
 	margin-top: 0px;
 }
 

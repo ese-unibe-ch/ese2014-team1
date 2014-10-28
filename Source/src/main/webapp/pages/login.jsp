@@ -32,6 +32,7 @@
 		</form>
 		<br />
 		<p>
+			<p>Kleiner Aufheller: try "johannes@unibe.ch" and "password"</p>
 			<i>Hint: I have a feeling that "john@doe.com", "password" would be a
 				good login.<br>Also, "user@bern.com" and "password" MIGHT work.</i>
 		</p>

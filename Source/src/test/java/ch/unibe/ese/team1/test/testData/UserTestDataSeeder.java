@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ch.unibe.ese.team1.model.Ad;
-import ch.unibe.ese.team1.model.AdPicture;
+// import ch.unibe.ese.team1.model.Ad;
+// import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.UserRole;
@@ -29,6 +29,8 @@ public class UserTestDataSeeder implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		User john = createUser("john@doe.com", "password", "John", "Doe");
 		userDao.save(john);
+		User johannes = createUser("johannes@unibe.ch", "password", "Johannes", "Rössler", "/img/user/Johannes.jpg");
+		userDao.save(johannes);
 	}
 	
 	public User createUser(String email, String password, String firstName, String lastName){
@@ -48,11 +50,25 @@ public class UserTestDataSeeder implements InitializingBean {
 		return user;
 	}
 	
-	public UserPicture createPicture(User user, String filePath) {
+	public User createUser(String email, String password, String firstName, String lastName, String picPath){
+		User user = new User();
+		user.setUsername(email);
+		user.setPassword(password);
+		user.setEmail(email);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setEnabled(true);
+		Set<UserRole> userRoles = new HashSet<>();
+		UserRole role = new UserRole();
 		UserPicture picture = new UserPicture();
 		picture.setUser(user);
-		picture.setFilePath(filePath);
-		return picture;
+		picture.setFilePath(picPath);
+		user.setPicture(picture);
+		role.setRole("ROLE_USER");
+		role.setUser(user);
+		userRoles.add(role);
+		user.setUserRoles(userRoles);
+		return user;
 	}
 
 }

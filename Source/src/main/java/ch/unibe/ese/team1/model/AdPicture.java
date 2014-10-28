@@ -20,5 +20,4 @@ public class AdPicture extends Picture {
 	public void setAd(Ad ad) {
 		this.ad = ad;
 	}
-
 }
