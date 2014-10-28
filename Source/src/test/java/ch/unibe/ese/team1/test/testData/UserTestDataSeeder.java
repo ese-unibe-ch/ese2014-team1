@@ -27,7 +27,8 @@ public class UserTestDataSeeder implements InitializingBean {
 	@Override
 	@Transactional
 	public void afterPropertiesSet() throws Exception {
-		createUser("john@doe.com", "password", "John", "Doe");
+		User john = createUser("john@doe.com", "password", "John", "Doe");
+		userDao.save(john);
 	}
 	
 	public User createUser(String email, String password, String firstName, String lastName){
@@ -40,18 +41,14 @@ public class UserTestDataSeeder implements InitializingBean {
 		user.setEnabled(true);
 		Set<UserRole> userRoles = new HashSet<>();
 		UserRole role = new UserRole();
-		Set<UserPicture> pictures = new HashSet<>();
-		pictures.add(createPicture(user, "/img/user/userJohn.jpg"));
-		user.setPictures(pictures);
 		role.setRole("ROLE_USER");
 		role.setUser(user);
 		userRoles.add(role);
 		user.setUserRoles(userRoles);
-		userDao.save(user);
 		return user;
 	}
 	
-	private UserPicture createPicture(User user, String filePath) {
+	public UserPicture createPicture(User user, String filePath) {
 		UserPicture picture = new UserPicture();
 		picture.setUser(user);
 		picture.setFilePath(filePath);

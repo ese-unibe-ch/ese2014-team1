@@ -58,14 +58,7 @@ but not in one String (i.e. in the header) */
 	padding-right: 8px;
 }
 
-.profile_picture {
-	
-	height: 70px;
-	width: 140px;
-	float: right;
-	padding-right: 8px;
-	margin-top: -10px
-}
+
 
 input, select, textarea{
 	margin-right: 10px;
@@ -160,6 +153,40 @@ header ul li {
 	width: 100px;
 	text-align: center;
 	line-height: 21px;
+	margin-top: 20px;
+}
+
+#profile_picture{
+	width: 150px;
+	margin-top: 0px;
+}
+
+#profile_picture img{
+	width: 60px;
+	height: 60px;
+	float:left;
+}
+
+#profile_picture a{
+	height: 60px;
+}
+
+#profile_picture .text{
+	float:right;
+	height: 100%;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+#profile_picture ul li{
+	margin-top: 0px;
+	float:none;
+	width: 100%;
+}
+
+#profile_picture ul li a{
+	height: 25px;
+	text-align: left;
 }
 
 header ul li a {
@@ -188,11 +215,11 @@ header ul li:hover ul {
 
 header nav {
 	display: block;
-	margin-top: 25px;
 	float: right;
 	padding: 0px 15px;
 	font-size: 1.3em;
 }
+
 
 footer {
 	color: white;

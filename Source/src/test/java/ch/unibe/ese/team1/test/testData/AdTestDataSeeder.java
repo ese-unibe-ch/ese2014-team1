@@ -12,15 +12,19 @@ import org.springframework.transaction.annotation.Transactional;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.AdDao;
+import ch.unibe.ese.team1.model.dao.UserDao;
 
-//This inserts two ad elements into the database. 
+/** This inserts two ad elements into the database. */
 @Service
 public class AdTestDataSeeder implements InitializingBean {
 	Date date = new Date();
 
 	@Autowired
 	private AdDao adDao;
+	@Autowired
+	private UserDao userDao;
 	@Autowired
 	private UserTestDataSeeder userSeeder;
 
@@ -29,6 +33,11 @@ public class AdTestDataSeeder implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		User user = userSeeder.createUser("user@bern.com", "password",
 				"Berner", "Bär");
+		UserPicture picture = new UserPicture();
+		picture.setFilePath("img/test/berner_baer.png");
+		picture.setUser(user);
+		user.setPicture(picture);
+		userDao.save(user);
 
 		Ad adBern = new Ad();
 		adBern.setZipcode(3005);

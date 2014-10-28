@@ -11,7 +11,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class UserPicture extends Picture {
 
-	//@ManyToOne
 	@OneToOne
 	private User user;
 

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -39,8 +40,8 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade= CascadeType.ALL)
 	private Set<UserRole> userRoles;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private Set<UserPicture> pictures;
+	@OneToOne(cascade = CascadeType.ALL)
+	private UserPicture picture;
 
 	
 	public long getId() {
@@ -106,12 +107,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public Set<UserPicture> getPictures() {
-		return pictures;
+
+	public UserPicture getPicture() {
+		return picture;
 	}
 
-	public void setPictures(Set<UserPicture> pictures) {
-		this.pictures = pictures;
+	public void setPicture(UserPicture picture) {
+		this.picture = picture;
 	}
 }
