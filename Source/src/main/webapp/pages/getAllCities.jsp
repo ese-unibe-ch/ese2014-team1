@@ -1,9 +1,11 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="ch.unibe.ese.team1.model.Location"%>
 <%@page import="java.util.List"%>
 <%@page import="ch.unibe.ese.team1.controller.service.GeoDataService"%>
+<%@page import="java.util.Collections" %>
 <%@page
 	import="org.springframework.web.servlet.support.RequestContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
@@ -24,7 +26,9 @@
 		cityNames.add(location.getCity());
 	}
 	
-	Iterator<String> cityIterator = cityNames.iterator();
+	List<String> sortedCityNames = new ArrayList<>(cityNames);
+	Collections.sort(sortedCityNames);
+	Iterator<String> cityIterator = sortedCityNames.iterator();
 	
 	out.print("[");
 	String zip = cityIterator.next();

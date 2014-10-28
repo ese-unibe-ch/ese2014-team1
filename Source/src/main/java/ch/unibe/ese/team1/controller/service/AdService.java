@@ -1,9 +1,11 @@
 package ch.unibe.ese.team1.controller.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
+import ch.unibe.ese.team1.model.Location;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.AdDao;
 
@@ -21,6 +24,9 @@ public class AdService {
 
 	@Autowired
 	private AdDao adDao;
+
+	@Autowired
+	private GeoDataService geoDataService;
 
 	/**
 	 * Handles persisting a new ad to the database.
@@ -139,15 +145,58 @@ public class AdService {
 
 		// we use this method if we are looking for rooms AND studios
 		if (searchForm.getType().equals("both")) {
-			results = adDao.findByCityAndPrizePerMonthLessThan(
-					searchForm.getCity(), searchForm.getPrize() + 1);
+			results = adDao
+					.findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
 		}
 		// we use this method if we are looking EITHER for rooms OR for studios
 		else {
-			results = adDao.findByTypeAndCityAndPrizePerMonthLessThan(
-					searchForm.getType(), searchForm.getCity(),
-					searchForm.getPrize() + 1);
+			results = adDao.findByTypeAndPrizePerMonthLessThan(
+					searchForm.getType(), searchForm.getPrize() + 1);
 		}
-		return results;
+
+		// get the location that the user searched for and take the one with the
+		// lowest zip code
+		Location searchedLocation = geoDataService.getLocationsByCity(
+				searchForm.getCity()).get(0);
+
+		// create a list of the results and of their locations
+		List<Ad> filteredResults = new ArrayList<>();
+
+		for (Ad ad : results) {
+			filteredResults.add(ad);
+		}
+
+		final int earthRadiusKm = 6380;
+		List<Location> locations = geoDataService.getAllLocations();
+		double radSinLat = Math.sin(Math.toRadians(searchedLocation
+				.getLatitude()));
+		double radCosLat = Math.cos(Math.toRadians(searchedLocation
+				.getLatitude()));
+		double radLong = Math.toRadians(searchedLocation.getLongitude());
+
+		/*
+		 * calculate the distances (Java 8) and collect all matching zipcodes.
+		 * The distance is calculated using the law of cosines.
+		 * http://www.movable-type.co.uk/scripts/latlong.html
+		 */
+		List<Integer> zipcodes = locations
+				.parallelStream()
+				.filter(location -> {
+					double radLongitude = Math.toRadians(location
+							.getLongitude());
+					double radLatitude = Math.toRadians(location.getLatitude());
+					double distance = Math.acos(radSinLat
+							* Math.sin(radLatitude) + radCosLat
+							* Math.cos(radLatitude)
+							* Math.cos(radLong - radLongitude))
+							* earthRadiusKm;
+					return distance < searchForm.getRadius();
+				}).map(location -> location.getZip())
+				.collect(Collectors.toList());
+
+		filteredResults = filteredResults.stream()
+				.filter(ad -> zipcodes.contains(ad.getZipcode()))
+				.collect(Collectors.toList());
+		return filteredResults;
 	}
 }

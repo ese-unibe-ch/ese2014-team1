@@ -14,7 +14,10 @@
 		$("#city").autocomplete({
 			source : <c:import url="getAllCities.jsp" />
 		});
-		$("#city").autocomplete("enable");
+		$("#city").autocomplete("option", {
+			enabled : true,
+			autoFocus : true
+		});
 	});
 </script>
 

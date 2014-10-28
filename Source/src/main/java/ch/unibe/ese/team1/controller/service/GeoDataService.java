@@ -32,17 +32,20 @@ public class GeoDataService {
 	}
 
 	/**
-	 * Gets all locations that match the given city.
+	 * Gets all locations that match the given city. The locations are ordered
+	 * in ascending order in relation to the zip code.
 	 * 
-	 * @param city the
-	 * @return
+	 * @param city
+	 *            the city to look for
+	 * @return a list of all locations that match the given city
 	 */
 	public List<Location> getLocationsByCity(String city) {
 		// TODO: handle SQL injection better
 		if (city.contains("\'")) {
 			city = "";
 		}
-		return executeQuery("SELECT zip.zip , zip.location, zip.lat, zip.lon FROM `zipcodes` zip WHERE location = '" + city + "';");
+		return executeQuery("SELECT zip.zip , zip.location, zip.lat, zip.lon FROM `zipcodes` zip WHERE location = '"
+				+ city + "' ORDER BY zip ASC;");
 
 	}
 
