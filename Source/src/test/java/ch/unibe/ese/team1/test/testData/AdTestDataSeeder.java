@@ -34,7 +34,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		User user = userSeeder.createUser("user@bern.com", "password",
 				"Berner", "Bär");
 		UserPicture picture = new UserPicture();
-		picture.setFilePath("img/test/berner_baer.png");
+		picture.setFilePath("/img/test/berner_baer.png");
 		picture.setUser(user);
 		user.setPicture(picture);
 		userDao.save(user);

@@ -45,7 +45,7 @@ public class AdService {
 		// take the zipcode - first four digits
 		String zip = placeAdForm.getCity().substring(0, 4);
 		ad.setZipcode(Integer.parseInt(zip));
-		ad.setCity(placeAdForm.getCity().replaceAll("\\s+", "").substring(5));
+		ad.setCity(placeAdForm.getCity().substring(7));
 
 		Calendar calendar = Calendar.getInstance();
 		// java.util.Calendar uses a month range of 0-11 instead of the

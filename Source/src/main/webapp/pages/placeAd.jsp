@@ -24,7 +24,7 @@
 
 	<fieldset>
 	<legend>General info</legend>
-		<table style="width:50%">
+		<table style="width:80%">
 			<tr>
 				<td>
 					<label for="field-title">Ad Title</label>
@@ -49,7 +49,7 @@
 					<label for="field-street">Street</label>
 				</td>
 				<td>
-					<label for="field-city">City</label>
+					<label for="field-city">City / Zip code</label>
 				</td>
 			</tr>
 			

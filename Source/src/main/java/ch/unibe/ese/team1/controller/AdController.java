@@ -72,19 +72,18 @@ public class AdController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/profile/ad", method = RequestMethod.GET)
-	public ModelAndView ad(@RequestParam("adId") long id) {
-		ModelAndView model = new ModelAndView("adDescription");
-		
-		Ad ad = adService.getAdById(id);
-		model.addObject("shownAd", ad);
-		
-		return model;
-	}
+//	@RequestMapping(value = "/profile/ad", method = RequestMethod.GET)
+//	public ModelAndView ad(@RequestParam("adId") long id) {
+//		ModelAndView model = new ModelAndView("adDescription");
+//		
+//		Ad ad = adService.getAdById(id);
+//		model.addObject("shownAd", ad);
+//		
+//		return model;
+//	}
 	
-	//BETA
 	@RequestMapping(value = "/ad", method = RequestMethod.GET)
-	public ModelAndView adWOLogin(@RequestParam("id") long id) {
+	public ModelAndView ad(@RequestParam("id") long id) {
 		ModelAndView model = new ModelAndView("adDescription");
 		
 		Ad ad = adService.getAdById(id);
