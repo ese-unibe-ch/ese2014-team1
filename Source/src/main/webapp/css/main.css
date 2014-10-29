@@ -88,10 +88,14 @@ button {
 }
 
 #addbutton {
+	display: inline;
 	font-decoration: none;
 	background-color: #2dc16d;
 	color: white;
-	padding: 5px 10px;
+	width: 15px;
+	height: 15px;
+	padding: 0px 5px;
+	text-align: center;
 	border-radius: 5px;
 	border-color: white;
 	border-style: solid;
