@@ -1,6 +1,7 @@
 package ch.unibe.ese.team1.model;
 
 import java.util.Date;
+import java.util.List;
 // import java.util.LinkedList;
 // import java.util.List;
 import java.util.Set;
@@ -76,7 +77,7 @@ public class Ad {
 	private String room_friends;
 
 	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
-	private Set<AdPicture> pictures;
+	private List<AdPicture> pictures;
 
 	@ManyToOne(optional = false)
 	private User user;
@@ -185,11 +186,11 @@ public class Ad {
 		this.roommates = roommates;
 	}
 
-	public Set<AdPicture> getPictures() {
+	public List<AdPicture> getPictures() {
 		return pictures;
 	}
 
-	public void setPictures(Set<AdPicture> pictures) {
+	public void setPictures(List<AdPicture> pictures) {
 		this.pictures = pictures;
 	}
 

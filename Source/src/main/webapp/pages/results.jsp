@@ -18,4 +18,23 @@
 	</c:forEach>
 	</table>
 	
+	<div id="resultsDiv">
+		<c:forEach var="ad" items="${results}">
+		<div>
+		<div class="resultLeft">
+		<a href="<c:url value='/ad?id=${ad.id}' />"><img src="${ad.pictures[0].filePath}" /></a>
+		<a href="<c:url value='/ad?id=${ad.id}' />"><h2>${ad.title }</h2></a>
+		<p>${ad.street}, ${ad.zipcode} ${ad.city}</p>
+		<br />
+		<p><i>${ad.type }</i></p>
+		</div>
+		<div class="resultRight">
+		<h2>CHF ${ad.prizePerMonth }</h2>
+		<br /><br />
+		<p>Move in date: ${ad.moveInDate }</p>
+		</div>
+		</div>
+		</c:forEach>
+	</div>
+	
 <c:import url="template/footer.jsp" />

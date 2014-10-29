@@ -97,7 +97,7 @@ public class AdService {
 		 * Save the paths to the picture files, the pictures are assumed to be
 		 * uploaded at this point!
 		 */
-		Set<AdPicture> pictures = new HashSet<>();
+		List<AdPicture> pictures = new ArrayList<>();
 		for (String filePath : filePaths) {
 			AdPicture picture = new AdPicture();
 			picture.setFilePath(filePath);

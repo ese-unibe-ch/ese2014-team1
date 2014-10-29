@@ -1,8 +1,8 @@
 package ch.unibe.ese.team1.test.testData;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +54,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern.setStreet("Es promeniert 1");
 		adBern.setCity("Bern");
 		adBern.setType("Room");
-		Set<AdPicture> pictures = new HashSet<>();
+		List<AdPicture> pictures = new ArrayList<>();
 		pictures.add(createPicture(adBern, "/img/test/ad1_1.jpg"));
 		pictures.add(createPicture(adBern, "/img/test/ad1_2.jpg"));
 		pictures.add(createPicture(adBern, "/img/test/ad1_3.jpg"));
@@ -76,7 +76,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern2.setStreet("Es promeniert 2");
 		adBern2.setCity("Bern");
 		adBern2.setType("Studio");
-		pictures = new HashSet<>();
+		pictures = new ArrayList<>();
 		pictures.add(createPicture(adBern2, "/img/test/ad2_1.jpg"));
 		pictures.add(createPicture(adBern2, "/img/test/ad2_2.jpg"));
 		pictures.add(createPicture(adBern2, "/img/test/ad2_3.jpg"));
@@ -98,7 +98,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBasel.setStreet("Bahnhof");
 		adBasel.setCity("Basel");
 		adBasel.setType("Studio");
-		pictures = new HashSet<>();
+		pictures = new ArrayList<>();
 		pictures.add(createPicture(adBasel, "/img/test/ad3_1.jpg"));
 		pictures.add(createPicture(adBasel, "/img/test/ad3_2.jpg"));
 		pictures.add(createPicture(adBasel, "/img/test/ad3_3.jpg"));

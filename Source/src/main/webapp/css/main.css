@@ -20,7 +20,7 @@ h1 {
 }
 
 h2 {
-	margin-top: 10px;
+	font-size: 1.5em;
 	margin-bottom: 10px;
 }
 
@@ -31,6 +31,10 @@ hr {
 	margin-bottom: 40px;
 }
 
+a{
+	text-decoration: none;
+	color: graytext;
+}
 /*Header is fixed to 60px from top, so with padding of 60px,
 we fix the body in the exactly right position*/
 body {
@@ -265,19 +269,24 @@ footer nav ul li {
 /* -------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------- */
-/* Individual forms */
 #placeAdForm {
 	width: 900px;
 	margin: auto;
 }
 
+/* -------------------------------------------------------------------- */
+
 #signupForm {
 	width: 350px;
 }
 
+/* -------------------------------------------------------------------- */
+
 #searchForm{
 	width: 600px;
 }
+
+/* -------------------------------------------------------------------- */
 
 #resultTable{
 	border-radius: 5px;
@@ -302,3 +311,45 @@ footer nav ul li {
 	text-decoration:none;
 }
 
+#resultsDiv{
+	width: 60%;
+	margin-top: 30px;
+}
+
+#resultsDiv div{
+	height:100px;
+	padding: 10px;
+	margin-top: 20px;
+	border-style: solid;
+	border-color: #2dc16d;
+	border-width: 3px;
+	border-radius: 10px;
+}
+
+#resultsDiv div img{
+	height: 100px;
+	float:left;
+	margin-right: 50px;
+}
+
+#resultsDiv div div{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+#resultsDiv .resultLeft{
+	float:left;
+	width: 75%;
+}
+
+#resultsDiv .resultRight{
+	float:right;
+	width: 20%;
+	text-align: right;
+	padding-right: 5px;
+}
+
+
+
+/* -------------------------------------------------------------------- */
