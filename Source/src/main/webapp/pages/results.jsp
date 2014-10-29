@@ -7,18 +7,11 @@
 			
 	<!-- TODO: Add filter function -->		
 			
-	<h1>All ads in DB:</h1>
-
-	<table>
-	<tr><th>Title</th><th>Id</th></tr>
-	<c:forEach var="ad" items="${allAds}">
-  	<tr><td>${ad.title} </td><td>${ad.id}</td></tr>
-	</c:forEach>
-	</table><p>
-			
-	<h1>Actual search results:</h1>
+	<h1>Search results:</h1>
 	
-	<table>
+	<hr />
+	
+	<table id="resultTable">
 	<tr><th>City</th><th>Title</th><th>Type</th><th>Price</th></tr>
 	<c:forEach var="ad" items="${results}">
   	<tr><td>${ad.city}</td><td><a href="<c:url value='/ad?id=${ad.id}' />">${ad.title}</a></td><td>${ad.type}</td><td>${ad.prizePerMonth}</td></tr>

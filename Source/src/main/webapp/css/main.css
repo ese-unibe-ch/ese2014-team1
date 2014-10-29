@@ -114,6 +114,8 @@ button {
 	vertical-align: top;
 }
 
+
+
 /* -------------------------------------------------------------------- */
 /* Header & Footer */
 header {
@@ -258,3 +260,27 @@ footer nav ul li {
 #searchForm{
 	width: 600px;
 }
+
+#resultTable{
+	border-radius: 5px;
+	background-color: #2dc16d;
+}
+
+#resultTable tr{
+	background-color: white;
+}
+
+#resultTable th{
+	background-color: #2dc16d;
+	color: white;
+	padding: 5px;
+}
+
+#resultTable td{
+	padding:5px;
+}
+
+#resultTable a{
+	text-decoration:none;
+}
+
