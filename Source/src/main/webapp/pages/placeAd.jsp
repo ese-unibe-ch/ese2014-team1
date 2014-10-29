@@ -24,6 +24,9 @@
 		$("#field-moveOutDate").datepicker({
 			dateFormat : 'dd-mm-yy'
 		});
+		$("#addbutton").click(function(){
+			$("#roommateEmails").html($("#room_friends").val());
+		});
 	});
 </script>
 
@@ -123,8 +126,8 @@
 				<td><form:input type="text" id="room_friends" path="room_friends"
 						placeholder="email"/> <!-- tabindex="x" -->
 			
-						<a href="#" target="#" class="addbutton">+</a>
-   						<!--  <span class="addbutton-text">addbutton</span></a> -->
+						<div>+</div>
+						<p id="roommateEmails"></p>
 				</td>
 			</tr>
 		</table>

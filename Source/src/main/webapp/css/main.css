@@ -87,7 +87,7 @@ button {
 	font-size: 1.1em;
 }
 
-.addbutton {
+#addbutton {
 	font-decoration: none;
 	background-color: #2dc16d;
 	color: white;
@@ -105,7 +105,7 @@ button:hover {
 	border-color: #2dc16d;
 }
 
-.addbutton:hover {
+#addbutton:hover {
 	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
