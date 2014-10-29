@@ -2,9 +2,6 @@ package ch.unibe.ese.team1.model;
 
 import java.util.Date;
 import java.util.List;
-// import java.util.LinkedList;
-// import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,16 +21,16 @@ public class Ad {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@Column(nullable = false)
 	private String title;
-	
+
 	@Column(nullable = false)
 	private String street;
 
 	@Column(nullable = false)
 	private int zipcode;
-	
+
 	@Column(nullable = false)
 	private String city;
 
@@ -67,16 +64,16 @@ public class Ad {
 
 	@Column(nullable = false)
 	private boolean animals;
-	
-	//"Room", "Studio" or "both"
+
+	// "Room", "Studio" or "both"
 	@Column(nullable = false)
 	private String type;
-	
-	//for adding roommates to an ad
+
+	// for adding roommates to an ad
 	@Column(nullable = true)
 	private String room_friends;
 
-	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
+	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<AdPicture> pictures;
 
 	@ManyToOne(optional = false)
@@ -141,23 +138,22 @@ public class Ad {
 	public void setAnimals(boolean animals) {
 		this.animals = animals;
 	}
-	
-	public String getType()
-	{
+
+	public String getType() {
 		return type;
 	}
-	
-	//"both" type only used for searches
-	public void setType(String type)
-	{
-		assert(type.equals("Room") || type.equals("Studio")  || type.equals("both"));
-		this.type=type;
+
+	// "both" type only used for searches
+	public void setType(String type) {
+		assert (type.equals("Room") || type.equals("Studio") || type
+				.equals("both"));
+		this.type = type;
 	}
-	
+
 	public String getRoom_friends() {
 		return this.room_friends;
 	}
-	
+
 	public void setRoom_friends(String room_friends) {
 		this.room_friends = room_friends;
 	}
