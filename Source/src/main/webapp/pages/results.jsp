@@ -11,6 +11,13 @@
 	
 	<hr />
 	
+	<table id="allTable">
+	<tr><th>City</th><th>Title</th><th>Type</th><th>Price</th></tr>
+	<c:forEach var="ad" items="${allAds}">
+  	<tr><td>${ad.city}</td><td><a href="<c:url value='/ad?id=${ad.id}' />">${ad.title}</a></td><td>${ad.type}</td><td>${ad.prizePerMonth}</td></tr>
+	</c:forEach>
+	</table>
+	
 	<table id="resultTable">
 	<tr><th>City</th><th>Title</th><th>Type</th><th>Price</th></tr>
 	<c:forEach var="ad" items="${results}">

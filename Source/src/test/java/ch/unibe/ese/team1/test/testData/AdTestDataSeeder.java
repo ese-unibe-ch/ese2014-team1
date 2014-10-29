@@ -84,7 +84,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adDao.save(adBern2);
 
 		Ad adBasel = new Ad();
-		adBasel.setZipcode(5001);
+		adBasel.setZipcode(4000);
 		adBasel.setMoveInDate(date);
 		adBasel.setPrizePerMonth(1000);
 		adBasel.setSquareFootage(10);
@@ -94,7 +94,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBasel.setPreferences(getDummyText());
 		adBasel.setRoommates("None");
 		adBasel.setUser(user);
-		adBasel.setTitle("Nice, bright studio in the center of Zürich");
+		adBasel.setTitle("Nice, bright studio in the center of Basel");
 		adBasel.setStreet("Bahnhof");
 		adBasel.setCity("Basel");
 		adBasel.setType("Studio");
