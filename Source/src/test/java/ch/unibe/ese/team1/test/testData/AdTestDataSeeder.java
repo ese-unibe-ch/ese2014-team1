@@ -83,27 +83,27 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern2.setPictures(pictures);
 		adDao.save(adBern2);
 
-		Ad adZuri = new Ad();
-		adZuri.setZipcode(5001);
-		adZuri.setMoveInDate(date);
-		adZuri.setPrizePerMonth(1000);
-		adZuri.setSquareFootage(10);
-		adZuri.setSmoker(true);
-		adZuri.setAnimals(false);
-		adZuri.setRoomDescription(getDummyText());
-		adZuri.setPreferences(getDummyText());
-		adZuri.setRoommates("None");
-		adZuri.setUser(user);
-		adZuri.setTitle("Nice, bright studio in the center of Zürich");
-		adZuri.setStreet("Hönggeberg");
-		adZuri.setCity("Zürich");
-		adZuri.setType("Studio");
+		Ad adBasel = new Ad();
+		adBasel.setZipcode(5001);
+		adBasel.setMoveInDate(date);
+		adBasel.setPrizePerMonth(1000);
+		adBasel.setSquareFootage(10);
+		adBasel.setSmoker(true);
+		adBasel.setAnimals(false);
+		adBasel.setRoomDescription(getDummyText());
+		adBasel.setPreferences(getDummyText());
+		adBasel.setRoommates("None");
+		adBasel.setUser(user);
+		adBasel.setTitle("Nice, bright studio in the center of Zürich");
+		adBasel.setStreet("Bahnhof");
+		adBasel.setCity("Basel");
+		adBasel.setType("Studio");
 		pictures = new HashSet<>();
-		pictures.add(createPicture(adZuri, "/img/test/ad3_1.jpg"));
-		pictures.add(createPicture(adZuri, "/img/test/ad3_2.jpg"));
-		pictures.add(createPicture(adZuri, "/img/test/ad3_3.jpg"));
-		adZuri.setPictures(pictures);
-		adDao.save(adZuri);
+		pictures.add(createPicture(adBasel, "/img/test/ad3_1.jpg"));
+		pictures.add(createPicture(adBasel, "/img/test/ad3_2.jpg"));
+		pictures.add(createPicture(adBasel, "/img/test/ad3_3.jpg"));
+		adBasel.setPictures(pictures);
+		adDao.save(adBasel);
 	}
 
 	private AdPicture createPicture(Ad ad, String filePath) {
