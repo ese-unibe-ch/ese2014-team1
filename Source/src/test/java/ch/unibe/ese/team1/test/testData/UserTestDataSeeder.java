@@ -31,6 +31,9 @@ public class UserTestDataSeeder implements InitializingBean {
 		userDao.save(john);
 		User johannes = createUser("johannes@unibe.ch", "password", "Johannes", "Rössler", "/img/user/Johannes.jpg");
 		userDao.save(johannes);
+		
+		User tester = createUser("tester@unibe.ch", "password", "Tester", "Muster", "/img/user/portrait.jpg");
+		userDao.save(tester);
 	}
 	
 	public User createUser(String email, String password, String firstName, String lastName){

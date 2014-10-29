@@ -1,6 +1,8 @@
 package ch.unibe.ese.team1.model;
 
 import java.util.Date;
+// import java.util.LinkedList;
+// import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -68,6 +70,10 @@ public class Ad {
 	//"Room", "Studio" or "both"
 	@Column(nullable = false)
 	private String type;
+	
+	//for adding roommates to an ad
+	@Column(nullable = true)
+	private String room_friends;
 
 	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
 	private Set<AdPicture> pictures;
@@ -145,6 +151,14 @@ public class Ad {
 	{
 		assert(type.equals("Room") || type.equals("Studio")  || type.equals("both"));
 		this.type=type;
+	}
+	
+	public String getRoom_friends() {
+		return this.room_friends;
+	}
+	
+	public void setRoom_friends(String room_friends) {
+		this.room_friends = room_friends;
 	}
 
 	public String getRoomDescription() {

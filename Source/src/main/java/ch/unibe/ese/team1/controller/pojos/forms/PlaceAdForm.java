@@ -41,6 +41,9 @@ public class PlaceAdForm {
 
 	@NotBlank(message = "Required")
 	private String roommates;
+	
+	// optional
+	private String room_friends;
 
 	private boolean smoker;
 	private boolean animals;
@@ -162,5 +165,13 @@ public class PlaceAdForm {
 
 	public void setStreet(String street) {
 		this.street = street;
+	}
+
+	public String getRoom_friends() {
+		return room_friends;
+	}
+
+	public void setRoom_friends(String room_friends) {
+		this.room_friends = room_friends;
 	}
 }

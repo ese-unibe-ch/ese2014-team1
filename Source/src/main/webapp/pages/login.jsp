@@ -32,9 +32,9 @@
 		</form>
 		<br />
 		<p>
-			<p>Kleiner Aufheller: try "johannes@unibe.ch" and "password"</p>
 			<i>Hint: I have a feeling that "john@doe.com", "password" would be a
-				good login.<br>Also, "user@bern.com" and "password" MIGHT work.</i>
+				good login.<br>Also, "user@bern.com" and "password" MIGHT work.
+				<br>Use "tester@unibe.ch" and "password" for a user with a picture</i>
 		</p>
 		<p>
 			<a href="<c:url value="/signup" />">Sign up as a new user</a>
