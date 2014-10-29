@@ -29,8 +29,6 @@ public class UserTestDataSeeder implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		User john = createUser("john@doe.com", "password", "John", "Doe");
 		userDao.save(john);
-		User johannes = createUser("johannes@unibe.ch", "password", "Johannes", "Rössler", "/img/user/Johannes.jpg");
-		userDao.save(johannes);
 		
 		User tester = createUser("tester@unibe.ch", "password", "Tester", "Muster", "/img/user/portrait.jpg");
 		userDao.save(tester);
