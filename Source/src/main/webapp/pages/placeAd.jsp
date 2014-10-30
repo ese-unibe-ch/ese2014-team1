@@ -25,22 +25,9 @@
 			dateFormat : 'dd-mm-yy'
 		});
 		$("#addbutton").click(function(){
-			var text = $("#otherroommates").val();
-			var textS = $("#room_friends").val();
-			//$(myFriendsFirst).html($("#otherroommates").val());
-			//text += myFriendsFirst.val();
-			//var myFriendsSecond = html($("#room_friends").val()); // Breaks the code
-			//myFriendsFirst.value += myFriendsSecond.value + " ";
-			$("#otherroommates").html(text + textS);
-		//	$("#otherroommates").html($("#room_friends").val()); CORRECT
-		//});
-		//$("#addbutton").click(function(){
-		//	$("#otherroommates").get(0).value += "supernice"; //html($("#room_friends").val());
-		//	
-		//});
-		//("#addbutton").click(function(){
-		//	$("#otherroommates").val(function(html("#room_friends", "#otherroommates")) {return "#otherroommates" + "#room_friends"}
-			
+			var text = $("#room_friends").val();
+			$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
+			$("#room_friends").val("");
 		});
 	});
 </script>
@@ -142,7 +129,7 @@
 						placeholder="email"/> <!-- tabindex="x" -->
 			
 						<div id="addbutton">+</div>
-						<p id="otherroommates" value="tst">tst</p>
+						<p id="matesinwg"> </p>
 				</td>
 			</tr>
 		</table>
