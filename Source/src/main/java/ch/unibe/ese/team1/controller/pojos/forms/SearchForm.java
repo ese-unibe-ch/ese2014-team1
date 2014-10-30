@@ -7,7 +7,6 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class SearchForm {
-	@NotBlank(message = "Required")
 	private String type;
 
 	@NotBlank(message = "Required")

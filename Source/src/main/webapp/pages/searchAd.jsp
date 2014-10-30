@@ -36,6 +36,7 @@
 		Both<br> <label for="city">City</label>
 		<form:input type="text" name="city" id="city" path="city"
 			placeholder="e.g. Bern" tabindex="3" />
+		<form:errors path="city" cssClass="validationErrorText" />
 
 		<label for="radius">Within radius of (max.):</label>
 		<form:input id="radiusInput" type="number" path="radius"
