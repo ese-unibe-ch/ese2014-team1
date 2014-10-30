@@ -65,7 +65,7 @@ public class AdController {
 			// reset the place ad form
 			this.placeAdForm = null;
 			
-			model = ad(ad.getId());
+			model = new ModelAndView("redirect:/ad?id=" + ad.getId());
 		} else {
 			model = new ModelAndView("placeAd");
 		}

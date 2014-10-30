@@ -4,8 +4,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:import url="template/header.jsp" />
+
+<!-- format the dates -->
+<fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"
+	type="date" pattern="dd.MM.yyyy" />
+<c:choose>
+	<c:when test="${empty shownAd.moveOutDate }">
+		<c:set var="formattedMoveOutDate" value="unlimited" />
+	</c:when>
+	<c:otherwise>
+		<fmt:formatDate value="${shownAd.moveOutDate}"
+			var="formattedMoveOutDate" type="date" pattern="dd.MM.yyyy" />
+	</c:otherwise>
+</c:choose>
+
 
 <%--  call via ?!:
 http://localhost:8080/profile/ad?adId=1 
@@ -28,17 +43,17 @@ http://localhost:8080/profile/ad?adId=1
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td>${shownAd.street}, ${shownAd.zipcode} - ${shownAd.city}</td>
+			<td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
 		</tr>
 
 		<tr>
 			<td><h2>Available from</h2></td>
-			<td>${shownAd.moveInDate}</td>
+			<td>${formattedMoveInDate}</td>
 		</tr>
 
 		<tr>
 			<td><h2>Move-out Date</h2></td>
-			<td>${shownAd.moveOutDate}</td>
+			<td>${formattedMoveOutDate}</td>
 		</tr>
 
 		<tr>
@@ -111,7 +126,7 @@ http://localhost:8080/profile/ad?adId=1
 					<img u="image" src="${picture.filePath}" />
 				</div>
 			</c:forEach>
-			
+
 		</div>
 
 		<!-- Arrow Navigator Skin Begin -->
