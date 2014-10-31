@@ -6,6 +6,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<%@page import="ch.unibe.ese.team1.model.Picture"%>
+<%@page import="ch.unibe.ese.team1.model.User"%>
+<%@page import="ch.unibe.ese.team1.controller.service.UserService"%>
+
+<%@page
+	import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page
+	import="org.springframework.web.servlet.support.RequestContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+
+
 <c:import url="template/header.jsp" />
 
 <!-- format the dates -->
@@ -30,17 +41,12 @@ http://localhost:8080/profile/ad?adId=1
 <hr />
 
 <section style="width: 100%">
-	<table style="width: 40%; float: left">
+	<table id="adDescTable">
 		<tr>
 			<td><h2>Type</h2></td>
 			<td>${shownAd.type}</td>
 		</tr>
-
-		<tr>
-			<td><h2>Advertiser</h2></td>
-			<td>${shownAd.user.username}</td>
-		</tr>
-
+		
 		<tr>
 			<td><h2>Address</h2></td>
 			<td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
@@ -64,30 +70,6 @@ http://localhost:8080/profile/ad?adId=1
 		<tr>
 			<td><h2>Square Footage</h2></td>
 			<td>${shownAd.squareFootage}m²</td>
-		</tr>
-
-		<tr>
-			<td><h2>Smoking inside allowed</h2></td>
-			<td><c:choose>
-					<c:when test="${shownAd.smoker}">
-		        		yes
-		        	</c:when>
-					<c:otherwise>
-		        		no
-		        	</c:otherwise>
-				</c:choose></td>
-		</tr>
-
-		<tr>
-			<td><h2>Animals allowed</h2></td>
-			<td><c:choose>
-					<c:when test="${shownAd.animals}">
-		        		yes
-		        	</c:when>
-					<c:otherwise>
-		        		no
-		        	</c:otherwise>
-				</c:choose></td>
 		</tr>
 	</table>
 
@@ -181,22 +163,84 @@ http://localhost:8080/profile/ad?adId=1
 <div style="clear: both;"></div>
 <hr />
 
-
-<div style="width: 50%">
-	<h2>Room Description</h2>
-	<p>${shownAd.roomDescription}</p>
-</div>
-<br />
-
-<div style="width: 50%">
-	<h2>Roommates</h2>
-	<p>${shownAd.roommates}</p>
-</div>
-<br />
-
-<div style="width: 50%">
-	<h2>Preferences</h2>
-	<p>${shownAd.preferences}</p>
-</div>
-
+<section style="width: 100%">
+	<div style="width: 55%; float: left">
+		<div style="width: 80%">
+			<h2>Room Description</h2>
+			<p>${shownAd.roomDescription}</p>
+		</div>
+		<br />
+		
+		<div style="width: 80%">
+			<h2>Roommates</h2>
+			<p>${shownAd.roommates}</p>
+		</div>
+		<br />
+		
+		<div style="width: 80%">
+			<h2>Preferences</h2>
+			<p>${shownAd.preferences}</p>
+		</div>
+	</div>
+	
+	
+	<table class="advertiserTable">
+		<tr>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.user.picture.filePath != null}">  
+					<img src="${shownAd.user.picture.filePath}" width="50" height="50">
+				</c:when>
+				<c:otherwise>
+					<img src="/img/avatar.png" width="50" height="50">
+				</c:otherwise>
+				</c:choose>
+			</td>
+			<td>
+			</td>
+		</tr>
+	
+		
+		<tr>
+			<td><h2>Advertiser</h2></td>
+			<td>${shownAd.user.username}</td>
+		</tr>
+		
+	
+		<tr>
+			<td>
+				<h2>Smoking inside allowed</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.smoker}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h2>Animals allowed</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.animals}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+	</table>
+	
+	
+	
+	
 <c:import url="template/footer.jsp" />

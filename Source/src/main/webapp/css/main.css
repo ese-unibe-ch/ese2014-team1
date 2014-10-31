@@ -357,3 +357,26 @@ footer nav ul li {
 
 
 /* -------------------------------------------------------------------- */
+#adDescTable{
+	width: 40%; 
+	float: left;
+}
+
+#adDescTable h2{
+	margin: 4px;
+}
+
+#adDescTable td{
+	margin: 10px;
+}
+
+
+
+
+.advertiserTable{
+	width: 27%;
+}
+
+.advertiserTable h2{
+	margin: 4px;
+}
