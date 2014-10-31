@@ -44,7 +44,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern.setMoveInDate(date);
 		adBern.setPrizePerMonth(500);
 		adBern.setSquareFootage(50);
-		adBern.setSmoker(false);
+		adBern.setSmokers(false);
 		adBern.setAnimals(true);
 		adBern.setRoomDescription(getDummyText());
 		adBern.setPreferences(getDummyText());
@@ -53,7 +53,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern.setTitle("Roommate wanted in Bern");
 		adBern.setStreet("Es promeniert 1");
 		adBern.setCity("Bern");
-		adBern.setType("Room");
+//		adBern.setType("Room");
 		List<AdPicture> pictures = new ArrayList<>();
 		pictures.add(createPicture(adBern, "/img/test/ad1_1.jpg"));
 		pictures.add(createPicture(adBern, "/img/test/ad1_2.jpg"));
@@ -66,7 +66,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern2.setMoveInDate(date);
 		adBern2.setPrizePerMonth(600);
 		adBern2.setSquareFootage(60);
-		adBern2.setSmoker(false);
+		adBern2.setSmokers(false);
 		adBern2.setAnimals(true);
 		adBern2.setRoomDescription(getDummyText());
 		adBern2.setPreferences(getDummyText());
@@ -75,7 +75,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern2.setTitle("Cheap studio in Bern!");
 		adBern2.setStreet("Es promeniert 2");
 		adBern2.setCity("Bern");
-		adBern2.setType("Studio");
+//		adBern2.setType("Studio");
 		pictures = new ArrayList<>();
 		pictures.add(createPicture(adBern2, "/img/test/ad2_1.jpg"));
 		pictures.add(createPicture(adBern2, "/img/test/ad2_2.jpg"));
@@ -88,7 +88,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBasel.setMoveInDate(date);
 		adBasel.setPrizePerMonth(1000);
 		adBasel.setSquareFootage(10);
-		adBasel.setSmoker(true);
+		adBasel.setSmokers(true);
 		adBasel.setAnimals(false);
 		adBasel.setRoomDescription(getDummyText());
 		adBasel.setPreferences(getDummyText());
@@ -97,7 +97,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBasel.setTitle("Nice, bright studio in the center of Basel");
 		adBasel.setStreet("Bahnhof");
 		adBasel.setCity("Basel");
-		adBasel.setType("Studio");
+//		adBasel.setType("Studio");
 		pictures = new ArrayList<>();
 		pictures.add(createPicture(adBasel, "/img/test/ad3_1.jpg"));
 		pictures.add(createPicture(adBasel, "/img/test/ad3_2.jpg"));

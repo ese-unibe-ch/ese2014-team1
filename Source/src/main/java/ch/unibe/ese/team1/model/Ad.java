@@ -59,16 +59,118 @@ public class Ad {
 	@Column(nullable = false)
 	private String roommates;
 
+	
+	
+	
+	
+	//new stuff on the block
+	
 	@Column(nullable = false)
-	private boolean smoker;
+	private boolean smokers;
 
 	@Column(nullable = false)
 	private boolean animals;
-
-	// "Room", "Studio" or "both"
+	
 	@Column(nullable = false)
-	private String type;
+	private boolean garden;
 
+	@Column(nullable = false)
+	private boolean balcony;
+
+	@Column(nullable = false)
+	private boolean cellar;
+
+	@Column(nullable = false)
+	private boolean furnished;
+	
+	@Column(nullable = false)
+	private boolean cable;
+	
+	@Column(nullable = false)
+	private boolean garage;
+	
+	@Column(nullable = false)
+	private String food;
+	
+	
+	public boolean allowsSmokers() {
+		return smokers;
+	}
+
+	public void setSmokers(boolean allowsSmokers) {
+		this.smokers = allowsSmokers;
+	}
+
+	public boolean allowsAnimals() {
+		return animals;
+	}
+
+	public void setAnimals(boolean allowsAnimals) {
+		this.animals = allowsAnimals;
+	}
+
+	public boolean hasGarden() {
+		return garden;
+	}
+
+	public void setGarden(boolean hasGarden) {
+		this.garden = hasGarden;
+	}
+
+	public boolean hasBalcony() {
+		return balcony;
+	}
+
+	public void setBalcony(boolean hasBalcony) {
+		this.balcony = hasBalcony;
+	}
+
+	public boolean hasCellar() {
+		return cellar;
+	}
+
+	public void setCellar(boolean hasCellar) {
+		this.cellar = hasCellar;
+	}
+
+	public boolean isFurnished() {
+		return furnished;
+	}
+
+	public void setFurnished(boolean furnished) {
+		this.furnished = furnished;
+	}
+
+	public boolean hasCable() {
+		return cable;
+	}
+
+	public void setCable(boolean hasCable) {
+		this.cable = hasCable;
+	}
+	
+	public boolean hasGarage() {
+		return garage;
+	}
+	
+	public void setGarage(boolean garage) {
+		this.garage = garage;
+	}
+
+	public String getFood() {
+		return food;
+	}
+
+	public void setFood(String food) {
+		assert(food.equals("Vegan") || food.equals("Vegetarian") || food.equals("Everything"));
+		this.food = food;
+	}
+
+	
+//	// "Room", "Studio" or "both"
+//	@Column(nullable = false)
+//	private String type;
+	
 	// for adding roommates to an ad
 	@Column(nullable = true)
 	private String room_friends;
@@ -123,32 +225,16 @@ public class Ad {
 		this.squareFootage = squareFootage;
 	}
 
-	public boolean isSmoker() {
-		return smoker;
-	}
-
-	public void setSmoker(boolean smoker) {
-		this.smoker = smoker;
-	}
-
-	public boolean isAnimals() {
-		return animals;
-	}
-
-	public void setAnimals(boolean animals) {
-		this.animals = animals;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	// "both" type only used for searches
-	public void setType(String type) {
-		assert (type.equals("Room") || type.equals("Studio") || type
-				.equals("both"));
-		this.type = type;
-	}
+//	public String getType() {
+//		return type;
+//	}
+//
+//	// "both" type only used for searches
+//	public void setType(String type) {
+//		assert (type.equals("Room") || type.equals("Studio") || type
+//				.equals("both"));
+//		this.type = type;
+//	}
 
 	public String getRoom_friends() {
 		return this.room_friends;

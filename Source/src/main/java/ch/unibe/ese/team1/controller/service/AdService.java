@@ -2,9 +2,7 @@ package ch.unibe.ese.team1.controller.service;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +42,7 @@ public class AdService {
 		Ad ad = new Ad();
 
 		ad.setTitle(placeAdForm.getTitle());
-		ad.setType(placeAdForm.getType());
+//		ad.setType(placeAdForm.getType());	---we do it with booleans now anyways
 
 		ad.setStreet(placeAdForm.getStreet());
 
@@ -88,10 +86,17 @@ public class AdService {
 		ad.setPreferences(placeAdForm.getPreferences());
 		ad.setRoommates(placeAdForm.getRoommates());
 
-		ad.setSmoker(placeAdForm.isSmoker());
-		ad.setAnimals(placeAdForm.isAnimals());
-
-		ad.setType(placeAdForm.getType());
+		//ad description values
+		ad.setSmokers(placeAdForm.allowsSmokers());
+		ad.setAnimals(placeAdForm.allowsAnimals());
+		ad.setGarden(placeAdForm.hasGarden());
+		ad.setBalcony(placeAdForm.hasBalcony());
+		ad.setCellar(placeAdForm.hasCellar());
+		ad.setFurnished(placeAdForm.isFurnished());
+		ad.setCable(placeAdForm.hasCable());
+		ad.setFood(placeAdForm.getFood());
+		
+//		ad.setType(placeAdForm.getType());
 
 		/*
 		 * Save the paths to the picture files, the pictures are assumed to be
@@ -160,10 +165,12 @@ public class AdService {
 				searchForm.getCity()).get(0);
 
 		// create a list of the results and of their locations
-		List<Ad> filteredResults = new ArrayList<>();
+		List<Ad> locatedResults = new ArrayList<>();
 
+		//results with correct place now called locatedResults to avoid confusion
+		//vis-à-vis filteredResults
 		for (Ad ad : results) {
-			filteredResults.add(ad);
+			locatedResults.add(ad); 
 		}
 
 		final int earthRadiusKm = 6380;
@@ -194,9 +201,9 @@ public class AdService {
 				}).map(location -> location.getZip())
 				.collect(Collectors.toList());
 
-		filteredResults = filteredResults.stream()
+		locatedResults = locatedResults.stream()
 				.filter(ad -> zipcodes.contains(ad.getZipcode()))
 				.collect(Collectors.toList());
-		return filteredResults;
+		return locatedResults;
 	}
 }

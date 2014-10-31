@@ -45,8 +45,15 @@ public class PlaceAdForm {
 	// optional
 	private String room_friends;
 
-	private boolean smoker;
+	private boolean smokers;
 	private boolean animals;
+	private boolean garden;
+	private boolean balcony;
+	private boolean cellar;
+	private boolean furnished;
+	private boolean cable;
+	private boolean garage;
+	private String food;
 
 	@Size(max = 10, message = "You can upload up to 10 pictures")
 	private List<MultipartFile> pictures;
@@ -111,20 +118,77 @@ public class PlaceAdForm {
 		this.roommates = roommates;
 	}
 
-	public boolean isSmoker() {
-		return smoker;
+	public boolean allowsSmokers() {
+		return smokers;
 	}
 
 	public void setSmoker(boolean smoker) {
-		this.smoker = smoker;
+		this.smokers = smoker;
 	}
 
-	public boolean isAnimals() {
+	public boolean allowsAnimals() {
 		return animals;
 	}
 
 	public void setAnimals(boolean animals) {
 		this.animals = animals;
+	}
+	
+	public boolean hasGarden() {
+		return garden;
+	}
+
+	public void setGarden(boolean garden) {
+		this.garden = garden;
+	}
+
+	public boolean hasBalcony() {
+		return balcony;
+	}
+
+	public void setBalcony(boolean balcony) {
+		this.balcony = balcony;
+	}
+	
+	public boolean hasCellar() {
+		return cellar;
+	}
+
+	public void setCellar(boolean cellar) {
+		this.cellar = cellar;
+	}
+	
+	public boolean isFurnished() {
+		return furnished;
+	}
+
+	public void setFurnished(boolean furnished) {
+		this.furnished = furnished;
+	}
+
+	public boolean hasCable() {
+		return cable;
+	}
+
+	public void setCable(boolean cable) {
+		this.cable = cable;
+	}
+	
+	public boolean hasGarage() {
+		return garage;
+	}
+
+	public void setGarage(boolean garage) {
+		this.garage = garage;
+	}
+
+	public String getFood() {
+		return food;
+	}
+
+	public void setFood(String food) {
+		assert(food.equals("Vegan") || food.equals("Vegetarian") || food.equals("Everything"));
+		this.food = food;
 	}
 
 	public List<MultipartFile> getPictures() {
