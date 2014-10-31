@@ -5,10 +5,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import ch.unibe.ese.team1.model.PictureMeta;
 
 /**
  * This class handles uploading any number of pictures of type
@@ -21,6 +24,7 @@ public class PictureUploader {
 
 	private String absoluteFilePath;
 	private String relativePath;
+	private List<String> fileNames;
 
 	/**
 	 * Creates a new PictureUploader that will upload to the directory specified
@@ -28,45 +32,59 @@ public class PictureUploader {
 	 * 
 	 * @param absolutePath
 	 *            the file path of the directory that should be uploaded to
-	 *            @param relativePath 
-	 *            the file path the uploaded pictures will have in the servlet context
+	 * @param relativePath
+	 *            the file path the uploaded pictures will have in the servlet
+	 *            context
 	 */
-	public PictureUploader(String absolutePath, String relativePath ) {
+	public PictureUploader(String absolutePath, String relativePath) {
 		this.absoluteFilePath = absolutePath;
 		this.relativePath = relativePath;
 	}
 
 	/**
 	 * Uploads the given list of pictures to the saved directory. The pictures
-	 * are named in ascending order with the filenames specified by the list of Strings returned.
+	 * are named in ascending order with the filenames specified by the list of
+	 * Strings returned.
 	 * 
 	 * @param pictures
 	 *            the pictures to upload
 	 * @return the filenames the pictures were uploaded as
 	 */
-	public List<String> upload(List<MultipartFile> pictures) {
+	public List<PictureMeta> upload(List<MultipartFile> pictures) {
 		File directory = new File(absoluteFilePath);
-		
+
 		// create the directory if it does not exist yet
-				if (!directory.exists()) {
-					directory.mkdirs();
-				}
+		if (!directory.exists()) {
+			directory.mkdirs();
+		}
 
 		int firstIndex = findHighestIndexedPicture(directory);
-		List<String> fileNames = new ArrayList<>();
-		
+		fileNames = new ArrayList<>();
+
 		int currentIndex = firstIndex + 1;
+		PictureMeta pictureMeta;
+		List<PictureMeta> pictureMetas = new LinkedList<>();
+		
 		for (MultipartFile file : pictures) {
 			if (!file.isEmpty()) {
+				// create file meta data that will be passed to the client side jQuery
+				pictureMeta = new PictureMeta();
+				pictureMeta.setFileName(file.getOriginalFilename());
+				pictureMeta.setFileSize(file.getSize() / 1024 + " KB");
+				pictureMeta.setFileType(file.getContentType());
+				
+				pictureMetas.add(pictureMeta);
+				
 				try {
 					byte[] bytes = file.getBytes();
 					String originalFileName = file.getOriginalFilename();
-					String extension = originalFileName
-							.substring(originalFileName.length()
-									- EXTENSION_LENGTH).toLowerCase(Locale.ROOT);
+					String extension = originalFileName.substring(
+							originalFileName.length() - EXTENSION_LENGTH)
+							.toLowerCase(Locale.ROOT);
 					String absoluteFileName = absoluteFilePath + "/"
 							+ currentIndex + extension;
-					String relativeFileName = relativePath + "/" + currentIndex + extension;
+					String relativeFileName = relativePath + "/" + currentIndex
+							+ extension;
 					fileNames.add(relativeFileName);
 					BufferedOutputStream outStream = new BufferedOutputStream(
 							new FileOutputStream(new File(absoluteFileName)));
@@ -79,7 +97,7 @@ public class PictureUploader {
 			}
 		}
 
-		return fileNames;
+		return pictureMetas;
 	}
 
 	/**
@@ -97,7 +115,8 @@ public class PictureUploader {
 		int max = 0;
 		for (int i = 0; i < files.length; i++) {
 			try {
-				String indexString = files[i].substring(0, files[i].length() - EXTENSION_LENGTH);
+				String indexString = files[i].substring(0, files[i].length()
+						- EXTENSION_LENGTH);
 				int index = Integer.parseInt(indexString);
 				if (max < index) {
 					max = index;
@@ -108,6 +127,11 @@ public class PictureUploader {
 		}
 
 		return max;
+	}
+
+	/** Returns the relative file paths of the pictures that were uploaded. */
+	public List<String> getFileNames() {
+		return fileNames;
 	}
 
 }

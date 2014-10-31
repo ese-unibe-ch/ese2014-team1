@@ -6,6 +6,13 @@
 
 <c:import url="template/header.jsp" />
 
+<script src="/js/jquery.ui.widget.js"></script>
+<script src="/js/jquery.iframe-transport.js"></script>
+<script src="/js/jquery.fileupload.js"></script>
+
+<script src="/js/pictureUpload.js"></script>
+
+
 <script>
 	$(document).ready(function() {
 		$("#field-city").autocomplete({
@@ -24,7 +31,7 @@
 		$("#field-moveOutDate").datepicker({
 			dateFormat : 'dd-mm-yy'
 		});
-		$("#addbutton").click(function(){
+		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
 			$("#room_friends").val("");
@@ -118,19 +125,18 @@
 	<fieldset>
 		<legend>Roommates</legend>
 		<p>If your roommates have an account, simply add them by email.</p>
-		
+
 		<table style="width: 80%">
 			<tr>
 				<td><label for="room_friends">Add by email</label></td>
 			</tr>
 
 			<tr>
-				<td><form:input type="text" id="room_friends" path="room_friends"
-						placeholder="email"/> <!-- tabindex="x" -->
-			
-						<div id="addbutton">+</div>
-						<p id="matesinwg"> </p>
-				</td>
+				<td><form:input type="text" id="room_friends"
+						path="room_friends" placeholder="email" /> <!-- tabindex="x" -->
+
+					<div id="addbutton">+</div>
+					<p id="matesinwg"></p></td>
 			</tr>
 		</table>
 
@@ -150,9 +156,8 @@
 	<fieldset>
 		<legend>Pictures (optional)</legend>
 
-		<label for="field-pictures">Pictures</label>
-		<form:input type="file" path="pictures" id="field-pictures"
-			accept="image/*" multiple="multiple" />
+		<label for="field-pictures">Pictures</label> <input type="file"
+			id="field-pictures" accept="image/*" multiple="multiple" data-url="/profile/placeAd/uploadPictures" />
 		<form:errors path="pictures" cssClass="validationErrorText" />
 
 		<br>
