@@ -45,6 +45,8 @@ public class PlaceAdForm {
 	// optional
 	private String room_friends;
 
+	private boolean studio;
+	
 	private boolean smokers;
 	private boolean animals;
 	private boolean garden;
@@ -237,5 +239,13 @@ public class PlaceAdForm {
 
 	public void setRoom_friends(String room_friends) {
 		this.room_friends = room_friends;
+	}
+	
+	public boolean isStudio() {
+		return studio;
+	}
+	
+	public void setStudio(boolean studio) {
+		this.studio = studio;
 	}
 }

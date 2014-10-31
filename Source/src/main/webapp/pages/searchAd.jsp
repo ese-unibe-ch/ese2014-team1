@@ -28,12 +28,6 @@
 	id="searchForm" autocomplete="off" enctype="multipart/form-data">
 
 	<fieldset>
-		<form:radiobutton path="type" value="Room" checked="checked" />
-		Room
-		<form:radiobutton path="type" value="Studio" />
-		Studio
-		<form:radiobutton path="type" value="both" />
-		Both<br> <label for="city">City</label>
 		<form:input type="text" name="city" id="city" path="city"
 			placeholder="e.g. Bern" tabindex="3" />
 		<form:errors path="city" cssClass="validationErrorText" />

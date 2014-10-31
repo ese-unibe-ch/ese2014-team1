@@ -33,7 +33,7 @@ http://localhost:8080/profile/ad?adId=1
 	<table style="width: 40%; float: left">
 		<tr>
 			<td><h2>Type</h2></td>
-			<td>${shownAd.type}</td>
+			<td>${shownAd.studio}</td>  <!--  CHANGE  -->
 		</tr>
 
 		<tr>
@@ -69,7 +69,7 @@ http://localhost:8080/profile/ad?adId=1
 		<tr>
 			<td><h2>Smoking inside allowed</h2></td>
 			<td><c:choose>
-					<c:when test="${shownAd.smoker}">
+					<c:when test="${shownAd.smokers}">
 		        		yes
 		        	</c:when>
 					<c:otherwise>

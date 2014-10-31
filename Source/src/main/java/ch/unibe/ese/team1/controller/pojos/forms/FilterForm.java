@@ -19,6 +19,7 @@ public class FilterForm {
 	@Min(value = 0, message = "Don't think you will find something for that kind of money")
 	private int prize;
 	
+	private boolean studio;
 	private boolean smokers;
 	private boolean animals;
 	private boolean garden;
@@ -34,6 +35,15 @@ public class FilterForm {
 	// /////////////////////
 	// Getters and setters//
 	// /////////////////////
+	
+	public boolean studio() {
+		return studio;
+	}
+	
+	public void setStudio(boolean studio) {
+		this.studio = studio;
+	}
+	
 	public String getCity() {
 		return city;
 	}

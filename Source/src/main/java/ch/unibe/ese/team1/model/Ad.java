@@ -92,8 +92,19 @@ public class Ad {
 	@Column(nullable = false)
 	private String food;
 	
+	//1 if studio, 0 if room
+	@Column(nullable = false)
+	private boolean studio;
 	
-	public boolean allowsSmokers() {
+	public boolean isStudio() {
+		return studio;
+	}
+	
+	public void setStudio(boolean studio) {
+		this.studio = studio;
+	}
+	
+	public boolean getSmokers() {
 		return smokers;
 	}
 
@@ -101,7 +112,7 @@ public class Ad {
 		this.smokers = allowsSmokers;
 	}
 
-	public boolean allowsAnimals() {
+	public boolean getAnimals() {
 		return animals;
 	}
 

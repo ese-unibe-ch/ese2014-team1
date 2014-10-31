@@ -7,7 +7,8 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class SearchForm {
-	private String type;
+	
+	private boolean studio;
 
 	@NotBlank(message = "Required")
 	@Pattern(regexp = "[-\\w\\s]*", message = "Please pick a city from the list")
@@ -47,11 +48,11 @@ public class SearchForm {
 		this.prize = prize;
 	}
 
-	public String getType() {
-		return type;
+	public boolean isStudio() {
+		return studio;
 	}
-
-	public void setType(String type) {
-		this.type = type;
+	
+	public void setStudio(boolean studio) {
+		this.studio = studio;
 	}
 }

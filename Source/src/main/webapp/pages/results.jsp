@@ -24,7 +24,7 @@
 				<p>${ad.street}, ${ad.zipcode} ${ad.city}</p>
 				<br />
 				<p>
-					<i>${ad.type }</i>
+					<i>${ad.studio }</i>
 				</p>
 			</div>
 			<div class="resultRight">
@@ -40,11 +40,12 @@
 <form:form method="post" modelAttribute="filterForm" action="/results"
 	id="filterForm" autocomplete="off" enctype="multipart/form-data">
 
+<div id="filterDiv">
 <fieldset>
 <legend>Filter results:</legend>
 <h1>YOLO</h1>
 </fieldset>
-
+</div>
 </form:form>
 
 <c:import url="template/footer.jsp" />

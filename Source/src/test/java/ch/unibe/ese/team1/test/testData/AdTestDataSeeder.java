@@ -44,6 +44,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern.setMoveInDate(date);
 		adBern.setPrizePerMonth(500);
 		adBern.setSquareFootage(50);
+		adBern.setStudio(false);
 		adBern.setSmokers(false);
 		adBern.setAnimals(true);
 		adBern.setRoomDescription(getDummyText());
@@ -72,6 +73,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern2.setMoveInDate(date);
 		adBern2.setPrizePerMonth(600);
 		adBern2.setSquareFootage(60);
+		adBern2.setStudio(true);
 		adBern2.setSmokers(false);
 		adBern2.setAnimals(true);
 		adBern2.setRoomDescription(getDummyText());
@@ -100,6 +102,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBasel.setMoveInDate(date);
 		adBasel.setPrizePerMonth(1000);
 		adBasel.setSquareFootage(10);
+		adBasel.setStudio(true);
 		adBasel.setSmokers(true);
 		adBasel.setAnimals(false);
 		adBasel.setRoomDescription(getDummyText());
