@@ -173,27 +173,6 @@
 	<table class="advertiserTable">
 		<tr>
 			<td>
-				<c:choose>
-				<c:when test="${shownAd.user.picture.filePath != null}">  
-					<img src="${shownAd.user.picture.filePath}" width="50" height="50">
-				</c:when>
-				<c:otherwise>
-					<img src="/img/avatar.png" width="50" height="50">
-				</c:otherwise>
-				</c:choose>
-			</td>
-			<td>
-			</td>
-		</tr>
-		
-		<tr>
-			<td><h2>Advertiser</h2></td>
-			<td>${shownAd.user.username}</td>
-		</tr>
-		
-	
-		<tr>
-			<td>
 				<h2>Smoking inside allowed</h2>
 			</td>
 			<td>
@@ -339,4 +318,32 @@
 	</table>
 </section>	
 
+<div style="clear: both"></div>
+<br>
+
+<table style="width: 40%">
+	<tr>
+		<td>
+			<c:choose>
+			<c:when test="${shownAd.user.picture.filePath != null}">  
+				<img src="${shownAd.user.picture.filePath}" width="50" height="50">
+			</c:when>
+			<c:otherwise>
+				<img src="/img/avatar.png" width="50" height="50">
+			</c:otherwise>
+			</c:choose>
+		</td>
+		
+		<td>
+			<h2 style="margin: 0px">Advertiser</h2>
+		</td>
+		
+		<td>
+			${shownAd.user.username}
+		</td>
+	</tr>
+</table>
+
+<br><br>
+			
 <c:import url="template/footer.jsp" />
