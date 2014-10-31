@@ -104,12 +104,12 @@ public class AdService {
 		 * uploaded at this point!
 		 */
 		List<AdPicture> pictures = new ArrayList<>();
-//		for (String filePath : filePaths) {
-//			AdPicture picture = new AdPicture();
-//			picture.setFilePath(filePath);
-//			picture.setAd(ad);
-//			pictures.add(picture);
-//		}
+		for (String filePath : filePaths) {
+			AdPicture picture = new AdPicture();
+			picture.setFilePath(filePath);
+			picture.setAd(ad);
+			pictures.add(picture);
+		}
 		ad.setPictures(pictures);
 
 		ad.setUser(user);

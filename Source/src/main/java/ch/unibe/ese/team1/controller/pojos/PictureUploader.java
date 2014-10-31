@@ -39,6 +39,7 @@ public class PictureUploader {
 	public PictureUploader(String absolutePath, String relativePath) {
 		this.absoluteFilePath = absolutePath;
 		this.relativePath = relativePath;
+		fileNames = new ArrayList<>();
 	}
 
 	/**
@@ -57,8 +58,6 @@ public class PictureUploader {
 		if (!directory.exists()) {
 			directory.mkdirs();
 		}
-
-		fileNames = new ArrayList<>();
 
 		PictureMeta pictureMeta;
 		List<PictureMeta> pictureMetas = new LinkedList<>();

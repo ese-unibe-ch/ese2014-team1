@@ -29,12 +29,19 @@
 	<table id="adDescTable">
 		<tr>
 			<td><h2>Type</h2></td>
-			<td>${shownAd.studio}</td>  <!--  CHANGE  -->
+			<td><c:choose>
+					<c:when test="${shownAd.studio}">
+					Studio
+			</c:when>
+					<c:otherwise>
+					Rooom
+				</c:otherwise>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td><h2>Address</h2></td>
-			<td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
+			<td>${shownAd.street},${shownAd.zipcode}${shownAd.city}</td>
 		</tr>
 
 		<tr>
@@ -56,7 +63,7 @@
 			<td><h2>Square Footage</h2></td>
 			<td>${shownAd.squareFootage}m²</td>
 		</tr>
-		
+
 	</table>
 
 
@@ -156,194 +163,166 @@
 			<p>${shownAd.roomDescription}</p>
 		</div>
 		<br />
-		
+
 		<div style="width: 80%">
 			<h2>Roommates</h2>
 			<p>${shownAd.roommates}</p>
 		</div>
 		<br />
-		
+
 		<div style="width: 80%">
 			<h2>Preferences</h2>
 			<p>${shownAd.preferences}</p>
 		</div>
 	</div>
-	
-	
+
+
 	<table class="advertiserTable">
 		<tr>
 			<td>
 				<h2>Smoking inside allowed</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.smokers}">
+			<td><c:choose>
+					<c:when test="${shownAd.smokers}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Animals allowed</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.animals}">
+			<td><c:choose>
+					<c:when test="${shownAd.animals}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Furnished Room</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.furnished}">
+			<td><c:choose>
+					<c:when test="${shownAd.furnished}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Cable TV</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.cable}">
+			<td><c:choose>
+					<c:when test="${shownAd.cable}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Garage</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.garage}">
+			<td><c:choose>
+					<c:when test="${shownAd.garage}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Food preference</h2> <!-- simply show the shownAd.food String here. -->
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.food}">
-        			yes
-        		</c:when>
-				<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose>
-			</td>
+			<td>${shownAd.food }</td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Cellar</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.cellar}">
+			<td><c:choose>
+					<c:when test="${shownAd.cellar}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Balcony</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.balcony}">
+			<td><c:choose>
+					<c:when test="${shownAd.balcony}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td>
 				<h2>Garden</h2>
 			</td>
-			<td>
-				<c:choose>
-				<c:when test="${shownAd.garden}">
+			<td><c:choose>
+					<c:when test="${shownAd.garden}">
         			yes
         		</c:when>
-				<c:otherwise>
+					<c:otherwise>
         			no
         		</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 	</table>
-</section>	
+</section>
 
 <div style="clear: both"></div>
 <br>
 
 <table style="width: 40%">
 	<tr>
-		<td>
-			<c:choose>
-			<c:when test="${shownAd.user.picture.filePath != null}">  
-				<img src="${shownAd.user.picture.filePath}" width="50" height="50">
-			</c:when>
-			<c:otherwise>
-				<img src="/img/avatar.png" width="50" height="50">
-			</c:otherwise>
-			</c:choose>
-		</td>
-		
+		<td><c:choose>
+				<c:when test="${shownAd.user.picture.filePath != null}">
+					<img src="${shownAd.user.picture.filePath}" width="50" height="50">
+				</c:when>
+				<c:otherwise>
+					<img src="/img/avatar.png" width="50" height="50">
+				</c:otherwise>
+			</c:choose></td>
+
 		<td>
 			<h2 style="margin: 0px">Advertiser</h2>
 		</td>
-		
-		<td>
-			${shownAd.user.username}
-		</td>
+
+		<td>${shownAd.user.username}</td>
 	</tr>
 </table>
 
-<br><br>
-			
+<br>
+<br>
+
 <c:import url="template/footer.jsp" />

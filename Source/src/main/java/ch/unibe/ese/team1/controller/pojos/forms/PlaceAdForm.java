@@ -53,18 +53,6 @@ public class PlaceAdForm {
 	private boolean garage;
 	private String food;
 
-	@NotBlank(message = "Required")
-	private String type;
-	
-	public String getType() {
-		return type;
-	}
-	
-	public void setType(String type){
-		assert(type.equals("Room") || type.equals("Studio"));
-		this.type = type;
-	}
-
 	public String getCity() {
 		return city;
 	}

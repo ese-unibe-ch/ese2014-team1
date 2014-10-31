@@ -33,13 +33,15 @@
 		});
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
-			$.post("/profile/placeAd/validateEmail", { email: text});
+			$.post("/profile/placeAd/validateEmail", {
+				email : text
+			});
 			$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
 			$("#room_friends").val("");
 			// splitting is done by
 			// ->  "1,2,3".split( "," ) -> [ "1", "2", "3" ]
 			// check this page again -> http://api.jquery.com/Types/#htmlString
-		});		
+		});
 	});
 </script>
 
@@ -103,67 +105,48 @@
 			</tr>
 		</table>
 	</fieldset>
-	
-	
+
+
 	<br />
 	<fieldset>
 		<legend>Room Description</legend>
-		
+
 		<table style="width: 80%">
 			<tr>
-				<td>
-					<form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals allowed</label>
-				</td>
-				<td>
-					<form:checkbox id="field-animals" path="animals" value="1" /><label>Smoking inside allowed</label>
+				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals
+						allowed</label></td>
+				<td><form:checkbox id="field-animals" path="animals" value="1" /><label>Smoking
+						inside allowed</label></td>
+			</tr>
+			<tr>
+				<td><form:checkbox id="field-garden" path="garden" value="1" /><label>Garden
+						(co-use)</label></td>
+				<td><form:checkbox id="field-balcony" path="balcony" value="1" /><label>Balcony
+						or Patio</label></td>
+			</tr>
+			<tr>
+				<td><form:checkbox id="field-cellar" path="cellar" value="1" /><label>Cellar
+						or Attic</label></td>
+				<td><form:checkbox id="field-furnished" path="furnished"
+						value="1" /><label>Furnished</label></td>
+			</tr>
+			<tr>
+				<td><form:checkbox id="field-cable" path="cable" value="1" /><label>Cable
+						TV</label></td>
+				<td><form:checkbox id="field-garage" path="garage" value="1" /><label>Garage</label>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<form:checkbox id="field-garden" path="garden" value="1" /><label>Garden (co-use)</label>
-				</td>
-				<td>
-					<form:checkbox id="field-balcony" path="balcony" value="1" /><label>Balcony or Patio</label>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<form:checkbox id="field-cellar" path="cellar" value="1" /><label>Cellar or Attic</label>
-				</td>
-				<td>
-					<form:checkbox id="field-furnished" path="furnished" value="1" /><label>Furnished</label>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<form:checkbox id="field-cable" path="cable" value="1" /><label>Cable TV</label>
-				</td>
-				<td>
-					<form:checkbox id="field-garage" path="garage" value="1" /><label>Garage</label>
+				<label>Food preference:</label>
+				<form:radiobutton path="food" value="Everything" checked="checked"/><label>Everything</label>
+				<form:radiobutton path="food" value="Vegetarian" /><label>Vegetarian</label>
+				<form:radiobutton path="food" value="Vegan" /><label>Vegan</label>
 				</td>
 			</tr>
 
 		</table>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	<br />
 		<form:textarea path="roomDescription" rows="10" cols="100"
 			placeholder="Room Description" />
 		<form:errors path="roomDescription" cssClass="validationErrorText" />
@@ -204,10 +187,9 @@
 	<fieldset>
 		<legend>Pictures (optional)</legend>
 
-		<label for="field-pictures">Pictures</label> 
-		<input type="file"
+		<label for="field-pictures">Pictures</label> <input type="file"
 			id="field-pictures" accept="image/*" multiple="multiple" />
-		<p id="uploaded-pictures">Uploaded pictures: </p>
+		<p id="uploaded-pictures">Uploaded pictures:</p>
 		<br>
 	</fieldset>
 
