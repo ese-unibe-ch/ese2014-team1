@@ -101,26 +101,10 @@
 						path="squareFootage" placeholder="Prize per month" step="5" /> <form:errors
 						path="squareFootage" cssClass="validationErrorText" /></td>
 			</tr>
-
-			<tr>
-				<td><label for="field-smoker">Smoking inside allowed</label></td>
-				<td><label for="field-animals">Animals allowed</label></td>
-			</tr>
-			<tr>
-				<td><form:checkbox id="field-smoker" path="smokers" value="1" />
-				</td>
-				<td><form:checkbox id="field-animals" path="animals" value="1" />
-				</td>
-			</tr>
-
 		</table>
 	</fieldset>
 	
 	
-	
-	
-
-
 	<br />
 	<fieldset>
 		<legend>Room Description</legend>
