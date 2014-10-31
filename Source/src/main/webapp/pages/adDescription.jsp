@@ -236,7 +236,7 @@ http://localhost:8080/profile/ad?adId=1
 			</td>
 			<td>
 				<c:choose>
-				<c:when test="${shownAd.smoker}">
+				<c:when test="${shownAd.smokers}">
         			yes
         		</c:when>
 				<c:otherwise>
