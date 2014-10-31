@@ -204,10 +204,10 @@
 	<fieldset>
 		<legend>Pictures (optional)</legend>
 
-		<label for="field-pictures">Pictures</label> <input type="file"
-			id="field-pictures" accept="image/*" multiple="multiple" data-url="/profile/placeAd/uploadPictures" />
-		<form:errors path="pictures" cssClass="validationErrorText" />
-
+		<label for="field-pictures">Pictures</label> 
+		<input type="file"
+			id="field-pictures" accept="image/*" multiple="multiple" />
+		<p id="uploaded-pictures">Uploaded pictures: </p>
 		<br>
 	</fieldset>
 

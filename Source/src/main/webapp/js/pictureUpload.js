@@ -3,11 +3,12 @@
  */
 $(function() {
 	$('#field-pictures').fileupload({
+		url: '/profile/placeAd/uploadPictures',
 		dataType : 'json',
-
+		
 		done : function(e, data) {
-			$().each(data.result.files, function(index, file) {
-				$('<p>').text(file.name).appendTo(document.body);
+			$.each(data.files, function(index, file) {
+				$("#uploaded-pictures").text($("#uploaded-pictures").text() + ", " + file.name);
 			});
 		}
 	});

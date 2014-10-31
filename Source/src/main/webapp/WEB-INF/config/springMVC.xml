@@ -11,7 +11,13 @@
 	<!-- context configuration: how to instantiate beans to bind to DispatcherServlet -->
 
 	<!-- search for controllers (@Controller) -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
 	<context:component-scan base-package="ch.unibe.ese.team1" />
 
 	<!-- handler -->
@@ -35,6 +41,6 @@
 	<!-- file upload -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-	
+
 
 </beans>

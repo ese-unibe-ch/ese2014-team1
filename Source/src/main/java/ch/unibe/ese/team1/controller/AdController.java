@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
@@ -47,6 +49,8 @@ public class AdController {
 	private UserService userService;
 	@Autowired
 	private ServletContext servletContext;
+	
+	private ObjectMapper objectMapper;
 
 	private PictureUploader pictureUploader;
 
@@ -62,7 +66,7 @@ public class AdController {
 	}
 
 	@RequestMapping(value = "/profile/placeAd/uploadPictures", method = RequestMethod.POST)
-	public @ResponseBody List<PictureMeta> uploadPictures(MultipartHttpServletRequest request) {
+	public @ResponseBody String uploadPictures(MultipartHttpServletRequest request) {
 		List<MultipartFile> pictures = new LinkedList<>();
 		Iterator<String> iter = request.getFileNames();
 		
@@ -70,7 +74,17 @@ public class AdController {
 			pictures.add(request.getFile(iter.next()));
 		}
 		
-		return pictureUploader.upload(pictures);
+		List<PictureMeta> uploadedPicturesMeta = pictureUploader.upload(pictures);
+		
+		objectMapper = new ObjectMapper();
+		String jsonResponse = "{\"files\": ";
+		try {
+			jsonResponse += objectMapper.writeValueAsString(uploadedPicturesMeta);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		jsonResponse += "}";
+		return jsonResponse;
 	}
 
 	@RequestMapping(value = "/profile/placeAd", method = RequestMethod.POST)

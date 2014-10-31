@@ -42,7 +42,7 @@ public class PictureUploader {
 	}
 
 	/**
-	 * Uploads the given list of pictures to the saved directory. The pictures
+	 * Uploads the given list of pictur<es to the saved directory. The pictures
 	 * are named in ascending order with the filenames specified by the list of
 	 * Strings returned.
 	 * 
@@ -58,10 +58,8 @@ public class PictureUploader {
 			directory.mkdirs();
 		}
 
-		int firstIndex = findHighestIndexedPicture(directory);
 		fileNames = new ArrayList<>();
 
-		int currentIndex = firstIndex + 1;
 		PictureMeta pictureMeta;
 		List<PictureMeta> pictureMetas = new LinkedList<>();
 		
@@ -81,16 +79,17 @@ public class PictureUploader {
 					String extension = originalFileName.substring(
 							originalFileName.length() - EXTENSION_LENGTH)
 							.toLowerCase(Locale.ROOT);
+					
+					int index = findHighestIndexedPicture(directory) + 1;
 					String absoluteFileName = absoluteFilePath + "/"
-							+ currentIndex + extension;
-					String relativeFileName = relativePath + "/" + currentIndex
+							+ index + extension;
+					String relativeFileName = relativePath + "/" + index
 							+ extension;
 					fileNames.add(relativeFileName);
 					BufferedOutputStream outStream = new BufferedOutputStream(
 							new FileOutputStream(new File(absoluteFileName)));
 					outStream.write(bytes);
 					outStream.close();
-					currentIndex++;
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}

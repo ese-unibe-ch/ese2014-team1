@@ -1,13 +1,9 @@
 package ch.unibe.ese.team1.controller.pojos.forms;
 
-import java.util.List;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.web.multipart.MultipartFile;
 
 public class PlaceAdForm {
 	
@@ -57,9 +53,6 @@ public class PlaceAdForm {
 	private boolean garage;
 	private String food;
 
-	@Size(max = 10, message = "You can upload up to 10 pictures")
-	private List<MultipartFile> pictures;
-	
 	@NotBlank(message = "Required")
 	private String type;
 	
@@ -191,14 +184,6 @@ public class PlaceAdForm {
 	public void setFood(String food) {
 		assert(food.equals("Vegan") || food.equals("Vegetarian") || food.equals("Everything"));
 		this.food = food;
-	}
-
-	public List<MultipartFile> getPictures() {
-		return pictures;
-	}
-
-	public void setPictures(List<MultipartFile> pictures) {
-		this.pictures = pictures;
 	}
 
 	public String getMoveInDate() {
