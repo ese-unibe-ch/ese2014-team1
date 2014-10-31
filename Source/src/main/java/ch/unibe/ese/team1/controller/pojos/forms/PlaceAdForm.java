@@ -118,15 +118,15 @@ public class PlaceAdForm {
 		this.roommates = roommates;
 	}
 
-	public boolean allowsSmokers() {
+	public boolean isSmokers() {
 		return smokers;
 	}
 
-	public void setSmoker(boolean smoker) {
+	public void setSmokers(boolean smoker) {
 		this.smokers = smoker;
 	}
 
-	public boolean allowsAnimals() {
+	public boolean isAnimals() {
 		return animals;
 	}
 

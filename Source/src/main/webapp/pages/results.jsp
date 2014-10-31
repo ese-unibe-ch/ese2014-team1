@@ -37,4 +37,14 @@
 	</c:forEach>
 </div>
 
+<form:form method="post" modelAttribute="filterForm" action="/results"
+	id="filterForm" autocomplete="off" enctype="multipart/form-data">
+
+<fieldset>
+<legend>Filter results:</legend>
+<h1>YOLO</h1>
+</fieldset>
+
+</form:form>
+
 <c:import url="template/footer.jsp" />

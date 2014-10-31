@@ -87,8 +87,8 @@ public class AdService {
 		ad.setRoommates(placeAdForm.getRoommates());
 
 		//ad description values
-		ad.setSmokers(placeAdForm.allowsSmokers());
-		ad.setAnimals(placeAdForm.allowsAnimals());
+		ad.setSmokers(placeAdForm.isSmokers());
+		ad.setAnimals(placeAdForm.isAnimals());
 		ad.setGarden(placeAdForm.hasGarden());
 		ad.setBalcony(placeAdForm.hasBalcony());
 		ad.setCellar(placeAdForm.hasCellar());
@@ -148,16 +148,17 @@ public class AdService {
 	public Iterable<Ad> queryResults(SearchForm searchForm) {
 		Iterable<Ad> results = null;
 
+		results = adDao.findAll();
 		// we use this method if we are looking for rooms AND studios
-		if (searchForm.getType().equals("both")) {
-			results = adDao
-					.findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
-		}
+//		if (searchForm.getType().equals("both")) {
+//			results = adDao
+//					.findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
+//		}
 		// we use this method if we are looking EITHER for rooms OR for studios
-		else {
-			results = adDao.findByTypeAndPrizePerMonthLessThan(
-					searchForm.getType(), searchForm.getPrize() + 1);
-		}
+//		else {
+//			results = adDao.findByTypeAndPrizePerMonthLessThan(
+//					searchForm.getType(), searchForm.getPrize() + 1);
+//		}
 
 		// get the location that the user searched for and take the one with the
 		// lowest zip code
