@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
@@ -115,8 +117,11 @@ public class AdController {
 	
 	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
 	public @ResponseBody String validateEmail(@RequestParam String email){
-		System.out.println("email is " + email);
-		return "true";
+		
+		User user = userService.findUserByUsername(email);
+
+		System.out.println(user.getFirstName());
+		return user.getEmail();
 	}
 	
 
