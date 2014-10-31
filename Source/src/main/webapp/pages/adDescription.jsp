@@ -6,17 +6,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@page import="ch.unibe.ese.team1.model.Picture"%>
-<%@page import="ch.unibe.ese.team1.model.User"%>
-<%@page import="ch.unibe.ese.team1.controller.service.UserService"%>
-
-<%@page
-	import="org.springframework.security.core.context.SecurityContextHolder"%>
-<%@page
-	import="org.springframework.web.servlet.support.RequestContextUtils"%>
-<%@page import="org.springframework.context.ApplicationContext"%>
-
-
 <c:import url="template/header.jsp" />
 
 <!-- format the dates -->
@@ -32,10 +21,6 @@
 	</c:otherwise>
 </c:choose>
 
-
-<%--  call via ?!:
-http://localhost:8080/profile/ad?adId=1 
---%>
 
 <h1>${shownAd.title}</h1>
 <hr />
@@ -71,29 +56,7 @@ http://localhost:8080/profile/ad?adId=1
 			<td><h2>Square Footage</h2></td>
 			<td>${shownAd.squareFootage}m²</td>
 		</tr>
-		<tr>
-			<td><h2>Smoking inside allowed</h2></td>
-			<td><c:choose>
-					<c:when test="${shownAd.smokers}">
-		        		yes
-		        	</c:when>
-					<c:otherwise>
-		        		no
-		        	</c:otherwise>
-				</c:choose></td>
-		</tr>
-
-		<tr>
-			<td><h2>Animals allowed</h2></td>
-			<td><c:choose>
-					<c:when test="${shownAd.animals}">
-		        		yes
-		        	</c:when>
-					<c:otherwise>
-		        		no
-		        	</c:otherwise>
-				</c:choose></td>
-		</tr>
+		
 	</table>
 
 
@@ -374,5 +337,6 @@ http://localhost:8080/profile/ad?adId=1
 		</tr>
 		
 	</table>
-	
+</section>	
+
 <c:import url="template/footer.jsp" />
