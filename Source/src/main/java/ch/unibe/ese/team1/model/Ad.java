@@ -96,7 +96,7 @@ public class Ad {
 	@Column(nullable = false)
 	private boolean studio;
 	
-	public boolean isStudio() {
+	public boolean getStudio() {
 		return studio;
 	}
 	
@@ -120,7 +120,7 @@ public class Ad {
 		this.animals = allowsAnimals;
 	}
 
-	public boolean hasGarden() {
+	public boolean getGarden() {
 		return garden;
 	}
 
@@ -128,7 +128,7 @@ public class Ad {
 		this.garden = hasGarden;
 	}
 
-	public boolean hasBalcony() {
+	public boolean getBalcony() {
 		return balcony;
 	}
 
@@ -136,7 +136,7 @@ public class Ad {
 		this.balcony = hasBalcony;
 	}
 
-	public boolean hasCellar() {
+	public boolean getCellar() {
 		return cellar;
 	}
 
@@ -144,7 +144,7 @@ public class Ad {
 		this.cellar = hasCellar;
 	}
 
-	public boolean isFurnished() {
+	public boolean getFurnished() {
 		return furnished;
 	}
 
@@ -160,7 +160,7 @@ public class Ad {
 		this.cable = hasCable;
 	}
 	
-	public boolean hasGarage() {
+	public boolean getGarage() {
 		return garage;
 	}
 	

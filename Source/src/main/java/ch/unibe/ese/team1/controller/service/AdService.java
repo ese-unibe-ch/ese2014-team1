@@ -89,11 +89,12 @@ public class AdService {
 		//ad description values
 		ad.setSmokers(placeAdForm.isSmokers());
 		ad.setAnimals(placeAdForm.isAnimals());
-		ad.setGarden(placeAdForm.hasGarden());
-		ad.setBalcony(placeAdForm.hasBalcony());
-		ad.setCellar(placeAdForm.hasCellar());
+		ad.setGarden(placeAdForm.getGarden());
+		ad.setBalcony(placeAdForm.getBalcony());
+		ad.setCellar(placeAdForm.getCellar());
 		ad.setFurnished(placeAdForm.isFurnished());
-		ad.setCable(placeAdForm.hasCable());
+		ad.setCable(placeAdForm.getCable());
+		ad.setGarage(placeAdForm.getGarage());
 		ad.setFood(placeAdForm.getFood());
 		
 //		ad.setType(placeAdForm.getType());

@@ -311,7 +311,7 @@ http://localhost:8080/profile/ad?adId=1
 		
 		<tr>
 			<td>
-				<h2>Food preference</h2>
+				<h2>Food preference</h2> <!-- simply show the shownAd.food String here. -->
 			</td>
 			<td>
 				<c:choose>

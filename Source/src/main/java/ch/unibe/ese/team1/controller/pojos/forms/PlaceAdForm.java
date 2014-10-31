@@ -136,7 +136,7 @@ public class PlaceAdForm {
 		this.animals = animals;
 	}
 	
-	public boolean hasGarden() {
+	public boolean getGarden() {
 		return garden;
 	}
 
@@ -144,7 +144,7 @@ public class PlaceAdForm {
 		this.garden = garden;
 	}
 
-	public boolean hasBalcony() {
+	public boolean getBalcony() {
 		return balcony;
 	}
 
@@ -152,7 +152,7 @@ public class PlaceAdForm {
 		this.balcony = balcony;
 	}
 	
-	public boolean hasCellar() {
+	public boolean getCellar() {
 		return cellar;
 	}
 
@@ -168,7 +168,7 @@ public class PlaceAdForm {
 		this.furnished = furnished;
 	}
 
-	public boolean hasCable() {
+	public boolean getCable() {
 		return cable;
 	}
 
@@ -176,7 +176,7 @@ public class PlaceAdForm {
 		this.cable = cable;
 	}
 	
-	public boolean hasGarage() {
+	public boolean getGarage() {
 		return garage;
 	}
 

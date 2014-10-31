@@ -61,9 +61,9 @@
 			<tr>
 				<td><form:input id="field-title" path="title"
 						placeholder="Ad Title" /></td>
-				<td><form:radiobutton id="type-room" path="type" value="Room"
+				<td><form:radiobutton id="type-room" path="studio" value="0"
 						checked="checked" />Room <form:radiobutton id="type-studio"
-						path="type" value="Studio" />Studio</td>
+						path="studio" value="1" />Studio</td>
 			</tr>
 
 			<tr>
@@ -124,6 +124,62 @@
 	<br />
 	<fieldset>
 		<legend>Room Description</legend>
+		
+		<table style="width: 80%">
+			<tr>
+				<td>
+					<form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals allowed</label>
+				</td>
+				<td>
+					<form:checkbox id="field-animals" path="animals" value="1" /><label>Smoking inside allowed</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:checkbox id="field-garden" path="garden" value="1" /><label>Garden (co-use)</label>
+				</td>
+				<td>
+					<form:checkbox id="field-balcony" path="balcony" value="1" /><label>Balcony or Patio</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:checkbox id="field-cellar" path="cellar" value="1" /><label>Cellar or Attic</label>
+				</td>
+				<td>
+					<form:checkbox id="field-furnished" path="furnished" value="1" /><label>Furnished</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<form:checkbox id="field-cable" path="cable" value="1" /><label>Cable TV</label>
+				</td>
+				<td>
+					<form:checkbox id="field-garage" path="garage" value="1" /><label>Garage</label>
+				</td>
+			</tr>
+
+		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<form:textarea path="roomDescription" rows="10" cols="100"
 			placeholder="Room Description" />
 		<form:errors path="roomDescription" cssClass="validationErrorText" />
