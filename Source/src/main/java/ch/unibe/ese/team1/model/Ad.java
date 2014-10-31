@@ -166,11 +166,6 @@ public class Ad {
 		this.food = food;
 	}
 
-	
-//	// "Room", "Studio" or "both"
-//	@Column(nullable = false)
-//	private String type;
-	
 	// for adding roommates to an ad
 	@Column(nullable = true)
 	private String room_friends;
