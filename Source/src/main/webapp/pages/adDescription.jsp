@@ -222,7 +222,6 @@ http://localhost:8080/profile/ad?adId=1
 			<td>
 			</td>
 		</tr>
-	
 		
 		<tr>
 			<td><h2>Advertiser</h2></td>
@@ -261,9 +260,119 @@ http://localhost:8080/profile/ad?adId=1
 				</c:choose>
 			</td>
 		</tr>
+		
+		<tr>
+			<td>
+				<h2>Furnished Room</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.furnished}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h2>Cable TV</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.cable}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h2>Garage</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.garage}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h2>Food preference</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.food}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h2>Cellar</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.cellar}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h2>Balcony</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.balcony}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<h2>Garden</h2>
+			</td>
+			<td>
+				<c:choose>
+				<c:when test="${shownAd.garden}">
+        			yes
+        		</c:when>
+				<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+		
 	</table>
-	
-	
-	
 	
 <c:import url="template/footer.jsp" />

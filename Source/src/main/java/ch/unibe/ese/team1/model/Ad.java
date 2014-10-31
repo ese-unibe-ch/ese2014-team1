@@ -152,7 +152,7 @@ public class Ad {
 		this.furnished = furnished;
 	}
 
-	public boolean hasCable() {
+	public boolean getCable() {
 		return cable;
 	}
 

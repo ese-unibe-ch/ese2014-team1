@@ -82,7 +82,9 @@ public class AdController {
 			String username = principal.getName();
 			User user = userService.findUserByUsername(username);
 
-			List<String> fileNames = pictureUploader.getFileNames();
+			// temp
+			//List<String> fileNames = pictureUploader.getFileNames();
+			List<String> fileNames = new LinkedList<>();
 			Ad ad = adService.saveFrom(placeAdForm, fileNames, user);
 
 			// reset the place ad form
