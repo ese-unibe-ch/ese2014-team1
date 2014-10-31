@@ -26,9 +26,13 @@
 		});
 		$("#addbutton").click(function(){
 			var text = $("#room_friends").val();
+			$.post("/profile/placeAd/validateEmail", { email: text});
 			$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
 			$("#room_friends").val("");
-		});
+			// splitting is done by
+			// ->  "1,2,3".split( "," ) -> [ "1", "2", "3" ]
+			// check this page again -> http://api.jquery.com/Types/#htmlString
+		});		
 	});
 </script>
 
@@ -96,7 +100,7 @@
 				<td><label for="field-animals">Animals allowed</label></td>
 			</tr>
 			<tr>
-				<td><form:checkbox id="field-smoker" path="smoker" value="1" />
+				<td><form:checkbox id="field-smoker" path="smokers" value="1" />
 				</td>
 				<td><form:checkbox id="field-animals" path="animals" value="1" />
 				</td>

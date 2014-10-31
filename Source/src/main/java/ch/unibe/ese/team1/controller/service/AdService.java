@@ -87,8 +87,8 @@ public class AdService {
 		ad.setRoommates(placeAdForm.getRoommates());
 
 		//ad description values
-		ad.setSmokers(placeAdForm.allowsSmokers());
-		ad.setAnimals(placeAdForm.allowsAnimals());
+		ad.setSmokers(placeAdForm.isSmokers());
+		ad.setAnimals(placeAdForm.isAnimals());
 		ad.setGarden(placeAdForm.hasGarden());
 		ad.setBalcony(placeAdForm.hasBalcony());
 		ad.setCellar(placeAdForm.hasCellar());
