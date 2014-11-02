@@ -8,6 +8,8 @@
 
 <c:import url="template/header.jsp" />
 
+<script src="/js/image_slider.js"></script>
+
 <!-- format the dates -->
 <fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"
 	type="date" pattern="dd.MM.yyyy" />
@@ -66,95 +68,23 @@
 
 	</table>
 
-
-	<!-- Needed for image slider -->
-	<script src="/js/jssor.js"></script>
-	<script src="/js/jssor.slider.js"></script>
-	<script>
-		jQuery(document).ready(
-				function($) {
-					var options = {
-						$DragOrientation : 3, //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-						$ArrowNavigatorOptions : { //[Optional] Options to specify and enable arrow navigator or not
-							$Class : $JssorArrowNavigator$, //[Requried] Class to create arrow navigator instance
-							$ChanceToShow : 2, //[Required] 0 Never, 1 Mouse Over, 2 Always
-							$AutoCenter : 0, //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-							$Steps : 1
-						//[Optional] Steps to go for each navigation request, default value is 1
-						}
-					};
-					var jssor_slider1 = new $JssorSlider$("slider1_container",
-							options);
-				});
-	</script>
-
-	<!-- Slider Begin -->
-	<div id="slider1_container"
-		style="position: relative; top: 0px; left: 50%; width: 600px; height: 400px;">
-
-		<!-- Slides Container -->
-		<div u="slides"
-			style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 400px; overflow: hidden;">
-
-			<c:forEach items="${shownAd.pictures}" var="picture">
-				<div>
-					<img u="image" src="${picture.filePath}" />
-				</div>
-			</c:forEach>
-
-		</div>
-
-		<!-- Arrow Navigator Skin Begin -->
-		<style>
-.jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn {
-	position: absolute;
-	cursor: pointer;
-	display: block;
-	background: url(/img/image_slider/arrows.png) no-repeat;
-	overflow: hidden;
-}
-
-.jssora03l {
-	background-position: -3px -33px;
-}
-
-.jssora03r {
-	background-position: -63px -33px;
-}
-
-.jssora03l:hover {
-	background-position: -123px -33px;
-}
-
-.jssora03r:hover {
-	background-position: -183px -33px;
-}
-
-.jssora03ldn {
-	background-position: -243px -33px;
-}
-
-.jssora03rdn {
-	background-position: -303px -33px;
-}
-</style>
-
-		<!-- Arrow Left -->
-		<span u="arrowleft" class="jssora03l"
-			style="width: 55px; height: 55px; top: 123px; left: 8px;"> </span>
-		<!-- Arrow Right -->
-		<span u="arrowright" class="jssora03r"
-			style="width: 55px; height: 55px; top: 123px; right: 8px"> </span>
-		<!-- Arrow Navigator Skin End -->
-		<a style="display: none" href="http://www.jssor.com">sliders</a>
-	</div>
-	<!-- Slider End -->
-
 </section>
 
-<!-- clears the float: left and puts the hr under the table without overlapping -->
-<div style="clear: both;"></div>
-<hr />
+<div id="image-slider">
+	<div id="left-arrow">
+		<img src="/img/left-arrow.png" />
+	</div>
+	<div id="images">
+		<c:forEach items="${shownAd.pictures}" var="picture">
+			<img src="${picture.filePath}" />
+		</c:forEach>
+	</div>
+	<div id="right-arrow">
+		<img src="/img/right-arrow.png" />
+	</div>
+</div>
+
+<hr style="clear: both" />
 
 <section style="width: 100%">
 	<div style="width: 55%; float: left">
