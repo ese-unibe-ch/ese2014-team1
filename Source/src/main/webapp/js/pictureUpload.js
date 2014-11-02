@@ -8,7 +8,8 @@ $(function() {
 		
 		done : function(e, data) {
 			$.each(data.files, function(index, file) {
-				$("#uploaded-pictures").text($("#uploaded-pictures").text() + ", " + file.name);
+				var size = (file.size/1024).toFixed(2) + ' KB';
+				$("#uploaded-pictures").append('<tr><td>'+ file.name + '</td><td>' + size + '</td></tr>');
 			});
 		}
 	});

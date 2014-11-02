@@ -137,16 +137,15 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
-				<label>Food preference:</label>
-				<form:radiobutton path="food" value="Everything" checked="checked"/><label>Everything</label>
-				<form:radiobutton path="food" value="Vegetarian" /><label>Vegetarian</label>
-				<form:radiobutton path="food" value="Vegan" /><label>Vegan</label>
+				<td><label>Food preference:</label> <form:radiobutton
+						path="food" value="Everything" checked="checked" /><label>Everything</label>
+					<form:radiobutton path="food" value="Vegetarian" /><label>Vegetarian</label>
+					<form:radiobutton path="food" value="Vegan" /><label>Vegan</label>
 				</td>
 			</tr>
 
 		</table>
-	<br />
+		<br />
 		<form:textarea path="roomDescription" rows="10" cols="100"
 			placeholder="Room Description" />
 		<form:errors path="roomDescription" cssClass="validationErrorText" />
@@ -186,10 +185,15 @@
 
 	<fieldset>
 		<legend>Pictures (optional)</legend>
-
+		<br />
 		<label for="field-pictures">Pictures</label> <input type="file"
 			id="field-pictures" accept="image/*" multiple="multiple" />
-		<p id="uploaded-pictures">Uploaded pictures:</p>
+		<table id="uploaded-pictures">
+			<tr>
+				<th id="name-column">Uploaded picture</th>
+				<th>Size</th>
+			</tr>
+		</table>
 		<br>
 	</fieldset>
 
