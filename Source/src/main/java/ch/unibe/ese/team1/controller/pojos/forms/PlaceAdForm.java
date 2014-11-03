@@ -7,13 +7,10 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class PlaceAdForm {
 	
-	//TODO: implement booleans room and studio.
-	//It must be so that exactly one of these booleans is true.
-	
 	@NotBlank(message = "Required")
 	private String title;
 	
-	@NotBlank(message = "Required")
+	@NotBlank(message = "RequiredYOLO")
 	private String street;
 	
 	@Pattern(regexp = "^[0-9]{4} - [-\\w\\s]*", message = "Please pick a city from the list")

@@ -150,16 +150,18 @@ public class AdService {
 		Iterable<Ad> results = null;
 
 		results = adDao.findAll();
-		// we use this method if we are looking for rooms AND studios
-//		if (searchForm.getType().equals("both")) {
-//			results = adDao
-//					.findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
-//		}
+		//we use this method if we are looking for rooms AND studios
+		if (searchForm.getBothRoomAndStudio()) {
+			System.out.println("beide");//test
+			results = adDao
+					.findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
+ 		}
 		// we use this method if we are looking EITHER for rooms OR for studios
-//		else {
-//			results = adDao.findByTypeAndPrizePerMonthLessThan(
-//					searchForm.getType(), searchForm.getPrize() + 1);
-//		}
+		else {
+			System.out.println("Studio: " + searchForm.getStudio()); //test
+			results = adDao.findByStudioAndPrizePerMonthLessThan(
+					searchForm.getStudio(), searchForm.getPrize() + 1);
+		}
 
 		// get the location that the user searched for and take the one with the
 		// lowest zip code

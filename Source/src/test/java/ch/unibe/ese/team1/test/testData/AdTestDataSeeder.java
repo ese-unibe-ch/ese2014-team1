@@ -40,7 +40,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		userDao.save(user);
 
 		Ad adBern = new Ad();
-		adBern.setZipcode(3005);
+		adBern.setZipcode(3000);
 		adBern.setMoveInDate(date);
 		adBern.setPrizePerMonth(500);
 		adBern.setSquareFootage(50);
@@ -69,7 +69,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adDao.save(adBern);
 
 		Ad adBern2 = new Ad();
-		adBern2.setZipcode(3006);
+		adBern2.setZipcode(3000);
 		adBern2.setMoveInDate(date);
 		adBern2.setPrizePerMonth(600);
 		adBern2.setSquareFootage(60);
