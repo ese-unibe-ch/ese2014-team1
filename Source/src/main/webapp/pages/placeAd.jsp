@@ -33,11 +33,25 @@
 		});
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
-			$.post("/profile/placeAd/validateEmail", {
-				email : text
-			});
-			$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
-			$("#room_friends").val("");
+			if(validateForm(text)) {
+				$.post("/profile/placeAd/validateEmail", {
+					email : text
+				});
+				$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
+				$("#room_friends").val("");
+			} else {
+				
+			};
+			
+			function validateForm(text) {
+			    var positionAt = text.indexOf("@");
+			    var positionDot = text.lastIndexOf(".");
+			    if (positionAt< 1 || positionDot<positionAt+2 || positionDot+2>=text.length) {
+			        alert("Please enter an e-mail address");
+			        return false;
+			    } else
+			    	return true;
+			}
 			// splitting is done by
 			// ->  "1,2,3".split( "," ) -> [ "1", "2", "3" ]
 			// check this page again -> http://api.jquery.com/Types/#htmlString
