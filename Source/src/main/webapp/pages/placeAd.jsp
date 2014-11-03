@@ -34,11 +34,16 @@
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			if(validateForm(text)) {
-				$.post("/profile/placeAd/validateEmail", {
+				var returnText = $.post("/profile/placeAd/validateEmail", {
 					email : text
 				});
-				$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
+				returnText = returnText.ToString();
+				if(returnText == "noGood") {
+					alert("User does not exist");
+				} else {
+				$("#matesinwg").append("grrr" + "  ; \u00A0\u00A0  ");
 				$("#room_friends").val("");
+				}
 			} else {
 				
 			};
