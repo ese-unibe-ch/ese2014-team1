@@ -36,14 +36,14 @@
 					Studio
 			</c:when>
 					<c:otherwise>
-					Rooom
+					Room
 				</c:otherwise>
 				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td>${shownAd.street},${shownAd.zipcode}${shownAd.city}</td>
+			<td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
 		</tr>
 
 		<tr>
@@ -58,12 +58,12 @@
 
 		<tr>
 			<td><h2>Monthly Rent</h2></td>
-			<td>${shownAd.prizePerMonth}CHF</td>
+			<td>${shownAd.prizePerMonth} CHF</td>
 		</tr>
 
 		<tr>
 			<td><h2>Square Footage</h2></td>
-			<td>${shownAd.squareFootage}m²</td>
+			<td>${shownAd.squareFootage} m²</td>
 		</tr>
 
 	</table>
