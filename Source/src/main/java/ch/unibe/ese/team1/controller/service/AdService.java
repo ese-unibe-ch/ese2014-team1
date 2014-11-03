@@ -42,7 +42,8 @@ public class AdService {
 		Ad ad = new Ad();
 
 		ad.setTitle(placeAdForm.getTitle());
-//		ad.setType(placeAdForm.getType());	---we do it with booleans now anyways
+		// ad.setType(placeAdForm.getType()); ---we do it with booleans now
+		// anyways
 
 		ad.setStreet(placeAdForm.getStreet());
 
@@ -86,7 +87,7 @@ public class AdService {
 		ad.setPreferences(placeAdForm.getPreferences());
 		ad.setRoommates(placeAdForm.getRoommates());
 
-		//ad description values
+		// ad description values
 		ad.setSmokers(placeAdForm.isSmokers());
 		ad.setAnimals(placeAdForm.isAnimals());
 		ad.setGarden(placeAdForm.getGarden());
@@ -96,8 +97,8 @@ public class AdService {
 		ad.setCable(placeAdForm.getCable());
 		ad.setGarage(placeAdForm.getGarage());
 		ad.setFood(placeAdForm.getFood());
-		
-//		ad.setType(placeAdForm.getType());
+
+		// ad.setType(placeAdForm.getType());
 
 		/*
 		 * Save the paths to the picture files, the pictures are assumed to be
@@ -149,30 +150,34 @@ public class AdService {
 	public Iterable<Ad> queryResults(SearchForm searchForm) {
 		Iterable<Ad> results = null;
 
-		results = adDao.findAll();
+		// filter out zipcode
+		String city = searchForm.getCity().substring(7);
+
+		results = adDao.findByPrizePerMonthLessThan(searchForm.getPrize());
 		// we use this method if we are looking for rooms AND studios
-//		if (searchForm.getType().equals("both")) {
-//			results = adDao
-//					.findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
-//		}
+		// if (searchForm.getType().equals("both")) {
+		// results = adDao
+		// .findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
+		// }
 		// we use this method if we are looking EITHER for rooms OR for studios
-//		else {
-//			results = adDao.findByTypeAndPrizePerMonthLessThan(
-//					searchForm.getType(), searchForm.getPrize() + 1);
-//		}
+		// else {
+		// results = adDao.findByTypeAndPrizePerMonthLessThan(
+		// searchForm.getType(), searchForm.getPrize() + 1);
+		// }
 
 		// get the location that the user searched for and take the one with the
 		// lowest zip code
-		Location searchedLocation = geoDataService.getLocationsByCity(
-				searchForm.getCity()).get(0);
+		Location searchedLocation = geoDataService.getLocationsByCity(city)
+				.get(0);
 
 		// create a list of the results and of their locations
 		List<Ad> locatedResults = new ArrayList<>();
 
-		//results with correct place now called locatedResults to avoid confusion
-		//vis-à-vis filteredResults
+		// results with correct place now called locatedResults to avoid
+		// confusion
+		// vis-à-vis filteredResults
 		for (Ad ad : results) {
-			locatedResults.add(ad); 
+			locatedResults.add(ad);
 		}
 
 		final int earthRadiusKm = 6380;

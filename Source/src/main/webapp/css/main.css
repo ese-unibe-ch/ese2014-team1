@@ -361,6 +361,10 @@ footer nav ul li {
 	border-radius: 10px;
 }
 
+#resultsDiv div:first-child{
+	margin-top: 0px;
+}
+
 #resultsDiv div img {
 	height: 100px;
 	float: left;

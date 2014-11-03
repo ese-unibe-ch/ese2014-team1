@@ -12,7 +12,7 @@
 			minLength : 2
 		});
 		$("#city").autocomplete({
-			source : <c:import url="getAllCities.jsp" />
+			source : <c:import url="getzipcodes.jsp" />
 		});
 		$("#city").autocomplete("option", {
 			enabled : true,
@@ -28,6 +28,7 @@
 	id="searchForm" autocomplete="off" enctype="multipart/form-data">
 
 	<fieldset>
+	<label for="city">City / zip code:</label>
 		<form:input type="text" name="city" id="city" path="city"
 			placeholder="e.g. Bern" tabindex="3" />
 		<form:errors path="city" cssClass="validationErrorText" />
@@ -43,7 +44,7 @@
 		CHF
 		<form:errors path="prize" cssClass="validationErrorText" />
 		<br />
-
+		
 		<button type="submit" tabindex="7">Search</button>
 		<button type="reset" tabindex="8">Cancel</button>
 	</fieldset>
