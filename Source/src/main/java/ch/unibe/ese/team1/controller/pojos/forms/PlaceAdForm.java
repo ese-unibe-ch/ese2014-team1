@@ -37,7 +37,8 @@ public class PlaceAdForm {
 	
 	// optional
 	private String room_friends;
-
+	
+	//true if studio, false if room
 	private boolean studio;
 	
 	private boolean smokers;
@@ -211,7 +212,7 @@ public class PlaceAdForm {
 		this.room_friends = room_friends;
 	}
 	
-	public boolean isStudio() {
+	public boolean getStudio() {
 		return studio;
 	}
 	

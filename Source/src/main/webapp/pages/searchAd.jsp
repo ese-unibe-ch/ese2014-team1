@@ -40,7 +40,6 @@ function validateType(form)
 		neither.checked = true;
 	}
 	else {
-		assert(room.checked != studio.checked);
 		both.checked = false;
 		neither.checked = false;
 		type.checked = studio.checked;
@@ -48,17 +47,15 @@ function validateType(form)
 }
 </script>
 
-
-
 <h1>Search for an ad</h1>
 <hr />
 
 <form:form method="post" modelAttribute="searchForm" action="/results"
-	id="searchForm" autocomplete="off" enctype="multipart/form-data">
+	id="searchForm" autocomplete="off">
 
-	<fieldset>	
-		<form:checkbox name="room" id="room" value="0" path="typeHelper"/><label>Room</label>
-		<form:checkbox name="studio" id="studio" value="1" path="typeHelper"/><label>Studio</label>
+	<fieldset>
+		<form:checkbox name="room" id="room" path="typeHelper" /><label>Room</label>
+		<form:checkbox name="studio" id="studio" path="typeHelper" /><label>Studio</label>
 		
 		<form:checkbox style="display:none" name="neither" id="neither" path="noRoomNoStudio" />
 		<form:checkbox style="display:none" name="both" id="both" path="bothRoomAndStudio" />

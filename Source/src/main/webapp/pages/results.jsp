@@ -26,11 +26,11 @@
 						<h2>
 							<a href="<c:url value='/ad?id=${ad.id}' />">${ad.title }</a>
 						</h2>
-						<p>${ad.street},${ad.zipcode}${ad.city}</p>
+						<p>${ad.street}, ${ad.zipcode} ${ad.city}</p>
 						<br />
 						<p>
 							<i><c:choose>
-									<c:when test="${ad.studio }">Studio</c:when>
+									<c:when test="${ad.studio}">Studio</c:when>
 									<c:otherwise>Room</c:otherwise>
 								</c:choose></i>
 						</p>

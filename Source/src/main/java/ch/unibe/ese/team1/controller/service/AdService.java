@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+//import ch.unibe.ese.team1.controller.pojos.forms.ASearchForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
+//import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.Location;
@@ -42,11 +44,11 @@ public class AdService {
 		Ad ad = new Ad();
 
 		ad.setTitle(placeAdForm.getTitle());
-		// ad.setType(placeAdForm.getType()); ---we do it with booleans now
-		// anyways
 
 		ad.setStreet(placeAdForm.getStreet());
 
+		ad.setStudio(placeAdForm.getStudio());
+		
 		// take the zipcode - first four digits
 		String zip = placeAdForm.getCity().substring(0, 4);
 		ad.setZipcode(Integer.parseInt(zip));
@@ -97,8 +99,6 @@ public class AdService {
 		ad.setCable(placeAdForm.getCable());
 		ad.setGarage(placeAdForm.getGarage());
 		ad.setFood(placeAdForm.getFood());
-
-		// ad.setType(placeAdForm.getType());
 
 		/*
 		 * Save the paths to the picture files, the pictures are assumed to be
