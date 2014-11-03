@@ -12,7 +12,7 @@
 			minLength : 2
 		});
 		$("#city").autocomplete({
-			source : <c:import url="getAllCities.jsp" />
+			source : <c:import url="getzipcodes.jsp" />
 		});
 		$("#city").autocomplete("option", {
 			enabled : true,
@@ -56,8 +56,7 @@ function validateType(form)
 <form:form method="post" modelAttribute="searchForm" action="/results"
 	id="searchForm" autocomplete="off" enctype="multipart/form-data">
 
-	<fieldset>
-	
+	<fieldset>	
 		<form:checkbox name="room" id="room" value="0" path="typeHelper"/><label>Room</label>
 		<form:checkbox name="studio" id="studio" value="1" path="typeHelper"/><label>Studio</label>
 		
@@ -68,9 +67,11 @@ function validateType(form)
 		
 		<br />
 		
+		<label for="city">City / zip code:</label>
 		<form:input type="text" name="city" id="city" path="city"
 			placeholder="e.g. Bern" tabindex="3" />
 		<form:errors path="city" cssClass="validationErrorText" />
+		
 
 		<label for="radius">Within radius of (max.):</label>
 		<form:input id="radiusInput" type="number" path="radius"

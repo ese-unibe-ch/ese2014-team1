@@ -31,7 +31,7 @@ hr {
 	margin-bottom: 40px;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: graytext;
 }
@@ -41,6 +41,7 @@ body {
 	color: gray;
 	padding-top: 60px;
 	padding-bottom: 40px;
+	min-width: 1100px;
 }
 
 /* the main content on every page */
@@ -100,7 +101,6 @@ button {
 	border-color: white;
 	border-style: solid;
 	font-size: 1.5em;
-	
 }
 
 button:hover {
@@ -140,8 +140,6 @@ button {
 	vertical-align: top;
 }
 
-
-
 /* -------------------------------------------------------------------- */
 /* Header & Footer */
 header {
@@ -153,6 +151,7 @@ header {
 	right: 0px;
 	height: 70px;
 	z-index: 1;
+	min-width: 1100px;
 }
 
 header a {
@@ -177,7 +176,8 @@ header ul {
 
 header ul li {
 	float: right;
-	width: 120px; text-align : center;
+	width: 120px;
+	text-align: center;
 	line-height: 21px;
 	margin-top: 20px;
 	text-align: center;
@@ -278,41 +278,59 @@ footer nav ul li {
 	margin: auto;
 }
 
-/* -------------------------------------------------------------------- */
+#uploaded-pictures {
+	background-color: #3dc16d;
+	border-radius: 5px;
+	width: 500px;
+	margin-top: 20px;
+}
 
+#uploaded-pictures th {
+	background-color: #2dc16d;
+	color: white;
+}
+
+#uploaded-pictures td {
+	background-color: white;
+	padding: 5px 10px;
+}
+
+#name-column {
+	width: 60%;
+}
+
+/* -------------------------------------------------------------------- */
 #signupForm {
 	width: 350px;
 }
 
 /* -------------------------------------------------------------------- */
-
-#searchForm{
+#searchForm {
 	width: 900px;
 }
 
 /* -------------------------------------------------------------------- */
-
-#resultTable{
+#resultTable {
 	border-radius: 5px;
 	background-color: #2dc16d;
 }
 
-#resultTable tr{
+#resultTable tr {
 	background-color: white;
 }
 
-#resultTable th{
+#resultTable th {
 	background-color: #2dc16d;
 	color: white;
 	padding: 5px;
 }
 
-#resultTable td{
-	padding:5px;
+#resultTable td {
+	padding: 5px;
 }
 
-#resultTable a{
-	text-decoration:none;
+#resultTable a {
+	text-decoration: none;
 }
 
 #filterDiv {
@@ -327,14 +345,14 @@ footer nav ul li {
 	border-radius: 10px;
 }
 
-#resultsDiv{
+#resultsDiv {
 	width: 60%;
 	margin-top: 30px;
 	float: left;
 }
 
-#resultsDiv div{
-	height:100px;
+#resultsDiv div {
+	height: 100px;
 	padding: 10px;
 	margin-top: 20px;
 	border-style: solid;
@@ -343,50 +361,106 @@ footer nav ul li {
 	border-radius: 10px;
 }
 
-#resultsDiv div img{
+#resultsDiv div:first-child{
+	margin-top: 0px;
+}
+
+#resultsDiv div img {
 	height: 100px;
-	float:left;
+	float: left;
 	margin-right: 50px;
 }
 
-#resultsDiv div div{
+#resultsDiv div div {
 	border: none;
 	margin: 0;
 	padding: 0;
 }
 
-#resultsDiv .resultLeft{
-	float:left;
+#resultsDiv .resultLeft {
+	float: left;
 	width: 75%;
 }
 
-#resultsDiv .resultRight{
-	float:right;
+#resultsDiv .resultRight {
+	float: right;
 	width: 20%;
 	text-align: right;
 	padding-right: 5px;
 }
 
-
-
 /* -------------------------------------------------------------------- */
-#adDescTable{
-	width: 40%; 
+#adDescTable {
+	width: 40%;
 	float: left;
 }
 
-#adDescTable h2{
+#adDescTable h2 {
 	margin: 4px;
 }
 
-#adDescTable td{
+#adDescTable td {
 	margin: 10px;
 }
 
-.advertiserTable{
+.advertiserTable {
 	width: 27%;
 }
 
-.advertiserTable h2{
+.advertiserTable h2 {
 	margin: 4px;
+}
+
+#image-slider {
+	height: 350px;
+	float: right;
+	width: 600px;
+	margin-bottom: 30px;
+}
+
+#images {
+	float: left;
+	width: 500px;
+	height: 350px;
+	position: relative;
+}
+
+#images img {
+	height: 350px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: none;
+	max-width: 450px;
+}
+
+#images img:first-child {
+	margin-top: 0px;
+	display: block;
+}
+
+#left-arrow {
+	height: 100%;
+	width: 40px;
+	margin-right: 10px;
+	float: left;
+}
+
+#left-arrow img {
+	width: 40px;
+	margin-top: 155px;
+}
+
+#right-arrow img {
+	width: 40px;
+	margin-top: 155px;
+}
+
+#right-arrow {
+	height: 100%;
+	width: 40px;
+	margin-left: 10px;
+	float: left;
 }
