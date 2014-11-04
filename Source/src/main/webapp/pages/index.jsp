@@ -12,5 +12,8 @@
 <title>Test-Title</title>
 </head>
 <body>
+
+<p class="breadcrumbs"><pre>Home</pre></p>
+
 <h1>Welcome!</h1>
 <c:import url="template/footer.jsp" />

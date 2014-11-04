@@ -8,6 +8,8 @@
 
 <c:import url="template/header.jsp" />
 
+<p><span class="breadcrumbs"><pre><a href="/"> Home </a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre></span></p>
+
 <script src="/js/image_slider.js"></script>
 
 <!-- format the dates -->

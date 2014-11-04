@@ -37,8 +37,10 @@
 				var returnText = $.post("/profile/placeAd/validateEmail", {
 					email : text
 				});
-				returnText = returnText.ToString();
-				if(returnText == "noGood") {
+				// var neu = Raw(Json.Encode(returnText));
+				// alert(Raw(Json.Encode(returnText)));
+				
+				if(returnText == null) {
 					alert("User does not exist");
 				} else {
 				$("#matesinwg").append("grrr" + "  ; \u00A0\u00A0  ");
@@ -47,7 +49,7 @@
 			} else {
 				
 			};
-			
+			// Validates the input for Email Syntax
 			function validateForm(text) {
 			    var positionAt = text.indexOf("@");
 			    var positionDot = text.lastIndexOf(".");
@@ -63,6 +65,8 @@
 		});
 	});
 </script>
+
+<p class="breadcrumbs"><pre><a href="/"/> Home </a>   >   Place ad </pre></p>
 
 <h1>Place an ad</h1>
 <hr />

@@ -128,7 +128,8 @@ public class AdController {
 	}
 	
 	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
-	public @ResponseBody String validateEmail(@RequestParam String email){
+	@ResponseBody
+	public String validateEmail(@RequestParam String email){
 		
 		try {
 			User user = userService.findUserByUsername(email);
