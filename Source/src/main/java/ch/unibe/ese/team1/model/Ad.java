@@ -317,4 +317,12 @@ public class Ad {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	public Date getDate(boolean date) {
+		if(date)
+			return moveInDate;
+		else
+			return moveOutDate;
+	}
+	
 }

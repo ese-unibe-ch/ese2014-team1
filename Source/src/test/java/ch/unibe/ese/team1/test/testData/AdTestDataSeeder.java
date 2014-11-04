@@ -1,5 +1,6 @@
 package ch.unibe.ese.team1.test.testData;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,6 @@ import ch.unibe.ese.team1.model.dao.UserDao;
 /** This inserts two ad elements into the database. */
 @Service
 public class AdTestDataSeeder implements InitializingBean {
-	Date date = new Date();
 
 	@Autowired
 	private AdDao adDao;
@@ -38,11 +38,19 @@ public class AdTestDataSeeder implements InitializingBean {
 		picture.setUser(user);
 		user.setPicture(picture);
 		userDao.save(user);
+		
+		String date1str = "01.11.2014";
+		String date2str = "01.12.2014";
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+		
+		Date date1 = formatter.parse(date1str);
+		Date date2 = formatter.parse(date2str);
 
 		Ad adBern = new Ad();
 		adBern.setZipcode(3000);
-		adBern.setMoveInDate(date);
-		adBern.setPrizePerMonth(500);
+		adBern.setMoveInDate(date1);
+		adBern.setPrizePerMonth(400);
 		adBern.setSquareFootage(50);
 		adBern.setStudio(false);
 		adBern.setSmokers(false);
@@ -70,8 +78,8 @@ public class AdTestDataSeeder implements InitializingBean {
 
 		Ad adBern2 = new Ad();
 		adBern2.setZipcode(3000);
-		adBern2.setMoveInDate(date);
-		adBern2.setPrizePerMonth(600);
+		adBern2.setMoveInDate(date2);
+		adBern2.setPrizePerMonth(450);
 		adBern2.setSquareFootage(60);
 		adBern2.setStudio(true);
 		adBern2.setSmokers(false);
@@ -99,8 +107,8 @@ public class AdTestDataSeeder implements InitializingBean {
 
 		Ad adBasel = new Ad();
 		adBasel.setZipcode(4000);
-		adBasel.setMoveInDate(date);
-		adBasel.setPrizePerMonth(1000);
+		adBasel.setMoveInDate(date2);
+		adBasel.setPrizePerMonth(480);
 		adBasel.setSquareFootage(10);
 		adBasel.setStudio(true);
 		adBasel.setSmokers(true);
