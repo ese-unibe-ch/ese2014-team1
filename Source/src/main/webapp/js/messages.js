@@ -50,4 +50,8 @@ $(document).ready(function() {
 			prepareRows();
 		}, 'json');
 	});
+	
+	$("#new").click(function(){
+	    $(this).hide();
+	  });
 });

@@ -17,6 +17,7 @@
 <hr />
 <div id="folders">
 	<h2 id="inbox">Inbox</h2>
+	<h2><a href="#" id="new">New</a></h2>
 	<h2 id="sent">Sent</h2>
 	<h2 id="drafts">Drafts</h2>
 	<h2 id="deleted">Deleted</h2>
