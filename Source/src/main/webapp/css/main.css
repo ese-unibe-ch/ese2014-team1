@@ -64,6 +64,22 @@ but not in one String (i.e. in the header) */
 	padding-right: 8px;
 }
 
+.styledTable {
+	background-color: #3dc16d;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+.styledTable th {
+	background-color: #2dc16d;
+	color: white;
+}
+
+.styledTable td {
+	background-color: white;
+	padding: 5px 10px;
+}
+
 input, select, textarea {
 	margin-right: 10px;
 	margin-bottom: 10px;
@@ -279,20 +295,7 @@ footer nav ul li {
 }
 
 #uploaded-pictures {
-	background-color: #3dc16d;
-	border-radius: 5px;
 	width: 500px;
-	margin-top: 20px;
-}
-
-#uploaded-pictures th {
-	background-color: #2dc16d;
-	color: white;
-}
-
-#uploaded-pictures td {
-	background-color: white;
-	padding: 5px 10px;
 }
 
 #name-column {
@@ -361,7 +364,7 @@ footer nav ul li {
 	border-radius: 10px;
 }
 
-#resultsDiv div:first-child{
+#resultsDiv div:first-child {
 	margin-top: 0px;
 }
 
@@ -463,4 +466,43 @@ footer nav ul li {
 	width: 40px;
 	margin-left: 10px;
 	float: left;
+}
+
+/* -------------------------------------------------------------------- */
+#messageList {
+	float: right;
+	width: 70%;
+}
+
+#messageList hr {
+	margin-top: 30px;
+}
+
+#messageList table {
+	width: 90%;
+	margin:auto;
+}
+
+#messageList table tr{
+	background-color: gray;
+}
+
+#subjectColumn {
+	width: 40%;
+}
+
+#folders {
+	float: left;
+	width: 30%;
+	height: 70%;
+}
+
+#messageDetail{
+	border-color: #2dc16d;
+	border-radius: 10px;
+	border-width: 3px;
+	border-style: solid;
+	padding: 30px;
+	width: 80%;
+	margin: auto;
 }

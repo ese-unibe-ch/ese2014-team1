@@ -38,6 +38,14 @@ public class Message {
 	@ManyToOne
 	private User recipient;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public MessageState getState() {
 		return state;
 	}

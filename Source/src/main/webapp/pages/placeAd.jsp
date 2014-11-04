@@ -207,7 +207,7 @@
 		<br />
 		<label for="field-pictures">Pictures</label> <input type="file"
 			id="field-pictures" accept="image/*" multiple="multiple" />
-		<table id="uploaded-pictures">
+		<table id="uploaded-pictures" class="styledTable">
 			<tr>
 				<th id="name-column">Uploaded picture</th>
 				<th>Size</th>

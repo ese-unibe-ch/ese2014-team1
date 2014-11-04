@@ -49,7 +49,7 @@
 						</a>
 							<ul>
 								<li><a href="#">My rooms</a></li>
-								<li><a href="#">Messages (99)</a></li>
+								<li><a href="/profile/messages">Messages (99)</a></li>
 								<li><a href="#">Calendar</a></li>
 								<li><a href="#">Alerts</a></li>
 								<li><a href="#">Public Profile</a></li>
