@@ -77,7 +77,7 @@
 
 	<fieldset>
 		<legend>General info</legend>
-		<table style="width: 80%">
+		<table class="placeAdTable">
 			<tr>
 				<td><label for="field-title">Ad Title</label></td>
 				<td><label for="type-room">Type:</label></td>
@@ -134,7 +134,7 @@
 	<fieldset>
 		<legend>Room Description</legend>
 
-		<table style="width: 80%">
+		<table class="placeAdTable">
 			<tr>
 				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals
 						allowed</label></td>
@@ -179,7 +179,7 @@
 		<legend>Roommates</legend>
 		<p>If your roommates have an account, simply add them by email.</p>
 
-		<table style="width: 80%">
+		<table class="placeAdTable">
 			<tr>
 				<td><label for="room_friends">Add by email</label></td>
 			</tr>
