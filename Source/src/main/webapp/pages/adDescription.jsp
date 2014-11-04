@@ -45,7 +45,7 @@
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
+			<td><u><a href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</a></u></td>
 		</tr>
 
 		<tr>
