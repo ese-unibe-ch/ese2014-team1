@@ -11,32 +11,16 @@
 <fmt:formatDate value="${messages[0].dateSent}" var="formattedDateSent"
 	type="date" pattern="HH:mm, dd.MM.yyyy" />
 
-<script>
-	$(document).ready(function() {
-		var rows = $("#messageList table tr:gt(0)");
-		$(rows).hover(function() {
-			$(this).children().css("background-color", "#ececec");
-		}, function() {
-			$(this).children().css("background-color", "white");
-		});
-		$(rows).click(function() {
-			var id = $(this).attr("data-id");
-			$.get("/profile/messages/getMessage?id=" + id, function(data) {
-				var result = '<h2>' + data.subject + '</h2>';
-				result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
-				var date = new Date(data.dateSent);
-				result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
-				result += '<br /><p>' + data.text + '</p>';
-				$("#messageDetail").html(result);
-			}, 'json');
-		});
-	});
-</script>
-
+<script src="/js/messages.js"></script>
 
 <h1>Messages</h1>
 <hr />
-<div id="folders"></div>
+<div id="folders">
+	<h2 id="inbox">Inbox</h2>
+	<h2 id="sent">Sent</h2>
+	<h2 id="drafts">Drafts</h2>
+	<h2 id="deleted">Deleted</h2>
+</div>
 <div id="messageList">
 	<table class="styledTable">
 		<tr>
@@ -45,10 +29,14 @@
 			<th>Date sent</th>
 		</tr>
 		<c:forEach items="${messages }" var="message">
+			<fmt:formatDate value="${message.dateSent}"
+				var="singleFormattedDateSent" type="date"
+				pattern="HH:mm, dd.MM.yyyy" />
+
 			<tr data-id="${message.id}">
 				<td>${message.subject }</td>
 				<td>${message.sender.email}</td>
-				<td>${message.dateSent}</td>
+				<td>${singleFormattedDateSent}</td>
 			</tr>
 		</c:forEach>
 	</table>
