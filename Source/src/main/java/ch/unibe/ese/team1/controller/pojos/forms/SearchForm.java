@@ -8,6 +8,8 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class SearchForm {
 	
+	private boolean filtered;
+	
 	//studio: true, room: false
 	private boolean studio;
 
@@ -26,9 +28,9 @@ public class SearchForm {
 	
 	private boolean bothRoomAndStudio;
 
-	// /////////////////////
-	// Getters and setters//
-	// /////////////////////
+	///////////////////////
+	//Getters and setters//
+	///////////////////////
 	public String getCity() {
 		return city;
 	}
@@ -77,6 +79,101 @@ public class SearchForm {
 		this.bothRoomAndStudio = bothRoomAndStudio;
 	}
 	
+	////////////////////
+	//Filtered results//
+	////////////////////
+	
+	public boolean getFiltered() {
+		return filtered;
+	}
+	
+	public void setFiltered(boolean filtered) {
+		this.filtered = filtered;
+	}
+	
+	private boolean smokers;
+	private boolean animals;
+	private boolean garden;
+	private boolean balcony;
+	private boolean cellar;
+	private boolean furnished;
+	private boolean cable;
+	private boolean garage;
+	private String food;
+	
+	public boolean getSmokers() {
+		return smokers;
+	}
+
+	public void setSmokers(boolean smokers) {
+		this.smokers = smokers;
+	}
+
+	public boolean getAnimals() {
+		return animals;
+	}
+
+	public void setAnimals(boolean animals) {
+		this.animals = animals;
+	}
+
+	public boolean getGarden() {
+		return garden;
+	}
+
+	public void setGarden(boolean garden) {
+		this.garden = garden;
+	}
+
+	public boolean getBalcony() {
+		return balcony;
+	}
+
+	public void setBalcony(boolean balcony) {
+		this.balcony = balcony;
+	}
+
+	public boolean getCellar() {
+		return cellar;
+	}
+
+	public void setCellar(boolean cellar) {
+		this.cellar = cellar;
+	}
+
+	public boolean getFurnished() {
+		return furnished;
+	}
+
+	public void setFurnished(boolean furnished) {
+		this.furnished = furnished;
+	}
+
+	public boolean getCable() {
+		return cable;
+	}
+
+	public void setCable(boolean cable) {
+		this.cable = cable;
+	}
+
+	public boolean getGarage() {
+		return garage;
+	}
+
+	public void setGarage(boolean garage) {
+		this.garage = garage;
+	}
+
+	public String getFood() {
+		return food;
+	}
+
+	public void setFood(String food) {
+		assert(food.equals("Everything") || food.equals("Vegetarian") || food.equals("Vegan"));
+		this.food = food;
+	}
+
 	//the ugly stuff
 	private boolean typeHelper;
 

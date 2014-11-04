@@ -6,14 +6,27 @@
 
 <c:import url="template/header.jsp" />
 
-<!-- TODO: Add filter function -->
+<script>
+	$(document).ready(function() {
+		$("#city").autocomplete({
+			minLength : 2
+		});
+		$("#city").autocomplete({
+			source : <c:import url="getzipcodes.jsp" />
+		});
+		$("#city").autocomplete("option", {
+			enabled : true,
+			autoFocus : true
+		});
+	});
+</script>
 
 <h1>Search results:</h1>
 
 <hr />
 
 <c:choose>
-	<c:when test="${empty results }">
+	<c:when test="${empty results}">
 		<p>No results found!
 	</c:when>
 	<c:otherwise>
@@ -46,14 +59,83 @@
 	</c:otherwise>
 </c:choose>
 
-<form:form method="post" modelAttribute="filterForm" action="/results"
-	id="filterForm" autocomplete="off" enctype="multipart/form-data">
+<form:form method="post" modelAttribute="searchForm" action="/results"
+	id="filterForm" autocomplete="off">
 
 	<div id="filterDiv">
-		<fieldset>
-			<legend>Filter results:</legend>
-			<h1>YOLO</h1>
-		</fieldset>
+		<h2>Filter results:</h2>
+		<form:checkbox name="room" id="room" path="typeHelper" /><label>Room</label>
+		<form:checkbox name="studio" id="studio" path="typeHelper" /><label>Studio</label>
+	
+		<form:checkbox style="display:none" name="neither" id="neither" path="noRoomNoStudio" />
+		<form:checkbox style="display:none" name="both" id="both" path="bothRoomAndStudio" />
+		<form:checkbox style="display:none" name="type" id="type" path="studio" />
+		<form:checkbox style="display:none" name="filtered" id="filtered" path="filtered" />
+		<form:errors path="noRoomNoStudio" cssClass="validationErrorText" /> <br />
+	
+		<label for="city">City / zip code:</label>
+		<form:input type="text" name="city" id="city" path="city"
+			placeholder="e.g. Bern" tabindex="3" />
+		<form:errors path="city" cssClass="validationErrorText" /><br />
+			
+		<label for="radius">Within radius of (max.):</label>
+		<form:input id="radiusInput" type="number" path="radius"
+			placeholder="e.g. 5" step="5" value="5" />
+		km
+		<form:errors path="radius" cssClass="validationErrorText" />
+		<br /> <label for="prize">Price (max.):</label>
+		<form:input id="prizeInput" type="number" path="prize"
+			placeholder="e.g. 5" step="50" value="500" />
+		CHF
+		<form:errors path="prize" cssClass="validationErrorText" /><br />
+		
+		<hr style="height:2px; margin-bottom:10px"/>		
+		
+		<table style="width: 80%">
+			<tr>
+				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals
+						allowed</label></td>
+				<td><form:checkbox id="field-animals" path="animals" value="1" /><label>Smoking
+						inside allowed</label></td>
+			</tr>
+			<tr>
+				<td><form:checkbox id="field-garden" path="garden" value="1" /><label>Garden
+						(co-use)</label></td>
+				<td><form:checkbox id="field-balcony" path="balcony" value="1" /><label>Balcony
+						or Patio</label></td>
+			</tr>
+			<tr>
+				<td><form:checkbox id="field-cellar" path="cellar" value="1" /><label>Cellar
+						or Attic</label></td>
+				<td><form:checkbox id="field-furnished" path="furnished"
+						value="1" /><label>Furnished</label></td>
+			</tr>
+			<tr>
+				<td><form:checkbox id="field-cable" path="cable" value="1" /><label>Cable
+						TV</label></td>
+				<td><form:checkbox id="field-garage" path="garage" value="1" /><label>Garage</label>
+				</td>
+			</tr>
+		</table>
+			
+		<label>Food preference:</label> <form:radiobutton
+			path="food" value="Everything" checked="checked" /><label>Everything</label>
+		<form:radiobutton path="food" value="Vegetarian" /><label>Vegetarian</label>
+		<form:radiobutton path="food" value="Vegan" /><label>Vegan</label> <br>
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				
+		<button type="submit" tabindex="7" onClick="validateType(this.form)">Search</button>	
+		<button type="reset" tabindex="8">Cancel</button>
 	</div>
 </form:form>
 

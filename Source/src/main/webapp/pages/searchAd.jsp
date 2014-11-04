@@ -30,6 +30,7 @@ function validateType(form)
 	var neither = document.getElementById('neither');
 	var both = document.getElementById('both');
 	var type = document.getElementById('type');
+	var filtered = document.getElementById('filtered');
 	
 	if(room.checked && studio.checked) {
 		both.checked = true;
@@ -44,6 +45,7 @@ function validateType(form)
 		neither.checked = false;
 		type.checked = studio.checked;
 	}
+	filtered.checked = true;
 }
 </script>
 
@@ -60,6 +62,7 @@ function validateType(form)
 		<form:checkbox style="display:none" name="neither" id="neither" path="noRoomNoStudio" />
 		<form:checkbox style="display:none" name="both" id="both" path="bothRoomAndStudio" />
 		<form:checkbox style="display:none" name="type" id="type" path="studio" />
+		<form:checkbox style="display:none" name="filtered" id="filtered" path="filtered" />
 		<form:errors path="noRoomNoStudio" cssClass="validationErrorText" />
 		
 		<br />
