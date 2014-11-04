@@ -18,6 +18,19 @@
 			enabled : true,
 			autoFocus : true
 		});
+		
+		$("#field-earliestMoveInDate").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+		$("#field-latestMoveInDate").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+		$("#field-earliestMoveOutDate").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+		$("#field-latestMoveOutDate").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
 	});
 </script>
 
@@ -51,7 +64,7 @@
 					<div class="resultRight">
 						<h2>CHF ${ad.prizePerMonth }</h2>
 						<br /> <br />
-						<p>Move in date: ${ad.moveInDate }</p>
+						<p>Move-in date: ${ad.moveInDate }</p>
 					</div>
 				</div>
 			</c:forEach>
@@ -92,6 +105,26 @@
 		<hr style="height:2px; margin-bottom:10px"/>		
 		
 		<table style="width: 80%">
+			<tr>
+				<td><label for="earliestMoveInDate">Earliest move-in date</label></td>
+				<td><label for="earliestMoveOutDate">Earliest move-out date (optional)</label></td>
+			</tr>
+			<tr>
+				<td><form:input type="text" id="field-earliestMoveInDate"
+						path="earliestMoveInDate" /></td>
+				<td><form:input type="text" id="field-earliestMoveOutDate"
+						path="earliestMoveOutDate" /></td>
+			</tr>
+			<tr>
+				<td><label for="latestMoveInDate">Latest move-in date</label></td>
+				<td><label for="latestMoveOutDate">Latest move-out date (optional)</label></td>
+			</tr>
+			<tr>
+				<td><form:input type="text" id="field-latestMoveInDate"
+						path="latestMoveInDate" /></td>
+				<td><form:input type="text" id="field-latestMoveOutDate"
+						path="latestMoveOutDate" /></td>
+			</tr>
 			<tr>
 				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals
 						allowed</label></td>
@@ -134,8 +167,8 @@
 		
 		
 				
-		<button type="submit" tabindex="7" onClick="validateType(this.form)">Search</button>	
-		<button type="reset" tabindex="8">Cancel</button>
+		<button type="submit" onClick="validateType(this.form)">Search</button>	
+		<button type="reset">Cancel</button>
 	</div>
 </form:form>
 

@@ -1,5 +1,7 @@
 package ch.unibe.ese.team1.controller.pojos.forms;
 
+import java.util.Date;
+
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
@@ -91,6 +93,11 @@ public class SearchForm {
 		this.filtered = filtered;
 	}
 	
+	private Date earliestMoveInDate;
+	private Date latestMoveInDate;
+	private Date earliestMoveOutDate;
+	private Date latestMoveOutDate;
+	
 	private boolean smokers;
 	private boolean animals;
 	private boolean garden;
@@ -172,6 +179,38 @@ public class SearchForm {
 	public void setFood(String food) {
 		assert(food.equals("Everything") || food.equals("Vegetarian") || food.equals("Vegan"));
 		this.food = food;
+	}
+
+	public Date getEarliestMoveInDate() {
+		return earliestMoveInDate;
+	}
+
+	public void setEarliestMoveInDate(Date earliestMoveInDate) {
+		this.earliestMoveInDate = earliestMoveInDate;
+	}
+
+	public Date getLatestMoveInDate() {
+		return latestMoveInDate;
+	}
+
+	public void setLatestMoveInDate(Date latestMoveInDate) {
+		this.latestMoveInDate = latestMoveInDate;
+	}
+
+	public Date getEarliestMoveOutDate() {
+		return earliestMoveOutDate;
+	}
+
+	public void setEarliestMoveOutDate(Date earliestMoveOutDate) {
+		this.earliestMoveOutDate = earliestMoveOutDate;
+	}
+
+	public Date getLatestMoveOutDate() {
+		return latestMoveOutDate;
+	}
+
+	public void setLatestMoveOutDate(Date latestMoveOutDate) {
+		this.latestMoveOutDate = latestMoveOutDate;
 	}
 
 	//the ugly stuff
