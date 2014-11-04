@@ -220,6 +220,7 @@ public class AdService {
 		//filter for additional criteria
 		if(searchForm.getFiltered())
 		{
+			//prepare date filtering - by far the most difficult filter
 			Date earliestInDate = null;	
 			Date latestInDate = null;
 			Date earliestOutDate = null;
@@ -247,6 +248,106 @@ public class AdService {
 			//filtering by dates
 			locatedResults = validateDate(locatedResults, true, earliestInDate, latestInDate);
 			locatedResults = validateDate(locatedResults, false, earliestOutDate, latestOutDate);
+						
+			//filtering for the rest
+			//smokers
+			if(searchForm.getSmokers()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getSmokers())
+						iterator.remove();
+				}
+			}
+			
+			//animals
+			if(searchForm.getAnimals()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getAnimals())
+						iterator.remove();
+				}
+			}
+			
+			//garden
+			if(searchForm.getGarden()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getGarden())
+						iterator.remove();
+				}
+			}
+			
+			//balcony
+			if(searchForm.getBalcony()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getBalcony())
+						iterator.remove();
+				}
+			}
+			
+			//cellar
+			if(searchForm.getCellar()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getCellar())
+						iterator.remove();
+				}
+			}
+			
+			//furnished
+			if(searchForm.getFurnished()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getFurnished())
+						iterator.remove();
+				}
+			}
+			
+			//cable
+			if(searchForm.getCable()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getCable())
+						iterator.remove();
+				}
+			}
+			
+			//garage
+			if(searchForm.getGarage()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getGarage())
+						iterator.remove();
+				}
+			}
+			
+			//food
+			if(searchForm.getFood().equals("Vegan")) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getFood().equals("Vegan"))
+						iterator.remove();
+				}
+			}
+			else if(searchForm.getFood().equals("Vegetarian")) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(ad.getFood().equals("Everything"))
+						iterator.remove();
+				}
+			}
+			else { }
 		}
 		return locatedResults;
 	}

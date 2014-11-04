@@ -48,7 +48,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		Date date2 = formatter.parse(date2str);
 
 		Ad adBern = new Ad();
-		adBern.setZipcode(3000);
+		adBern.setZipcode(3006);
 		adBern.setMoveInDate(date1);
 		adBern.setPrizePerMonth(400);
 		adBern.setSquareFootage(50);
@@ -77,7 +77,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		adDao.save(adBern);
 
 		Ad adBern2 = new Ad();
-		adBern2.setZipcode(3000);
+		adBern2.setZipcode(3006);
 		adBern2.setMoveInDate(date2);
 		adBern2.setPrizePerMonth(450);
 		adBern2.setSquareFootage(60);

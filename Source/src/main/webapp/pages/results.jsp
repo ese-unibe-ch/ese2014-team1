@@ -153,9 +153,9 @@ function validateType(form)
 						path="latestMoveOutDate" /></td>
 			</tr>
 			<tr>
-				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals
+				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Smoking inside
 						allowed</label></td>
-				<td><form:checkbox id="field-animals" path="animals" value="1" /><label>Smoking
+				<td><form:checkbox id="field-animals" path="animals" value="1" /><label>Animals
 						inside allowed</label></td>
 			</tr>
 			<tr>

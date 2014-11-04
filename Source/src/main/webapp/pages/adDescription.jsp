@@ -48,7 +48,9 @@
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td>${shownAd.street},${shownAd.zipcode} ${shownAd.city}</td>
+			<td><u><a
+					href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
+						${shownAd.zipcode} ${shownAd.city}</a></u></td>
 		</tr>
 
 		<tr>
@@ -238,7 +240,7 @@
 <div style="clear: both"></div>
 <br>
 
-<table id="advertiserTable" >
+<table id="advertiserTable">
 	<tr>
 		<td><c:choose>
 				<c:when test="${shownAd.user.picture.filePath != null}">
