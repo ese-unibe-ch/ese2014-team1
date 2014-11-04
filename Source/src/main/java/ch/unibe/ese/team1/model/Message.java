@@ -11,13 +11,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /** Represents a message that is sent between two users. */
 @Entity
 public class Message {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 
 	@Column(nullable = false)
 	private MessageState state;
@@ -29,6 +31,7 @@ public class Message {
 	@Lob
 	private String text;
 
+	@JsonFormat(pattern = "HH:mm, dd.MM.yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateSent;
 
@@ -38,11 +41,11 @@ public class Message {
 	@ManyToOne
 	private User recipient;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

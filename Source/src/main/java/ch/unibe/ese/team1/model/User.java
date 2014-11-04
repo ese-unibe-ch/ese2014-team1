@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -37,9 +39,11 @@ public class User {
 	@Column(nullable = false)
 	private boolean enabled;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade= CascadeType.ALL)
 	private Set<UserRole> userRoles;
 
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserPicture picture;
 

@@ -3,8 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:import url="template/header.jsp" />
+
+<!-- format the dates -->
+<fmt:formatDate value="${messages[0].dateSent}" var="formattedDateSent"
+	type="date" pattern="HH:mm, dd.MM.yyyy" />
 
 <script>
 	$(document).ready(function() {
@@ -14,10 +19,17 @@
 		}, function() {
 			$(this).children().css("background-color", "white");
 		});
-		/* $(rows).click(function(){
+		$(rows).click(function() {
 			var id = $(this).attr("data-id");
-			$.post("/profile/messages/getMessage?id=")
-		}); */
+			$.get("/profile/messages/getMessage?id=" + id, function(data) {
+				var result = '<h2>' + data.subject + '</h2>';
+				result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
+				var date = new Date(data.dateSent);
+				result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
+				result += '<br /><p>' + data.text + '</p>';
+				$("#messageDetail").html(result);
+			}, 'json');
+		});
 	});
 </script>
 
@@ -47,7 +59,7 @@
 			<b>From: </b> ${messages[0].sender.email }
 		</h3>
 		<h3>
-			<b>Date sent:</b> ${messages[0].dateSent }
+			<b>Date sent:</b> ${formattedDateSent}
 		</h3>
 		<br />
 		<p>${messages[0].text }</p>
