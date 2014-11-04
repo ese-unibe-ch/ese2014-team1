@@ -93,10 +93,10 @@ public class SearchForm {
 		this.filtered = filtered;
 	}
 	
-	private Date earliestMoveInDate;
-	private Date latestMoveInDate;
-	private Date earliestMoveOutDate;
-	private Date latestMoveOutDate;
+	private String earliestMoveInDate;
+	private String latestMoveInDate;
+	private String earliestMoveOutDate;
+	private String latestMoveOutDate;
 	
 	private boolean smokers;
 	private boolean animals;
@@ -181,35 +181,35 @@ public class SearchForm {
 		this.food = food;
 	}
 
-	public Date getEarliestMoveInDate() {
+	public String getEarliestMoveInDate() {
 		return earliestMoveInDate;
 	}
 
-	public void setEarliestMoveInDate(Date earliestMoveInDate) {
+	public void setEarliestMoveInDate(String earliestMoveInDate) {
 		this.earliestMoveInDate = earliestMoveInDate;
 	}
 
-	public Date getLatestMoveInDate() {
+	public String getLatestMoveInDate() {
 		return latestMoveInDate;
 	}
 
-	public void setLatestMoveInDate(Date latestMoveInDate) {
+	public void setLatestMoveInDate(String latestMoveInDate) {
 		this.latestMoveInDate = latestMoveInDate;
 	}
 
-	public Date getEarliestMoveOutDate() {
+	public String getEarliestMoveOutDate() {
 		return earliestMoveOutDate;
 	}
 
-	public void setEarliestMoveOutDate(Date earliestMoveOutDate) {
+	public void setEarliestMoveOutDate(String earliestMoveOutDate) {
 		this.earliestMoveOutDate = earliestMoveOutDate;
 	}
 
-	public Date getLatestMoveOutDate() {
+	public String getLatestMoveOutDate() {
 		return latestMoveOutDate;
 	}
 
-	public void setLatestMoveOutDate(Date latestMoveOutDate) {
+	public void setLatestMoveOutDate(String latestMoveOutDate) {
 		this.latestMoveOutDate = latestMoveOutDate;
 	}
 
