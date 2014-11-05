@@ -34,30 +34,26 @@
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			if(validateForm(text)) {
-				var returnText = $.post("/profile/placeAd/validateEmail", {
-					email : text
+				$.get("/profile/placeAd/validateEmail?email=" + text, function(data) {
+					if(validateForm(data)) {
+						$("#matesinwg").html(data);
+					} else {
+						alert(data);
+					}
 				});
-				// var neu = Raw(Json.Encode(returnText));
-				// alert(Raw(Json.Encode(returnText)));
-				
-				if(returnText == null) {
-					alert("User does not exist");
-				} else {
-				$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
-				$("#room_friends").val("");
-				}
 			} else {
-				
-			};
+					alert("Please enter an e-mail address");
+			}
+			
 			// Validates the input for Email Syntax
 			function validateForm(text) {
 			    var positionAt = text.indexOf("@");
 			    var positionDot = text.lastIndexOf(".");
 			    if (positionAt< 1 || positionDot<positionAt+2 || positionDot+2>=text.length) {
-			        alert("Please enter an e-mail address");
 			        return false;
-			    } else
+			    } else {
 			    	return true;
+			    }
 			}
 			// splitting is done by
 			// ->  "1,2,3".split( "," ) -> [ "1", "2", "3" ]

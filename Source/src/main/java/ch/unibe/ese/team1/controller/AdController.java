@@ -128,9 +128,9 @@ public class AdController {
 	}
 	
 	// why does it have to be POST when you try to retrieve data and not submit it!?!?
-	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
-	// @ResponseBody
-	public String validateEmail(@RequestParam("email") String email){
+	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.GET)
+	@ResponseBody
+	public String validateEmail(@RequestParam String email){
 		
 		try {
 			User user = userService.findUserByUsername(email);
@@ -139,7 +139,7 @@ public class AdController {
 		} catch (NullPointerException e) {
 			System.out.println("this is so wrong");
 			System.err.println("Caught NullPointer Exception " + e.getMessage());
-			return "noGood";
+			return "This user does not exist, did your roommate register?";
 		}
 		
 		
