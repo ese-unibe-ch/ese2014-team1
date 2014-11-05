@@ -88,6 +88,9 @@ public class Ad {
 	
 	@Column(nullable = false)
 	private boolean garage;
+	
+	@Column(nullable = false)
+	private boolean internet;
 		
 	//true if studio, false if room
 	@Column(nullable = false)
@@ -163,6 +166,14 @@ public class Ad {
 	
 	public void setGarage(boolean garage) {
 		this.garage = garage;
+	}
+
+	public boolean getInternet() {
+		return internet;
+	}
+
+	public void setInternet(boolean internet) {
+		this.internet = internet;
 	}
 
 	// for adding roommates to an ad

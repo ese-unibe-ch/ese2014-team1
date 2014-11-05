@@ -49,7 +49,7 @@ public class PlaceAdForm {
 	private boolean furnished;
 	private boolean cable;
 	private boolean garage;
-	private String food;
+	private boolean internet;
 
 	public String getCity() {
 		return city;
@@ -163,13 +163,12 @@ public class PlaceAdForm {
 		this.garage = garage;
 	}
 
-	public String getFood() {
-		return food;
+	public boolean getInternet() {
+		return internet;
 	}
 
-	public void setFood(String food) {
-		assert(food.equals("Vegan") || food.equals("Vegetarian") || food.equals("Everything"));
-		this.food = food;
+	public void setInternet(boolean internet) {
+		this.internet = internet;
 	}
 
 	public String getMoveInDate() {

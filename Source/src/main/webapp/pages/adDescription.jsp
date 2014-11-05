@@ -156,6 +156,20 @@
         		</c:otherwise>
 				</c:choose></td>
 		</tr>
+		
+		<tr>
+			<td>
+				<h2>WiFi available</h2>
+			</td>
+			<td><c:choose>
+					<c:when test="${shownAd.internet}">
+        			yes
+        		</c:when>
+					<c:otherwise>
+        			no
+        		</c:otherwise>
+				</c:choose></td>
+		</tr>
 
 		<tr>
 			<td>

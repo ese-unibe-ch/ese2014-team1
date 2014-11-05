@@ -160,11 +160,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><label>Food preference:</label> <form:radiobutton
-						path="food" value="Everything" checked="checked" /><label>Everything</label>
-					<form:radiobutton path="food" value="Vegetarian" /><label>Vegetarian</label>
-					<form:radiobutton path="food" value="Vegan" /><label>Vegan</label>
-				</td>
+				<td><form:checkbox id="field-internet" path="internet" value="1" /><label>WiFi available</label></td>
 			</tr>
 
 		</table>

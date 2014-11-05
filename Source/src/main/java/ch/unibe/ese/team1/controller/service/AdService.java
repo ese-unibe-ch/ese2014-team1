@@ -104,6 +104,7 @@ public class AdService {
 		ad.setFurnished(placeAdForm.isFurnished());
 		ad.setCable(placeAdForm.getCable());
 		ad.setGarage(placeAdForm.getGarage());
+		ad.setInternet(placeAdForm.getInternet());
 
 		/*
 		 * Save the paths to the picture files, the pictures are assumed to be
@@ -325,6 +326,16 @@ public class AdService {
 				while(iterator.hasNext()) {
 					Ad ad = iterator.next();
 					if(!ad.getGarage())
+						iterator.remove();
+				}
+			}
+			
+			//internet
+			if(searchForm.getInternet()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getInternet())
 						iterator.remove();
 				}
 			}

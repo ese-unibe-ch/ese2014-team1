@@ -178,6 +178,9 @@ function validateType(form)
 				<td><form:checkbox id="field-garage" path="garage" value="1" /><label>Garage</label>
 				</td>
 			</tr>
+			<tr>
+				<td><form:checkbox id="field-internet" path="internet" value="1" /><label>WiFi</label></td>
+			</tr>
 		</table>
 			
 		
