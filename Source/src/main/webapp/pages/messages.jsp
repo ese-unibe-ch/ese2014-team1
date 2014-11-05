@@ -55,9 +55,11 @@
 	</div>
 </div>
 
+
 <div id="msgDiv">
 	<form class="msgForm" action="#">
-		<h3>New Message</h3>
+		<h2>New Message</h2>
+		<br>
 		<label>To: <span>*</span></label>
 		<input class="msgInput" type="text" id="receiverEmail" placeholder="E-mail"/>
 		<br><br>
