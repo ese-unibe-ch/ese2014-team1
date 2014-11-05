@@ -563,6 +563,10 @@ footer nav ul li {
 
 
 /* --- messages.jsp (Rafi)--- */
+#newMessage{
+
+}
+
 .msgForm{
 	border-radius:2px;
 	padding:20px 30px;
