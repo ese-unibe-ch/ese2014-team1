@@ -63,18 +63,26 @@ function validateType(form)
 	});
 </script>
 
+<script>
+function sort() {
+	
+}
+</script>
+
 <h1>Search results:</h1>
 
 <hr />
+
+<button onClick="sort()">Sort</button>	
 
 <c:choose>
 	<c:when test="${empty results}">
 		<p>No results found!
 	</c:when>
 	<c:otherwise>
-		<div id="resultsDiv">
+		<div id="resultsDiv" class="resultsDiv">			
 			<c:forEach var="ad" items="${results}">
-				<div>
+				<div class="resultAd" data-price="${ad.prizePerMonth}">
 					<div class="resultLeft">
 						<a href="<c:url value='/ad?id=${ad.id}' />"><img
 							src="${ad.pictures[0].filePath}" /></a>
