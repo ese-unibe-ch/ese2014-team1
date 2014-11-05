@@ -1,13 +1,19 @@
 package ch.unibe.ese.team1.controller.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+
+
 
 //import ch.unibe.ese.team1.controller.pojos.forms.ASearchForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
@@ -210,6 +216,180 @@ public class AdService {
 		locatedResults = locatedResults.stream()
 				.filter(ad -> zipcodes.contains(ad.getZipcode()))
 				.collect(Collectors.toList());
+		
+		//filter for additional criteria
+		if(searchForm.getFiltered())
+		{
+			//prepare date filtering - by far the most difficult filter
+			Date earliestInDate = null;	
+			Date latestInDate = null;
+			Date earliestOutDate = null;
+			Date latestOutDate = null;
+							
+			//parse move-in and move-out dates
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+			try {
+		        earliestInDate = formatter.parse(searchForm.getEarliestMoveInDate());
+			}
+			catch (Exception e) {}
+			try {
+				latestInDate = formatter.parse(searchForm.getLatestMoveInDate());
+			}
+			catch (Exception e) {}
+			try {
+				earliestOutDate = formatter.parse(searchForm.getEarliestMoveOutDate());
+			}
+			catch (Exception e) {}
+			try {
+				latestOutDate = formatter.parse(searchForm.getLatestMoveOutDate());
+			}
+			catch (Exception e) {}
+						
+			//filtering by dates
+			locatedResults = validateDate(locatedResults, true, earliestInDate, latestInDate);
+			locatedResults = validateDate(locatedResults, false, earliestOutDate, latestOutDate);
+						
+			//filtering for the rest
+			//smokers
+			if(searchForm.getSmokers()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getSmokers())
+						iterator.remove();
+				}
+			}
+			
+			//animals
+			if(searchForm.getAnimals()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getAnimals())
+						iterator.remove();
+				}
+			}
+			
+			//garden
+			if(searchForm.getGarden()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getGarden())
+						iterator.remove();
+				}
+			}
+			
+			//balcony
+			if(searchForm.getBalcony()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getBalcony())
+						iterator.remove();
+				}
+			}
+			
+			//cellar
+			if(searchForm.getCellar()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getCellar())
+						iterator.remove();
+				}
+			}
+			
+			//furnished
+			if(searchForm.getFurnished()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getFurnished())
+						iterator.remove();
+				}
+			}
+			
+			//cable
+			if(searchForm.getCable()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getCable())
+						iterator.remove();
+				}
+			}
+			
+			//garage
+			if(searchForm.getGarage()) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getGarage())
+						iterator.remove();
+				}
+			}
+			
+			//food
+			if(searchForm.getFood().equals("Vegan")) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(!ad.getFood().equals("Vegan"))
+						iterator.remove();
+				}
+			}
+			else if(searchForm.getFood().equals("Vegetarian")) {
+				Iterator<Ad> iterator = locatedResults.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(ad.getFood().equals("Everything"))
+						iterator.remove();
+				}
+			}
+			else { }
+		}
 		return locatedResults;
+	}
+		
+	private List<Ad> validateDate(List<Ad> ads, boolean inOrOut, Date earliestDate, Date latestDate) {			
+		if(ads.size() > 0)
+		{
+			//Move-in dates
+			//Both an earliest AND a latest date to compare to
+			if(earliestDate != null) {
+				if(latestDate != null) {
+					Iterator<Ad> iterator = ads.iterator();
+					while(iterator.hasNext()) {
+						Ad ad = iterator.next();
+						if(ad.getDate(inOrOut).compareTo(earliestDate) < 0 ||
+								ad.getDate(inOrOut).compareTo(latestDate) > 0) {
+							iterator.remove();
+						}
+					}
+				}
+				//only an earliest date
+				else {
+					Iterator<Ad> iterator = ads.iterator();
+					while(iterator.hasNext()) {
+						Ad ad = iterator.next();
+						if(ad.getDate(inOrOut).compareTo(earliestDate) < 0)
+							iterator.remove();
+						}
+				}
+			}	
+			//only a latest date
+			else if(latestDate != null && earliestDate == null) {
+				Iterator<Ad> iterator = ads.iterator();
+				while(iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if(ad.getDate(inOrOut).compareTo(latestDate) > 0)
+						iterator.remove();
+				}
+			}
+			else {
+			}
+		}
+		return ads;
 	}
 }

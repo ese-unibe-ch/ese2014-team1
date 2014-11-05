@@ -33,10 +33,17 @@
 		});
 	});
 </script>
+<script src="/js/messages.js"></script>
 
 <h1>Messages</h1>
 <hr />
-<div id="folders"></div>
+<div id="folders">
+	<h2 id="inbox">Inbox</h2>
+	<h2><a href="#" id="newMessage">New</a></h2>
+	<h2 id="sent">Sent</h2>
+	<h2 id="drafts">Drafts</h2>
+	<h2 id="deleted">Deleted</h2>
+</div>
 <div id="messageList">
 	<table class="styledTable">
 		<tr>
@@ -45,10 +52,14 @@
 			<th>Date sent</th>
 		</tr>
 		<c:forEach items="${messages }" var="message">
+			<fmt:formatDate value="${message.dateSent}"
+				var="singleFormattedDateSent" type="date"
+				pattern="HH:mm, dd.MM.yyyy" />
+
 			<tr data-id="${message.id}">
 				<td>${message.subject }</td>
 				<td>${message.sender.email}</td>
-				<td>${message.dateSent}</td>
+				<td>${singleFormattedDateSent}</td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -65,4 +76,24 @@
 		<p>${messages[0].text }</p>
 	</div>
 </div>
+
+
+<div id="msgDiv">
+	<form class="msgForm" action="#">
+		<h2>New Message</h2>
+		<br>
+		<label>To: <span>*</span></label>
+		<input class="msgInput" type="text" id="receiverEmail" placeholder="E-mail"/>
+		<br><br>
+		<label>Subject: <span>*</span></label>
+		<input class="msgInput" type="text" id="msgSubject" placeholder="Subject"/>
+		<br><br>
+		<label>Message: </label>
+		<textarea id="msgTextarea" placeholder="Message"></textarea>
+		<input class="msgInputButton" type="button" id="msgSend" value="Send"/>
+		<input class="msgInputButton" type="button" id="msgCancel" value="Cancel"/>
+		<br/>
+	</form>
+</div>
+
 <c:import url="template/footer.jsp" />

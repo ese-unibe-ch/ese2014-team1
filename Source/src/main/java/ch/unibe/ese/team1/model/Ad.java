@@ -92,7 +92,7 @@ public class Ad {
 	@Column(nullable = false)
 	private String food;
 	
-	//1 if studio, 0 if room
+	//true if studio, false if room
 	@Column(nullable = false)
 	private boolean studio;
 	
@@ -317,4 +317,12 @@ public class Ad {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	public Date getDate(boolean date) {
+		if(date)
+			return moveInDate;
+		else
+			return moveOutDate;
+	}
+	
 }

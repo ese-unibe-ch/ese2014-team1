@@ -55,7 +55,7 @@ but not in one String (i.e. in the header) */
 	display: inline-block;
 	float: left;
 	padding-left: 8px;
-	margin-top: -5px;
+	margin-top: 5px;
 }
 
 .right {
@@ -154,6 +154,10 @@ button {
 	border-radius: 5px;
 	margin-right: 10px;
 	vertical-align: top;
+}
+
+.clearBoth {
+	clear: both;
 }
 
 /* -------------------------------------------------------------------- */
@@ -289,6 +293,7 @@ footer nav ul li {
 /* -------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------- */
+/* placeAd.jsp */
 #placeAdForm {
 	width: 900px;
 	margin: auto;
@@ -302,17 +307,24 @@ footer nav ul li {
 	width: 60%;
 }
 
+.placeAdTable {
+	width: 80%;
+}
+
 /* -------------------------------------------------------------------- */
+/* signup.jsp */
 #signupForm {
 	width: 350px;
 }
 
 /* -------------------------------------------------------------------- */
+/* search.jsp */
 #searchForm {
 	width: 900px;
 }
 
 /* -------------------------------------------------------------------- */
+/* results.jsp */
 #resultTable {
 	border-radius: 5px;
 	background-color: #2dc16d;
@@ -393,6 +405,7 @@ footer nav ul li {
 }
 
 /* -------------------------------------------------------------------- */
+/* adDescription.jsp */
 #adDescTable {
 	width: 40%;
 	float: left;
@@ -412,6 +425,28 @@ footer nav ul li {
 
 .advertiserTable h2 {
 	margin: 4px;
+}
+
+#descriptionTexts {
+	width: 55%;
+	float: left
+}
+
+#descriptionTexts div{
+	width: 80%;
+}
+
+#advertiserTable{
+	width: 40%;
+}
+
+#advertiserTable img{
+	width: 50px;
+	height: 50px;
+}
+
+#advertiserTable h2{
+	margin: 0;
 }
 
 #image-slider {
@@ -469,9 +504,11 @@ footer nav ul li {
 }
 
 /* -------------------------------------------------------------------- */
+/* messages.jsp */
 #messageList {
 	float: right;
 	width: 70%;
+	margin-right: 40px;
 }
 
 #messageList hr {
@@ -480,11 +517,11 @@ footer nav ul li {
 
 #messageList table {
 	width: 90%;
-	margin:auto;
+	margin: auto;
 }
 
-#messageList table tr{
-	background-color: gray;
+#messageList table tr:hover {
+	cursor: pointer;
 }
 
 #subjectColumn {
@@ -493,16 +530,104 @@ footer nav ul li {
 
 #folders {
 	float: left;
-	width: 30%;
+	width: 10%;
 	height: 70%;
+	margin-left: 30px;
+	border-color: #2dc16d;
+	border-radius: 5px;
+	border-width: 3px;
+	border-style: solid;
+	padding: 15px;
 }
 
-#messageDetail{
+#folders h2 {
+	padding: 5px;
+	color: graytext;
+}
+
+#folders h2:hover {
+	background-color: #2dc16d;
+	color: white;
+	cursor: pointer;
+}
+
+#messageDetail {
 	border-color: #2dc16d;
-	border-radius: 10px;
+	border-radius: 5px;
 	border-width: 3px;
 	border-style: solid;
 	padding: 30px;
 	width: 80%;
 	margin: auto;
+}
+
+
+/* --- messages.jsp (Rafi)--- */
+#folders a:hover {
+	background-color: #2dc16d;
+	color: white;
+	cursor: pointer;
+}
+
+.msgForm{
+	border-radius:2px;
+	padding:20px 30px;
+	box-shadow:0 0 15px;
+	font-size:14px;
+	font-weight:bold;
+	width:350px;
+	margin:20px 250px 0 35px;
+	float:left;
+	
+	background-color:white;
+	position: relative;
+	border: 5px solid rgb(90, 158, 181);
+	left: 50%;
+	top: 50%;
+	margin-left:-210px;
+	margin-top:-255px;
+}
+
+.msgInput{
+	width:100%;
+	height:35px;
+	margin-top:5px;
+	border:1px solid #999;
+	border-radius:3px;
+	padding:5px;
+}
+
+.msgInputButton{
+	background-color:#123456;
+	border:1px solid white;
+	font-Weight:bold;
+	font-size:18px;
+	color:white;
+	width:49%;
+}
+
+#msgTextarea{
+	width:100%;
+	height:80px;
+	margin-top:5px;
+	border-radius:3px;
+	padding:5px;
+	resize:none;
+}
+
+#msgDiv{
+	opacity:0.92;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	display: none;
+}
+
+.img{
+	float: right;
+	margin-top: -35px;
+	margin-right: -37px;
 }

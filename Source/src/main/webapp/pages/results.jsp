@@ -9,6 +9,33 @@
 	<a href="/searchAd/">Search Ads</a>   >   Results </pre></p>
 
 <script>
+function validateType(form)
+{
+	var room = document.getElementById('room');
+	var studio = document.getElementById('studio');
+	var neither = document.getElementById('neither');
+	var both = document.getElementById('both');
+	var type = document.getElementById('type');
+	var filtered = document.getElementById('filtered');
+	
+	if(room.checked && studio.checked) {
+		both.checked = true;
+		neither.checked = false;
+	}
+	else if(!room.checked && !studio.checked) {
+		both.checked = false;
+		neither.checked = true;
+	}
+	else {
+		both.checked = false;
+		neither.checked = false;
+		type.checked = studio.checked;
+	}
+	filtered.checked = true;
+}
+</script>
+
+<script>
 	$(document).ready(function() {
 		$("#city").autocomplete({
 			minLength : 2
@@ -128,9 +155,9 @@
 						path="latestMoveOutDate" /></td>
 			</tr>
 			<tr>
-				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals
+				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Smoking inside
 						allowed</label></td>
-				<td><form:checkbox id="field-animals" path="animals" value="1" /><label>Smoking
+				<td><form:checkbox id="field-animals" path="animals" value="1" /><label>Animals
 						inside allowed</label></td>
 			</tr>
 			<tr>

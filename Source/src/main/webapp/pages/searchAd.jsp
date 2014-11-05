@@ -46,7 +46,7 @@ function validateType(form)
 		neither.checked = false;
 		type.checked = studio.checked;
 	}
-	filtered.checked = true;
+	filtered.checked = false;
 }
 </script>
 

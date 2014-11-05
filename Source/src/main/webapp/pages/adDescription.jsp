@@ -8,7 +8,10 @@
 
 <c:import url="template/header.jsp" />
 
-<p><span class="breadcrumbs"><pre><a href="/"> Home </a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre></span></p>
+<p>
+	<span class="breadcrumbs"><pre>
+			<a href="/"> Home </a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre></span>
+</p>
 
 <script src="/js/image_slider.js"></script>
 
@@ -29,7 +32,7 @@
 <h1>${shownAd.title}</h1>
 <hr />
 
-<section style="width: 100%">
+<section>
 	<table id="adDescTable">
 		<tr>
 			<td><h2>Type</h2></td>
@@ -45,7 +48,9 @@
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td>${shownAd.street}, ${shownAd.zipcode} ${shownAd.city}</td>
+			<td><u><a
+					href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
+						${shownAd.zipcode} ${shownAd.city}</a></u></td>
 		</tr>
 
 		<tr>
@@ -60,12 +65,12 @@
 
 		<tr>
 			<td><h2>Monthly Rent</h2></td>
-			<td>${shownAd.prizePerMonth} CHF</td>
+			<td>${shownAd.prizePerMonth}CHF</td>
 		</tr>
 
 		<tr>
 			<td><h2>Square Footage</h2></td>
-			<td>${shownAd.squareFootage} m²</td>
+			<td>${shownAd.squareFootage}m²</td>
 		</tr>
 
 	</table>
@@ -86,23 +91,23 @@
 	</div>
 </div>
 
-<hr style="clear: both" />
+<hr class="clearBoth" />
 
-<section style="width: 100%">
-	<div style="width: 55%; float: left">
-		<div style="width: 80%">
+<section>
+	<div id="descriptionTexts">
+		<div>
 			<h2>Room Description</h2>
 			<p>${shownAd.roomDescription}</p>
 		</div>
 		<br />
 
-		<div style="width: 80%">
+		<div>
 			<h2>Roommates</h2>
 			<p>${shownAd.roommates}</p>
 		</div>
 		<br />
 
-		<div style="width: 80%">
+		<div>
 			<h2>Preferences</h2>
 			<p>${shownAd.preferences}</p>
 		</div>
@@ -235,19 +240,19 @@
 <div style="clear: both"></div>
 <br>
 
-<table style="width: 40%">
+<table id="advertiserTable">
 	<tr>
 		<td><c:choose>
 				<c:when test="${shownAd.user.picture.filePath != null}">
-					<img src="${shownAd.user.picture.filePath}" width="50" height="50">
+					<img src="${shownAd.user.picture.filePath}">
 				</c:when>
 				<c:otherwise>
-					<img src="/img/avatar.png" width="50" height="50">
+					<img src="/img/avatar.png">
 				</c:otherwise>
 			</c:choose></td>
 
 		<td>
-			<h2 style="margin: 0px">Advertiser</h2>
+			<h2>Advertiser</h2>
 		</td>
 
 		<td>${shownAd.user.username}</td>
