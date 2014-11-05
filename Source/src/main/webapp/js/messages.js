@@ -51,7 +51,7 @@ $(document).ready(function() {
 		}, 'json');
 	});
 	
-	$("#new").click(function(){
-	    $(this).hide();
-	  });
+	$("#newMessage").click(function(){
+		$("#msgDiv").css("display", "block");
+	});
 });

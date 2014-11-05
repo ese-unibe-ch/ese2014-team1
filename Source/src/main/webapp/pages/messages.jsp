@@ -17,7 +17,7 @@
 <hr />
 <div id="folders">
 	<h2 id="inbox">Inbox</h2>
-	<h2><a href="#" id="new">New</a></h2>
+	<h2><a href="#" id="newMessage">New</a></h2>
 	<h2 id="sent">Sent</h2>
 	<h2 id="drafts">Drafts</h2>
 	<h2 id="deleted">Deleted</h2>
@@ -54,4 +54,22 @@
 		<p>${messages[0].text }</p>
 	</div>
 </div>
+
+<div id="msgDiv">
+	<form class="msgForm" action="#">
+		<h3>New Message</h3>
+		<label>To: <span>*</span></label>
+		<input class="msgInput" type="text" id="receiverEmail" placeholder="E-mail"/>
+		<br><br>
+		<label>Subject: <span>*</span></label>
+		<input class="msgInput" type="text" id="msgSubject" placeholder="Subject"/>
+		<br><br>
+		<label>Message: </label>
+		<textarea id="msgTextarea" placeholder="Message"></textarea>
+		<input class="msgInputButton" type="button" id="msgSend" value="Send"/>
+		<input class="msgInputButton" type="button" id="msgCancel" value="Cancel"/>
+		<br/>
+	</form>
+</div>
+
 <c:import url="template/footer.jsp" />
