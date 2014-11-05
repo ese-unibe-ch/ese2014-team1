@@ -563,9 +563,12 @@ footer nav ul li {
 
 
 /* --- messages.jsp (Rafi)--- */
-#newMessage{
-
+#folders a:hover {
+	background-color: #2dc16d;
+	color: white;
+	cursor: pointer;
 }
+
 
 .msgForm{
 	border-radius:2px;
