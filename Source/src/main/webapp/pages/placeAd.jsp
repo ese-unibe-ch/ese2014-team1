@@ -43,7 +43,7 @@
 				if(returnText == null) {
 					alert("User does not exist");
 				} else {
-				$("#matesinwg").append("grrr" + "  ; \u00A0\u00A0  ");
+				$("#matesinwg").append(text + "  ; \u00A0\u00A0  ");
 				$("#room_friends").val("");
 				}
 			} else {
