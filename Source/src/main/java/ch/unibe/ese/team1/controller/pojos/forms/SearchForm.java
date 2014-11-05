@@ -212,13 +212,23 @@ public class SearchForm {
 	}
 
 	//the ugly stuff
-	private boolean typeHelper;
+	private boolean studioHelper;
 
-	public boolean getTypeHelper() {
-		return typeHelper;
+	public boolean getStudioHelper() {
+		return studioHelper;
 	}
 
-	public void setTypeHelper(boolean helper) {
-		this.typeHelper = helper;
+	public void setStudioHelper(boolean helper) {
+		this.studioHelper = helper;
+	}
+	
+	private boolean roomHelper;
+
+	public boolean getRoomHelper() {
+		return roomHelper;
+	}
+
+	public void setRoomHelper(boolean helper) {
+		this.roomHelper = helper;
 	}
 }

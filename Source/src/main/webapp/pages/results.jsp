@@ -106,8 +106,8 @@ function validateType(form)
 
 	<div id="filterDiv">
 		<h2>Filter results:</h2>
-		<form:checkbox name="room" id="room" path="typeHelper" /><label>Room</label>
-		<form:checkbox name="studio" id="studio" path="typeHelper" /><label>Studio</label>
+		<form:checkbox name="room" id="room" path="roomHelper" /><label>Room</label>
+		<form:checkbox name="studio" id="studio" path="studioHelper" /><label>Studio</label>
 	
 		<form:checkbox style="display:none" name="neither" id="neither" path="noRoomNoStudio" />
 		<form:checkbox style="display:none" name="both" id="both" path="bothRoomAndStudio" />
