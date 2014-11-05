@@ -68,7 +68,6 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern.setFurnished(true);
 		adBern.setCable(true);
 		adBern.setGarage(true);
-		adBern.setFood("Everything");
 		List<AdPicture> pictures = new ArrayList<>();
 		pictures.add(createPicture(adBern, "/img/test/ad1_1.jpg"));
 		pictures.add(createPicture(adBern, "/img/test/ad1_2.jpg"));
@@ -97,7 +96,6 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBern2.setFurnished(false);
 		adBern2.setCable(false);
 		adBern2.setGarage(false);
-		adBern2.setFood("Vegetarian");
 		pictures = new ArrayList<>();
 		pictures.add(createPicture(adBern2, "/img/test/ad2_1.jpg"));
 		pictures.add(createPicture(adBern2, "/img/test/ad2_2.jpg"));
@@ -126,7 +124,6 @@ public class AdTestDataSeeder implements InitializingBean {
 		adBasel.setFurnished(false);
 		adBasel.setCable(false);
 		adBasel.setGarage(false);
-		adBasel.setFood("Vegan");
 		pictures = new ArrayList<>();
 		pictures.add(createPicture(adBasel, "/img/test/ad3_1.jpg"));
 		pictures.add(createPicture(adBasel, "/img/test/ad3_2.jpg"));

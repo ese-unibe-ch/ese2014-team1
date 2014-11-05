@@ -180,22 +180,7 @@ function validateType(form)
 			</tr>
 		</table>
 			
-		<label>Food preference:</label> <form:radiobutton
-			path="food" value="Everything" checked="checked" /><label>Everything</label>
-		<form:radiobutton path="food" value="Vegetarian" /><label>Vegetarian</label>
-		<form:radiobutton path="food" value="Vegan" /><label>Vegan</label> <br>
-
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-				
 		<button type="submit" onClick="validateType(this.form)">Search</button>	
 		<button type="reset">Cancel</button>
 	</div>

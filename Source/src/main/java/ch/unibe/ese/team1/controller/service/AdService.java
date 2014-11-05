@@ -104,7 +104,6 @@ public class AdService {
 		ad.setFurnished(placeAdForm.isFurnished());
 		ad.setCable(placeAdForm.getCable());
 		ad.setGarage(placeAdForm.getGarage());
-		ad.setFood(placeAdForm.getFood());
 
 		/*
 		 * Save the paths to the picture files, the pictures are assumed to be
@@ -329,25 +328,6 @@ public class AdService {
 						iterator.remove();
 				}
 			}
-			
-			//food
-			if(searchForm.getFood().equals("Vegan")) {
-				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
-					Ad ad = iterator.next();
-					if(!ad.getFood().equals("Vegan"))
-						iterator.remove();
-				}
-			}
-			else if(searchForm.getFood().equals("Vegetarian")) {
-				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
-					Ad ad = iterator.next();
-					if(ad.getFood().equals("Everything"))
-						iterator.remove();
-				}
-			}
-			else { }
 		}
 		return locatedResults;
 	}

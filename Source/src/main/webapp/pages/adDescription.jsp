@@ -187,13 +187,6 @@
 
 		<tr>
 			<td>
-				<h2>Food preference</h2> <!-- simply show the shownAd.food String here. -->
-			</td>
-			<td>${shownAd.food }</td>
-		</tr>
-
-		<tr>
-			<td>
 				<h2>Cellar</h2>
 			</td>
 			<td><c:choose>

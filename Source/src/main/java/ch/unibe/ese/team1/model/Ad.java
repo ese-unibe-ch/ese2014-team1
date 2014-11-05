@@ -88,10 +88,7 @@ public class Ad {
 	
 	@Column(nullable = false)
 	private boolean garage;
-	
-	@Column(nullable = false)
-	private String food;
-	
+		
 	//true if studio, false if room
 	@Column(nullable = false)
 	private boolean studio;
@@ -166,15 +163,6 @@ public class Ad {
 	
 	public void setGarage(boolean garage) {
 		this.garage = garage;
-	}
-
-	public String getFood() {
-		return food;
-	}
-
-	public void setFood(String food) {
-		assert(food.equals("Vegan") || food.equals("Vegetarian") || food.equals("Everything"));
-		this.food = food;
 	}
 
 	// for adding roommates to an ad

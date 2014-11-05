@@ -104,7 +104,6 @@ public class SearchForm {
 	private boolean furnished;
 	private boolean cable;
 	private boolean garage;
-	private String food;
 	
 	public boolean getSmokers() {
 		return smokers;
@@ -168,15 +167,6 @@ public class SearchForm {
 
 	public void setGarage(boolean garage) {
 		this.garage = garage;
-	}
-
-	public String getFood() {
-		return food;
-	}
-
-	public void setFood(String food) {
-		assert(food.equals("Everything") || food.equals("Vegetarian") || food.equals("Vegan"));
-		this.food = food;
 	}
 
 	public String getEarliestMoveInDate() {
