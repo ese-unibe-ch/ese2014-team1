@@ -84,13 +84,13 @@
 		<h2>New Message</h2>
 		<br>
 		<label>To: <span>*</span></label>
-		<form:input path="receiver" class="msgInput" type="text" id="receiverEmail" placeholder="E-mail" />
+		<form:input path="recipient" class="msgInput" type="text" id="receiverEmail" placeholder="E-mail" />
 		<br><br>
 		<label>Subject: <span>*</span></label>
 		<form:input path="subject" class="msgInput" type="text" id="msgSubject" placeholder="Subject" />
 		<br><br>
 		<label>Message: </label>
-		<form:textarea path="message" id="msgTextarea" placeholder="Message" />
+		<form:textarea path="text" id="msgTextarea" placeholder="Message" />
 		
 		<button type="submit">Send</button>
 		<button type="reset">Cancel</button>

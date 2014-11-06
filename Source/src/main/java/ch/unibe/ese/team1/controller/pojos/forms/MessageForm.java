@@ -5,20 +5,20 @@ import org.hibernate.validator.constraints.NotBlank;
 public class MessageForm {
 	
 	@NotBlank(message = "Required")
-	private String receiver;
+	private String recipient;
 	
 	@NotBlank(message = "Required")
 	private String subject;
 	
 	@NotBlank(message = "Required")
-	private String message;
-	
-	public String getReceiver() {
-		return receiver;
+	private String text;
+
+	public String getRecipient() {
+		return recipient;
 	}
 
-	public void setReceiver(String receiver) {
-		this.receiver = receiver;
+	public void setRecipient(String recipient) {
+		this.recipient = recipient;
 	}
 
 	public String getSubject() {
@@ -28,13 +28,12 @@ public class MessageForm {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	
-	public String getMessage() {
-		return message;
+
+	public String getText() {
+		return text;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setText(String text) {
+		this.text = text;
 	}
-
 }
