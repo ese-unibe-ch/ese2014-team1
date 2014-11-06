@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.Message;
@@ -24,10 +25,11 @@ public class MessageController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/profile/messages")
+	@RequestMapping(value = "/profile/messages", method = RequestMethod.GET)
 	public ModelAndView messages(Principal principal) {
 		ModelAndView model = new ModelAndView("messages");
 		User user = userService.findUserByUsername(principal.getName());
+		model.addObject("messageForm", new MessageForm());
 		model.addObject("messages", messageService.getInboxForUser(user));
 		return model;
 	}

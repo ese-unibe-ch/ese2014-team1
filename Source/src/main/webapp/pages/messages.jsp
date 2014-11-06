@@ -79,21 +79,24 @@
 
 
 <div id="msgDiv">
-	<form class="msgForm" action="#">
+	<form:form id="messageForm" method="post" modelAttribute="messageForm" class="msgForm" 
+			action="/profile/messages">
 		<h2>New Message</h2>
 		<br>
 		<label>To: <span>*</span></label>
-		<input class="msgInput" type="text" id="receiverEmail" placeholder="E-mail"/>
+		<form:input path="receiver" class="msgInput" type="text" id="receiverEmail" placeholder="E-mail" />
 		<br><br>
 		<label>Subject: <span>*</span></label>
-		<input class="msgInput" type="text" id="msgSubject" placeholder="Subject"/>
+		<form:input path="subject" class="msgInput" type="text" id="msgSubject" placeholder="Subject" />
 		<br><br>
 		<label>Message: </label>
-		<textarea id="msgTextarea" placeholder="Message"></textarea>
-		<input class="msgInputButton" type="button" id="msgSend" value="Send"/>
-		<input class="msgInputButton" type="button" id="msgCancel" value="Cancel"/>
+		<form:textarea path="message" id="msgTextarea" placeholder="Message" />
+		
+		<button type="submit">Send</button>
+		<button type="reset">Cancel</button>
+		
 		<br/>
-	</form>
+	</form:form>
 </div>
 
 <c:import url="template/footer.jsp" />
