@@ -5,7 +5,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:import url="template/header.jsp" />
-<pre><a href="/"> Home </a>   >   Search Ads </pre>
+
+<pre><a href="/">Home</a>   >   Search</pre>
 
 <script>
 	$(document).ready(function() {

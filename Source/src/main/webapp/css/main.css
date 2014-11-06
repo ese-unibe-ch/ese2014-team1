@@ -35,6 +35,27 @@ a {
 	text-decoration: none;
 	color: graytext;
 }
+
+/* Breadcrumbs only*/
+pre, pre span {
+	font-decoration: none;
+	font-size: 1em;
+	font-family: 'Helvetica', sans-serif;
+	color: graytext;
+	margin-top: -5px;
+	margin-bottom: 40px;
+	
+}
+
+pre a {
+	font-size: 1em;
+	font-family: 'Helvetica', sans-serif;
+	color: graytext;
+	margin-top: -5px;
+	margin-bottom: 40px;
+	font-weight: 900;
+}
+
 /*Header is fixed to 60px from top, so with padding of 60px,
 we fix the body in the exactly right position*/
 body {

@@ -50,7 +50,7 @@
 						$("#matesinwg").html(data);
 					} else {
 						alert(data);
-					}
+					} 
 				});
 			} else {
 					alert("Please enter an e-mail address");
@@ -73,7 +73,7 @@
 	});
 </script>
 
-<pre><a href="/"> Home </a>   >   Place ad </pre>
+<pre><a href="/">Home</a>   >   Place ad</pre>
 
 <h1>Place an ad</h1>
 <hr />

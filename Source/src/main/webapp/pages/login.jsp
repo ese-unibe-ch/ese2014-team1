@@ -11,6 +11,8 @@
 
 <c:import url="template/header.jsp" />
 
+<pre><a href="/">Home</a>   >   Login</pre>
+
 <h1>Login</h1>
 
 <c:choose>
