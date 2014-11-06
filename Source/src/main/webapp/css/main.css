@@ -419,6 +419,10 @@ footer nav ul li {
 	margin: 10px;
 }
 
+#adDescTable td a{
+	text-decoration: underline;
+}
+
 .advertiserTable {
 	width: 27%;
 }

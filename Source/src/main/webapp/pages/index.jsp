@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<p class="breadcrumbs"><pre>Home</pre></p>
+<pre>Home</pre>
 
 <h1>Welcome!</h1>
 <c:import url="template/footer.jsp" />

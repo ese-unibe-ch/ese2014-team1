@@ -78,8 +78,12 @@ public class GeoDataService {
 			ex.printStackTrace();
 		} finally {
 			try {
-				statement.close();
-				connection.close();
+				if (statement != null) {
+					statement.close();
+				}
+				if (statement != null) {
+					connection.close();
+				}
 			} catch (SQLException ex) {
 				// ignore
 			}

@@ -8,10 +8,7 @@
 
 <c:import url="template/header.jsp" />
 
-<p>
-	<span class="breadcrumbs"><pre>
-			<a href="/"> Home </a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre></span>
-</p>
+<pre><a href="/"> Home </a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre>
 
 <script src="/js/image_slider.js"></script>
 
@@ -48,9 +45,9 @@
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td><u><a
+			<td><a
 					href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
-						${shownAd.zipcode} ${shownAd.city}</a></u></td>
+						${shownAd.zipcode} ${shownAd.city}</a></td>
 		</tr>
 
 		<tr>

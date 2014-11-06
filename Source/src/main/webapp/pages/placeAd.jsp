@@ -73,7 +73,7 @@
 	});
 </script>
 
-<p class="breadcrumbs"><pre><a href="/"/> Home </a>   >   Place ad </pre></p>
+<pre><a href="/"> Home </a>   >   Place ad </pre>
 
 <h1>Place an ad</h1>
 <hr />

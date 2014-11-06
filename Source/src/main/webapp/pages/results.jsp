@@ -5,8 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <c:import url="template/header.jsp" />
-<p class="breadcrumbs"><pre><a href="/"/> Home </a>   >   
-	<a href="/searchAd/">Search Ads</a>   >   Results </pre></p>
+<pre><a href="/"> Home </a>   >   <a href="/searchAd/">Search Ads</a>   >   Results </pre>
 
 <script>
 function validateType(form)
