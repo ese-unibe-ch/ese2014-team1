@@ -1,21 +1,12 @@
 package ch.unibe.ese.team1.controller.service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
-import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
-import ch.unibe.ese.team1.model.Ad;
-import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.Message;
 import ch.unibe.ese.team1.model.MessageState;
 import ch.unibe.ese.team1.model.User;
@@ -62,9 +53,6 @@ public class MessageService {
 		User loggedInUser = userDao.findByUsername(securityUser.getUsername());
 		
 		message.setSender(loggedInUser);
-		
-		System.out.println("logged in user: " + loggedInUser.getEmail());
-		System.out.println("recipient: " + message.getRecipient().getEmail());
 		
 		messageDao.save(message);
 

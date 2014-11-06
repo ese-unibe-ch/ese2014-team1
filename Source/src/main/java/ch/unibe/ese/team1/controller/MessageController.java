@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
-import ch.unibe.ese.team1.controller.pojos.forms.SignupForm;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.Message;
@@ -61,7 +60,6 @@ public class MessageController {
 		ModelAndView model = new ModelAndView("messages");
 		if (!bindingResult.hasErrors()) {
 			messageService.saveFrom(messageForm);
-			//signupService.saveFrom(signupForm);
 			User user = userService.findUserByUsername(principal.getName());
 			model.addObject("messageForm", new MessageForm());
 			model.addObject("messages", messageService.getInboxForUser(user));
