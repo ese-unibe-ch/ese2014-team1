@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
+import ch.unibe.ese.team1.model.Gender;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.AdDao;
@@ -32,7 +33,7 @@ public class AdTestDataSeeder implements InitializingBean {
 	@Transactional
 	public void afterPropertiesSet() throws Exception {
 		User user = userSeeder.createUser("user@bern.com", "password",
-				"Berner", "Bär");
+				"Berner", "Bär", Gender.MALE);
 		UserPicture picture = new UserPicture();
 		picture.setFilePath("/img/test/berner_baer.png");
 		picture.setUser(user);

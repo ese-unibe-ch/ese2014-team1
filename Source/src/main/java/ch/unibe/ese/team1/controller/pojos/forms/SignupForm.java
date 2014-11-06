@@ -4,6 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import ch.unibe.ese.team1.model.Gender;
+
 public class SignupForm {
 	
 	@Size(min = 6, message = "Password must be at least 6 characters long")
@@ -21,6 +23,9 @@ public class SignupForm {
 	@Pattern(regexp = "[a-zA-Z]+", message = "Last name must be a valid name")
 	@NotNull
 	private String lastName;
+	
+	@NotNull
+	private Gender gender;
 
 	public String getEmail() {
 		return email;
@@ -54,4 +59,12 @@ public class SignupForm {
 		this.password = password;
 	}
 
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+	
 }

@@ -30,6 +30,7 @@ public class SignupService {
 		user.setLastName(signupForm.getLastName());
 		user.setPassword(signupForm.getPassword());
 		user.setEnabled(true);
+		user.setGender(signupForm.getGender());
 		
 		Set<UserRole> userRoles = new HashSet<>();
 		UserRole role = new UserRole();

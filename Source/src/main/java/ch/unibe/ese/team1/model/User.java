@@ -14,19 +14,19 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
 	@Id
 	@GeneratedValue
 	private long id;
 
-	@Column(nullable = false, unique=true)
+	@Column(nullable = false, unique = true)
 	private String username;
 
-	@Column(nullable= false)
+	@Column(nullable = false)
 	private String password;
-	
+
 	@Column(nullable = false)
 	private String email;
 
@@ -37,17 +37,19 @@ public class User {
 	private String lastName;
 
 	@Column(nullable = false)
+	private Gender gender;
+
+	@Column(nullable = false)
 	private boolean enabled;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "user", cascade= CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<UserRole> userRoles;
 
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserPicture picture;
 
-	
 	public long getId() {
 		return id;
 	}
@@ -119,4 +121,13 @@ public class User {
 	public void setPicture(UserPicture picture) {
 		this.picture = picture;
 	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+	
 }

@@ -10,7 +10,8 @@
 
 <c:choose>
 	<c:when test="${empty message}">
-		<form:form id="signupForm" method="post" modelAttribute="signupForm" action="signup">
+		<form:form id="signupForm" method="post" modelAttribute="signupForm"
+			action="signup">
 			<fieldset>
 				<legend>Enter Your Information</legend>
 				<br /> <label for="field-firstName">First Name:</label>
@@ -28,8 +29,14 @@
 				<br /> <label for="field-email">Email:</label>
 				<form:input path="email" id="field-email" />
 				<form:errors path="email" cssClass="validationErrorText" />
-				<br />
+				
+				<br /> <label for="field-gender">Gender:</label>
+				<form:select path="gender">
+					<form:option value="FEMALE" label="Female" />
+					<form:option value="MALE" label="Male" />
+				</form:select>
 
+				<br />
 				<button type="submit">Sign up</button>
 			</fieldset>
 		</form:form>
