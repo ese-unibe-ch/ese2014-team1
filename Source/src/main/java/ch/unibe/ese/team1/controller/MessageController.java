@@ -68,4 +68,17 @@ public class MessageController {
 		}
 		return model;
 	}
+	
+	
+	@RequestMapping(value="/profile/messages/validateEmail", method = RequestMethod.POST)
+	@ResponseBody
+	public String validateEmail(@RequestParam String email){
+		User user = userService.findUserByUsername(email);
+		if(user == null) {
+			return "This user does not exist.";
+		} else {
+			return user.getEmail();
+		}		
+	}
+	
 }
