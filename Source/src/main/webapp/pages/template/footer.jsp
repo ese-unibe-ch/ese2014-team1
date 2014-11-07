@@ -1,4 +1,5 @@
 </div>
+<p class="clearBoth"></p>
 <footer>
 <nav>
 	<ul>
