@@ -42,11 +42,13 @@ public class AdTestDataSeeder implements InitializingBean {
 		
 		String date1str = "01.11.2014";
 		String date2str = "01.12.2014";
+		String date3str = "01.10.2013";
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 		
 		Date date1 = formatter.parse(date1str);
 		Date date2 = formatter.parse(date2str);
+		Date date3 = formatter.parse(date3str);
 
 		Ad adBern = new Ad();
 		adBern.setZipcode(3006);
@@ -108,7 +110,7 @@ public class AdTestDataSeeder implements InitializingBean {
 
 		Ad adBasel = new Ad();
 		adBasel.setZipcode(4000);
-		adBasel.setMoveInDate(date2);
+		adBasel.setMoveInDate(date3);
 		adBasel.setPrizePerMonth(480);
 		adBasel.setSquareFootage(10);
 		adBasel.setStudio(true);

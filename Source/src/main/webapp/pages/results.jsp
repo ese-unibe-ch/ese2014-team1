@@ -34,6 +34,61 @@ function validateType(form)
 }
 </script>
 
+
+
+<script>
+/*
+ * This script takes all the resultAd divs and sorts them by a parameter specified by the user.
+ * No arguments need to be passed, since the function simply looks up the dropdown selection.
+ */
+function sort_div_attribute() {
+    //determine sort modus (by which attribute, asc/desc)
+    var sortmode = $('#modus').find(":selected").val();   
+    
+    //only start the process if a modus has been selected
+    if(sortmode.length > 0) {
+    	var attname;
+		
+    	//determine which variable we pass to the sort function
+		if(sortmode == "price_asc" || sortmode == "price_desc")
+			attname = 'data-price';
+	    else if(sortmode == "moveIn_asc" || sortmode == "moveIn_desc")	
+			attname = 'data-moveIn';
+	    else
+			attname = 'data-age';
+    	
+		//copying divs into an array which we're going to sort
+	    var divsbucket = new Array();
+	    var divslist = $('div.resultAd');
+	    var divlength = divslist.length;
+	    for (a = 0; a < divlength; a++) {
+			divsbucket[a] = new Array();
+			divsbucket[a][0] = divslist[a].getAttribute(attname);
+			divsbucket[a][1] = divslist[a];
+			divslist[a].remove();
+	    }
+		
+	    //sort the array
+		divsbucket.sort(function(a, b) {
+	    if (a[0] == b[0])
+			return 0;
+	    else if (a[0] > b[0])
+			return 1;
+        else
+			return -1;
+		});
+
+	    //invert sorted array for certain sort options
+		if(sortmode == "price_desc" || sortmode == "moveIn_asc" || sortmode == "dateAge_asc")
+			divsbucket.reverse();
+        
+	    //insert sorted divs into document again
+		for(a = 0; a < divlength; a++)
+        	$("#resultsDiv").append($(divsbucket[a][1]));
+	}
+}
+</script>
+
 <script>
 	$(document).ready(function() {
 		$("#city").autocomplete({
@@ -62,18 +117,23 @@ function validateType(form)
 	});
 </script>
 
-<script>
-function sort() {
-	
-}
-</script>
-
 <h1>Search results:</h1>
 
 <hr />
 
-<button onClick="sort()">Sort</button>	
+<div>
+<select id="modus">
+    <option value="">Sort by:</option>
+    <option value="price_asc">Price (ascending)</option>
+    <option value="price_desc">Price (descending)</option>
+    <option value="moveIn_desc">Move-in date (earliest to latest)</option>
+    <option value="moveIn_asc">Move-in date (latest to earliest)</option>
+    <option value="dateAge_asc">Date created (youngest to oldest)</option>
+    <option value="dateAge_desc">Date created (oldest to youngest)</option>
+</select>
 
+<button onClick="sort_div_attribute()">Sort</button>	
+</div>
 <c:choose>
 	<c:when test="${empty results}">
 		<p>No results found!
@@ -81,7 +141,8 @@ function sort() {
 	<c:otherwise>
 		<div id="resultsDiv" class="resultsDiv">			
 			<c:forEach var="ad" items="${results}">
-				<div class="resultAd" data-price="${ad.prizePerMonth}">
+				<div class="resultAd" data-price="${ad.prizePerMonth}" 
+								data-moveIn="${ad.moveInDate}" data-age="${ad.moveInDate}">
 					<div class="resultLeft">
 						<a href="<c:url value='/ad?id=${ad.id}' />"><img
 							src="${ad.pictures[0].filePath}" /></a>
