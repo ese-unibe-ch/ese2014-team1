@@ -125,18 +125,12 @@ public class AdController {
 	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
 	@ResponseBody
 	public String validateEmail(@RequestParam String email){
-		
-		try {
-			User user = userService.findUserByUsername(email);
-			System.out.println(user.getFirstName());
-			return user.getEmail();
-		} catch (NullPointerException e) {
-			System.out.println("this is so wrong");
-			System.err.println("Caught NullPointer Exception " + e.getMessage());
+		User user = userService.findUserByUsername(email);
+		if(user == null) {
 			return "This user does not exist, did your roommate register?";
-		}
-		
-		
+		} else {
+			return user.getEmail();
+		}		
 	}
 	
 

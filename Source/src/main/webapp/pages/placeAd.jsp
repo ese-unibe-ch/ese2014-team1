@@ -45,16 +45,18 @@
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			if(validateForm(text)) {
-				$.get("/profile/placeAd/validateEmail?email=" + text, function(data) {
+				$.post("/profile/placeAd/validateEmail", {email:text}, function(data) {
 					if(validateForm(data)) {
 						$("#matesinwg").html(data);
 					} else {
 						alert(data);
-					} 
-				});
-			} else {
-					alert("Please enter an e-mail address");
+					}});
 			}
+			else {
+				alert("Please enter an e-mail adress");
+			}
+					
+			 
 			
 			// Validates the input for Email Syntax
 			function validateForm(text) {
