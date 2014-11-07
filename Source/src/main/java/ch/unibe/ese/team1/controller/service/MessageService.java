@@ -1,5 +1,7 @@
 package ch.unibe.ese.team1.controller.service;
 
+import java.util.Calendar;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,12 @@ public class MessageService {
 		User loggedInUser = userDao.findByUsername(securityUser.getUsername());
 		
 		message.setSender(loggedInUser);
+		
+		Calendar calendar = Calendar.getInstance();
+		// java.util.Calendar uses a month range of 0-11 instead of the
+		// XMLGregorianCalendar which uses 1-12
+		calendar.setTimeInMillis(System.currentTimeMillis());
+		message.setDateSent(calendar.getTime());
 		
 		messageDao.save(message);
 

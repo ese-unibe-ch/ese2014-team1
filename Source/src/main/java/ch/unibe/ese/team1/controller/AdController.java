@@ -119,7 +119,7 @@ public class AdController {
 	}
 	
 	// why does it have to be POST when you try to retrieve data and not submit it!?!?
-	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.GET)
+	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
 	@ResponseBody
 	public String validateEmail(@RequestParam String email){
 		

@@ -93,7 +93,7 @@
 		<form:textarea path="text" id="msgTextarea" placeholder="Message" />
 		
 		<button type="submit">Send</button>
-		<button type="reset">Cancel</button>
+		<button type="button" id="messageCancel">Cancel</button>
 		
 		<br/>
 	</form:form>
