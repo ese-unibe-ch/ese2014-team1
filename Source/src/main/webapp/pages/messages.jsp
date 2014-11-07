@@ -77,26 +77,7 @@
 	</div>
 </div>
 
+<c:import url="getMessageForm.jsp" />
 
-<div id="msgDiv">
-	<form:form id="messageForm" method="post" modelAttribute="messageForm" class="msgForm" 
-			action="/profile/messages">
-		<h2>New Message</h2>
-		<br>
-		<label>To: <span>*</span></label>
-		<form:input path="recipient" class="msgInput" type="text" id="receiverEmail" placeholder="E-mail" />
-		<br><br>
-		<label>Subject: <span>*</span></label>
-		<form:input path="subject" class="msgInput" type="text" id="msgSubject" placeholder="Subject" />
-		<br><br>
-		<label>Message: </label>
-		<form:textarea path="text" id="msgTextarea" placeholder="Message" />
-		
-		<button type="submit">Send</button>
-		<button type="button" id="messageCancel">Cancel</button>
-		
-		<br/>
-	</form:form>
-</div>
 
 <c:import url="template/footer.jsp" />

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
+import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.UserService;
@@ -114,6 +115,8 @@ public class AdController {
 
 		Ad ad = adService.getAdById(id);
 		model.addObject("shownAd", ad);
+		
+		model.addObject("messageForm", new MessageForm());
 
 		return model;
 	}
