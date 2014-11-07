@@ -51,11 +51,13 @@
 						$("#roommateCell").append("<input class='roommateInput' type='hidden' name='registeredRoommateEmails[" + index + "]' value='" + data + "' />");
 					} else {
 						alert(data);
-					} 
-				});
-			} else {
-					alert("Please enter an e-mail address");
+					}});
 			}
+			else {
+				alert("Please enter an e-mail adress");
+			}
+					
+			 
 			
 			// Validates the input for Email Syntax
 			function validateForm(text) {
@@ -74,7 +76,8 @@
 	});
 </script>
 
-<pre><a href="/">Home</a>   >   Place ad</pre>
+<pre>
+	<a href="/">Home</a>   >   Place ad</pre>
 
 <h1>Place an ad</h1>
 <hr />
@@ -168,7 +171,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td><form:checkbox id="field-internet" path="internet" value="1" /><label>WiFi available</label></td>
+				<td><form:checkbox id="field-internet" path="internet"
+						value="1" /><label>WiFi available</label></td>
 			</tr>
 
 		</table>
@@ -192,8 +196,7 @@
 				<td id="roommateCell"><form:input type="text" id="room_friends"
 						path="room_friends" placeholder="email" /> <!-- tabindex="x" -->
 
-					<div id="addbutton">+</div>
-					</td>
+					<div id="addbutton">+</div></td>
 			</tr>
 		</table>
 
@@ -212,9 +215,8 @@
 
 	<fieldset>
 		<legend>Pictures (optional)</legend>
-		<br />
-		<label for="field-pictures">Pictures</label> <input type="file"
-			id="field-pictures" accept="image/*" multiple="multiple" />
+		<br /> <label for="field-pictures">Pictures</label> <input
+			type="file" id="field-pictures" accept="image/*" multiple="multiple" />
 		<table id="uploaded-pictures" class="styledTable">
 			<tr>
 				<th id="name-column">Uploaded picture</th>

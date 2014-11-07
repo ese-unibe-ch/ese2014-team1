@@ -632,13 +632,13 @@ footer nav ul li {
 }
 
 #msgDiv{
-	opacity:0.92;
+	opacity:1.0;
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	height: 100%;
 	width: 100%;
-	background: #000;
+	background: #fff;
 	display: none;
 }
 

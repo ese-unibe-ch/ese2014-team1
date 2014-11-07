@@ -261,7 +261,17 @@
 
 		<td>${shownAd.user.username}</td>
 	</tr>
+	
 </table>
+
+<c:import url="getMessageForm.jsp" />
+
+<script src="/js/messageForAdDescription.js"></script>
+<form>
+	<button id="newMsg" type="button">Contact Advertiser</button>
+</form>
+
+
 
 <br>
 <br>

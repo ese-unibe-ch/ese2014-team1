@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
+import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.UserService;
@@ -116,6 +117,8 @@ public class AdController {
 
 		Ad ad = adService.getAdById(id);
 		model.addObject("shownAd", ad);
+		
+		model.addObject("messageForm", new MessageForm());
 
 		return model;
 	}
@@ -124,18 +127,12 @@ public class AdController {
 	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
 	@ResponseBody
 	public String validateEmail(@RequestParam String email){
-		
-		try {
-			User user = userService.findUserByUsername(email);
-			System.out.println(user.getFirstName());
-			return user.getEmail();
-		} catch (NullPointerException e) {
-			System.out.println("this is so wrong");
-			System.err.println("Caught NullPointer Exception " + e.getMessage());
+		User user = userService.findUserByUsername(email);
+		if(user == null) {
 			return "This user does not exist, did your roommate register?";
-		}
-		
-		
+		} else {
+			return user.getEmail();
+		}		
 	}
 	
 
