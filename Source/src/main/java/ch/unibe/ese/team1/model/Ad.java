@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -59,18 +60,17 @@ public class Ad {
 	@Column(nullable = false)
 	private String roommates;
 
-	
-	
-	
-	
-	//new stuff on the block
-	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<User> registeredRoommates;
+
+	// new stuff on the block
+
 	@Column(nullable = false)
 	private boolean smokers;
 
 	@Column(nullable = false)
 	private boolean animals;
-	
+
 	@Column(nullable = false)
 	private boolean garden;
 
@@ -82,28 +82,38 @@ public class Ad {
 
 	@Column(nullable = false)
 	private boolean furnished;
-	
+
 	@Column(nullable = false)
 	private boolean cable;
-	
+
 	@Column(nullable = false)
 	private boolean garage;
-	
+
 	@Column(nullable = false)
 	private boolean internet;
-		
-	//true if studio, false if room
+
+	// true if studio, false if room
 	@Column(nullable = false)
 	private boolean studio;
-	
+
+	// for adding roommates to an ad
+	@Column(nullable = true)
+	private String room_friends;
+
+	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<AdPicture> pictures;
+
+	@ManyToOne(optional = false)
+	private User user;
+
 	public boolean getStudio() {
 		return studio;
 	}
-	
+
 	public void setStudio(boolean studio) {
 		this.studio = studio;
 	}
-	
+
 	public boolean getSmokers() {
 		return smokers;
 	}
@@ -159,11 +169,11 @@ public class Ad {
 	public void setCable(boolean hasCable) {
 		this.cable = hasCable;
 	}
-	
+
 	public boolean getGarage() {
 		return garage;
 	}
-	
+
 	public void setGarage(boolean garage) {
 		this.garage = garage;
 	}
@@ -175,16 +185,6 @@ public class Ad {
 	public void setInternet(boolean internet) {
 		this.internet = internet;
 	}
-
-	// for adding roommates to an ad
-	@Column(nullable = true)
-	private String room_friends;
-
-	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<AdPicture> pictures;
-
-	@ManyToOne(optional = false)
-	private User user;
 
 	public long getId() {
 		return id;
@@ -230,16 +230,16 @@ public class Ad {
 		this.squareFootage = squareFootage;
 	}
 
-//	public String getType() {
-//		return type;
-//	}
-//
-//	// "both" type only used for searches
-//	public void setType(String type) {
-//		assert (type.equals("Room") || type.equals("Studio") || type
-//				.equals("both"));
-//		this.type = type;
-//	}
+	// public String getType() {
+	// return type;
+	// }
+	//
+	// // "both" type only used for searches
+	// public void setType(String type) {
+	// assert (type.equals("Room") || type.equals("Studio") || type
+	// .equals("both"));
+	// this.type = type;
+	// }
 
 	public String getRoom_friends() {
 		return this.room_friends;
@@ -316,12 +316,20 @@ public class Ad {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
+
 	public Date getDate(boolean date) {
-		if(date)
+		if (date)
 			return moveInDate;
 		else
 			return moveOutDate;
 	}
-	
+
+	public List<User> getRegisteredRoommates() {
+		return registeredRoommates;
+	}
+
+	public void setRegisteredRoommates(List<User> registeredRoommates) {
+		this.registeredRoommates = registeredRoommates;
+	}
+
 }

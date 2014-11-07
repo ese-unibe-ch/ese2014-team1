@@ -5,15 +5,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
-
 
 //import ch.unibe.ese.team1.controller.pojos.forms.ASearchForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
@@ -30,6 +28,9 @@ public class AdService {
 
 	@Autowired
 	private AdDao adDao;
+	
+	@Autowired
+	private UserService userService;
 
 	@Autowired
 	private GeoDataService geoDataService;
@@ -118,6 +119,13 @@ public class AdService {
 			pictures.add(picture);
 		}
 		ad.setPictures(pictures);
+		
+		List<User> registeredUserRommates = new LinkedList<>();
+		for(String userEmail : placeAdForm.getRegisteredRoommateEmails()){
+			User roommateUser = userService.findUserByUsername(userEmail);
+			registeredUserRommates.add(roommateUser);
+		}
+		ad.setRegisteredRoommates(registeredUserRommates);
 
 		ad.setUser(user);
 

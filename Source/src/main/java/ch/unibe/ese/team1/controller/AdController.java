@@ -59,7 +59,9 @@ public class AdController {
 		ModelAndView model = new ModelAndView("placeAd");
 
 		String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);
-		pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
+		if(pictureUploader == null){
+			pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
+		}
 		return model;
 	}
 

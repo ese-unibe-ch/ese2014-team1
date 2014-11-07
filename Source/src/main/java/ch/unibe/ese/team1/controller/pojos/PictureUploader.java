@@ -25,6 +25,7 @@ public class PictureUploader {
 	private String absoluteFilePath;
 	private String relativePath;
 	private List<String> fileNames;
+	private List<PictureMeta> uploadedPictureMetas;
 
 	/**
 	 * Creates a new PictureUploader that will upload to the directory specified
@@ -40,10 +41,11 @@ public class PictureUploader {
 		this.absoluteFilePath = absolutePath;
 		this.relativePath = relativePath;
 		fileNames = new ArrayList<>();
+		uploadedPictureMetas = new LinkedList<>();
 	}
 
 	/**
-	 * Uploads the given list of pictur<es to the saved directory. The pictures
+	 * Uploads the given list of pictures to the saved directory. The pictures
 	 * are named in ascending order with the filenames specified by the list of
 	 * Strings returned.
 	 * 
@@ -60,31 +62,30 @@ public class PictureUploader {
 		}
 
 		PictureMeta pictureMeta;
-		List<PictureMeta> pictureMetas = new LinkedList<>();
-		
+
 		for (MultipartFile file : pictures) {
 			if (!file.isEmpty()) {
-				// create file meta data that will be passed to the client side jQuery
+				// create file meta data that will be passed to the client side
+				// jQuery
 				pictureMeta = new PictureMeta();
-				pictureMeta.setFileName(file.getOriginalFilename());
-				pictureMeta.setFileSize(file.getSize() / 1024 + " KB");
-				pictureMeta.setFileType(file.getContentType());
-				
-				pictureMetas.add(pictureMeta);
-				
+				pictureMeta.setName(file.getOriginalFilename());
+				pictureMeta.setSize(file.getSize() / 1024 + " KB");
+				pictureMeta.setType(file.getContentType());
+
 				try {
 					byte[] bytes = file.getBytes();
 					String originalFileName = file.getOriginalFilename();
 					String extension = originalFileName.substring(
 							originalFileName.length() - EXTENSION_LENGTH)
 							.toLowerCase(Locale.ROOT);
-					
+
 					int index = findHighestIndexedPicture(directory) + 1;
-					String absoluteFileName = absoluteFilePath + "/"
-							+ index + extension;
+					String absoluteFileName = absoluteFilePath + "/" + index
+							+ extension;
 					String relativeFileName = relativePath + "/" + index
 							+ extension;
 					fileNames.add(relativeFileName);
+					pictureMeta.setUrl(relativeFileName);
 					BufferedOutputStream outStream = new BufferedOutputStream(
 							new FileOutputStream(new File(absoluteFileName)));
 					outStream.write(bytes);
@@ -92,10 +93,11 @@ public class PictureUploader {
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
+
+				uploadedPictureMetas.add(pictureMeta);
 			}
 		}
-
-		return pictureMetas;
+		return uploadedPictureMetas;
 	}
 
 	/**
@@ -130,6 +132,14 @@ public class PictureUploader {
 	/** Returns the relative file paths of the pictures that were uploaded. */
 	public List<String> getFileNames() {
 		return fileNames;
+	}
+
+	/**
+	 * Returns a list of metadata about the pictures that were already uploaded
+	 * with this picture uploader.
+	 */
+	public List<PictureMeta> getUploadedPictureMetas() {
+		return uploadedPictureMetas;
 	}
 
 }

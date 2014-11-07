@@ -1,5 +1,7 @@
 package ch.unibe.ese.team1.controller.pojos.forms;
 
+import java.util.List;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
@@ -34,6 +36,8 @@ public class PlaceAdForm {
 
 	@NotBlank(message = "Required")
 	private String roommates;
+	
+	private List<String> registeredRoommateEmails;
 	
 	// optional
 	private String room_friends;
@@ -218,4 +222,14 @@ public class PlaceAdForm {
 	public void setStudio(boolean studio) {
 		this.studio = studio;
 	}
+
+	public List<String> getRegisteredRoommateEmails() {
+		return registeredRoommateEmails;
+	}
+
+	public void setRegisteredRoommateEmails(List<String> registeredRoommateEmails) {
+		this.registeredRoommateEmails = registeredRoommateEmails;
+	}
+	
+	
 }

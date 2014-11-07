@@ -45,9 +45,10 @@
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			if(validateForm(text)) {
-				$.get("/profile/placeAd/validateEmail?email=" + text, function(data) {
+				$.post("/profile/placeAd/validateEmail",{email: text}, function(data) {
 					if(validateForm(data)) {
-						$("#matesinwg").html(data);
+						var index = $("#roommateCell input.roommateInput").length;
+						$("#roommateCell").append("<input class='roommateInput' type='hidden' name='registeredRoommateEmails[" + index + "]' value='" + data + "' />");
 					} else {
 						alert(data);
 					} 
@@ -188,11 +189,11 @@
 			</tr>
 
 			<tr>
-				<td><form:input type="text" id="room_friends"
+				<td id="roommateCell"><form:input type="text" id="room_friends"
 						path="room_friends" placeholder="email" /> <!-- tabindex="x" -->
 
 					<div id="addbutton">+</div>
-					<p id="matesinwg"></p></td>
+					</td>
 			</tr>
 		</table>
 
