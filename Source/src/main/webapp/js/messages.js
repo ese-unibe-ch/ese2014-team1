@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 function loadMessages(data) {
 	$("#messageList table tr:gt(0)").remove();

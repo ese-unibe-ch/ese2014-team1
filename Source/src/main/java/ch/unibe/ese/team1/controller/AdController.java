@@ -120,7 +120,6 @@ public class AdController {
 
 		Ad ad = adService.getAdById(id);
 		model.addObject("shownAd", ad);
-		
 		model.addObject("messageForm", new MessageForm());
 
 		return model;

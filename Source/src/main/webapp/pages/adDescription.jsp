@@ -33,21 +33,20 @@
 	<table id="adDescTable" class="adDescDiv">
 		<tr>
 			<td><h2>Type</h2></td>
-			<td><c:choose>
-					<c:when test="${shownAd.studio}">
-					Studio
-			</c:when>
-					<c:otherwise>
-					Room
-				</c:otherwise>
-				</c:choose></td>
+			<td>
+				<c:choose>
+					<c:when test="${shownAd.studio}">Studio</c:when>
+					<c:otherwise>Room</c:otherwise>
+				</c:choose>
+			</td>
 		</tr>
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td><a
-					href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
-						${shownAd.zipcode} ${shownAd.city}</a></td>
+			<td>
+				<a href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
+						${shownAd.zipcode} ${shownAd.city}</a>
+			</td>
 		</tr>
 
 		<tr>
@@ -108,138 +107,101 @@
 		</div>
 	</div>
 
-
 	<table id="checkBoxTable" class="adDescDiv">
 		<tr>
+			<td><h2>Smoking inside allowed</h2></td>
 			<td>
-				<h2>Smoking inside allowed</h2>
+				<c:choose>
+					<c:when test="${shownAd.smokers}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.smokers}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 		<tr>
+			<td><h2>Animals allowed</h2></td>
 			<td>
-				<h2>Animals allowed</h2>
+				<c:choose>
+					<c:when test="${shownAd.animals}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.animals}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 		<tr>
+			<td><h2>Furnished Room</h2></td>
 			<td>
-				<h2>Furnished Room</h2>
+				<c:choose>
+					<c:when test="${shownAd.furnished}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.furnished}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 		
 		<tr>
+			<td><h2>WiFi available</h2></td>
 			<td>
-				<h2>WiFi available</h2>
+				<c:choose>
+					<c:when test="${shownAd.internet}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.internet}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 		<tr>
+			<td><h2>Cable TV</h2></td>
 			<td>
-				<h2>Cable TV</h2>
+				<c:choose>
+					<c:when test="${shownAd.cable}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.cable}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 		<tr>
+			<td><h2>Garage</h2></td>
 			<td>
-				<h2>Garage</h2>
+				<c:choose>
+					<c:when test="${shownAd.garage}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.garage}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 		<tr>
+			<td><h2>Cellar</h2></td>
 			<td>
-				<h2>Cellar</h2>
+				<c:choose>
+					<c:when test="${shownAd.cellar}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.cellar}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 		<tr>
+			<td><h2>Balcony</h2></td>
 			<td>
-				<h2>Balcony</h2>
+				<c:choose>
+					<c:when test="${shownAd.balcony}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.balcony}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 		<tr>
+			<td><h2>Garden</h2></td>
 			<td>
-				<h2>Garden</h2>
+				<c:choose>
+					<c:when test="${shownAd.garden}">yes</c:when>
+					<c:otherwise>no</c:otherwise>
+				</c:choose>
 			</td>
-			<td><c:choose>
-					<c:when test="${shownAd.garden}">
-        			yes
-        		</c:when>
-					<c:otherwise>
-        			no
-        		</c:otherwise>
-				</c:choose></td>
 		</tr>
 
 	</table>
 </section>
 
-<div style="clear: both"></div>
+<div class="clearBoth"></div>
 <br>
 
 <table id="advertiserTable" class="adDescDiv">
@@ -251,7 +213,8 @@
 				<c:otherwise>
 					<img src="/img/avatar.png">
 				</c:otherwise>
-			</c:choose></td>
+			</c:choose>
+		</td>
 
 		<td>${shownAd.user.username}</td>
 
@@ -261,13 +224,11 @@
 			</form>
 		</td>
 	</tr>
-	
 </table>
 
 <c:import url="getMessageForm.jsp" />
 
 <script src="/js/messageForAdDescription.js"></script>
-
 
 <br>
 <br>

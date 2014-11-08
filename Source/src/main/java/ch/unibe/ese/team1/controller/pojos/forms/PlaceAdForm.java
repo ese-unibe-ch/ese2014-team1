@@ -231,5 +231,4 @@ public class PlaceAdForm {
 		this.registeredRoommateEmails = registeredRoommateEmails;
 	}
 	
-	
 }

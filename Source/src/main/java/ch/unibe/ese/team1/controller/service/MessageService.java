@@ -39,6 +39,12 @@ public class MessageService {
 		return messageDao.findOne(id);
 	}
 	
+	/**
+	 * Handles persisting a new message to the database.
+	 * 
+	 * @param messageForm
+	 *            the form to take the data from
+	 */
 	@Transactional
 	public Message saveFrom(MessageForm messageForm) {
 		Message message = new Message();
