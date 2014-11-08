@@ -63,9 +63,7 @@ public class MessageController {
 			User user = userService.findUserByUsername(principal.getName());
 			model.addObject("messageForm", new MessageForm());
 			model.addObject("messages", messageService.getInboxForUser(user));
-		} else {
-			
-		}
+		} 
 		return model;
 	}
 	

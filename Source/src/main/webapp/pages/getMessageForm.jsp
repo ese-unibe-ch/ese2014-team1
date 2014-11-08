@@ -8,7 +8,7 @@
 
 <div id="msgDiv">
 <form:form id="messageForm" method="post" modelAttribute="messageForm" class="msgForm" 
-		action="/profile/messages">
+		action="#">
 	<h2>New Message</h2>
 	<br>
 	<label>To: <span>*</span></label>

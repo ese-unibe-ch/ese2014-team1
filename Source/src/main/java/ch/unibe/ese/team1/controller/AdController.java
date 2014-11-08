@@ -26,6 +26,7 @@ import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
+import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.PictureMeta;
@@ -48,6 +49,8 @@ public class AdController {
 	private UserService userService;
 	@Autowired
 	private ServletContext servletContext;
+	@Autowired
+	private MessageService messageService;
 	
 	private ObjectMapper objectMapper;
 
@@ -120,6 +123,21 @@ public class AdController {
 		
 		model.addObject("messageForm", new MessageForm());
 
+		return model;
+	}
+	
+	@RequestMapping(value = "/ad", method = RequestMethod.POST)
+	public ModelAndView messageSent(@RequestParam("id") long id, @Valid MessageForm messageForm,
+			BindingResult bindingResult, Principal principal) {
+		
+		ModelAndView model = new ModelAndView("adDescription");
+		Ad ad = adService.getAdById(id);
+		model.addObject("shownAd", ad);
+		model.addObject("messageForm", new MessageForm());
+		
+		if (!bindingResult.hasErrors()) {
+			messageService.saveFrom(messageForm);
+		}
 		return model;
 	}
 	
