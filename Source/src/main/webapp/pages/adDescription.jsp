@@ -30,7 +30,7 @@
 <hr />
 
 <section>
-	<table id="adDescTable">
+	<table id="adDescTable" class="adDescDiv">
 		<tr>
 			<td><h2>Type</h2></td>
 			<td><c:choose>
@@ -69,9 +69,7 @@
 			<td><h2>Square Footage</h2></td>
 			<td>${shownAd.squareFootage}m²</td>
 		</tr>
-
 	</table>
-
 </section>
 
 <div id="image-slider">
@@ -92,26 +90,26 @@
 
 <section>
 	<div id="descriptionTexts">
-		<div>
+		<div class="adDescDiv">
 			<h2>Room Description</h2>
 			<p>${shownAd.roomDescription}</p>
 		</div>
 		<br />
 
-		<div>
+		<div class="adDescDiv">
 			<h2>Roommates</h2>
 			<p>${shownAd.roommates}</p>
 		</div>
 		<br />
 
-		<div>
+		<div class="adDescDiv">
 			<h2>Preferences</h2>
 			<p>${shownAd.preferences}</p>
 		</div>
 	</div>
 
 
-	<table class="advertiserTable">
+	<table id="checkBoxTable" class="adDescDiv">
 		<tr>
 			<td>
 				<h2>Smoking inside allowed</h2>
@@ -244,7 +242,7 @@
 <div style="clear: both"></div>
 <br>
 
-<table id="advertiserTable">
+<table id="advertiserTable" class="adDescDiv">
 	<tr>
 		<td><c:choose>
 				<c:when test="${shownAd.user.picture.filePath != null}">
@@ -255,11 +253,13 @@
 				</c:otherwise>
 			</c:choose></td>
 
-		<td>
-			<h2>Advertiser</h2>
-		</td>
-
 		<td>${shownAd.user.username}</td>
+
+		<td>
+			<form>
+				<button id="newMsg" type="button">Contact Advertiser</button>
+			</form>
+		</td>
 	</tr>
 	
 </table>
@@ -267,10 +267,6 @@
 <c:import url="getMessageForm.jsp" />
 
 <script src="/js/messageForAdDescription.js"></script>
-<form>
-	<button id="newMsg" type="button">Contact Advertiser</button>
-</form>
-
 
 
 <br>

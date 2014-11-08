@@ -444,11 +444,11 @@ footer nav ul li {
 	text-decoration: underline;
 }
 
-.advertiserTable {
+#checkBoxTable {
 	width: 27%;
 }
 
-.advertiserTable h2 {
+#checkBoxTable h2 {
 	margin: 4px;
 }
 
@@ -528,6 +528,15 @@ footer nav ul li {
 	float: left;
 }
 
+.adDescDiv {
+	border-color: #2dc16d;
+	border-radius: 5px;
+	border-width: 3px;
+	border-style: solid;
+	padding: 15px;
+}
+	
+
 /* -------------------------------------------------------------------- */
 /* messages.jsp */
 #messageList {
@@ -586,8 +595,6 @@ footer nav ul li {
 	margin: auto;
 }
 
-
-/* --- messages.jsp (Rafi)--- */
 #folders a:hover {
 	background-color: #2dc16d;
 	color: white;
