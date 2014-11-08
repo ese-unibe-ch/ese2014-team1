@@ -121,9 +121,11 @@ public class AdService {
 		ad.setPictures(pictures);
 		
 		List<User> registeredUserRommates = new LinkedList<>();
-		for(String userEmail : placeAdForm.getRegisteredRoommateEmails()){
-			User roommateUser = userService.findUserByUsername(userEmail);
-			registeredUserRommates.add(roommateUser);
+		if (placeAdForm.getRegisteredRoommateEmails() != null) {
+			for (String userEmail : placeAdForm.getRegisteredRoommateEmails()) {
+				User roommateUser = userService.findUserByUsername(userEmail);
+				registeredUserRommates.add(roommateUser);
+			}
 		}
 		ad.setRegisteredRoommates(registeredUserRommates);
 
