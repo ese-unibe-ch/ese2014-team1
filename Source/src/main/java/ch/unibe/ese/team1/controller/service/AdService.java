@@ -48,7 +48,11 @@ public class AdService {
 	@Transactional
 	public Ad saveFrom(PlaceAdForm placeAdForm, List<String> filePaths,
 			User user) {
+		
 		Ad ad = new Ad();
+		
+		Date now = new Date();
+		ad.setCreationDate(now);
 
 		ad.setTitle(placeAdForm.getTitle());
 

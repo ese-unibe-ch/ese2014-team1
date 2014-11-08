@@ -15,6 +15,8 @@
 <!-- format the dates -->
 <fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"
 	type="date" pattern="dd.MM.yyyy" />
+<fmt:formatDate value="${shownAd.creationDate}" var="formattedCreationDate"
+	type="date" pattern="dd.MM.yyyy" />
 <c:choose>
 	<c:when test="${empty shownAd.moveOutDate }">
 		<c:set var="formattedMoveOutDate" value="unlimited" />
@@ -65,8 +67,12 @@
 		</tr>
 
 		<tr>
-			<td><h2>Square Footage</h2></td>
+			<td><h2>Square Meters</h2></td>
 			<td>${shownAd.squareFootage}m²</td>
+		</tr>
+		<tr>
+			<td><h2>Ad created on</h2></td>
+			<td>${formattedCreationDate}</td>
 		</tr>
 	</table>
 </section>

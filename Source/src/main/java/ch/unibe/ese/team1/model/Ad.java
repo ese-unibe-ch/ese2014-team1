@@ -34,6 +34,10 @@ public class Ad {
 
 	@Column(nullable = false)
 	private String city;
+	
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date creationDate;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -105,6 +109,14 @@ public class Ad {
 
 	@ManyToOne(optional = false)
 	private User user;
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
 
 	public boolean getStudio() {
 		return studio;
