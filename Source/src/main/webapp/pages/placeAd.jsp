@@ -56,7 +56,6 @@
 			else {
 				alert("Please enter an e-mail adress");
 			}
-					
 			 
 			
 			// Validates the input for Email Syntax
@@ -194,7 +193,7 @@
 
 			<tr>
 				<td id="roommateCell"><form:input type="text" id="room_friends"
-						path="room_friends" placeholder="email" /> <!-- tabindex="x" -->
+						path="room_friends" placeholder="email" /> 
 
 					<div id="addbutton">+</div></td>
 			</tr>

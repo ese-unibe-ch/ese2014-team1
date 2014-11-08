@@ -230,7 +230,4 @@
 
 <script src="/js/messageForAdDescription.js"></script>
 
-<br>
-<br>
-
 <c:import url="template/footer.jsp" />
