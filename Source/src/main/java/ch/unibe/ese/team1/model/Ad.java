@@ -67,8 +67,6 @@ public class Ad {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<User> registeredRoommates;
 
-	// new stuff on the block
-
 	@Column(nullable = false)
 	private boolean smokers;
 
