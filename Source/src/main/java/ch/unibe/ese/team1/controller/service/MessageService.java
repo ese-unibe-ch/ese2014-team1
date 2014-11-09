@@ -52,7 +52,7 @@ public class MessageService {
 		message.setRecipient(userDao.findByUsername(messageForm.getRecipient()));
 		message.setSubject(messageForm.getSubject());
 		message.setText(messageForm.getText());
-		message.setState(MessageState.READ);
+		message.setState(MessageState.UNREAD);
 	
 		// get logged in user as the sender
 		org.springframework.security.core.userdetails.User securityUser = (org.springframework.security.core.userdetails.User)
