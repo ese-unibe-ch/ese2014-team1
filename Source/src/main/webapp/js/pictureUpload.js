@@ -1,18 +1,38 @@
-/**
- * 
- */
+function showPictures() {
+	$.post('/profile/placeAd/getUploadedPictures', function(data) {
+		$("#uploaded-pictures tr:gt(0)").remove();
+		$.each(data, function(index, picture) {
+			appendPictureRow(picture.name, picture.size, picture.url);
+		});
+	});
+}
+
+function appendPictureRow(name, size, url) {
+	// var sizeText = (size / 1024).toFixed(2) + ' KB';
+	$("#uploaded-pictures")
+			.append(
+					'<tr><td>' + name + '</td><td>' + size
+							+ '</td><td data-delete-url="' + url
+							+ '">Delete</td></tr>');
+}
+
 $(function() {
 	$('#field-pictures').fileupload({
-		url: '/profile/placeAd/uploadPictures',
+		url : '/profile/placeAd/uploadPictures',
 		dataType : 'json',
-		
+
 		done : function(e, data) {
-			$.each(data.files, function(index, file) {
-				var size = (file.size/1024).toFixed(2) + ' KB';
-				$("#uploaded-pictures").append('<tr><td>'+ file.name + '</td><td>' + size + '</td></tr>');
-			});
+			showPictures();
 		}
 	});
+
+	showPictures();
+
+	// attach the picture delete handler to the table cells
+	$("table").on("click", "td[data-delete-url]", function(event) {
+		var deleteUrl = $(this).attr('data-delete-url');
+		$.post('/profile/placeAd/deletePicture', {url : deleteUrl}, function() {
+			showPictures();
+		});
+	});
 });
-
-

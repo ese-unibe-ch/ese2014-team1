@@ -4,10 +4,15 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,8 +29,8 @@ public class PictureUploader {
 
 	private String absoluteFilePath;
 	private String relativePath;
-	private List<String> fileNames;
 	private List<PictureMeta> uploadedPictureMetas;
+	
 
 	/**
 	 * Creates a new PictureUploader that will upload to the directory specified
@@ -40,8 +45,8 @@ public class PictureUploader {
 	public PictureUploader(String absolutePath, String relativePath) {
 		this.absoluteFilePath = absolutePath;
 		this.relativePath = relativePath;
-		fileNames = new ArrayList<>();
-		uploadedPictureMetas = new LinkedList<>();
+		LinkedList<PictureMeta> unsyncUploadedPictures = new LinkedList<>();
+		uploadedPictureMetas = Collections.synchronizedList(unsyncUploadedPictures);
 	}
 
 	/**
@@ -78,13 +83,13 @@ public class PictureUploader {
 					String extension = originalFileName.substring(
 							originalFileName.length() - EXTENSION_LENGTH)
 							.toLowerCase(Locale.ROOT);
-
-					int index = findHighestIndexedPicture(directory) + 1;
-					String absoluteFileName = absoluteFilePath + "/" + index
+					UUID randomUUID = UUID.randomUUID();
+					String fileName = randomUUID.toString();
+					
+					String absoluteFileName = absoluteFilePath + "/" + fileName
 							+ extension;
-					String relativeFileName = relativePath + "/" + index
+					String relativeFileName = relativePath + "/" + fileName
 							+ extension;
-					fileNames.add(relativeFileName);
 					pictureMeta.setUrl(relativeFileName);
 					BufferedOutputStream outStream = new BufferedOutputStream(
 							new FileOutputStream(new File(absoluteFileName)));
@@ -93,45 +98,38 @@ public class PictureUploader {
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
-
-				uploadedPictureMetas.add(pictureMeta);
+				synchronized (uploadedPictureMetas) {
+					uploadedPictureMetas.add(pictureMeta);
+				}
 			}
 		}
 		return uploadedPictureMetas;
 	}
 
 	/**
-	 * Finds the picture with the highest index in the directory given by
-	 * directory. This method assumes that the pictures are stored as with
-	 * one-digit names in ascending order.
-	 * 
-	 * @param directory
-	 *            the directory to search through
-	 * @return the index of the highest-indexed picture
+	 * Deletes the picture with the given url.
+	 * @param url the relative filepath of the picture (relative to the webserver root)
+	 * @param absoluteFilePath the absolute filepath of the picture that should be deleted
 	 */
-	private int findHighestIndexedPicture(File directory) {
-		String[] files = directory.list();
-
-		int max = 0;
-		for (int i = 0; i < files.length; i++) {
-			try {
-				String indexString = files[i].substring(0, files[i].length()
-						- EXTENSION_LENGTH);
-				int index = Integer.parseInt(indexString);
-				if (max < index) {
-					max = index;
-				}
-			} catch (NumberFormatException ex) {
-				// ignore, we don't care about these files anyway
-			}
+	public void deletePicture(String url, String absoluteFilePath ) {
+		Path filePath = Paths.get(absoluteFilePath);
+		try {
+			Files.delete(filePath);
+		} catch (IOException e) {
+			// not that tragic, since we want to delete the file anyway
+			e.printStackTrace();
 		}
-
-		return max;
+		// remove file from uploaded file list
+		synchronized (uploadedPictureMetas) {
+			uploadedPictureMetas.removeIf(picture -> picture.getUrl().equals(url));
+		}
 	}
 
 	/** Returns the relative file paths of the pictures that were uploaded. */
 	public List<String> getFileNames() {
-		return fileNames;
+		return uploadedPictureMetas.stream()
+				.map(pictureMeta -> pictureMeta.getUrl())
+				.collect(Collectors.toList());
 	}
 
 	/**

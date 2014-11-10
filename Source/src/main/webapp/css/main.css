@@ -44,7 +44,6 @@ pre, pre span {
 	color: graytext;
 	margin-top: -5px;
 	margin-bottom: 40px;
-	
 }
 
 pre a {
@@ -321,11 +320,24 @@ footer nav ul li {
 }
 
 #uploaded-pictures {
-	width: 500px;
+	width: 700px;
+}
+
+#uploaded-pictures td {
+	text-align: center;
+}
+
+#uploaded-pictures td:first-child {
+	text-align: left;
+}
+
+#uploaded-pictures td:last-child {
+	cursor: pointer;
 }
 
 #name-column {
-	width: 60%;
+	width: 75%;
+	text-align: left;
 }
 
 .placeAdTable {
@@ -440,7 +452,7 @@ footer nav ul li {
 	margin: 10px;
 }
 
-#adDescTable td a{
+#adDescTable td a {
 	text-decoration: underline;
 }
 
@@ -457,20 +469,20 @@ footer nav ul li {
 	float: left
 }
 
-#descriptionTexts div{
+#descriptionTexts div {
 	width: 80%;
 }
 
-#advertiserTable{
+#advertiserTable {
 	width: 40%;
 }
 
-#advertiserTable img{
+#advertiserTable img {
 	width: 50px;
 	height: 50px;
 }
 
-#mate img{
+#mate img {
 	width: 50px;
 	height: 50px;
 }
@@ -480,7 +492,7 @@ footer nav ul li {
 	width: 100%;
 }
 
-#advertiserTable h2{
+#advertiserTable h2 {
 	margin: 0;
 }
 
@@ -545,7 +557,6 @@ footer nav ul li {
 	border-style: solid;
 	padding: 15px;
 }
-	
 
 /* -------------------------------------------------------------------- */
 /* messages.jsp */
@@ -611,44 +622,44 @@ footer nav ul li {
 	cursor: pointer;
 }
 
-.msgForm{
-	border-radius:2px;
-	padding:20px 30px;
-	box-shadow:0 0 15px;
-	font-size:14px;
-	font-weight:bold;
-	width:350px;
-	margin:20px 250px 0 35px;
-	float:left;
-	background-color:white;
+.msgForm {
+	border-radius: 2px;
+	padding: 20px 30px;
+	box-shadow: 0 0 15px;
+	font-size: 14px;
+	font-weight: bold;
+	width: 350px;
+	margin: 20px 250px 0 35px;
+	float: left;
+	background-color: white;
 	position: relative;
 	border: 5px solid rgb(90, 158, 181);
 	left: 50%;
 	top: 50%;
-	margin-left:-210px;
-	margin-top:-255px;
+	margin-left: -210px;
+	margin-top: -255px;
 }
 
-.msgInput{
-	width:100%;
-	height:35px;
-	margin-top:5px;
-	border:1px solid #999;
-	border-radius:3px;
-	padding:5px;
+.msgInput {
+	width: 100%;
+	height: 35px;
+	margin-top: 5px;
+	border: 1px solid #999;
+	border-radius: 3px;
+	padding: 5px;
 }
 
-#msgTextarea{
-	width:100%;
-	height:80px;
-	margin-top:5px;
-	border-radius:3px;
-	padding:5px;
-	resize:none;
+#msgTextarea {
+	width: 100%;
+	height: 80px;
+	margin-top: 5px;
+	border-radius: 3px;
+	padding: 5px;
+	resize: none;
 }
 
-#msgDiv{
-	opacity:1.0;
+#msgDiv {
+	opacity: 1.0;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -658,7 +669,7 @@ footer nav ul li {
 	display: none;
 }
 
-.img{
+.img {
 	float: right;
 	margin-top: -35px;
 	margin-right: -37px;

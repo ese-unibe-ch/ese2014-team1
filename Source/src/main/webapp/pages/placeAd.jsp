@@ -207,6 +207,7 @@
 			<tr>
 				<th id="name-column">Uploaded picture</th>
 				<th>Size</th>
+				<th>Delete</th>
 			</tr>
 		</table>
 		<br>

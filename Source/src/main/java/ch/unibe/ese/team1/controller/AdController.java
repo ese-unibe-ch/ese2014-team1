@@ -90,6 +90,22 @@ public class AdController {
 		jsonResponse += "}";
 		return jsonResponse;
 	}
+	
+	@RequestMapping(value= "/profile/placeAd/getUploadedPictures", method=RequestMethod.POST)
+	public @ResponseBody List<PictureMeta> getUploadedPictures(){
+		if(pictureUploader == null){
+			return null;
+		}
+		return pictureUploader.getUploadedPictureMetas();
+	}
+	
+	@RequestMapping(value="/profile/placeAd/deletePicture", method=RequestMethod.POST)
+	public @ResponseBody void deleteUploadPicture(@RequestParam String url){
+		if(pictureUploader != null){
+			String realPath = servletContext.getRealPath(url);
+			pictureUploader.deletePicture(url, realPath);
+		}
+	}
 
 	@RequestMapping(value = "/profile/placeAd", method = RequestMethod.POST)
 	public ModelAndView create(@Valid PlaceAdForm placeAdForm,
@@ -105,6 +121,8 @@ public class AdController {
 
 			// reset the place ad form
 			this.placeAdForm = null;
+			// reset the picture uploader
+			this.pictureUploader = null;
 
 			model = new ModelAndView("redirect:/ad?id=" + ad.getId());
 		} else {
