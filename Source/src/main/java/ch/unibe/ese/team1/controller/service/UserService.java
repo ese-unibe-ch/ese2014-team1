@@ -20,5 +20,10 @@ public class UserService {
 	public User findUserByUsername(String username) {
 		return userDao.findByUsername(username);
 	}
+	
+	@Transactional
+	public User findUserById(long id) {
+		return userDao.findUserById(id);
+	}
 
 }
