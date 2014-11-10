@@ -158,7 +158,8 @@ public class AdController {
 		return model;
 	}
 	
-	// why does it have to be POST when you try to retrieve data and not submit it!?!?
+	// why does it have to be POST when you try to retrieve data and not submit it!?!
+	// who wrote this? Did I?
 	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
 	@ResponseBody
 	public String validateEmail(@RequestParam String email){
