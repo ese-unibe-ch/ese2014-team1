@@ -32,16 +32,6 @@
 			dateFormat : 'dd-mm-yy'
 		});
 		
-		/*
-		
-		changed the post to get in order to have the body free for implementation instead of paramter passing
-		$.get("/profile/placeAd/validateEmail?email=" + text, function(data) {
-			email: text;
-			I COULD NOT IMPLEMENT ANY CODE
-		}
-		COULD NOT ACCESS DATA FIELD SINCE OUTSIDE FUNCTION
-		
-		*/
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			if(validateForm(text)) {
@@ -68,9 +58,6 @@
 			    	return true;
 			    }
 			}
-			// splitting is done by
-			// ->  "1,2,3".split( "," ) -> [ "1", "2", "3" ]
-			// check this page again -> http://api.jquery.com/Types/#htmlString
 		});
 	});
 </script>
