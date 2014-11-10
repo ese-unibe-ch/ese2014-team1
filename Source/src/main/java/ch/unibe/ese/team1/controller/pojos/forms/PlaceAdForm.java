@@ -34,7 +34,7 @@ public class PlaceAdForm {
 
 	private String preferences;
 
-	@NotBlank(message = "Required")
+	// optional
 	private String roommates;
 	
 	private List<String> registeredRoommateEmails;

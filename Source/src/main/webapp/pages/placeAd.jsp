@@ -170,7 +170,7 @@
 
 	<br />
 	<fieldset>
-		<legend>Roommates</legend>
+		<legend>Roommates (optional)</legend>
 		<p>If your roommates have an account, simply add them by email.</p>
 
 		<table class="placeAdTable">
