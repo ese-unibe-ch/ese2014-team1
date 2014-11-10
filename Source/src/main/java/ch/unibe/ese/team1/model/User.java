@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -49,6 +50,10 @@ public class User {
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserPicture picture;
+	
+	@Column(nullable = true)
+	@Lob
+	private String aboutMe;
 
 	public long getId() {
 		return id;
@@ -128,6 +133,14 @@ public class User {
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	public String getAboutMe() {
+		return aboutMe;
+	}
+
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
 	}
 	
 }
