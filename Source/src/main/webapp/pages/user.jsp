@@ -7,9 +7,32 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:import url="template/header.jsp" />
+<c:import url="getMessageForm.jsp" />
 
-<h1>hallo</h1>
+<script src="/js/messageForAdDescription.js"></script>
 
-<h1>${user.firstName}</h1>
-
+<div id="userDiv">
+	<div id="userPicDiv">
+		<c:choose>
+			<c:when test="${mate.picture.filePath != null}">
+				<img src="${mate.picture.filePath}">
+			</c:when>
+			<c:otherwise>
+				<img src="/img/avatar.png">
+			</c:otherwise>
+		</c:choose>
+	</div>
+	<br />
+	<div id="userTextDiv">
+		<h2>Username</h2>${user.email}<p>
+		<h2>First name</h2>${user.firstName}<p>
+		<h2>Last name</h2>${user.lastName}<p>
+		<hr class="slim">		
+		<h2>About me</h2>${user.aboutMe}
+		<hr class="slim">		
+		<form>
+			<button id="newMsg" type="button">Message</button>
+		</form>
+	</div>
+</div>
 <c:import url="template/footer.jsp"/>

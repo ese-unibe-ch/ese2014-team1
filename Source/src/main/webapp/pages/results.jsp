@@ -199,7 +199,7 @@ function sort_div_attribute() {
 		CHF
 		<form:errors path="prize" cssClass="validationErrorText" /><br />
 		
-		<hr style="height:2px; margin-bottom:10px"/>		
+		<hr class="slim">		
 		
 		<table style="width: 80%">
 			<tr>

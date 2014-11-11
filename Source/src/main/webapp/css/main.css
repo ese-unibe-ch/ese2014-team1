@@ -31,6 +31,11 @@ hr {
 	margin-bottom: 40px;
 }
 
+.slim {
+	height: 2px;
+	margin-bottom: 10px
+}
+
 a {
 	text-decoration: none;
 	color: graytext;
@@ -426,6 +431,17 @@ footer nav ul li {
 	text-decoration: none;
 }
 
+#userPicDiv {
+	float: left;
+	margin-top: 10px;
+}
+
+#userTextDiv {
+	float: left;
+	padding-left: 30px;
+	margin-top: 10px;
+}
+
 #filterDiv {
 	width: 35%;
 	margin-top: 30px;
@@ -436,6 +452,11 @@ footer nav ul li {
 	border-color: #2dc16d;
 	border-width: 3px;
 	border-radius: 10px;
+}
+
+#userDiv {
+	width: 40%;
+	margin: 0 auto;
 }
 
 #resultsDiv {

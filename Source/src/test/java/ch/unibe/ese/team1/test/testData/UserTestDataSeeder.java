@@ -30,10 +30,12 @@ public class UserTestDataSeeder implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		User john = createUser("jane@doe.com", "password", "Jane", "Doe",
 				Gender.FEMALE);
+		john.setAboutMe(getDummyText());
 		userDao.save(john);
 
 		User tester = createUser("ese@unibe.ch", "ese", "Tester",
 				"Muster", "/img/user/portrait.jpg", Gender.MALE);
+		tester.setAboutMe(getDummyText());
 		userDao.save(tester);
 	}
 
@@ -77,6 +79,15 @@ public class UserTestDataSeeder implements InitializingBean {
 		userRoles.add(role);
 		user.setUserRoles(userRoles);
 		return user;
+	}
+	
+	private String getDummyText() {
+		return "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
+				+ "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "
+				+ "voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "
+				+ "clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+				+ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod "
+				+ "tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ";
 	}
 
 }

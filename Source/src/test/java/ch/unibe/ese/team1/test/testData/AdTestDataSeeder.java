@@ -18,7 +18,7 @@ import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.AdDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
-/** This inserts two ad elements into the database. */
+/** This inserts six ad elements into the database. */
 @Service
 public class AdTestDataSeeder implements InitializingBean {
 
@@ -38,6 +38,7 @@ public class AdTestDataSeeder implements InitializingBean {
 		picture.setFilePath("/img/test/berner_baer.png");
 		picture.setUser(user);
 		user.setPicture(picture);
+		user.setAboutMe(getDummyText());
 		userDao.save(user);
 		
 		String date1str = "01.11.2014";
