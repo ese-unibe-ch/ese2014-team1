@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.pojos.forms.EditProfileForm;
@@ -35,7 +34,6 @@ public class AccountController {
 	private UserUpdateService userUpdateService;
 	
 	
-
 	@RequestMapping(value = "/login")
 	public ModelAndView loginPage() {
 		ModelAndView model = new ModelAndView("login");
@@ -82,11 +80,11 @@ public class AccountController {
 		if(!bindingResult.hasErrors()) {
 			userUpdateService.updateFrom(editProfileForm);
 			model = new ModelAndView("updatedProfile");
-			model.addObject("confirmationMessage", "Update successful!");
+			model.addObject("negativeMessage", "Update successful!");
 			return model;
 		} else {
-			model = new ModelAndView("updatedProfile");
-			model.addObject("editProfileForm", editProfileForm);
+			model = new ModelAndView("nonUpdatedProfile");
+			model.addObject("negativeMessage", "Update successful!");
 			return model;
 		}
 		
@@ -98,14 +96,5 @@ public class AccountController {
 		model.addObject("tester", "That should be displayed");
 		return model;
 		*/
-	}
-	
-	@RequestMapping(value = "/profile/editProfile/insertForm", method = RequestMethod.GET)
-	@ResponseBody
-	public User insertForm(Principal principal) {
-		String username = principal.getName();
-		System.out.println(username);
-		User user = userService.findUserByUsername(username);
-		return user;
 	}
 }

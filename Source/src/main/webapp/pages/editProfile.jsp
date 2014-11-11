@@ -9,20 +9,6 @@
 
 <pre><a href="/">Home</a>   >   %%Profile page when done%% >  Edit profile</pre>
 
-<%-- How do I call a requestMapper to get some things done without leaving the page
-and without needing to click something? --%>
-<script>
-	$(document).ready(function() {
-		$.get("/profile/editProfile/insertForm", function(data) {
-			
-		});
-		
-	});
-		
-		
-		
-</script>
-
 <h1>Edit your Profile</h1>
 <hr />
 
@@ -70,12 +56,12 @@ and without needing to click something? --%>
 		<form:input id="gender" path="gender" value="${currentUser.gender}" /></td>
 	</tr>
 
-
+--%>
 	<tr>
 		<td class="spacingTable"><label for="changePicture">New picture:</label><a>&thinsp;</a>
-		<input type="file" id="changePicture" accept="image/*" /></td>
+		<input type="file" id="changePicture" path="userPicture" accept="image/*" /></td>
 	</tr>
---%>	
+	
 	
 	<tr>
 		<td class="spacingTable"><label for="about-me">About me:</label><a>&emsp;&thinsp;</a><br>

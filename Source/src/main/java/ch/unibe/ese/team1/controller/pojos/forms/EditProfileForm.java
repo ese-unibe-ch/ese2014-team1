@@ -3,7 +3,7 @@ package ch.unibe.ese.team1.controller.pojos.forms;
 import org.hibernate.validator.constraints.NotBlank;
 
 // import ch.unibe.ese.team1.model.Gender;
-// import ch.unibe.ese.team1.model.UserPicture;
+import ch.unibe.ese.team1.model.UserPicture;
 
 // import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,7 +24,7 @@ public class EditProfileForm {
 	//@NotBlank(message = "Required")
 	//private Gender gender;
 
-	// private UserPicture picture;
+	private UserPicture userPicture;
 	
 	private String aboutMe;
 
@@ -61,15 +61,15 @@ public class EditProfileForm {
 		this.gender = gender;
 	}
 
-	
-	public UserPicture getPicture() {
-		return picture;
+*/	
+	public UserPicture getUserPicture() {
+		return userPicture;
 	}
 
-	public void setPicture(UserPicture picture) {
-		this.picture = picture;
+	public void setUserPicture(UserPicture userPicture) {
+		this.userPicture = userPicture;
 	}
-*/
+
 	public String getAboutMe() {
 		return aboutMe;
 	}

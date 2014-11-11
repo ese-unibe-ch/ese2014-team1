@@ -193,10 +193,24 @@ button {
 	border-color: #2dc16d;
 }
 
+.negative-message {
+	border-style: solid;
+	width: 20%;
+	margin: auto;
+	padding: 10px 20px;
+	border-color: #2dc16d;
+}
+
 .confirmation-message img {
 	width: 30px;
 	margin-bottom: 20px;
 }
+
+.negative-message img {
+	width: 30px;
+	margin-bottom: 20px;
+}
+
 
 
 /* -------------------------------------------------------------------- */
