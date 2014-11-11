@@ -11,7 +11,8 @@
 
 <c:import url="template/header.jsp" />
 
-<pre><a href="/">Home</a>   >   Login</pre>
+<pre>
+	<a href="/">Home</a>   >   Login</pre>
 
 <h1>Login</h1>
 
@@ -21,27 +22,29 @@
 	</c:when>
 	<c:otherwise>
 		<c:if test="${!empty param.error}">
-			<p>Incorrect email or password. Please retry using correct
-				email and password.</p>
+			<p>Incorrect email or password. Please retry using correct email
+				and password.</p>
 			<br />
 		</c:if>
-		<form method="post" action="/j_spring_security_check">
-			<label for="field-email">Email:</label> <input
-				name="j_username" id="field-email" /> <label
-				for="field-password">Password:</label> <input name="j_password"
-				id="field-password" type="password" />
+		<form id="login-form" method="post" action="/j_spring_security_check">
+			<label for="field-email">Email:</label> <input name="j_username"
+				id="field-email" /> <label for="field-password">Password:</label> <input
+				name="j_password" id="field-password" type="password" />
 			<button type="submit">Login</button>
 		</form>
 		<br />
-		<p>
-			<i>Hint: I have a feeling that "jane@doe.com", "password" would be a
-				good login.<br>Also, "user@bern.com" and "password" will work.
-				<br>Use "tester@unibe.ch" and "password" for a user with a picture</i>
-		</p>
-		<p>
+		<h2>Test users</h2>
+
+		<ul id="test-users">
+			<li>Email: <i>ese@unibe.ch</i>, password: <i>ese</i></li>
+			<li>Email: <i>jane@doe.com</i>, password: <i>password</i></li>
+			<li>Email: <i>user@bern.com</i>, password: <i>password</i></li>
+		</ul>
+		<br />
+		<h3>
 			<a href="<c:url value="/signup" />">Sign up as a new user</a>
 			instead.
-		</p>
+		</h3>
 	</c:otherwise>
 </c:choose>
 

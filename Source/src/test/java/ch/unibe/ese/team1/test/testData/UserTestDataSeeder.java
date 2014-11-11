@@ -32,7 +32,7 @@ public class UserTestDataSeeder implements InitializingBean {
 				Gender.FEMALE);
 		userDao.save(john);
 
-		User tester = createUser("tester@unibe.ch", "password", "Tester",
+		User tester = createUser("ese@unibe.ch", "ese", "Tester",
 				"Muster", "/img/user/portrait.jpg", Gender.MALE);
 		userDao.save(tester);
 	}
