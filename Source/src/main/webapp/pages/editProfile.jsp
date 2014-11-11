@@ -14,9 +14,11 @@ and without needing to click something? --%>
 	$(document).ready(function() {
 		$.get("/profile/editProfile/insertForm", function(data) {
 			alert("insertForm");
-			alert(data.getGender());
+			alert(data.gender);
 			
 		});
+		
+	});
 		
 		
 		
