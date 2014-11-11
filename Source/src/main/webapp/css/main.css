@@ -242,6 +242,12 @@ header ul li {
 	margin-top: 0px;
 }
 
+#profile_picture_editPage {
+	float: left;
+	width: 340px;
+	margin-top: 0px;
+}
+
 #profile_picture img {
 	width: 60px;
 	height: 60px;
@@ -375,6 +381,24 @@ footer nav ul li {
 /* search.jsp */
 #searchForm {
 	width: 900px;
+}
+
+/* -------------------------------------------------------------------- */
+/* editProfile.jsp */
+
+.editProfileTable input {
+	width: 30%;
+	font-size: 1.0em;
+}
+
+.editProfileTable {
+	width: 80%;
+	margin-top: 2px;
+	font-size: 1.8em;
+}
+
+.spacingTable {
+	padding: 10px;
 }
 
 /* -------------------------------------------------------------------- */

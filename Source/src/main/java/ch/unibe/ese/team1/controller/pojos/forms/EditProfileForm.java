@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import ch.unibe.ese.team1.model.Gender;
 import ch.unibe.ese.team1.model.UserPicture;
-// import ch.unibe.ese.team1.model.UserRole;
 
 // import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,12 +21,8 @@ public class EditProfileForm {
 	@NotBlank(message = "Required")
 	private Gender gender;
 
-	// @JsonIgnore
-	// @OneToOne(cascade = CascadeType.ALL)
 	private UserPicture picture;
 	
-	// @Column(nullable = true)
-	// @Lob
 	private String aboutMe;
 
 	public String getPassword() {
