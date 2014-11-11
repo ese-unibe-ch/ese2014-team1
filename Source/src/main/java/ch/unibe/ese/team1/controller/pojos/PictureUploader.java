@@ -30,7 +30,6 @@ public class PictureUploader {
 	private String absoluteFilePath;
 	private String relativePath;
 	private List<PictureMeta> uploadedPictureMetas;
-	
 
 	/**
 	 * Creates a new PictureUploader that will upload to the directory specified
@@ -46,7 +45,8 @@ public class PictureUploader {
 		this.absoluteFilePath = absolutePath;
 		this.relativePath = relativePath;
 		LinkedList<PictureMeta> unsyncUploadedPictures = new LinkedList<>();
-		uploadedPictureMetas = Collections.synchronizedList(unsyncUploadedPictures);
+		uploadedPictureMetas = Collections
+				.synchronizedList(unsyncUploadedPictures);
 	}
 
 	/**
@@ -83,6 +83,13 @@ public class PictureUploader {
 					String extension = originalFileName.substring(
 							originalFileName.length() - EXTENSION_LENGTH)
 							.toLowerCase(Locale.ROOT);
+					// check filetypes
+					if (!(extension.equals(".jpg") || extension.equals(".png")
+							|| extension.equals(".jpeg") || extension
+								.equals(".bmp"))) {
+						// invalid file format, skip file
+						continue;
+					}
 					UUID randomUUID = UUID.randomUUID();
 					String fileName = randomUUID.toString();
 					
@@ -108,10 +115,14 @@ public class PictureUploader {
 
 	/**
 	 * Deletes the picture with the given url.
-	 * @param url the relative filepath of the picture (relative to the webserver root)
-	 * @param absoluteFilePath the absolute filepath of the picture that should be deleted
+	 * 
+	 * @param url
+	 *            the relative filepath of the picture (relative to the
+	 *            webserver root)
+	 * @param absoluteFilePath
+	 *            the absolute filepath of the picture that should be deleted
 	 */
-	public void deletePicture(String url, String absoluteFilePath ) {
+	public void deletePicture(String url, String absoluteFilePath) {
 		Path filePath = Paths.get(absoluteFilePath);
 		try {
 			Files.delete(filePath);
@@ -121,7 +132,8 @@ public class PictureUploader {
 		}
 		// remove file from uploaded file list
 		synchronized (uploadedPictureMetas) {
-			uploadedPictureMetas.removeIf(picture -> picture.getUrl().equals(url));
+			uploadedPictureMetas.removeIf(picture -> picture.getUrl().equals(
+					url));
 		}
 	}
 
