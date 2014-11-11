@@ -5,19 +5,31 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "users")
 public class User {
 
+	/*//TRY next 6 lines
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	public User update(User transUser) {
+		return entityManager.merge(transUser);
+	}
+	*/
+	
 	@Id
 	@GeneratedValue
 	private long id;

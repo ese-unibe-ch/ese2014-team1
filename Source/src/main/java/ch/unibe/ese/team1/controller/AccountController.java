@@ -16,6 +16,7 @@ import ch.unibe.ese.team1.controller.pojos.forms.EditProfileForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SignupForm;
 import ch.unibe.ese.team1.controller.service.SignupService;
 import ch.unibe.ese.team1.controller.service.UserService;
+import ch.unibe.ese.team1.controller.service.UserUpdateService;
 import ch.unibe.ese.team1.model.User;
 
 /**
@@ -29,6 +30,9 @@ public class AccountController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private UserUpdateService userUpdateService;
 	
 	
 
@@ -69,6 +73,31 @@ public class AccountController {
 		model.addObject("currentUser", user);
 		model.addObject("tester", "That should be displayed");
 		return model;
+	}
+	
+	@RequestMapping(value = "/profile/editProfile", method = RequestMethod.POST)
+	public ModelAndView editProfileResultPage(@Valid EditProfileForm editProfileForm,
+			BindingResult bindingResult) {
+		ModelAndView model;
+		if(!bindingResult.hasErrors()) {
+			userUpdateService.updateFrom(editProfileForm);
+			model = new ModelAndView("updatedProfile");
+			model.addObject("confirmationMessage", "Update successful!");
+			return model;
+		} else {
+			model = new ModelAndView("updatedProfile");
+			model.addObject("editProfileForm", editProfileForm);
+			return model;
+		}
+		
+		/*
+		
+		User user = userService.findUserByUsername(username);
+		model.addObject("editProfileForm", new EditProfileForm());
+		model.addObject("currentUser", user);
+		model.addObject("tester", "That should be displayed");
+		return model;
+		*/
 	}
 	
 	@RequestMapping(value = "/profile/editProfile/insertForm", method = RequestMethod.GET)

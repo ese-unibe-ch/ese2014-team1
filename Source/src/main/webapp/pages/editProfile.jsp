@@ -47,6 +47,11 @@ and without needing to click something? --%>
 
 <table class="editProfileTable">
 	<tr>
+		<td class="spacingTable"><label for="user-name">Username:</label><a>&emsp;</a>
+		<form:input id="user-name" path="username" value="${currentUser.username}" /></td>
+		
+	</tr>
+	<tr>
 		<td class="spacingTable"><label for="first-name">First name:</label><a>&emsp;</a>
 		<form:input id="first-name" path="firstName" value="${currentUser.firstName}" /></td>
 	</tr>
@@ -58,19 +63,29 @@ and without needing to click something? --%>
 		<td class="spacingTable"><label for="password">Password:</label><a>&emsp;&thinsp;</a>
 		<form:input type="password" id="password" path="password" value="${currentUser.password}" /></td>
 	</tr>
-	<tr>	
+	
+<%-- TODO: TO BE IMPLEMTED LATER	
+ 	<tr>	
 		<td class="spacingTable"><label for="gender">Gender:</label><a>&emsp;&emsp;&thinsp;</a>
 		<form:input id="gender" path="gender" value="${currentUser.gender}" /></td>
 	</tr>
+
+
 	<tr>
 		<td class="spacingTable"><label for="changePicture">New picture:</label><a>&thinsp;</a>
 		<input type="file" id="changePicture" accept="image/*" /></td>
 	</tr>
+--%>	
+	
 	<tr>
 		<td class="spacingTable"><label for="about-me">About me:</label><a>&emsp;&thinsp;</a><br>
 		<form:textarea id="about-me" path="aboutMe" rows="10" cols="100" value="${currentUser.aboutMe}" /></td>
 	</tr>
 </table>
+
+<div>
+		<button type="submit">Update</button>
+</div>
 
 </form:form>
 

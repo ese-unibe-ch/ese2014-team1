@@ -215,7 +215,7 @@
 
 	<br />
 	<div>
-		<button type="submit">Place Ad</button>
+		<button type="submit">Update</button>
 		<button type="reset">Cancel</button>
 	</div>
 
