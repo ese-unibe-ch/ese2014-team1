@@ -60,9 +60,13 @@ public class AccountController {
 	}
 	
 	@RequestMapping(value = "/profile/editProfile", method = RequestMethod.GET)
-	public ModelAndView editProfilePage() {
+	public ModelAndView editProfilePage(Principal principal) {
 		ModelAndView model = new ModelAndView("editProfile");
+		String username = principal.getName();
+		User user = userService.findUserByUsername(username);
 		model.addObject("editProfileForm", new EditProfileForm());
+		model.addObject("currentUser", user);
+		model.addObject("tester", "That should be displayed");
 		return model;
 	}
 	
