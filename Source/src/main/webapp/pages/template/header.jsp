@@ -16,8 +16,10 @@
 
 <Title>Our flat search website!</Title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script
+	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<link rel="stylesheet"
+	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
 
 <style>
 /* ensure that autocomplete lists are not too long and have a scrollbar */
@@ -37,7 +39,7 @@
 
 <header>
 	<div class="left">
-			<a href="/"><img src="/img/home-page-icon.png"></a>
+		<a href="/"><img src="/img/home-page-icon.png"></a>
 	</div>
 	<div class="right">
 		<nav>
@@ -71,3 +73,5 @@
 <body>
 	<!-- will be closed in footer-->
 	<div id="content">
+
+		<c:import url="/pages/template/getConfirmationMessage.jsp"></c:import>

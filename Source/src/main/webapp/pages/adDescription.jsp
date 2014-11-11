@@ -8,15 +8,16 @@
 
 <c:import url="template/header.jsp" />
 
-<pre><a href="/">Home</a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre>
+<pre>
+	<a href="/">Home</a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre>
 
 <script src="/js/image_slider.js"></script>
 
 <!-- format the dates -->
 <fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"
 	type="date" pattern="dd.MM.yyyy" />
-<fmt:formatDate value="${shownAd.creationDate}" var="formattedCreationDate"
-	type="date" pattern="dd.MM.yyyy" />
+<fmt:formatDate value="${shownAd.creationDate}"
+	var="formattedCreationDate" type="date" pattern="dd.MM.yyyy" />
 <c:choose>
 	<c:when test="${empty shownAd.moveOutDate }">
 		<c:set var="formattedMoveOutDate" value="unlimited" />
@@ -35,20 +36,17 @@
 	<table id="adDescTable" class="adDescDiv">
 		<tr>
 			<td><h2>Type</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.studio}">Studio</c:when>
 					<c:otherwise>Room</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Address</h2></td>
-			<td>
-				<a href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
-						${shownAd.zipcode} ${shownAd.city}</a>
-			</td>
+			<td><a
+				href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
+					${shownAd.zipcode} ${shownAd.city}</a></td>
 		</tr>
 
 		<tr>
@@ -82,9 +80,16 @@
 		<img src="/img/left-arrow.png" />
 	</div>
 	<div id="images">
-		<c:forEach items="${shownAd.pictures}" var="picture">
-			<img src="${picture.filePath}" />
-		</c:forEach>
+		<c:choose>
+			<c:when test="${empty shownAd.pictures }">
+				<img src="/img/no-photos.png" />
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${shownAd.pictures}" var="picture">
+					<img src="${picture.filePath}" />
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<div id="right-arrow">
 		<img src="/img/right-arrow.png" />
@@ -106,46 +111,43 @@
 			<p>${shownAd.roommates}</p>
 			<c:forEach var="mate" items="${shownAd.registeredRoommates}">
 				<div class="roommate">
-				<table id="mate">
-					<tr>
-					<!-- Link auf Profil -->
-						<td>
-						<c:choose>
-							<c:when test="${mate.picture.filePath != null}">
-								<img src="${mate.picture.filePath}">
-							</c:when>
-							<c:otherwise>
-								<img src="/img/avatar.png">
-							</c:otherwise>
-						</c:choose>
-						</td>
-						<td>${mate.firstName} ${mate.lastName}</td>
-						<td>${mate.username}</td>
-						<td>
-						<c:choose>
-							<c:when test="${mate.gender == 'MALE'}">
+					<table id="mate">
+						<tr>
+							<!-- Link auf Profil -->
+							<td><c:choose>
+									<c:when test="${mate.picture.filePath != null}">
+										<img src="${mate.picture.filePath}">
+									</c:when>
+									<c:otherwise>
+										<img src="/img/avatar.png">
+									</c:otherwise>
+								</c:choose></td>
+							<td>${mate.firstName}${mate.lastName}</td>
+							<td>${mate.username}</td>
+							<td><c:choose>
+									<c:when test="${mate.gender == 'MALE'}">
 								male
 							</c:when>
-							<c:otherwise>
+									<c:otherwise>
 								female
 							</c:otherwise>
-						</c:choose></td>
-					<!-- /Link auf Profil -->
-					</tr>
-				</table>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			</div>
+								</c:choose></td>
+							<!-- /Link auf Profil -->
+						</tr>
+					</table>
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
 			</c:forEach>
 		</div>
 		<br />
@@ -159,92 +161,74 @@
 	<table id="checkBoxTable" class="adDescDiv">
 		<tr>
 			<td><h2>Smoking inside allowed</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.smokers}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Animals allowed</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.animals}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Furnished Room</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.furnished}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
-		
+
 		<tr>
 			<td><h2>WiFi available</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.internet}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Cable TV</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.cable}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Garage</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.garage}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Cellar</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.cellar}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Balcony</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.balcony}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 		<tr>
 			<td><h2>Garden</h2></td>
-			<td>
-				<c:choose>
+			<td><c:choose>
 					<c:when test="${shownAd.garden}">yes</c:when>
 					<c:otherwise>no</c:otherwise>
-				</c:choose>
-			</td>
+				</c:choose></td>
 		</tr>
 
 	</table>
@@ -262,8 +246,7 @@
 				<c:otherwise>
 					<img src="/img/avatar.png">
 				</c:otherwise>
-			</c:choose>
-		</td>
+			</c:choose></td>
 
 		<td>${shownAd.user.username}</td>
 

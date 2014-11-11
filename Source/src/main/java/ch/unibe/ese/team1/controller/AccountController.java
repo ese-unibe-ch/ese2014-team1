@@ -48,10 +48,11 @@ public class AccountController {
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ModelAndView signupResultPage(@Valid SignupForm signupForm,
 			BindingResult bindingResult) {
-		ModelAndView model = new ModelAndView("signup");
+		ModelAndView model;
 		if (!bindingResult.hasErrors()) {
 			signupService.saveFrom(signupForm);
-			model.addObject("message", "Signup complete!");
+			model = new ModelAndView("login");
+			model.addObject("confirmationMessage", "Signup complete!");
 		} else {
 			model = new ModelAndView("signup");
 			model.addObject("signupForm", signupForm);

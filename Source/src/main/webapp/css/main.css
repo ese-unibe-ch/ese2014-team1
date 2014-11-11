@@ -180,6 +180,20 @@ button {
 	clear: both;
 }
 
+.confirmation-message {
+	border-style: solid;
+	width: 20%;
+	margin: auto;
+	padding: 10px 20px;
+	border-color: #2dc16d;
+}
+
+.confirmation-message img {
+	width: 30px;
+	margin-bottom: 20px;
+}
+
+
 /* -------------------------------------------------------------------- */
 /* Header & Footer */
 header {
@@ -308,14 +322,14 @@ footer nav ul li {
 	padding: 0px 15px;
 }
 
+
 /* -------------------------------------------------------------------- */
 /* ----------------------------Individual pages------------------------ */
 /* -------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------- */
 /* login.jsp */
-
-#test-users{
+#test-users {
 	margin-left: 30px;
 	line-height: 1.5;
 }

@@ -51,7 +51,7 @@ public class AdController {
 	private ServletContext servletContext;
 	@Autowired
 	private MessageService messageService;
-	
+
 	private ObjectMapper objectMapper;
 
 	private PictureUploader pictureUploader;
@@ -63,45 +63,48 @@ public class AdController {
 		ModelAndView model = new ModelAndView("placeAd");
 
 		String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);
-		if(pictureUploader == null){
+		if (pictureUploader == null) {
 			pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
 		}
 		return model;
 	}
 
 	@RequestMapping(value = "/profile/placeAd/uploadPictures", method = RequestMethod.POST)
-	public @ResponseBody String uploadPictures(MultipartHttpServletRequest request) {
+	public @ResponseBody String uploadPictures(
+			MultipartHttpServletRequest request) {
 		List<MultipartFile> pictures = new LinkedList<>();
 		Iterator<String> iter = request.getFileNames();
-		
-		while(iter.hasNext()){
+
+		while (iter.hasNext()) {
 			pictures.add(request.getFile(iter.next()));
 		}
-		
-		List<PictureMeta> uploadedPicturesMeta = pictureUploader.upload(pictures);
-		
+
+		List<PictureMeta> uploadedPicturesMeta = pictureUploader
+				.upload(pictures);
+
 		objectMapper = new ObjectMapper();
 		String jsonResponse = "{\"files\": ";
 		try {
-			jsonResponse += objectMapper.writeValueAsString(uploadedPicturesMeta);
+			jsonResponse += objectMapper
+					.writeValueAsString(uploadedPicturesMeta);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
 		jsonResponse += "}";
 		return jsonResponse;
 	}
-	
-	@RequestMapping(value= "/profile/placeAd/getUploadedPictures", method=RequestMethod.POST)
-	public @ResponseBody List<PictureMeta> getUploadedPictures(){
-		if(pictureUploader == null){
+
+	@RequestMapping(value = "/profile/placeAd/getUploadedPictures", method = RequestMethod.POST)
+	public @ResponseBody List<PictureMeta> getUploadedPictures() {
+		if (pictureUploader == null) {
 			return null;
 		}
 		return pictureUploader.getUploadedPictureMetas();
 	}
-	
-	@RequestMapping(value="/profile/placeAd/deletePicture", method=RequestMethod.POST)
-	public @ResponseBody void deleteUploadPicture(@RequestParam String url){
-		if(pictureUploader != null){
+
+	@RequestMapping(value = "/profile/placeAd/deletePicture", method = RequestMethod.POST)
+	public @ResponseBody void deleteUploadPicture(@RequestParam String url) {
+		if (pictureUploader != null) {
 			String realPath = servletContext.getRealPath(url);
 			pictureUploader.deletePicture(url, realPath);
 		}
@@ -125,12 +128,13 @@ public class AdController {
 			this.pictureUploader = null;
 
 			model = new ModelAndView("redirect:/ad?id=" + ad.getId());
+			redirectAttributes.addFlashAttribute("confirmationMessage",
+					"Ad placed successfully. You can take a look at it below.");
 		} else {
 			model = new ModelAndView("placeAd");
 		}
 		return model;
 	}
-	
 
 	@RequestMapping(value = "/ad", method = RequestMethod.GET)
 	public ModelAndView ad(@RequestParam("id") long id) {
@@ -142,35 +146,33 @@ public class AdController {
 
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/ad", method = RequestMethod.POST)
-	public ModelAndView messageSent(@RequestParam("id") long id, @Valid MessageForm messageForm,
-			BindingResult bindingResult, Principal principal) {
-		
+	public ModelAndView messageSent(@RequestParam("id") long id,
+			@Valid MessageForm messageForm, BindingResult bindingResult,
+			Principal principal) {
+
 		ModelAndView model = new ModelAndView("adDescription");
 		Ad ad = adService.getAdById(id);
 		model.addObject("shownAd", ad);
 		model.addObject("messageForm", new MessageForm());
-		
+
 		if (!bindingResult.hasErrors()) {
 			messageService.saveFrom(messageForm);
 		}
 		return model;
 	}
-	
-	// why does it have to be POST when you try to retrieve data and not submit it!?!
-	// who wrote this? Did I?
-	@RequestMapping(value="/profile/placeAd/validateEmail", method= RequestMethod.POST)
+
+	@RequestMapping(value = "/profile/placeAd/validateEmail", method = RequestMethod.POST)
 	@ResponseBody
-	public String validateEmail(@RequestParam String email){
+	public String validateEmail(@RequestParam String email) {
 		User user = userService.findUserByUsername(email);
-		if(user == null) {
+		if (user == null) {
 			return "This user does not exist, did your roommate register?";
 		} else {
 			return user.getEmail();
-		}		
+		}
 	}
-	
 
 	@ModelAttribute("placeAdForm")
 	public PlaceAdForm placeAdForm() {
