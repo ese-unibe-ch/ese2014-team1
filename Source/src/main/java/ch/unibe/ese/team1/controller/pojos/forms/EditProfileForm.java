@@ -30,53 +30,51 @@ public class EditProfileForm {
 	// @Lob
 	private String aboutMe;
 
-	private String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	private void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	private String getFirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	private void setFirstName(String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	private String getLastName() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	private void setLastName(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	private Gender getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	private void setGender(Gender gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
-	private UserPicture getPicture() {
+	public UserPicture getPicture() {
 		return picture;
 	}
 
-	private void setPicture(UserPicture picture) {
+	public void setPicture(UserPicture picture) {
 		this.picture = picture;
 	}
 
-	private String getAboutMe() {
+	public String getAboutMe() {
 		return aboutMe;
 	}
 
-	private void setAboutMe(String aboutMe) {
+	public void setAboutMe(String aboutMe) {
 		this.aboutMe = aboutMe;
 	}
-
-
 }
