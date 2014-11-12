@@ -10,8 +10,7 @@
 <%@page
 	import="org.springframework.web.servlet.support.RequestContextUtils"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+
 <%
 	ApplicationContext ac = RequestContextUtils
 			.getWebApplicationContext(request);
@@ -32,9 +31,4 @@
 	} else {
 		filePath = picture.getFilePath();
 	}
-
-	out.print("<img src='" + filePath + "' />");
-
-	out.print("<p class='text'>" + realUser.getFirstName() + "<br />"
-			+ realUser.getLastName() + "</p>");
 %>
