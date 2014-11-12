@@ -12,18 +12,15 @@
 <script src="/js/messageForAdDescription.js"></script>
 
 <div id="userDiv">
-	<div id="userPicDiv">
 		<c:choose>
-			<c:when test="${mate.picture.filePath != null}">
-				<img src="${mate.picture.filePath}">
+			<c:when test="${user.picture.filePath != null}">
+				<img src="${user.picture.filePath}">
 			</c:when>
 			<c:otherwise>
 				<img src="/img/avatar.png">
 			</c:otherwise>
 		</c:choose>
-	</div>
-	<br />
-	<div id="userTextDiv">
+	<p>
 		<h2>Username</h2>${user.email}<p>
 		<h2>First name</h2>${user.firstName}<p>
 		<h2>Last name</h2>${user.lastName}<p>
@@ -33,6 +30,5 @@
 		<form>
 			<button id="newMsg" type="button">Message</button>
 		</form>
-	</div>
 </div>
 <c:import url="template/footer.jsp"/>
