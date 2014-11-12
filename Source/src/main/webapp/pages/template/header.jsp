@@ -46,15 +46,24 @@
 			<ul>
 				<c:choose>
 					<c:when test="${loggedIn}">
-						<li id="profile_picture"><a href="#"> <c:import
-									url="/pages/getUserDetails.jsp" />
+					<!-- include user details -->
+					<%@include file='/pages/getUserDetails.jsp' %>
+						<li id="profile_picture"><a href="#">
+						<% 
+							out.print("<img src='" + filePath + "' />");
+
+							out.print("<p class='text'>" + realUser.getFirstName() + "<br />"
+								+ realUser.getLastName() + "</p>"); 
+						%>
 						</a>
 							<ul>
 								<li><a href="#">My rooms</a></li>
 								<li><a href="/profile/messages">Messages</a></li>
 								<li><a href="#">Calendar</a></li>
 								<li><a href="#">Alerts</a></li>
-								<li><a href="/profile/publicProfile">Public Profile</a></li>
+								<li>
+								<% out.print("<a href=\"/profile/user?id=" + realUser.getId() + "\">Public Profile</a>"); %>
+								</li>
 								<li><a href="/profile/placeAd">Place an ad</a></li>
 								<li><a href="#">Settings</a></li>
 								<li><a href="/logout">Logout</a></li>
