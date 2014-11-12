@@ -7,6 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Desribes the role a of user concerning Spring security. For example, a user
+ * can be a normal user or also an administrator.
+ */
 @Entity
 @Table(name = "user_roles")
 public class UserRole {

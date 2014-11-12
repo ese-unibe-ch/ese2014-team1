@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.controller.pojos.forms.EditProfileForm;
 import ch.unibe.ese.team1.model.User;
-import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
 /** Handles updating a user's profile. */
@@ -35,6 +34,8 @@ public class UserUpdateService {
 		currentUser.setLastName(editProfileForm.getLastName());
 		currentUser.setPassword(editProfileForm.getPassword());
 		currentUser.setAboutMe(editProfileForm.getAboutMe());
+		
+		// TODO complete or remove
 		// Problem with the Picture ID which is set to NULL
 		// Therefore losing the current picture.
 		
