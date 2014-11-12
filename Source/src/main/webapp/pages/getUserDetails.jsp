@@ -11,14 +11,12 @@
 	import="org.springframework.web.servlet.support.RequestContextUtils"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
-<<<<<<< HEAD
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 
 <!-- Import variables and classes, like a java import. -->
 <%@include file='getUserPicture.jsp' %>
 
 <%
+	out.print("<img src='" + filePath + "' />");
 	out.print("<p class='text'>" + realUser.getFirstName() + "<br />"
 			+ realUser.getLastName() + "</p>");
 %>
