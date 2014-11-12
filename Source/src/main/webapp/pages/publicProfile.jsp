@@ -7,15 +7,7 @@
 
 <c:import url="template/header.jsp" />
 
-<pre><a href="/">Home</a>   >   <a href="/profile/publicProfile">Public Profile</a>   >   Edit profile</pre>
-
-<script>
-	$(document).ready(function() {
-		$("#about-me").val("${currentUser.aboutMe}")
-		});
-		
-</script>
-
+<pre><a href="/">Home</a>   >   Public Profile</pre>
 
 <h1>Edit your Profile</h1>
 <hr />
@@ -26,7 +18,7 @@
 
 <c:choose>
 	<c:when test="${loggedIn}">
-		<a id="profile_picture_editPage"> <c:import
+		<a id="profile_picture_publicProfile"> <c:import
 					url="/pages/getUserPicture.jsp" />
 		</a>
 	</c:when>
@@ -34,55 +26,37 @@
 		<a href="/login">Login</a>
 	</c:otherwise>
 </c:choose>
-
-<form:form method="post" modelAttribute="editProfileForm"
-	action="/profile/editProfile" id="editProfileForm" autocomplete="off"
-	enctype="multipart/form-data">
-
 <table class="editProfileTable">
 	<tr>
 		<td class="spacingTable"><label for="user-name">Username:</label><a>&emsp;</a>
-		<form:input id="user-name" path="username" value="${currentUser.username}" /></td>
+		<a id="user-name">${currentUser.username}</a></td>
 		
 	</tr>
 	<tr>
 		<td class="spacingTable"><label for="first-name">First name:</label><a>&emsp;</a>
-		<form:input id="first-name" path="firstName" value="${currentUser.firstName}" /></td>
+		<a id="first-name">${currentUser.firstName}"</a></td>
 	</tr>
 	<tr>	
 		<td class="spacingTable"><label for="last-name">Last name:</label><a>&emsp;</a>
-		<form:input id="last-name" path="lastName" value="${currentUser.lastName}" /></td>
+		<a id="last-name">${currentUser.lastName}</a></td>
 	</tr>
 	<tr>	
 		<td class="spacingTable"><label for="password">Password:</label><a>&emsp;&thinsp;</a>
-		<form:input type="password" id="password" path="password" value="${currentUser.password}" /></td>
+		<a id="password">${currentUser.password}</a></td>
 	</tr>
-	
-<%-- TODO: TO BE IMPLEMTED LATER	
+		
  	<tr>	
 		<td class="spacingTable"><label for="gender">Gender:</label><a>&emsp;&emsp;&thinsp;</a>
-		<form:input id="gender" path="gender" value="${currentUser.gender}" /></td>
+		<a id="gender">${currentUser.gender}</a></td>
 	</tr>
-
-
-	<tr>
-		<td class="spacingTable"><label for="changePicture">New picture:</label><a>&thinsp;</a>
-		<input type="file" id="changePicture" path="userPicture" accept="image/*" /></td>
-	</tr>
---%>	
-	
 	<tr>
 		<td class="spacingTable"><label for="about-me">About me:</label><a>&emsp;&thinsp;</a><br>
-		<form:textarea id="about-me" path="aboutMe" rows="10" cols="100" /></td>
+		<a id="about-me" >${currentUser.aboutMe}"</a></td>
 	</tr>
 </table>
-
 <div>
-		<button type="submit">Update</button>
+		<a class="button" href="/profile/editProfile">Edit Profile</a>
 </div>
-
-</form:form>
 
 
 <c:import url="template/footer.jsp" />
-

@@ -93,4 +93,13 @@ public class AccountController {
 			return model;
 		}
 	}
+	
+	@RequestMapping(value = "/profile/publicProfile")
+	public ModelAndView publicProfile(Principal principal) {
+		ModelAndView model = new ModelAndView("publicProfile");
+		String username = principal.getName();
+		User user = userService.findUserByUsername(username);
+		model.addObject("currentUser", user);
+		return model;
+	}
 }

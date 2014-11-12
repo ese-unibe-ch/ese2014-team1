@@ -129,6 +129,16 @@ button {
 	font-size: 1.1em;
 }
 
+.button {
+	background-color: #2dc16d;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border-color: white;
+	border-style: solid;
+	font-size: 1.1em;
+}
+
 #addbutton {
 	display: inline;
 	font-decoration: none;
@@ -262,6 +272,12 @@ header ul li {
 }
 
 #profile_picture_editPage {
+	float: left;
+	width: 340px;
+	margin-top: 0px;
+}
+
+#profile_picture_publicProfile {
 	float: left;
 	width: 340px;
 	margin-top: 0px;

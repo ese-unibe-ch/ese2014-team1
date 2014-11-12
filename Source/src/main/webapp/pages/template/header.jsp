@@ -54,7 +54,7 @@
 								<li><a href="/profile/messages">Messages</a></li>
 								<li><a href="#">Calendar</a></li>
 								<li><a href="#">Alerts</a></li>
-								<li><a href="#">Public Profile</a></li>
+								<li><a href="/profile/publicProfile">Public Profile</a></li>
 								<li><a href="/profile/placeAd">Place an ad</a></li>
 								<li><a href="#">Settings</a></li>
 								<li><a href="/logout">Logout</a></li>

@@ -9,31 +9,17 @@
 	import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page
 	import="org.springframework.web.servlet.support.RequestContextUtils"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+
+<!-- Import variables and classes, like a java import. -->
+<%@include file='getUserPicture.jsp' %>
+
+
 <%
-	ApplicationContext ac = RequestContextUtils
-			.getWebApplicationContext(request);
-	UserService userService = (UserService) ac
-			.getBean(UserService.class);
-
-	org.springframework.security.core.userdetails.User securityUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder
-			.getContext().getAuthentication().getPrincipal();
-
-	User realUser = userService.findUserByUsername(securityUser
-			.getUsername());
-
-	Picture picture = realUser.getPicture();
-	String filePath;
-
-	if (picture == null) {
-		filePath = "/img/avatar.png";
-	} else {
-		filePath = picture.getFilePath();
-	}
-
-	out.print("<img src='" + filePath + "' />");
 
 	out.print("<p class='text'>" + realUser.getFirstName() + "<br />"
 			+ realUser.getLastName() + "</p>");
