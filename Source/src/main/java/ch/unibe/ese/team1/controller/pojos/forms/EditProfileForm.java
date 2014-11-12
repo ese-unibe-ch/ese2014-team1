@@ -2,11 +2,7 @@ package ch.unibe.ese.team1.controller.pojos.forms;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-// import ch.unibe.ese.team1.model.Gender;
-import ch.unibe.ese.team1.model.UserPicture;
-
-// import com.fasterxml.jackson.annotation.JsonIgnore;
-
+/** This form is used when a user wants to edit their profile. */
 public class EditProfileForm {
 
 	@NotBlank(message = "Required")
@@ -21,8 +17,9 @@ public class EditProfileForm {
 	@NotBlank(message = "Required")
 	private String lastName;
 
-	//@NotBlank(message = "Required")
-	//private Gender gender;
+	// TODO complete
+	// @NotBlank(message = "Required")
+	// private Gender gender;
 
 	// private UserPicture userPicture;
 	
@@ -52,7 +49,7 @@ public class EditProfileForm {
 		this.lastName = lastName;
 	}
 
-	
+	// TODO complete or remove
 /*	public Gender getGender() {
 		return gender;
 	}

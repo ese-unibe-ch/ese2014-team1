@@ -6,11 +6,12 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+/** This form is used for searching for an ad. */
 public class SearchForm {
-	
+
 	private boolean filtered;
-	
-	//studio: true, room: false
+
+	// studio: true, room: false
 	private boolean studio;
 
 	@NotBlank(message = "Required")
@@ -22,15 +23,12 @@ public class SearchForm {
 
 	@Min(value = 0, message = "Don't think you will find something for that kind of money")
 	private int prize;
-	
+
 	@AssertFalse(message = "Please select either or both types")
 	private boolean noRoomNoStudio;
-	
+
 	private boolean bothRoomAndStudio;
 
-	///////////////////////
-	//Getters and setters//
-	///////////////////////
 	public String getCity() {
 		return city;
 	}
@@ -58,7 +56,7 @@ public class SearchForm {
 	public boolean getStudio() {
 		return studio;
 	}
-	
+
 	public void setStudio(boolean studio) {
 		this.studio = studio;
 	}
@@ -78,24 +76,24 @@ public class SearchForm {
 	public void setBothRoomAndStudio(boolean bothRoomAndStudio) {
 		this.bothRoomAndStudio = bothRoomAndStudio;
 	}
-	
-	////////////////////
-	//Filtered results//
-	////////////////////
-	
+
+	// //////////////////
+	// Filtered results//
+	// //////////////////
+
 	public boolean getFiltered() {
 		return filtered;
 	}
-	
+
 	public void setFiltered(boolean filtered) {
 		this.filtered = filtered;
 	}
-	
+
 	private String earliestMoveInDate;
 	private String latestMoveInDate;
 	private String earliestMoveOutDate;
 	private String latestMoveOutDate;
-	
+
 	private boolean smokers;
 	private boolean animals;
 	private boolean garden;
@@ -105,7 +103,12 @@ public class SearchForm {
 	private boolean cable;
 	private boolean garage;
 	private boolean internet;
-	
+
+	private boolean roomHelper;
+
+	// the ugly stuff
+	private boolean studioHelper;
+
 	public boolean getSmokers() {
 		return smokers;
 	}
@@ -210,9 +213,6 @@ public class SearchForm {
 		this.latestMoveOutDate = latestMoveOutDate;
 	}
 
-	//the ugly stuff
-	private boolean studioHelper;
-
 	public boolean getStudioHelper() {
 		return studioHelper;
 	}
@@ -220,8 +220,6 @@ public class SearchForm {
 	public void setStudioHelper(boolean helper) {
 		this.studioHelper = helper;
 	}
-	
-	private boolean roomHelper;
 
 	public boolean getRoomHelper() {
 		return roomHelper;

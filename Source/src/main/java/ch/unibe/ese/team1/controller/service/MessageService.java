@@ -15,6 +15,7 @@ import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.MessageDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
+/** Handles all persistence operations concerning messaging. */
 @Service
 public class MessageService {
 
@@ -24,21 +25,24 @@ public class MessageService {
 	@Autowired
 	private MessageDao messageDao;
 
+	/** Gets all messages in the inbox of the given user. */
 	@Transactional
 	public Iterable<Message> getInboxForUser(User user) {
 		return messageDao.findByRecipient(user);
 	}
-	
+
+	/** Gets all messages in the sent folder for the given user. */
 	@Transactional
 	public Iterable<Message> getSentForUser(User user) {
 		return messageDao.findBySender(user);
 	}
 
+	/** Gets the message with the given id. */
 	@Transactional
 	public Message getMessage(long id) {
 		return messageDao.findOne(id);
 	}
-	
+
 	/**
 	 * Handles persisting a new message to the database.
 	 * 
@@ -48,26 +52,26 @@ public class MessageService {
 	@Transactional
 	public Message saveFrom(MessageForm messageForm) {
 		Message message = new Message();
-		
+
 		message.setRecipient(userDao.findByUsername(messageForm.getRecipient()));
 		message.setSubject(messageForm.getSubject());
 		message.setText(messageForm.getText());
 		message.setState(MessageState.UNREAD);
-	
+
 		// get logged in user as the sender
-		org.springframework.security.core.userdetails.User securityUser = (org.springframework.security.core.userdetails.User)
-				SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		org.springframework.security.core.userdetails.User securityUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+				.getContext().getAuthentication().getPrincipal();
 
 		User loggedInUser = userDao.findByUsername(securityUser.getUsername());
-		
+
 		message.setSender(loggedInUser);
-		
+
 		Calendar calendar = Calendar.getInstance();
 		// java.util.Calendar uses a month range of 0-11 instead of the
 		// XMLGregorianCalendar which uses 1-12
 		calendar.setTimeInMillis(System.currentTimeMillis());
 		message.setDateSent(calendar.getTime());
-		
+
 		messageDao.save(message);
 
 		return message;

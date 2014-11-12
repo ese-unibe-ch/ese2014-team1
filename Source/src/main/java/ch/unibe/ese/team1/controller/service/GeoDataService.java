@@ -40,7 +40,6 @@ public class GeoDataService {
 	 * @return a list of all locations that match the given city
 	 */
 	public List<Location> getLocationsByCity(String city) {
-		// TODO: handle SQL injection better
 		if (city.contains("\'")) {
 			city = "";
 		}

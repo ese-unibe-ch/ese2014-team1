@@ -26,20 +26,21 @@ public class AccountController {
 
 	@Autowired
 	private SignupService signupService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private UserUpdateService userUpdateService;
-	
-	
+
+	/** Returns the login page. */
 	@RequestMapping(value = "/login")
 	public ModelAndView loginPage() {
 		ModelAndView model = new ModelAndView("login");
 		return model;
 	}
 
+	/** Returns the signup page. */
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView signupPage() {
 		ModelAndView model = new ModelAndView("signup");
@@ -47,6 +48,7 @@ public class AccountController {
 		return model;
 	}
 
+	/** Validates the signup form and on success persists the new user. */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ModelAndView signupResultPage(@Valid SignupForm signupForm,
 			BindingResult bindingResult) {
@@ -61,7 +63,8 @@ public class AccountController {
 		}
 		return model;
 	}
-	
+
+	/** Shows the edit profile page. */
 	@RequestMapping(value = "/profile/editProfile", method = RequestMethod.GET)
 	public ModelAndView editProfilePage(Principal principal) {
 		ModelAndView model = new ModelAndView("editProfile");
@@ -69,15 +72,17 @@ public class AccountController {
 		User user = userService.findUserByUsername(username);
 		model.addObject("editProfileForm", new EditProfileForm());
 		model.addObject("currentUser", user);
+		// TODO remove test code
 		model.addObject("tester", "That should be displayed");
 		return model;
 	}
-	
+
+	/** Handles the request for editing the user profile. */
 	@RequestMapping(value = "/profile/editProfile", method = RequestMethod.POST)
-	public ModelAndView editProfileResultPage(@Valid EditProfileForm editProfileForm,
-			BindingResult bindingResult) {
+	public ModelAndView editProfileResultPage(
+			@Valid EditProfileForm editProfileForm, BindingResult bindingResult) {
 		ModelAndView model;
-		if(!bindingResult.hasErrors()) {
+		if (!bindingResult.hasErrors()) {
 			userUpdateService.updateFrom(editProfileForm);
 			model = new ModelAndView("updatedProfile");
 			model.addObject("negativeMessage", "Update successful!");
@@ -87,14 +92,5 @@ public class AccountController {
 			model.addObject("negativeMessage", "Update successful!");
 			return model;
 		}
-		
-		/*
-		
-		User user = userService.findUserByUsername(username);
-		model.addObject("editProfileForm", new EditProfileForm());
-		model.addObject("currentUser", user);
-		model.addObject("tester", "That should be displayed");
-		return model;
-		*/
 	}
 }

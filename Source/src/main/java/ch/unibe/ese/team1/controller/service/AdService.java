@@ -23,6 +23,7 @@ import ch.unibe.ese.team1.model.Location;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.AdDao;
 
+/** Handles all persistence operations concerning ad placement and retrieval. */
 @Service
 public class AdService {
 

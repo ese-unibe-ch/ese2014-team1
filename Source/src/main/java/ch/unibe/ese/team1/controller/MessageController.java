@@ -19,6 +19,7 @@ import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.Message;
 import ch.unibe.ese.team1.model.User;
 
+/** This controller handles all requests concerning messaging. */
 @Controller
 public class MessageController {
 
@@ -28,6 +29,10 @@ public class MessageController {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * Shows the messages page for the currently logged in user. The inbox of
+	 * the user is shown.
+	 */
 	@RequestMapping(value = "/profile/messages", method = RequestMethod.GET)
 	public ModelAndView messages(Principal principal) {
 		ModelAndView model = new ModelAndView("messages");
@@ -37,23 +42,32 @@ public class MessageController {
 		return model;
 	}
 
+	/**
+	 * Gets all messages in the inbox for the currently logged in user.
+	 */
 	@RequestMapping(value = "/profile/message/inbox", method = RequestMethod.POST)
 	public @ResponseBody Iterable<Message> getInbox(Principal principal) {
 		User user = userService.findUserByUsername(principal.getName());
 		return messageService.getInboxForUser(user);
 	}
 
+	/** Gets all messages in the sent folder for the currently logged in user. */
 	@RequestMapping(value = "/profile/message/sent", method = RequestMethod.POST)
 	public @ResponseBody Iterable<Message> getSent(Principal principal) {
 		User user = userService.findUserByUsername(principal.getName());
 		return messageService.getSentForUser(user);
 	}
 
+	/** Gets the message with the given id */
 	@RequestMapping(value = "/profile/messages/getMessage", method = RequestMethod.GET)
 	public @ResponseBody Message getMessage(@RequestParam Long id) {
 		return messageService.getMessage(id);
 	}
-	
+
+	/**
+	 * Shows the messages page and validates and/or saves the message passed a
+	 * post data.
+	 */
 	@RequestMapping(value = "/profile/messages", method = RequestMethod.POST)
 	public ModelAndView messageSent(@Valid MessageForm messageForm,
 			BindingResult bindingResult, Principal principal) {
@@ -63,20 +77,24 @@ public class MessageController {
 			User user = userService.findUserByUsername(principal.getName());
 			model.addObject("messageForm", new MessageForm());
 			model.addObject("messages", messageService.getInboxForUser(user));
-		} 
+		}
 		return model;
 	}
-	
-	
-	@RequestMapping(value="/profile/messages/validateEmail", method = RequestMethod.POST)
+
+	/**
+	 * Checks if the email passed as post parameter is a valid email. In case it
+	 * is valid, the email address is returned. If it is not, a error message is
+	 * returned.
+	 */
+	@RequestMapping(value = "/profile/messages/validateEmail", method = RequestMethod.POST)
 	@ResponseBody
-	public String validateEmail(@RequestParam String email){
+	public String validateEmail(@RequestParam String email) {
 		User user = userService.findUserByUsername(email);
-		if(user == null) {
+		if (user == null) {
 			return "This user does not exist.";
 		} else {
 			return user.getEmail();
-		}		
+		}
 	}
-	
+
 }

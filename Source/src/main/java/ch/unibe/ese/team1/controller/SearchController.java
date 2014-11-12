@@ -17,27 +17,33 @@ import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.User;
 
+/** Handles all requests concerning the search for ads. */
 @Controller
 public class SearchController {
-	
+
 	@Autowired
 	private AdService adService;
-	
+
 	@Autowired
 	private UserService userService;
 
 	private SearchForm searchForm;
 
+	/** Shows the search ad page. */
 	@RequestMapping(value = "/searchAd", method = RequestMethod.GET)
 	public ModelAndView searchAd() {
 		ModelAndView model = new ModelAndView("searchAd");
 		return model;
 	}
 
+	/**
+	 * Gets the results when filtering the ads in the database by the parameters
+	 * in the search form.
+	 */
 	@RequestMapping(value = "/results", method = RequestMethod.POST)
 	public ModelAndView results(@Valid SearchForm searchForm,
 			BindingResult result) {
-		
+
 		if (!result.hasErrors()) {
 			ModelAndView model = new ModelAndView("results");
 			model.addObject("results", adService.queryResults(searchForm));
@@ -47,7 +53,8 @@ public class SearchController {
 			return searchAd();
 		}
 	}
-	
+
+	// TODO why is this method here? The location does not make too much sense
 	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
 	public ModelAndView user(@RequestParam("id") long id) {
 		ModelAndView model = new ModelAndView("user");

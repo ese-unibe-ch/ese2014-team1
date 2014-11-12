@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 
 import ch.unibe.ese.team1.model.Gender;
 
+/** This form is used when a user want to sign up for an account. */
 public class SignupForm {
 	
 	@Size(min = 6, message = "Password must be at least 6 characters long")

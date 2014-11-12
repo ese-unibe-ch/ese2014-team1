@@ -36,7 +36,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * This controllers handles all requests concerning placing ads.
+ * This controllers handles all requests concerning placing ads and displaying
+ * ads.
  */
 @Controller
 public class AdController {
@@ -52,12 +53,24 @@ public class AdController {
 	@Autowired
 	private MessageService messageService;
 
+	/** Used for generating a JSON representation of a given object. */
 	private ObjectMapper objectMapper;
 
+	/**
+	 * Used for uploading ad pictures. As long as the user did not place the ad
+	 * completely, the same picture uploader is used. Once the ad was placed,
+	 * this uploader is renewed.
+	 */
 	private PictureUploader pictureUploader;
 
+	/**
+	 * The place ad form that is shared between several requests, so that the
+	 * user only has to enter the data once. If an ad is placed, this form is
+	 * reset.
+	 */
 	private PlaceAdForm placeAdForm;
 
+	/** Shows the place ad form. */
 	@RequestMapping(value = "/profile/placeAd", method = RequestMethod.GET)
 	public ModelAndView placeAd() throws IOException {
 		ModelAndView model = new ModelAndView("placeAd");
@@ -69,6 +82,13 @@ public class AdController {
 		return model;
 	}
 
+	/**
+	 * Uploads the pictures that are attached as multipart files to the request.
+	 * The JSON representation, that is returned, is generated manually because
+	 * the jQuery Fileupload plugin requires this special format.
+	 * 
+	 * @return A JSON representation of the uploaded files
+	 */
 	@RequestMapping(value = "/profile/placeAd/uploadPictures", method = RequestMethod.POST)
 	public @ResponseBody String uploadPictures(
 			MultipartHttpServletRequest request) {
@@ -94,6 +114,13 @@ public class AdController {
 		return jsonResponse;
 	}
 
+	/**
+	 * Gets the descriptions for the pictures that were uploaded with the
+	 * current picture uploader.
+	 * 
+	 * @return a list of picture descriptions or null if no pictures were
+	 *         uploaded
+	 */
 	@RequestMapping(value = "/profile/placeAd/getUploadedPictures", method = RequestMethod.POST)
 	public @ResponseBody List<PictureMeta> getUploadedPictures() {
 		if (pictureUploader == null) {
@@ -102,14 +129,24 @@ public class AdController {
 		return pictureUploader.getUploadedPictureMetas();
 	}
 
+	/**
+	 * Deletes the uploaded picture at the given relative url (relative to the
+	 * webapp folder).
+	 */
 	@RequestMapping(value = "/profile/placeAd/deletePicture", method = RequestMethod.POST)
-	public @ResponseBody void deleteUploadPicture(@RequestParam String url) {
+	public @ResponseBody void deleteUploadedPicture(@RequestParam String url) {
 		if (pictureUploader != null) {
 			String realPath = servletContext.getRealPath(url);
 			pictureUploader.deletePicture(url, realPath);
 		}
 	}
 
+	/**
+	 * Validates the place ad form and persists the ad if successful. On
+	 * success, a redirect to the ad description page of the just created ad is
+	 * issued. If there were validation errors, the place ad form is displayed
+	 * again.
+	 */
 	@RequestMapping(value = "/profile/placeAd", method = RequestMethod.POST)
 	public ModelAndView create(@Valid PlaceAdForm placeAdForm,
 			BindingResult result, RedirectAttributes redirectAttributes,
@@ -136,6 +173,7 @@ public class AdController {
 		return model;
 	}
 
+	/** Gets the ad description page for the ad with the given id. */
 	@RequestMapping(value = "/ad", method = RequestMethod.GET)
 	public ModelAndView ad(@RequestParam("id") long id) {
 		ModelAndView model = new ModelAndView("adDescription");
@@ -147,6 +185,10 @@ public class AdController {
 		return model;
 	}
 
+	/**
+	 * Gets the ad description page for the ad with the given id and also
+	 * validates and persists the message passed as post data.
+	 */
 	@RequestMapping(value = "/ad", method = RequestMethod.POST)
 	public ModelAndView messageSent(@RequestParam("id") long id,
 			@Valid MessageForm messageForm, BindingResult bindingResult,
@@ -163,6 +205,11 @@ public class AdController {
 		return model;
 	}
 
+	/**
+	 * Checks if the email passed as post parameter is a valid email. In case it
+	 * is valid, the email address is returned. If it is not, a error message is
+	 * returned.
+	 */
 	@RequestMapping(value = "/profile/placeAd/validateEmail", method = RequestMethod.POST)
 	@ResponseBody
 	public String validateEmail(@RequestParam String email) {

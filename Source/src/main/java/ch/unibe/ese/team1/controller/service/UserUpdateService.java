@@ -12,6 +12,7 @@ import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
+/** Handles updating a user's profile. */
 @Service
 public class UserUpdateService {
 	
@@ -24,7 +25,7 @@ public class UserUpdateService {
 	@Autowired
 	private UserService userService;
 
-	/** Handles persisting a new user to the database. */
+	/** Handles updating an existing user in the database. */
 	@Transactional
 	public void updateFrom(EditProfileForm editProfileForm) {
 		
