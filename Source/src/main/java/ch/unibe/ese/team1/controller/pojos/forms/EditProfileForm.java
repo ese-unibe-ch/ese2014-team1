@@ -24,7 +24,7 @@ public class EditProfileForm {
 	//@NotBlank(message = "Required")
 	//private Gender gender;
 
-	private UserPicture userPicture;
+	// private UserPicture userPicture;
 	
 	private String aboutMe;
 
@@ -61,7 +61,7 @@ public class EditProfileForm {
 		this.gender = gender;
 	}
 
-*/	
+	
 	public UserPicture getUserPicture() {
 		return userPicture;
 	}
@@ -69,7 +69,7 @@ public class EditProfileForm {
 	public void setUserPicture(UserPicture userPicture) {
 		this.userPicture = userPicture;
 	}
-
+*/
 	public String getAboutMe() {
 		return aboutMe;
 	}

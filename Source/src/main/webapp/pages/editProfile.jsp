@@ -56,12 +56,12 @@
 		<form:input id="gender" path="gender" value="${currentUser.gender}" /></td>
 	</tr>
 
---%>
+
 	<tr>
 		<td class="spacingTable"><label for="changePicture">New picture:</label><a>&thinsp;</a>
 		<input type="file" id="changePicture" path="userPicture" accept="image/*" /></td>
 	</tr>
-	
+--%>	
 	
 	<tr>
 		<td class="spacingTable"><label for="about-me">About me:</label><a>&emsp;&thinsp;</a><br>

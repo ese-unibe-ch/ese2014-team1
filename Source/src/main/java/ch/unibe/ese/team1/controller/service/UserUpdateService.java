@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.controller.pojos.forms.EditProfileForm;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
 @Service
@@ -34,7 +35,11 @@ public class UserUpdateService {
 		currentUser.setPassword(editProfileForm.getPassword());
 		currentUser.setAboutMe(editProfileForm.getAboutMe());
 		// Problem with the Picture ID which is set to NULL
-		currentUser.setPicture(editProfileForm.getUserPicture());
+		// Therefore losing the current picture.
+		
+		// UserPicture userPicture = currentUser.getPicture();
+		// userPicture.setFilePath(editProfileForm.getUserPicture()); String instead of picture....
+		
 
 		userDao.save(currentUser);
 	}
