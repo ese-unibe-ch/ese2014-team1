@@ -4,6 +4,9 @@
 
 ### Violation of MVC pattern
 
+Concerning the Model, I like the clear folder structure within the webapp. 
+I think the files AdType.java and Sex.java could be moved from the controller.pojos package to the model package. According to page 6 from the SpringMVC presentation from the ESE-Wiki, those two enums probably don't belong in the same package as the forms which have other responsibilities as data classes between jsp files and controllers.
+
 
 ### Usage of helper objects between view and model
 
@@ -11,7 +14,8 @@
 There could be more classes in the model-package, such as a class Picture instead of the byte[] array in Profile.java. The four existing classes itself are good in my opinion.
 
 ### Clear responsibilities
-In HomeController.java, there is the method login(). This method should probably be moved to LoginController.java as the name of the method suggests.
+In HomeController.java, there is the method login(). This method should probably be moved to LoginController.java as the name of the method suggests. For me, Profile.java and User.java were a bit confusing at first. The fields 'sex' and 'age' are most likely in Profile.java since they are edited in the profile, I as an outsider expected them in the class User at first due to common sense, but this is probably a minor matter of choice.
+
 
 ### Sound invariants
 I saw no class invariants in the code.
