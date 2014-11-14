@@ -14,10 +14,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+
 <!-- Import variables and classes, like a java import. -->
 <%@include file='getUserPicture.jsp' %>
 
 <%
+	out.print("<img src='" + filePath + "' />");
 	out.print("<p class='text'>" + realUser.getFirstName() + "<br />"
 			+ realUser.getLastName() + "</p>");
 %>

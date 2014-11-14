@@ -47,7 +47,7 @@
 				<c:choose>
 					<c:when test="${loggedIn}">
 					<!-- include user details -->
-					<%@include file='/pages/getUserDetails.jsp' %>
+					<%@include file='/pages/getUserPicture.jsp' %>
 						<li id="profile_picture"><a href="#">
 						<% 
 							out.print("<img src='" + filePath + "' />");
