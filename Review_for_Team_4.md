@@ -4,15 +4,21 @@
 
 ### Violation of MVC pattern
 
+
 ### Usage of helper objects between view and model
 
 ### Rich OO domain model
+There could be more classes in the model-package, such as a class Picture instead of the byte[] array in Profile.java. The four existing classes itself are good in my opinion.
 
 ### Clear responsibilities
+In HomeController.java, there is the method login(). This method should probably be moved to LoginController.java as the name of the method suggests.
 
 ### Sound invariants
+I saw no class invariants in the code.
 
 ### Overall code organization & reuse, e.g. views
+In the controller.service package, the usage of interfaces is handled inconsistently. Some classes like AdService implement a corresponding interface, some classes like ReviewService have none.
+I think the code organization is good for the majority of the project. However, there is a bad mix of files in the folder src/main/resources. There is a png, js and some xml files, those should probably be put in separate folders. 7 files at this point isn't a big deal, but for a way bigger project, a good separation is a must.
 
 ## Coding style
 
