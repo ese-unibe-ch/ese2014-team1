@@ -38,19 +38,62 @@ I didn't see too much code reuse, but I also don't believe that the team should 
 
 ## Coding style
 
+Reading the code was very smooth and mostly self-explanatory. Finding all the relevant information was pretty easy (with a few exceptions) due to intuitive naming grouping of the classes, fields and methods. All in all the code looks clean although there are still many comments hinting unfinished code or further problems that have not yet been solved.
+
+You have many imports in (almost all) your files which were copy pasted and never removed. It does confuse the reader and impacts performance. In the ImageController you have much more unused imports than used ones.
+
 ### Consistency
+
+The .jsp file naming seems to be a little bit inconsistent. Sometimes you use a dash to separate words (create-ad.jsp) sometimes you use camel case (modifyProfile.jsp). That can make it harder to match and read pages like in the controller classes or even in the header.jsp lines 56 to 60. It would be easier to define a style within the group and follow it.
+
+Sometimes you use in-line css styling sometimes you use it from an external css file. What makes it even harder to read is, that you use compressed/minified css and js files. During the development phase readability should be preferred. For production phase a minified version could be faster and therefore better.
 
 ### Intention-revealing names
 
+The TabBarController seems to be responsible for several things that are visually together but not logically. When I was searching for the place where SearchForm was added I looked in the SearchController and had to search for quite a while until I found it. Maybe that could be grouped better?
+
+Sex.java is nice but leaves me thinking something else. Maybe Gender.java would be a better alternative.
+
+Do you really intend to use a form for UploadForm? Most likely it is just a functionality inside AdForm.java therefore it should probably not be a class.
+
+Why do you use a DefaultSearcher with an ISearcher (normaly you name the interface and the implementation of the interface differently: e.g. AdService.java and AdServiceImpl.java). DefaultSearcher implies there should be at least one other Searcher.
+
+ReviewService.java is most likely not a service as specified by the @Service annotation to be called when needed but rather test data for development only. It could be placed to src/test/java.
+
 ### Do not repeat yourself
+
+You have two different headers. headerLogin.jsp opens many div tags which you try to close in register.jsp in lines 54 to 56 (without indentation nor comments) and then again in lines 123 to 125.
+
+You have an empty footer which closes certain tags and does nothing else. On some pages (register.jsp, index.jsp ... ) you specify a footer with the class name mastfoot additionally, on most pages you don't. (why not separate mastfoot to mast-foot like all other classes within html?).
 
 ### Exception, testing null values
 
+You are testing for null values in your service classes like in return statements (UserServiceImpl.java) which is perfect. Although you do catch Exception in ProfileServiceImpl.java which is never a good idea, since catching an Exception means catching every possible exception.
+
+You have defined your own three exceptions to make debugging more easy and to further specify what can go wrong and where it goes wrong. That is great. Especially in NewAccountServiceImpl.java you have different messages passing to InvalidUserException.java giving just the right feedback! I am just not that sure if this kind of feedback should be handled as an exception or rather as input validation with javascript or something similar.
+
+??? read through it again...
+LoginServiceImpl.java it's again the throwing of an exception which I am not that sure about if an exception is the right thing to do in such a case. In my opinion it is not really an exception but just an if else clause.
+???
+
 ### Encapsulation
+
+The encapsulation seems to be good. All model classes have fields with their respective setters and getters according to JavaBean Definition. Setters and getters can be therefore used by Spring.
+
+??? read through it again....
+What I don't really understand is the "default" constructor in User.java where you set the Owner to itself basically. Why is an owner even necessary? Would it not be easier to group these two classes into one? I see that you want to have a User and then link it to a Profile which is nice, but at the moment I don't see any direct benefit from it.
+???
+
+In the User.java class you have two methods a public getAuthorities() and it's private translateRole(). You are accesing getAuthorities() from outside it's own model and I think that should be avoided. In the model there should only be setters and getters for the model and if needed private helper methods only (that's for the business logic/class logic of the class only). Further you have four methods at the end which return TRUE only. They are without a field. I guess the code within the body will follow in the next step?
 
 ### Assertion, contracts, invariant checks
 
+There are no assertions nor contracts nor invariant checks.
+
 ### Utility methods
+
+needs further clarification from andrea on what that is ;)
+I am not sure if the use of own static methods is meant or the utility class of java...
 
 ## Documentation
 
