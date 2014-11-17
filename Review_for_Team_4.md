@@ -10,6 +10,7 @@ Concerning the Model, I like the clear folder structure within the webapp.
 
 
 ### Usage of helper objects between view and model
+There are no helper objects between view and model.
 
 
 ### Rich OO domain model
@@ -33,6 +34,7 @@ I saw no class invariants and no assers (except in the tests of course) in the c
 In the controller.service package, the usage of interfaces is handled inconsistently. Some classes like AdService implement a corresponding interface, some classes like ReviewService have none.
 I think the code organization is good for the majority of the project. However, there is a bad mix of files in the folder src/main/resources. There is a png, js and some xml files, those should probably be put in separate folders. 7 files at this point isn't a big deal, but for a way bigger project, a good separation is a must.
 I didn't see too much code reuse, but I also don't believe that the team should have created a huge class hierarchy here. For example, there are currently four classes in the model package, one could factor out the id and its getter/setter into a superclass, but apart from that, these classes don't have much more in common.
+There are many ignored warnings such as unused imports.
 
 
 
@@ -48,6 +50,12 @@ The .jsp file naming seems to be a little bit inconsistent. Sometimes you use a 
 
 Sometimes you use in-line css styling sometimes you use it from an external css file. What makes it even harder to read is, that you use compressed/minified css and js files. During the development phase readability should be preferred. For production phase a minified version could be faster and therefore better.
 
+Some basic things in the following paragraph which don't fit better into another category.
+The code formatting is inconsistent, for example in my-page.jsp (use the format-hotkey, works wonders).
+There are some undeleted println-statements in submitAd() in AdController.java.
+Fully commented method in HomeController.java (probably an old version not yet deleted for testing?)
+
+
 ### Intention-revealing names
 
 The TabBarController seems to be responsible for several things that are visually together but not logically. When I was searching for the place where SearchForm was added I looked in the SearchController and had to search for quite a while until I found it. Maybe that could be grouped better?
@@ -59,6 +67,8 @@ Do you really intend to use a form for UploadForm? Most likely it is just a func
 Why do you use a DefaultSearcher with an ISearcher (normaly you name the interface and the implementation of the interface differently: e.g. AdService.java and AdServiceImpl.java). DefaultSearcher implies there should be at least one other Searcher.
 
 ReviewService.java is most likely not a service as specified by the @Service annotation to be called when needed but rather test data for development only. It could be placed to src/test/java.
+
+In ReviewService.java, NewAccountService nas and AdService as aren't intention-revealing names.
 
 ### Do not repeat yourself
 
@@ -94,6 +104,9 @@ There are no assertions nor contracts nor invariant checks.
 
 needs further clarification from andrea on what that is ;)
 I am not sure if the use of own static methods is meant or the utility class of java...
+
+The classes in the model package got reasonable toString methods.
+
 
 ## Documentation
 
@@ -146,18 +159,3 @@ All test cases are reasonably named and therefore also easily understandable. Te
 ### Readability
 
 As already mentioned before, the test cases are named reasonably, therefore the readability is good. Also variables are named according to what they are used for, although sometimes naming conventions are not followed (e.g. `String EMAIL ` instead of `String email`). In addition, mocked objects are clearly separated from real objects through appriopriate naming. The two test classes do not have consistent names. While one class is named `LoginTest` (singular) the other one is named `SearcherTests` (plural). It would be better if both test classes used the singular. This might seem overly picky at first, but it is mainly due to the fact that Maven Surefire only runs the test cases of classes using the singular version per default. The way the test files were configured at the time of the release, Maven Surefire only ran the tests from `LoginTest`.
-
-### Temporary (for Thomasz)
-Coding Style - Utility methods
-The classes in the model package got reasonable toString methods.
-
-Coding Style - Intention-revealing names
-In ReviewService.java, NewAccountService nas and AdService as aren't intention-revealing names.
-
-
-Coding style - General ???
-Many warnings (unused imports in many classes)
-Bad Code Formatting: In ad.jsp for example (use format hotkey of Eclipse)
-Some println-statements: (submitAd in AdController.java)
-Fully commented method in HomeController.java (probably an old version not yet deleted for testing?)
-Some files like modifyProfile.jsp need some cleanup (see warnings), there are closing tags with no start/end tags, tags in invalid locations and the formatting of the code could be improved).
