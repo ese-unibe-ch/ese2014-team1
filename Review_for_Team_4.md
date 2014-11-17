@@ -23,19 +23,17 @@ In HomeController.java, there is the method login(). This method should probably
 In TabBarController.java, there are the methods searchList() and searchMap(), I as an outsider expected them to be in the SearchController.java. In the page, the tab bar contains an entry 'Search', while the 'Search List' and 'Search Map' are not in the tab bar but in the Search page itself.
 The javadoc comment "Controls all pages / commands concerning ads" in ImageController.java is confusing / wrong since there is a Class AdController.java. The responsibilities of the forms in the pojos package are clear.
 The responsibility of ReviewService.java is clear, this class saves some users and ads into the database for testing purposes. However, I think a renaming (and splitting) into something like UserTestDataSeeder and AdTestDataSeeder would be good, I find the name ReviewService a bit confusing. In addition, I suggest that this class is moved into an own package (something like .testData) since it has another responsibility than the rest of the classes in the package (such as AdServiceImpl etc.).
-The distinction / responsibilities of LoginService.java and NewAccountServiceImpl.java is confusing, the method loginManually() is NewAccountServiceImpl.java. Those two classes could probably be merged into something like AccountService.java.
+The distinction / responsibilities of LoginService.java and NewAccountServiceImpl.java is confusing, the method loginManually() is in NewAccountServiceImpl.java. Those two classes could probably be merged into something like AccountService.java.
 
 
 ### Sound invariants
-I saw no class invariants and no assers (except in the tests of course) in the code.
+I saw no class invariants and no asserts (except in the tests of course) in the code.
 
 
 ### Overall code organization & reuse, e.g. views
 In the controller.service package, the usage of interfaces is handled inconsistently. Some classes like AdService implement a corresponding interface, some classes like ReviewService have none.
 I think the code organization is good for the majority of the project. However, there is a bad mix of files in the folder src/main/resources. There is a png, js and some xml files, those should probably be put in separate folders. 7 files at this point isn't a big deal, but for a way bigger project, a good separation is a must.
 I didn't see too much code reuse, but I also don't believe that the team should have created a huge class hierarchy here. For example, there are currently four classes in the model package, one could factor out the id and its getter/setter into a superclass, but apart from that, these classes don't have much more in common.
-There are many ignored warnings such as unused imports.
-
 
 
 ## Coding style
@@ -51,6 +49,7 @@ The .jsp file naming seems to be a little bit inconsistent. Sometimes you use a 
 Sometimes you use in-line css styling sometimes you use it from an external css file. What makes it even harder to read is, that you use compressed/minified css and js files. During the development phase readability should be preferred. For production phase a minified version could be faster and therefore better.
 
 Some basic things in the following paragraph which don't fit better into another category.
+There are many ignored warnings such as unused imports.
 The code formatting is inconsistent, for example in my-page.jsp (use the format-hotkey, works wonders).
 There are some undeleted println-statements in submitAd() in AdController.java.
 Fully commented method in HomeController.java (probably an old version not yet deleted for testing?)
@@ -159,3 +158,23 @@ All test cases are reasonably named and therefore also easily understandable. Te
 ### Readability
 
 As already mentioned before, the test cases are named reasonably, therefore the readability is good. Also variables are named according to what they are used for, although sometimes naming conventions are not followed (e.g. `String EMAIL ` instead of `String email`). In addition, mocked objects are clearly separated from real objects through appriopriate naming. The two test classes do not have consistent names. While one class is named `LoginTest` (singular) the other one is named `SearcherTests` (plural). It would be better if both test classes used the singular. This might seem overly picky at first, but it is mainly due to the fact that Maven Surefire only runs the test cases of classes using the singular version per default. The way the test files were configured at the time of the release, Maven Surefire only ran the tests from `LoginTest`.
+
+
+
+
+## Analysis of a class within the controller package
+We picked the class TabBarController.java from the controller package.
+
+The tab bar of the website contains a home icon and the entries 'My Page', 'My Favorites', 'Search', 'Create an ad' and 'Logout'. To be precise, there is a second 'Logout' at the top right corner, but one of the two 'Logout's will surely be removed as the site is under construction, so let's assume that there is only one.
+According to the name "TabBarController", one expects that it handles the mappings of all those 6 entries, but the class contains only the mappings for 'My Favorites' and two mappings for 'Search', depending whether the user wants to perform a search by some criteria or by google maps. Furthermore, there is a mapping for a security-error, if I type .../security-error into the address bar of my browser, I get logged out. This mapping could probably be moved to LoginController.java, but the author may had her/his reasons to put it into the class TabBarController.
+To say it already now, I find the grouping of the controllers could be improved. As said, there is a home icon in the tab bar, but the mapping isn't in the TabBarController, there is a seperate Controller named HomeController which handles this. The HomeController maps only "/home" and "/test" (which crashes at the moment with a 404 Not_found Error). 
+Same stories with the tab bar entries 'My-Page', 'Search' and 'Create an ad'. There are the classes MyPageController, SearchController and AdController which handle these mappings already.
+In the case of 'Search', "/search" is handled in SearchController while "/search-list" and "/search-map" are handled in the TabBarController.
+
+So it's hard to tell whether the TabBarController class has too many responsibilities because first of all, the responsibilities seem to be handled / split a bit unclear. If it would contain all the mappings of the tab bar as the classname suggests, then one could argue that it steals responsibilities from other classes such as AdController, SearchController etc. And thats why I wouldn't create the TabBarController class at all and try to group the controllers in a slightly different way.
+My suggestion is to group the controllers into something like 'AccountController', 'AdController', 'IndexController', 'MessageController', 'SearchController' etc.
+If one groups the controllers like this, it is clear where to put mappings for ads for example, it doesn't matter if a link is in a tab bar or elsewhere.
+
+If one decides to delete the class and therefore move its mappings, the two search-mappings would go into the SearchController, the security-error-mapping could go into LoginController, and the favorite-mapping would need an own controller if one continues the given grouping here (Home, MyPage, Search, CreateAd all got their own controllers).
+
+Please note that I took of course the class where I thought I could criticize the most / suggest the most improvements, so the text may seem a bit harsh. The text doesn't reflect my whole impression of the controller package or the project in general :) 
