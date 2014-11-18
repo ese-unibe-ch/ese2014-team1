@@ -4,9 +4,9 @@
 
 ### Violation of MVC pattern
 
-I see no violation of the MVC pattern. We had a good introduction thanks to the Skeletons and the warm-ups, Team 4 followed those examples consequently and therefore stuck to the pattern. They applied the Spring Web MVC framework well, and made good use of the default handler via the @Controller and the @RequestMapping annotations.
-However, I think the files AdType.java and Sex.java could be moved from the controller.pojos package to the model package. According to page 6 from the SpringMVC presentation from the ESE-Wiki, those two enums probably don't belong in the same package as the forms which have other responsibilities as data classes between jsp files and controllers.
-Concerning the Model, I like the clear folder structure within the webapp. 
+No violation of the MVC pattern discernible. We had a good introduction thanks to the Skeletons and the warm-ups, Team 4 followed those examples consequently and therefore stuck to the pattern. They applied the Spring Web MVC framework well, and made good use of the default handler via the @Controller and the @RequestMapping annotations.
+However, the files AdType.java and Sex.java should probably be moved from the controller.pojos package to the model package. According to page 6 from the SpringMVC presentation from the ESE-Wiki, those two enums don't belong in the same package as the forms which have other responsibilities as data classes between jsp files and controllers.
+Concerning the Model, the clear folder structure within the webapp should be positively mentioned. 
 
 
 ### Usage of helper objects between view and model
@@ -19,21 +19,21 @@ There is some use of aggregation, an Ad has a an owner, an address, a type etc.
 
 
 ### Clear responsibilities
-In HomeController.java, there is the method login(). This method should probably be moved to LoginController.java as the name of the method suggests. For me, Profile.java and User.java were a bit confusing at first. The fields 'sex' and 'age' are most likely in Profile.java since they are edited in the profile, I as an outsider expected them in the class User at first due to common sense, but this is probably a minor matter of choice.
-In TabBarController.java, there are the methods searchList() and searchMap(), but I expected them to be in SearchController.java. In the page, the tab bar contains an entry 'Search', while the 'Search List' and 'Search Map' are not in the tab bar but in the Search page itself.
+In HomeController.java, there is the method login(). This method should probably be moved to LoginController.java as the name of the method suggests. Also, the Profile.java and User.java files were a bit confusing at first. The fields 'sex' and 'age' are most likely in Profile.java since they are edited in the profile. As an outsider, we would expected them in the class User at first due to common sense, but this is probably a minor matter of choice.
+In TabBarController.java, there are the methods searchList() and searchMap(), which we would expect to be in SearchController.java. In the page, the tab bar contains an entry 'Search', while the 'Search List' and 'Search Map' are not in the tab bar but in the Search page itself.
 The javadoc comment "Controls all pages / commands concerning ads" in ImageController.java is confusing / wrong since there is a Class AdController.java. The responsibilities of the forms in the pojos package are clear.
-The responsibility of ReviewService.java is clear, this class saves some users and ads into the database for testing purposes. However, I think a renaming (and splitting) into something like UserTestDataSeeder and AdTestDataSeeder would be good, I find the name ReviewService a bit confusing. In addition, I suggest that this class is moved into the test packages (src/test/java) since it has another responsibility than the rest of the classes in the package (such as AdServiceImpl etc.).
+The responsibility of ReviewService.java is clear, this class saves some users and ads into the database for testing purposes. However, a renaming (and splitting) into something like UserTestDataSeeder and AdTestDataSeeder would be good; the name ReviewService is rather ambiguous. In addition, we strongly suggest that this class is moved into the test packages (src/test/java) since it has another responsibility than the rest of the classes in the package (such as AdServiceImpl etc.).
 The distinction / responsibilities of LoginService.java and NewAccountServiceImpl.java is confusing, the method loginManually() is in NewAccountServiceImpl.java. Those two classes could probably be merged into something like AccountService.java.
 
 
 ### Sound invariants
-I saw no class invariants and no assertions (except in the tests of course) in the code.
+There are no class invariants and no assertions (except in the tests of course) in the code.
 
 
 ### Overall code organization & reuse, e.g. views
 In the controller.service package, the usage of interfaces is handled inconsistently. Some classes like AdService implement a corresponding interface, some classes like ReviewService have none.
-I think the code organization is good for the majority of the project. However, there is a bad mix of files in the folder src/main/resources. There is a png, js and some xml files, those should probably be put in separate folders. 7 files at this point isn't a big deal, but for a way bigger project, a good separation is a must.
-I didn't see too much code reuse, but I also don't believe that the team should have created a huge class hierarchy here. For example, there are currently four classes in the model package, one could factor out the id and its getter/setter into a superclass, which would not make much sense, but apart from that, these classes don't have much more in common.
+The code organization is good for the majority of the project. However, there is a bad mix of files in the folder src/main/resources. There is a png, js and some xml files, those should be put in separate folders. 7 files at this point isn't a big deal, but for a way bigger project, a good separation is a must.
+There isn't too much code reuse, but also, a huge class hierarchy certainly wasn't the way to go here. For example, there are currently four classes in the model package, one could factor out the id and its getter/setter into a superclass, which would not make much sense, but apart from that, these classes don't have much more in common.
 
 
 ## Coding style
@@ -46,7 +46,7 @@ You have many imports in (almost all) your files which were copy pasted and neve
 
 The .jsp file naming seems to be a little bit inconsistent. Sometimes you use a dash to separate words (create-ad.jsp) sometimes you use camel case (modifyProfile.jsp). That can make it harder to match and read pages like in the controller classes or even in the header.jsp lines 56 to 60. It would be easier to define a style within the group and follow it.
 
-Sometimes you use in-line css styling sometimes you use it from an external css file. What makes it even harder to read is, that you use compressed/minified css and js files. During the development phase readability should be preferred. For production phase a minified version could be faster and therefore better.
+Sometimes you use in-line css styling sometimes you use it from an external css file. What makes it even harder to read is the fact that you use compressed/minified css and js files. During the development phase readability should be preferred. For production phase a minified version could be faster and therefore better.
 
 Some basic things in the following paragraph which don't fit better into another category.
 There are many ignored warnings such as unused imports.
@@ -56,13 +56,13 @@ Fully commented method in HomeController.java (probably an old version not yet d
 
 ### Intention-revealing names
 
-The TabBarController seems to be responsible for several things that are visually together but not logically. When I was searching for the place where SearchForm was added I looked in the SearchController and had to search for quite a while until I found it. Maybe that could be grouped better?
+The TabBarController seems to be responsible for several things that are visually together but not logically. For example, searching for the place where SearchForm was added (in the SearchController) turned out to be quite cumbersome. Maybe that could be grouped better?
 
 Sex.java is nice but leaves me thinking something else. Maybe Gender.java would be a better alternative.
 
 Do you really intend to use a form for UploadForm? Most likely it is just a functionality inside AdForm.java therefore it should probably not be a class.
 
-Why do you use a DefaultSearcher with an ISearcher (normaly you name the interface and the implementation of the interface differently: e.g. AdService.java and AdServiceImpl.java). DefaultSearcher implies there should be at least one other Searcher.
+Why do you use a DefaultSearcher with an ISearcher (normally you name the interface and the implementation of the interface differently: e.g. AdService.java and AdServiceImpl.java). DefaultSearcher implies there should be at least one other Searcher.
 
 ReviewService.java is most likely not a service as specified by the @Service annotation to be called when needed but rather test data for development only. It could be placed to src/test/java.
 
@@ -72,21 +72,21 @@ In ReviewService.java, the autowired fileds NewAccountService 'nas' and AdServic
 
 You have two different headers. headerLogin.jsp opens many div tags which you try to close in register.jsp in lines 54 to 56 (without indentation nor comments) and then again in lines 123 to 125.
 
-You have an empty footer which closes certain tags and does nothing else. On some pages (register.jsp, index.jsp ... ) you specify a footer with the class name mastfoot additionally, on most pages you don't. (why not separate mastfoot to mast-foot like all other classes within html?).
+You have an empty footer which closes certain tags and does nothing else. On some pages (register.jsp, index.jsp, etc.) you specify a footer with the class name mastfoot additionally, on most pages you don't. (Why not separate mastfoot to mast-foot like all other classes within html?)
 
 ### Exception, testing null values
 
 You are testing for null values in your service classes like in return statements (UserServiceImpl.java) which is perfect. Although you do catch Exception in ProfileServiceImpl.java which is never a good idea, since catching an Exception means catching every possible exception.
 
-You have defined your own three exceptions to make debugging more easy and to further specify what can go wrong and where it goes wrong. That is great. Especially in NewAccountServiceImpl.java you have different messages passing to InvalidUserException.java giving just the right feedback! I am just not that sure if this kind of feedback should be handled as an exception or rather as input validation with javascript or something similar.
+You have defined your own three exceptions to make debugging more easy and to further specify what can go wrong and where it goes wrong. That is great. Especially in NewAccountServiceImpl.java you have different messages passing to InvalidUserException.java giving just the right feedback! However, it would be even more elegant to handle this kind of feedback as input validation with javascript or something similar rather than as an Exception.
 
 ### Encapsulation
 
 The encapsulation seems to be good. All model classes have fields with their respective setters and getters according to JavaBean Definition. Setters and getters can be therefore used by Spring.
 
-What I don't really understand is the "default" constructor in User.java where you set the Owner to itself basically. Why is an owner even necessary? Would it not be easier to group these two classes into one? I see that you want to have a User and then link it to a Profile which is nice, but at the moment I don't see any direct benefit from it.
+What is really unclear is the "default" constructor in User.java where you set the Owner to itself basically. Why is an owner even necessary? Would it not be easier to group these two classes into one? I see that you want to have a User and then link it to a Profile which is nice, but it is not clear how the software profits from it.
 
-In the User.java class you have two methods a public getAuthorities() and it's private translateRole(). You are accesing getAuthorities() from outside it's own model and I think that should be avoided. In the model there should only be setters and getters for the model and if needed private helper methods only (that's for the business logic/class logic of the class only). Further you have four methods at the end which return TRUE only. They are without a field. I guess the code within the body will follow in the next step?
+In the User.java class you have two methods - a public getAuthorities() and its private translateRole(). You are accesing getAuthorities() from outside its own model; that should be avoided. In the model there should only be setters and getters for the model and if needed private helper methods only (that's for the business logic/class logic of the class only). Further you have four methods at the end which return TRUE only. They are without a field. I guess the code within the body will follow in the next step?
 
 ### Assertion, contracts, invariant checks
 
@@ -94,7 +94,7 @@ There are no assertions in the sourcecode (but there are some in the tests which
 
 ### Utility methods
 
-You are using java's utility methods for many tasks you also imported external JavaScript classes which you are using throughout the project. There are no own utility classes (java nor javascript) that you use for recurring tasks like validation of input or simple calculations. But I don't really think that your are missing some, since there is no real recurring task you need to do from different objects many times.
+You are using java's utility methods for many tasks. You also imported external JavaScript classes which you are using throughout the project. There are no own utility classes (java nor javascript) that you use for recurring tasks like validation of input or simple calculations. But you're probably not really missing them, since there is no real recurring task you need to do from different objects many times.
 
 ## Documentation
 
@@ -139,12 +139,12 @@ Room for improvement here. Not all remarks given are strictly concerned with *co
 
 ### Clear and distinct test cases
 
-The test cases are clearly separated. Care was exercised that only one aspect of an object was tested per test case. It is not possible to further divide a test case into several new ones, which is further evidence that they are distinct. Since the `SearchTests` class contains unit tests for the class `DefaultSearcher`it would make sense to rename it to `DefaultSearcherTest`. This suggestion stems from two main reasons. First of all, it would comply to common convention. JUnit and especially Maven Surefire unit tests are commonly named with the pattern `ATest`for class `A`. Per default, Surefire even relies on this naming to find the test cases within a Maven project. The second reason is that the current naming is confusing for someone searching for the class that is under test. Which class is tested can currently only be found out through looking at the source code of the tests.
+The test cases are clearly separated. Care was exercised that only one aspect of an object was tested per test case. It is not possible to further divide a test case into several new ones, which is further evidence that they are distinct. Since the `SearchTests` class contains unit tests for the class `DefaultSearcher`, it would make sense to rename it to `DefaultSearcherTest`. This suggestion stems from two main reasons. First of all, it would comply to common convention. JUnit and especially Maven Surefire unit tests are commonly named with the pattern `ATest` for class `A`. Per default, Surefire even relies on this naming to find the test cases within a Maven project. The second reason is that the current naming is confusing for someone searching for the class that is under test. Which class is tested can currently only be found out through looking at the source code of the tests.
 The second testing class is called `LoginTest`. Although there is no class `Login.java` this name is okay, since `LoginTest` contains integration tests instead of  unit tests, it tests several components at once.
 
 ### Number/coverage of test cases
 
-The project contains two test classes. In total 18 test cases can be found. One class contains unit tests and the other one integration tests. Those classes that are covered through these tests are tested thoroughly. Common uses of the involved classes are tested as well as unexpected situations, such as exceptions or empty results. 
+The project contains two test classes. In total 18 test cases can be found. One class contains unit tests and the other one integration tests. The classes that are covered through these tests are tested thoroughly. Common uses of the involved classes are tested as well as unexpected situations, such as exceptions or empty results. 
 The number of tested classes could be higher. Although the two tested classes are tested very well, there remain a lot of classes that are untested. Of course, there are classes that do not absolutely need to be tested, for example a form consisting solely of getters and setters methods. On the other hand, a class like `ImageServiceImpl.java` would justify adding some more tests. Its functionality is quite complex (especially the parts that are currently commented out). As of version 1.0, uploading a picture does not work, an exception occurs. Maybe this could have been prevented by some more unit tests.
 It would make sense to make sure that all tests in the project are run by Maven if its `mvn test` goal is executed. Currently, only the tests in `LoginTest.java` are executed by this goal. In our opinion, all tests of a project should be runnable in one step only.
 
@@ -164,21 +164,17 @@ The tests make good usage of mocking. Through mocking of the ad data access obje
 As already mentioned before, the test cases are named reasonably, therefore the readability is good. Also variables are named according to what they are used for, although sometimes naming conventions are not followed (e.g. `String EMAIL ` instead of `String email`). In addition, mocked objects are clearly separated from real objects through appriopriate naming. The two test classes do not have consistent names. While one class is named `LoginTest` (singular) the other one is named `SearcherTests` (plural). It would be better if both test classes used the singular. This might seem overly picky at first, but it is mainly due to the fact that Maven Surefire only runs the test cases of classes using the singular version per default. The way the test files were configured at the time of the release, Maven Surefire only ran the tests from `LoginTest`.
 
 
-
-
 ## Analysis of a class within the controller package
 We picked the class TabBarController.java from the controller package.
 
 The tab bar of the website contains a home icon and the entries 'My Page', 'My Favorites', 'Search', 'Create an ad' and 'Logout'. To be precise, there is a second 'Logout' at the top right corner, but one of the two 'Logout's will surely be removed as the site is under construction, so let's assume that there is only one.
-According to the name "TabBarController", one expects that it handles the mappings of all those 6 entries, but the class contains only the mappings for 'My Favorites' and two mappings for 'Search', depending whether the user wants to perform a search by some criteria or by google maps. Furthermore, there is a mapping for a security-error, if I type .../security-error into the address bar of my browser, I get logged out. This mapping could probably be moved to LoginController.java, but the author may had her/his reasons to put it into the class TabBarController.
-To say it already now, I find the grouping of the controllers could be improved. As said, there is a home icon in the tab bar, but the mapping isn't in the TabBarController, there is a seperate Controller named HomeController which handles this. The HomeController maps only "/home" and "/test" (which crashes at the moment with a 404 Not_found Error). 
+According to the name "TabBarController", one expects that it handles the mappings of all those 6 entries, but the class contains only the mappings for 'My Favorites' and two mappings for 'Search', depending whether the user wants to perform a search by some criteria or by google maps. Furthermore, there is a mapping for a security-error: going to the page .../security-error manually results in getting logged out. This mapping should be moved to LoginController.java, but the author may had her/his reasons to put it into the class TabBarController.
+The grouping of the controllers could clearly be improved. As said, there is a home icon in the tab bar, but the mapping isn't in the TabBarController, there is a seperate Controller named HomeController which handles this. The HomeController maps only "/home" and "/test" (which crashes at the moment with a 404 Not_found Error). 
 Same stories with the tab bar entries 'My-Page', 'Search' and 'Create an ad'. There are the classes MyPageController, SearchController and AdController which handle these mappings already.
 In the case of 'Search', "/search" is handled in SearchController while "/search-list" and "/search-map" are handled in the TabBarController.
 
-So it's hard to tell whether the TabBarController class has too many responsibilities because first of all, the responsibilities seem to be handled / split a bit unclear. If it would contain all the mappings of the tab bar as the classname suggests, then one could argue that it steals responsibilities from other classes such as AdController, SearchController etc. And thats why I wouldn't create the TabBarController class at all and try to group the controllers in a slightly different way.
-My suggestion is to group the controllers into something like 'AccountController', 'AdController', 'IndexController', 'MessageController', 'SearchController' etc.
+So it's hard to tell whether the TabBarController class has too many responsibilities because first of all, the responsibilities seem to be handled / split a bit unclear. If it would contain all the mappings of the tab bar as the classname suggests, then it steals responsibilities from other classes such as AdController, SearchController etc. And that's why creating a TabBarController class at all is the wrong way to go here; grouping the controllers in a slightly different way would yield better clarity.
+Controllers should be regrouped, for example in files called 'AccountController', 'AdController', 'IndexController', 'MessageController', 'SearchController' etc.
 If one groups the controllers like this, it is clear where to put mappings for ads for example, it doesn't matter if a link is in a tab bar or elsewhere.
 
-If one decides to delete the class and therefore move its mappings, the two search-mappings would go into the SearchController, the security-error-mapping could go into LoginController, and the favorite-mapping would need an own controller if one continues the given grouping here (Home, MyPage, Search, CreateAd all got their own controllers).
-
-Please note that I took of course the class where I thought I could criticize the most / suggest the most improvements, so the text may seem a bit harsh. The text doesn't reflect my whole impression of the controller package or the project in general :) 
+If one decides to delete the class and therefore move its mappings, the two search mappings would go into the SearchController, the security error mapping would go into LoginController, and the favorite-mapping would need an own controller if one continues the given grouping here (Home, MyPage, Search, CreateAd all got their own controllers).
