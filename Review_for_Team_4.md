@@ -66,7 +66,7 @@ Why do you use a DefaultSearcher with an ISearcher (normaly you name the interfa
 
 ReviewService.java is most likely not a service as specified by the @Service annotation to be called when needed but rather test data for development only. It could be placed to src/test/java.
 
-In ReviewService.java, NewAccountService nas and AdService as aren't intention-revealing names.
+In ReviewService.java, the autowired fileds NewAccountService 'nas' and AdService 'as' aren't intention-revealing names.
 
 ### Do not repeat yourself
 
