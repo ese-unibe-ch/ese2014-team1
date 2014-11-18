@@ -54,7 +54,6 @@ The code formatting is inconsistent, for example in my-page.jsp (use the format-
 There are some undeleted println-statements in submitAd() in AdController.java.
 Fully commented method in HomeController.java (probably an old version not yet deleted for testing?)
 
-
 ### Intention-revealing names
 
 The TabBarController seems to be responsible for several things that are visually together but not logically. When I was searching for the place where SearchForm was added I looked in the SearchController and had to search for quite a while until I found it. Maybe that could be grouped better?
@@ -81,31 +80,21 @@ You are testing for null values in your service classes like in return statement
 
 You have defined your own three exceptions to make debugging more easy and to further specify what can go wrong and where it goes wrong. That is great. Especially in NewAccountServiceImpl.java you have different messages passing to InvalidUserException.java giving just the right feedback! I am just not that sure if this kind of feedback should be handled as an exception or rather as input validation with javascript or something similar.
 
-??? read through it again...
-LoginServiceImpl.java it's again the throwing of an exception which I am not that sure about if an exception is the right thing to do in such a case. In my opinion it is not really an exception but just an if else clause.
-???
-
 ### Encapsulation
 
 The encapsulation seems to be good. All model classes have fields with their respective setters and getters according to JavaBean Definition. Setters and getters can be therefore used by Spring.
 
-??? read through it again....
 What I don't really understand is the "default" constructor in User.java where you set the Owner to itself basically. Why is an owner even necessary? Would it not be easier to group these two classes into one? I see that you want to have a User and then link it to a Profile which is nice, but at the moment I don't see any direct benefit from it.
-???
 
 In the User.java class you have two methods a public getAuthorities() and it's private translateRole(). You are accesing getAuthorities() from outside it's own model and I think that should be avoided. In the model there should only be setters and getters for the model and if needed private helper methods only (that's for the business logic/class logic of the class only). Further you have four methods at the end which return TRUE only. They are without a field. I guess the code within the body will follow in the next step?
 
 ### Assertion, contracts, invariant checks
 
-There are no assertions nor contracts nor invariant checks.
+There are no assertions in the sourcecode (but there are some in the tests which is good). No contracts have been specified nor invariant checks implemented.
 
 ### Utility methods
 
-needs further clarification from andrea on what that is ;)
-I am not sure if the use of own static methods is meant or the utility class of java...
-
-The classes in the model package have reasonable toString methods.
-
+You are using java's utility methods for many tasks you also imported external JavaScript classes which you are using throughout the project. There are no own utility classes (java nor javascript) that you use for recurring tasks like validation of input or simple calculations. But I don't really think that your are missing some, since there is no real recurring task you need to do from different objects many times.
 
 ## Documentation
 
