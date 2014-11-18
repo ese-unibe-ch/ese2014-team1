@@ -82,6 +82,7 @@ public class AccountController {
 	public ModelAndView editProfileResultPage(
 			@Valid EditProfileForm editProfileForm, BindingResult bindingResult) {
 		ModelAndView model;
+		// TODO remove test code
 		if (!bindingResult.hasErrors()) {
 			userUpdateService.updateFrom(editProfileForm);
 			model = new ModelAndView("updatedProfile");
