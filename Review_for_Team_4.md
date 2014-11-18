@@ -142,18 +142,25 @@ Some use cases reveal their intention plain and clear. Others not so much. Espec
 
 ### Clear and distinct test cases
 
-The test cases are clearly separated. Care was exercised that only one aspect of an object was tested per test case. It is not possible to further divide a test case into several new ones, which is further evidence that they are distinct. Since the `SearchTests`class contains unit tests for the class `DefaultSearcher`it would make sense to rename it to `DefaultSearcherTest`. This suggestion stems from two main reasons. First of all, it would comply to common convention. JUnit and especially Maven Surefire unit tests are commonly named with the pattern `ATest`for class `A`. Per default, Surefire even relies on this naming to find the test cases within a Maven project. The second reason is that the current naming is confusing for someone searching for the class that is under test. Which class is tested can currently only be found out through looking at the source code of the tests.
-The second testing class is called `LoginTest`. Although 
+The test cases are clearly separated. Care was exercised that only one aspect of an object was tested per test case. It is not possible to further divide a test case into several new ones, which is further evidence that they are distinct. Since the `SearchTests` class contains unit tests for the class `DefaultSearcher`it would make sense to rename it to `DefaultSearcherTest`. This suggestion stems from two main reasons. First of all, it would comply to common convention. JUnit and especially Maven Surefire unit tests are commonly named with the pattern `ATest`for class `A`. Per default, Surefire even relies on this naming to find the test cases within a Maven project. The second reason is that the current naming is confusing for someone searching for the class that is under test. Which class is tested can currently only be found out through looking at the source code of the tests.
+The second testing class is called `LoginTest`. Although there is no class `Login.java` this name is okay, since `LoginTest` contains integration tests instead of  unit tests, it tests several components at once.
 
 ### Number/coverage of test cases
 
-The project contains two test classes. In total 18 test cases can be found.
+The project contains two test classes. In total 18 test cases can be found. One class contains unit tests and the other one integration tests. Those classes that are covered through these tests are tested thoroughly. Common uses of the involved classes are tested as well as unexpected situations, such as exceptions or empty results. 
+The number of tested classes could be higher. Although the two tested classes are tested very well, there remain a lot of classes that are untested. Of course, there are classes that do not absolutely need to be tested, for example a form consisting solely of getters and setters methods. On the other hand, a class like `ImageServiceImpl.java` would justify adding some more tests. Its functionality is quite complex (especially the parts that are currently commented out). As of version 1.0, uploading a picture does not work, an exception occurs. Maybe this could have been prevented by some more unit tests.
+It would make sense to make sure that all tests in the project are run by Maven if its `mvn test` goal is executed. Currently, only the tests in `LoginTest.java` are executed by this goal. In our opinion, all tests of a project should be runnable in one step only.
 
 ### Easy to understand the case that is tested
 
 All test cases are reasonably named and therefore also easily understandable. Test cases within one class all have a similar structure, which makes it easy to distinguish what exactly is tested in each test case.
+Furthermore, as already mentioned, variable names were chosen reasonably.
 
 ### Well crafted set of test data
+
+The tests cover common uses cases well. For most parameters of a test case, several values and combinations of those are used. For example, in `SearcherTest.java` every test ad has a different address, a different price and a varying number of rooms. This is good design, since it makes sense to test the searcher methods with several different value combinations.
+One thing that could be improved is the coverage of uncommon use cases with uncommon data. This would mean adding some corner and special cases to the test data, for example a very high or very low ad price, zero roommates (for a studio) or city names with special characters like 'é' in them.
+The tests make good usage of mocking. Through mocking of the ad data access object, the tests are separated from the actual database, which ensures that only the searcher class is tested and not other classes as well.
 
 ### Readability
 
