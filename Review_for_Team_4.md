@@ -104,7 +104,7 @@ There are no assertions nor contracts nor invariant checks.
 needs further clarification from andrea on what that is ;)
 I am not sure if the use of own static methods is meant or the utility class of java...
 
-The classes in the model package got reasonable toString methods.
+The classes in the model package have reasonable toString methods.
 
 
 ## Documentation
@@ -113,30 +113,38 @@ The classes in the model package got reasonable toString methods.
 Most of the SRS is understandable. There are, however, a number of passages that clearly stand in the way of understanding.
 
 1. The use case diagram (p. 3) leaves us wondering at the meaning of "include", since according to the diagram, logging in and out of account apparently includes creating an account. Sure that's a precondition, but it isn't included *every time*. Same thing goes for the "include" statement where the export of a PDF file apparently includes the search for an ad (more on that later).
-2. At the beginning, we are missing some kind of page overview, i.e. which buttons/options exist, which of them are always visible, which of them are in sub-menus etc. In the document, it often seems like there is a clear model of where what is, but it is never made explicit. This shortcoming becomes the most tangible when bookmarking favourites is discussed. Descriptions vary between "bookmarking" (e.g. XXXXXX), clicking on "the "star" of candidates" (e.g. p. 8),  "clicking onto "star"" (e.g. p. 8), and "clicks onto the "star"" (p. 12). So is it an actual star (image) you click on? Or a button/text named "star"? Or "bookmark"?
-3. In many occasions, phrasing is reduced to near-intelligibility, e.g. S. 5, §1.7.6a (+ more examples) (blah)
-4. Throughout the SRS (12 use cases in total), not *once* are any special requirements named, and only two times notes are provided, with one of them ("Account can only be created if the username does not yet exist" in use case "Create Account") being not so much of a note but rather one possible validation step that should be included in the main scenario. The effect of this on understanding is thoroughly detrimental.
-  
+- At the beginning, we are missing some kind of page overview, i.e. which buttons/options exist, which of them are always visible, which of them are in sub-menus etc. In the document, it often seems like there is a clear model of where what is, but it is never made explicit. This shortcoming becomes the most tangible when bookmarking favourites is discussed. Descriptions vary between "bookmarking" (e.g. p. 12), clicking on "the "star" of candidates" (e.g. p. 8),  "clicking onto 'star'" (e.g. p. 8), and "clicks onto the "star"" (p. 12). So is it an actual star (image) you click on? Or a button/text named "star"? Or "bookmark"?
+- Throughout the SRS (12 use cases in total), not *once* are any special requirements named, and only two times are notes provided, with one of them ("Account can only be created if the username does not yet exist" in use case "Create Account") being not so much of a note but rather one possible validation step that should be included in the main scenario. The effect of this on understanding is thoroughly detrimental.
+- In the different use case scenarios, after having stepped through the whole use case, the system sometimes takes us to another page (e.g. use cases "place ad", "create schedule", "create account"), sometimes not (e.g. use cases "manage ads", "edit profile", "check-out profile"). It is not clear why after some actions on the system the user would be redirected to the start page and not after others.
+- Generally, the authors seem to not have foreseen the situation that a user is viewing an object or user profile withouth having searched for it *through the site itself* (e.g. use case 9, pre-conditions). However, with a produt like this, I want to be able to send direct links to objects to friends, let's say by email. Is this a conscious decision by the authors?
 
 
 ### Intention-revealing
-Some use cases reveal their intention plain and clear. Others not so much. Especially the order of the use cases is really tough to understand. Is there any order at all? Certainly, there is none based on use cases belonging to the same user story. This is especially frustrating with the use cases concerning the user story of managing visits.
+Some use cases reveal their intention plain and clear. Others not so much. Especially the order of the use cases is really tough to understand. Is there any order at all? Certainly, there is none based on use cases belonging to the same user story. This is especially frustrating with the use cases concerning the user story of managing visits. 
 
 1. Use case 1, "create schedule to manage visit" (p. 5), only targets the advertiser as an actor. For each of her objects, the advertiser selects some times slots on a calendar, and that's that for this use case. It would be *a lot* better for understanding, if either the other use cases belonging to that user story came right after this one, or there was some explanation of the *whole* user story in the "Notes" section (which is literally *never* used in the whole SRS), or, of course, ideally both.
-2. The Alternative scenario in use case 7 has no name, and thus does not reveal its intention. Also, it is not really an alternative scenario at all, just another way to achieve exactly the same thing, i.e. another use case.
-3. 
+- The Alternative scenario in use case 7 has no name, and thus does not reveal its intention. Also, it is not really an alternative scenario at all, just another way to achieve exactly the same thing, i.e. another use case.
+- The opposite happens in use case 3 ("search ad"), where it is an alternative scenario of its own if no matching ads are found. This is a highly common case and can simply be included in the main scenario by a line à la "System returns a list of results (maybe empty)".
+- In the same use case, there is an alternative scenario by the title "Searcher wants to see the ads on the map-view". The first step is "Searcher clicks onto 'Map View'", and thus accomplishes the goal. The remaining points are further options concerning the map view, which are great to have, but are clearly mislabelled here.
 
 ### Describe responsibilities
-- often it is only written what the user does, but not the system (blah)
-- multiple times, two or more use cases are wrapped into one (blah)
+Mostly given. Even the following shortcomings are by no means serious; most information can be inferred correctly from context. Still:
+
+1. In more than one use case main scenario, points are omitted. These are mostly actions by the system (while actions by the user are covered in great detail, as desired). For example, in use case 4, step 7 of the main scenario is that the user bookmarks a candidate by clicking on a star (or other, similar action). Step 8 reads: "Advertiser clicks 'OK'". There is no mention of the system prompting the advertiser to confirm. In use case 5, step 2 of the process reads "User clicks onto 'Register'", and step 3 immediately has the system confirm that the account has been successfully created. We are missing the whole validation process, and the process of persisting data to the database. Some more examples like these can be found.
+- Sometimes, one simple enough step is further divided in main scenarios. For example, in use case 6, step 3 is "User clicks in the field", while step 4 is "User makes changes". It is pretty obvious, though, that to make changes in a field you first have to click in it.
+- Several times, multiple use cases are wrapped into one. Unlike point 2, this is very serious. For example, the alternative scenario to use case 6 ("edit profile") is "delete account", which is obviously a use case of its own. Also, in use case 4 ("compile promising candidates list"), the main scenario has the advertiser browse through users and bookmark them. Step 12, however, is "Advertiser can export the list by clicking onto 'Export List'", which is just as clearly a distinct use case.
 - In use case 9, "Export information from ad", which is about exporting ad information to a PDF file downloaded to a user's machine, there are no alternative scenarios listed. That seems a bit too optimistic. What if the export fails, for one of numerous reasons? What if the user's hard disk is already full? What if the user's firewall intercepts the download, or some other scenario?
-- very thorough list of requirements at the end - nice
+- It is worth mentioning that the list of functional and non-functional requirements (p. 16f.) is very thorough. Unfortunately it is placed right at the end; a shorter version of it could make the whole document easier to read. Nevertheless, good job on the requirements.
 
 ### Match a consistent domain vocabulary
+Room for improvement here. Not all remarks given are strictly concerned with *consistency* of the vocabulary, a few more general remarks are also in order.
 
-- (blah)
-- Sometimes, semi-technical vocabulary is used inconsistently. In some cases, we correctly read that the "system prompts the user" (BEISPIEL FINDEN), in other cases it's just "System asks whether [user] is sure or not" (p. 5). It is no big deal to make that consistent. (blah)
-- One last point concerning the consistency of the domain vocabulary: Unfortunately, in one aspect the vocabulary is extremely consistent, that is in the generic masculine used literally everywhere (!) where users are referenced. Throughout the document, it's always "he searches" etc., not one single time "he or she" or other including wording is used. What is this, the early 1800s?
+1. The most irritating inconsistency is with navigation elements on the website. These are sometimes called "tab" (p. 7, 10), but sometimes also "register" (p. 4); mostly, though, they are not referred to by any specific type. The wording "... clicks on [name]" is very common throughout the document. Here we are again missing a layout/menu overview as described in "Understandable", paragraph 2.
+- The entities referred to by ads are not named consistently. We have "object" (p. 4, 14), "apartment"/"room" (p. 5), as well as "property" (p. 16).
+- General vocabulary remark: Use case 7 is entitled "Check-out profile", the profile in question belonging to another user of the platform. As long as you're not a frat house social media website, I would strongly suggest "inspecting" or "viewing" a profile instead of "checking it out".
+- Sometimes, (semi-)technical and everyday vocabulary is used inconsistently. In some cases, we read that the "System asks whether [user] is sure or not" (p. 5) or similarly colloquial (e.g. p. 6) wordings. On the other hand, the word "prompt" is used correctly on multiple occasions (e.g. p.9). Another example would be that on p. 4 a field is "mutate[d]", while on other occasions (e.g. p. 10) it is simply said that a user "makes changes" or similar.
+- All in all, the use cases seem to have been written by different people without only a bare minimum (if any) of proofreading or editig. (For example, use cases 8 and 9 reveal a minimalistic approach). The fact that this is still visible after at least two revisions (together with a plethora of typos and very German expressions) is proof that other tasks, such as developing, have been given much higher priority by the authors.
+- One last point concerning the consistency of the domain vocabulary: Unfortunately, in one aspect the vocabulary is extremely consistent, and that is in the generic masculine used literally everywhere (!) where users are referenced. Throughout the document, it's always "he searches" etc., not one single time "he or she" or other including wording is used. No offence, but what is this, the early 1800s?
 
 ## Test
 
