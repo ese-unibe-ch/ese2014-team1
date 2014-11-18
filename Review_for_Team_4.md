@@ -20,20 +20,20 @@ There is some use of aggregation, an Ad has a an owner, an address, a type etc.
 
 ### Clear responsibilities
 In HomeController.java, there is the method login(). This method should probably be moved to LoginController.java as the name of the method suggests. For me, Profile.java and User.java were a bit confusing at first. The fields 'sex' and 'age' are most likely in Profile.java since they are edited in the profile, I as an outsider expected them in the class User at first due to common sense, but this is probably a minor matter of choice.
-In TabBarController.java, there are the methods searchList() and searchMap(), I as an outsider expected them to be in the SearchController.java. In the page, the tab bar contains an entry 'Search', while the 'Search List' and 'Search Map' are not in the tab bar but in the Search page itself.
+In TabBarController.java, there are the methods searchList() and searchMap(), but I expected them to be in SearchController.java. In the page, the tab bar contains an entry 'Search', while the 'Search List' and 'Search Map' are not in the tab bar but in the Search page itself.
 The javadoc comment "Controls all pages / commands concerning ads" in ImageController.java is confusing / wrong since there is a Class AdController.java. The responsibilities of the forms in the pojos package are clear.
-The responsibility of ReviewService.java is clear, this class saves some users and ads into the database for testing purposes. However, I think a renaming (and splitting) into something like UserTestDataSeeder and AdTestDataSeeder would be good, I find the name ReviewService a bit confusing. In addition, I suggest that this class is moved into an own package (something like .testData) since it has another responsibility than the rest of the classes in the package (such as AdServiceImpl etc.).
+The responsibility of ReviewService.java is clear, this class saves some users and ads into the database for testing purposes. However, I think a renaming (and splitting) into something like UserTestDataSeeder and AdTestDataSeeder would be good, I find the name ReviewService a bit confusing. In addition, I suggest that this class is moved into the test packages (src/test/java) since it has another responsibility than the rest of the classes in the package (such as AdServiceImpl etc.).
 The distinction / responsibilities of LoginService.java and NewAccountServiceImpl.java is confusing, the method loginManually() is in NewAccountServiceImpl.java. Those two classes could probably be merged into something like AccountService.java.
 
 
 ### Sound invariants
-I saw no class invariants and no asserts (except in the tests of course) in the code.
+I saw no class invariants and no assertions (except in the tests of course) in the code.
 
 
 ### Overall code organization & reuse, e.g. views
 In the controller.service package, the usage of interfaces is handled inconsistently. Some classes like AdService implement a corresponding interface, some classes like ReviewService have none.
 I think the code organization is good for the majority of the project. However, there is a bad mix of files in the folder src/main/resources. There is a png, js and some xml files, those should probably be put in separate folders. 7 files at this point isn't a big deal, but for a way bigger project, a good separation is a must.
-I didn't see too much code reuse, but I also don't believe that the team should have created a huge class hierarchy here. For example, there are currently four classes in the model package, one could factor out the id and its getter/setter into a superclass, but apart from that, these classes don't have much more in common.
+I didn't see too much code reuse, but I also don't believe that the team should have created a huge class hierarchy here. For example, there are currently four classes in the model package, one could factor out the id and its getter/setter into a superclass, which would not make much sense, but apart from that, these classes don't have much more in common.
 
 
 ## Coding style
