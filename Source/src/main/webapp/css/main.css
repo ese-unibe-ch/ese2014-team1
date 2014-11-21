@@ -221,8 +221,6 @@ button {
 	margin-bottom: 20px;
 }
 
-
-
 /* -------------------------------------------------------------------- */
 /* Header & Footer */
 header {
@@ -363,7 +361,6 @@ footer nav ul li {
 	padding: 0px 15px;
 }
 
-
 /* -------------------------------------------------------------------- */
 /* ----------------------------Individual pages------------------------ */
 /* -------------------------------------------------------------------- */
@@ -420,14 +417,13 @@ footer nav ul li {
 
 /* -------------------------------------------------------------------- */
 /* editProfile.jsp */
-
 .editProfileTable input {
 	width: 30%;
 	font-size: 0.8em;
 }
 
 .editProfileTable textarea {
-	font-size: 0.9em;	
+	font-size: 0.9em;
 }
 
 .editProfileTable {
@@ -774,4 +770,20 @@ footer nav ul li {
 	float: right;
 	margin-top: -35px;
 	margin-right: -37px;
+}
+
+/* -------------------------------------------------------------------- */
+/* enquiries.jsp */
+#enquiryList {
+	width: 70%;
+	margin: auto;
+}
+
+#enquiryList hr {
+	margin-top: 30px;
+}
+
+#enquiryList table {
+	width: 90%;
+	margin: auto;
 }

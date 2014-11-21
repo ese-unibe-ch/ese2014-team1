@@ -20,6 +20,9 @@ public class Visit {
 	private long id;
 	
 	@ManyToOne
+	private Ad ad;
+	
+	@ManyToOne
 	private User advertiser;
 
 	@ManyToOne
@@ -39,6 +42,14 @@ public class Visit {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	public Ad getAd() {
+		return ad;
+	}
+
+	public void setAd(Ad ad) {
+		this.ad = ad;
 	}
 
 	public User getAdvertiser() {

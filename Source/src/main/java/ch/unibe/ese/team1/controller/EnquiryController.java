@@ -1,0 +1,36 @@
+package ch.unibe.ese.team1.controller;
+
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import ch.unibe.ese.team1.controller.service.EnquiryService;
+import ch.unibe.ese.team1.controller.service.UserService;
+import ch.unibe.ese.team1.model.User;
+
+/**
+ * Handles all requests concerning enquiries of type
+ * {@link ch.unibe.ese.team1.model.VisitEnquiry VisitEnquiry} between users.
+ */
+@Controller
+public class EnquiryController {
+
+	@Autowired
+	private EnquiryService enquiryService;
+
+	@Autowired
+	private UserService userService;
+
+	@RequestMapping(value = "/profile/enquiries")
+	public ModelAndView enquiriesPage(Principal principal) {
+		ModelAndView model = new ModelAndView("enquiries");
+		User user = userService.findUserByUsername(principal.getName());
+		model.addObject("enquiries",
+				enquiryService.getEnquiriesByRecipient(user));
+		return new ModelAndView("enquiries");
+	}
+
+}
