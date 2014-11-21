@@ -34,7 +34,8 @@ public class VisitEnquiry {
 	private VisitEnquiryState state;
 
 	/** Which visit does the enquiry belong to? */
-	//private Visit visit;
+	@ManyToOne
+	private Visit visit;
 	
 	
 	public long getId() {
