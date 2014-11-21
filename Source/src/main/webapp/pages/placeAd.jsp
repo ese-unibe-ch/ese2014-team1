@@ -71,10 +71,19 @@
 			if(date == ""){
 				return;
 			}
+			
 			var startHour = $("#startHour").val();
 			var startMinutes = $("#startMinutes").val();
 			var endHour = $("#endHour").val();
 			var endMinutes = $("#endMinutes").val();
+			
+			if (startHour > endHour) {
+				alert("Invalid times. The visit can't end before being started.");
+				return;
+			} else if (startHour == endHour && startMinutes >= endMinutes) {
+				alert("Invalid times. The visit can't end before being started.");
+				return;
+			}
 			
 			var newVisit = date + ";" + startHour + ":" + startMinutes + 
 				";" + endHour + ":" + endMinutes; 
@@ -86,10 +95,7 @@
 			var label = "<p>" + newVisitLabel + "</p>";
 			var input = "<input type='hidden' value='" + newVisit + "' name='visits[" + index + "]' />";
 			
-			
 			$("#addedVisits").append(label + input);
-			
-			
 		});
 	});
 </script>
@@ -307,7 +313,7 @@
 
 	<br />
 	<div>
-		<button type="submit">Update</button>
+		<button type="submit">Submit</button>
 		<button type="reset">Cancel</button>
 	</div>
 
