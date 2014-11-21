@@ -18,16 +18,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "users")
 public class User {
-
-	// TODO can this be removed?
-	/*//TRY next 6 lines
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	public User update(User transUser) {
-		return entityManager.merge(transUser);
-	}
-	*/
 	
 	@Id
 	@GeneratedValue
