@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
+
 /** Describes an advertisement that users can place and search for. */
 @Entity
 public class Ad {
@@ -108,6 +110,9 @@ public class Ad {
 
 	@ManyToOne(optional = false)
 	private User user;
+	
+	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL)
+	private List<Visit> visits;
 
 	public Date getCreationDate() {
 		return creationDate;
@@ -341,6 +346,14 @@ public class Ad {
 
 	public void setRegisteredRoommates(List<User> registeredRoommates) {
 		this.registeredRoommates = registeredRoommates;
+	}
+
+	public List<Visit> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<Visit> visits) {
+		this.visits = visits;
 	}
 
 }

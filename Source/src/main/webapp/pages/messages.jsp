@@ -41,8 +41,6 @@
 	<h2 id="inbox">Inbox</h2>
 	<h2 id="newMessage">New</h2>
 	<h2 id="sent">Sent</h2>
-	<h2 id="drafts">Drafts</h2>
-	<h2 id="deleted">Deleted</h2>
 </div>
 <div id="messageList">
 	<table class="styledTable">

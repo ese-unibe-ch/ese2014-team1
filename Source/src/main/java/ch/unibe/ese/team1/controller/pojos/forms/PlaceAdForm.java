@@ -55,6 +55,8 @@ public class PlaceAdForm {
 	private boolean cable;
 	private boolean garage;
 	private boolean internet;
+	
+	private List<String> visits;
 
 	public String getCity() {
 		return city;
@@ -230,6 +232,14 @@ public class PlaceAdForm {
 
 	public void setRegisteredRoommateEmails(List<String> registeredRoommateEmails) {
 		this.registeredRoommateEmails = registeredRoommateEmails;
+	}
+
+	public List<String> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<String> visits) {
+		this.visits = visits;
 	}
 	
 }

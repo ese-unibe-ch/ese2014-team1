@@ -139,7 +139,7 @@ button {
 	font-size: 1.1em;
 }
 
-#addbutton {
+.smallPlusButton {
 	display: inline;
 	font-decoration: none;
 	background-color: #2dc16d;
@@ -160,7 +160,7 @@ button:hover {
 	border-color: #2dc16d;
 }
 
-#addbutton:hover {
+.smallPlusButton:hover {
 	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
