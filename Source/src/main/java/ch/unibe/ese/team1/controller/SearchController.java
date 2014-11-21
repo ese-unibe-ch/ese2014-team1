@@ -54,18 +54,6 @@ public class SearchController {
 		}
 	}
 
-	// TODO why is this method here? The location does not make too much sense
-	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
-	public ModelAndView user(@RequestParam("id") long id) {
-		ModelAndView model = new ModelAndView("user");
-
-		User user = userService.findUserById(id);
-		model.addObject("user", user);
-		model.addObject("messageForm", new MessageForm());
-
-		return model;
-	}
-
 	@ModelAttribute
 	public SearchForm getSearchForm() {
 		if (searchForm == null) {

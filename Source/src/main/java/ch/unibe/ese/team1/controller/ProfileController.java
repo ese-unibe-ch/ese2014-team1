@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.pojos.forms.EditProfileForm;
+import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SignupForm;
 import ch.unibe.ese.team1.controller.service.SignupService;
 import ch.unibe.ese.team1.controller.service.UserService;
@@ -102,5 +104,14 @@ public class ProfileController {
 		User user = userService.findUserByUsername(username);
 		model.addObject("currentUser", user);
 		return model;
+	}
+	
+	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
+	public ModelAndView user(@RequestParam("id") long id) {
+		ModelAndView model = new ModelAndView("user");
+			User user = userService.findUserById(id);
+		model.addObject("user", user);
+		model.addObject("messageForm", new MessageForm());
+			return model;
 	}
 }
