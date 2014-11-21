@@ -1,10 +1,12 @@
 package ch.unibe.ese.team1.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,8 +27,8 @@ public class Visit {
 	@ManyToOne
 	private User advertiser;
 
-	@ManyToOne
-	private User searcher;
+	@ManyToMany
+	private List<User> searchers;
 	
 	@JsonFormat(pattern = "HH:mm, dd.MM.yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -60,12 +62,12 @@ public class Visit {
 		this.advertiser = advertiser;
 	}
 
-	public User getSearcher() {
-		return searcher;
+	public List<User> getSearchers() {
+		return searchers;
 	}
 
-	public void setSearcher(User searcher) {
-		this.searcher = searcher;
+	public void setSearchers(List<User> searchers) {
+		this.searchers = searchers;
 	}
 
 	public Date getStartTimestamp() {
