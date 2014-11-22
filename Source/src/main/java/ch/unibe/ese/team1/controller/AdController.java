@@ -175,9 +175,11 @@ public class AdController {
 
 	/** Gets the ad description page for the ad with the given id. */
 	@RequestMapping(value = "/ad", method = RequestMethod.GET)
-	public ModelAndView ad(@RequestParam("id") long id) {
+	public ModelAndView ad(@RequestParam("id") long id, Principal principal) {
 		ModelAndView model = new ModelAndView("adDescription");
-
+		// take principal, test if principal here or not
+		// get the list from user
+		// check ID of both
 		Ad ad = adService.getAdById(id);
 		model.addObject("shownAd", ad);
 		model.addObject("messageForm", new MessageForm());

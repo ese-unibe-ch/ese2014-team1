@@ -1,5 +1,6 @@
 package ch.unibe.ese.team1.model;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -57,6 +58,9 @@ public class User {
 	@Column(nullable = true)
 	@Lob
 	private String aboutMe;
+	
+	@Column(nullable = true)
+	private ArrayList<Integer> bookmarkedAds;
 
 	public long getId() {
 		return id;
@@ -144,6 +148,14 @@ public class User {
 
 	public void setAboutMe(String aboutMe) {
 		this.aboutMe = aboutMe;
+	}
+
+	public ArrayList<Integer> getBookmarkedAds() {
+		return bookmarkedAds;
+	}
+
+	public void setBookmarkedAds(ArrayList<Integer> bookmarkedAds) {
+		this.bookmarkedAds = bookmarkedAds;
 	}
 	
 }

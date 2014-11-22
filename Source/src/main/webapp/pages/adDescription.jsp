@@ -28,7 +28,7 @@
 </c:choose>
 
 
-<h1>${shownAd.title}</h1>
+<h1>${shownAd.title}<a class="right" id="bookmarkButton">Bookmark Me</a></h1>
 <hr />
 
 <section>

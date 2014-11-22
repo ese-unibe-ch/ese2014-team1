@@ -154,6 +154,17 @@ button {
 	font-size: 1.5em;
 }
 
+#bookmarkButton {
+	background-color: white;
+	padding: 0px 5px 0px 5px;
+	border-width: 2px;
+	border-radius: 10px;
+	border-color: #2dc16d;
+	border-style: solid; 
+	color: grey;
+	font-size: 0.9em;
+}
+
 button:hover {
 	color: #2dc16d;
 	background-color: white;
@@ -164,6 +175,11 @@ button:hover {
 	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
+}
+
+#bookmarkButton:hover {
+	border-color: red;
+	border-style: dashed;
 }
 
 fieldset {

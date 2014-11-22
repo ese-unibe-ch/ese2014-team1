@@ -15,6 +15,12 @@
 
 <script>
 	$(document).ready(function() {
+		
+		// Go to controller take what you need from user
+		// save it to a hidden field
+		// iterate through it
+		// if there is id == x then make "Bookmark Me" to "bookmarked"
+		
 		$("#field-city").autocomplete({
 			minLength : 2
 		});
@@ -47,7 +53,6 @@
 				alert("Please enter an e-mail adress");
 			}
 			 
-			
 			// Validates the input for Email Syntax
 			function validateForm(text) {
 			    var positionAt = text.indexOf("@");
