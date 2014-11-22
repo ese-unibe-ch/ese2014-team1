@@ -1,5 +1,7 @@
 package ch.unibe.ese.team1.controller.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ public class EnquiryService {
 	 * @param recipient the user to search for
 	 * @return an Iterable of all matching enquiries
 	 */
+	@Transactional
 	public Iterable<VisitEnquiry> getEnquiriesByRecipient(User recipient){
 		return enquiryDao.findByRecipient(recipient);
 	}

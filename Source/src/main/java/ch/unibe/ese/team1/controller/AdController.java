@@ -28,9 +28,11 @@ import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
+import ch.unibe.ese.team1.controller.service.VisitService;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.PictureMeta;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.Visit;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,6 +54,9 @@ public class AdController {
 	private ServletContext servletContext;
 	@Autowired
 	private MessageService messageService;
+	@Autowired
+	private VisitService visitService;
+	
 
 	/** Used for generating a JSON representation of a given object. */
 	private ObjectMapper objectMapper;
@@ -181,7 +186,9 @@ public class AdController {
 		Ad ad = adService.getAdById(id);
 		model.addObject("shownAd", ad);
 		model.addObject("messageForm", new MessageForm());
-
+		
+		model.addObject("visits", visitService.getVisitsByAd(ad));
+		
 		return model;
 	}
 

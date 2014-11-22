@@ -263,6 +263,21 @@
 	</tr>
 </table>
 
+
+
+<div id="visitList">
+	<table>
+		<c:forEach items="${visits }" var="visit">
+			<tr>
+				<td>${visit.startTimestamp}</td>
+			</tr>			
+
+		</c:forEach>	
+	</table>
+</div>
+
+
+
 <c:import url="getMessageForm.jsp" />
 
 <script src="/js/messageForAdDescription.js"></script>
