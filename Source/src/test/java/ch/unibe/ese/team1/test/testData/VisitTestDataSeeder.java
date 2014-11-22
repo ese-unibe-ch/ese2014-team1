@@ -7,13 +7,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.Visit;
 import ch.unibe.ese.team1.model.dao.AdDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
+import ch.unibe.ese.team1.model.dao.VisitDao;
 
+@Service
 public class VisitTestDataSeeder implements InitializingBean {
 
 	private User testerMuster;
@@ -29,6 +32,9 @@ public class VisitTestDataSeeder implements InitializingBean {
 
 	@Autowired
 	private AdDao adDao;
+	
+	@Autowired
+	private VisitDao visitDao;
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
@@ -38,9 +44,9 @@ public class VisitTestDataSeeder implements InitializingBean {
 		janeDoe = userDao.findOne(1L);
 
 		// load ads
-		ad1 = adDao.findOne(0L);
-		ad2 = adDao.findOne(1L);
-		ad3 = adDao.findOne(2L);
+		ad1 = adDao.findOne(1L);
+		ad2 = adDao.findOne(2L);
+		ad3 = adDao.findOne(3L);
 
 		Visit visit;
 		List<User> searchers;
@@ -55,6 +61,7 @@ public class VisitTestDataSeeder implements InitializingBean {
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("14:00 26.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("16:00 26.12.2014"));
+		visitDao.save(visit);
 
 		// second visit
 		visit = new Visit();
@@ -66,6 +73,8 @@ public class VisitTestDataSeeder implements InitializingBean {
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("09:00 20.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("11:00 20.12.2014"));
+		visitDao.save(visit);
+
 
 		// third visit
 		visit = new Visit();
@@ -74,6 +83,8 @@ public class VisitTestDataSeeder implements InitializingBean {
 		visit.setSearchers(new LinkedList<User>());
 		visit.setStartTimestamp(dateFormat.parse("12:00 20.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("14:00 20.12.2014"));
+		visitDao.save(visit);
+
 
 		// fourth visit
 		visit = new Visit();
@@ -85,6 +96,8 @@ public class VisitTestDataSeeder implements InitializingBean {
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("10:00 21.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("11:00 21.12.2014"));
+		visitDao.save(visit);
+
 
 		// fifth visit
 		visit = new Visit();
@@ -95,6 +108,8 @@ public class VisitTestDataSeeder implements InitializingBean {
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("08:00 22.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("11:00 22.12.2014"));
+		visitDao.save(visit);
+
 
 		// sixth visit
 		visit = new Visit();
@@ -103,6 +118,8 @@ public class VisitTestDataSeeder implements InitializingBean {
 		visit.setSearchers(new LinkedList<>());
 		visit.setStartTimestamp(dateFormat.parse("14:00 23.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("16:00 23.12.2014"));
+		visitDao.save(visit);
+
 
 	}
 
