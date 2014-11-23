@@ -32,7 +32,7 @@
 			}, 'json');
 		}); */
 	});
-</script> -->
+</script>
 <!-- <script src="/js/messages.js"></script> -->
 
 <h1>Enquiries</h1>
