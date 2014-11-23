@@ -7,8 +7,7 @@ import ch.unibe.ese.team1.model.User;
 
 public interface AlertDao extends CrudRepository<Alert, Long>{
 
-	public Iterable<Alert> findAlertsByUser(User user);
+	public Iterable<Alert> findByUser(User user);
 	
-	public Iterable<Alert> findAlertsByCityAndPriceLessThan(String city, int price);
-	
+	public Iterable<Alert> findByCityAndPriceGreaterThan(String city, int price);
 }

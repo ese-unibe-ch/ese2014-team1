@@ -22,8 +22,7 @@
 		</c:choose>
 	<p>
 		<h2>Username</h2>${user.email}<p>
-		<h2>First name</h2>${user.firstName}<p>
-		<h2>Last name</h2>${user.lastName}<p>
+		<h2>Name</h2>${user.firstName} ${user.lastName}<p>
 		<hr class="slim">		
 		<h2>About me</h2>${user.aboutMe}
 		<hr class="slim">		

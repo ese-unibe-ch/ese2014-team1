@@ -15,26 +15,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
-
-
-
-
-
-//import ch.unibe.ese.team1.controller.pojos.forms.ASearchForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
-//import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
-import ch.unibe.ese.team1.model.Alert;
 import ch.unibe.ese.team1.model.Location;
-import ch.unibe.ese.team1.model.Message;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.Visit;
 import ch.unibe.ese.team1.model.dao.AdDao;
 import ch.unibe.ese.team1.model.dao.AlertDao;
+import ch.unibe.ese.team1.model.dao.MessageDao;
+import ch.unibe.ese.team1.model.dao.UserDao;
 
 /** Handles all persistence operations concerning ad placement and retrieval. */
 @Service
@@ -44,7 +35,13 @@ public class AdService {
 	private AdDao adDao;
 	
 	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
 	private AlertDao alertDao;
+	
+	@Autowired
+	private MessageDao messageDao;
 	
 	@Autowired
 	private UserService userService;
@@ -442,16 +439,5 @@ public class AdService {
 			}
 		}
 		return ads;
-	}
-
-	public void triggerAlerts(Ad ad) {
-		String adCity = ad.getCity();
-		int adPrice = ad.getPrizePerMonth();
-		Iterable<Alert> alerts = alertDao.findAlertsByCityAndPriceLessThan(adCity, adPrice + 1);
-		
-		Message message = new Message();
-		
-		// TODO Auto-generated method stub
-		
 	}
 }

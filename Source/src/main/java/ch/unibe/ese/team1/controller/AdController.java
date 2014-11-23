@@ -27,6 +27,7 @@ import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
+import ch.unibe.ese.team1.controller.service.AlertService;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.controller.service.VisitService;
@@ -51,6 +52,8 @@ public class AdController {
 	private AdService adService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private AlertService alertService;
 	@Autowired
 	private ServletContext servletContext;
 	@Autowired
@@ -169,7 +172,7 @@ public class AdController {
 			Ad ad = adService.saveFrom(placeAdForm, fileNames, user);
 			
 			//triggers all alerts that match the placed ad
-			adService.triggerAlerts(ad);
+			alertService.triggerAlerts(ad);
 
 			// reset the place ad form
 			this.placeAdForm = null;

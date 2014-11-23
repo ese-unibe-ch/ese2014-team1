@@ -25,15 +25,22 @@ public class UserTestDataSaver implements TestDataSaver {
 	@Override
 	@Transactional
 	public void saveTestData() throws Exception {
+		//first user
 		User john = createUser("jane@doe.com", "password", "Jane", "Doe",
 				Gender.FEMALE);
 		john.setAboutMe(getDummyText());
 		userDao.save(john);
-
+		
+		//second user
 		User tester = createUser("ese@unibe.ch", "ese", "Tester",
 				"Muster", "/img/test/portrait.jpg", Gender.MALE);
 		tester.setAboutMe(getDummyText());
-		userDao.save(tester);
+		userDao.save(tester);		
+		
+		//system account
+		User system = createUser("System", "1234", "FlatFindr", "Admin", "/img/test/system.jpg", Gender.ADMIN);
+		system.setAboutMe("We keep you off the streets.");
+		userDao.save(system);
 	}
 
 	public User createUser(String email, String password, String firstName,
