@@ -38,6 +38,12 @@
 			dateFormat : 'dd-mm-yy'
 		});
 		
+		$("#field-visitDay").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+		
+
+		
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			if(validateForm(text)) {
@@ -63,6 +69,38 @@
 			    	return true;
 			    }
 			}
+		});
+		
+		$("#addVisitButton").click(function() {
+			var date = $("#field-visitDay").val();
+			if(date == ""){
+				return;
+			}
+			
+			var startHour = $("#startHour").val();
+			var startMinutes = $("#startMinutes").val();
+			var endHour = $("#endHour").val();
+			var endMinutes = $("#endMinutes").val();
+			
+			if (startHour > endHour) {
+				alert("Invalid times. The visit can't end before being started.");
+				return;
+			} else if (startHour == endHour && startMinutes >= endMinutes) {
+				alert("Invalid times. The visit can't end before being started.");
+				return;
+			}
+			
+			var newVisit = date + ";" + startHour + ":" + startMinutes + 
+				";" + endHour + ":" + endMinutes; 
+			var newVisitLabel = date + " " + startHour + ":" + startMinutes + 
+			" to " + endHour + ":" + endMinutes; 
+			
+			var index = $("#addedVisits input").length;
+			
+			var label = "<p>" + newVisitLabel + "</p>";
+			var input = "<input type='hidden' value='" + newVisit + "' name='visits[" + index + "]' />";
+			
+			$("#addedVisits").append(label + input);
 		});
 	});
 </script>
@@ -186,7 +224,7 @@
 				<td id="roommateCell"><form:input type="text" id="room_friends"
 						path="room_friends" placeholder="email" /> 
 
-					<div id="addbutton">+</div></td>
+					<div id="addbutton" class="smallPlusButton">+</div></td>
 			</tr>
 		</table>
 
@@ -216,10 +254,71 @@
 		</table>
 		<br>
 	</fieldset>
+	
+	<fieldset>
+		<legend>Visiting times (optional)</legend>
+		
+		<table>
+			<tr>
+				<td>
+					<input type="text" id="field-visitDay" />
+					
+					<select id="startHour">
+ 					<% 
+ 						for(int i = 0; i < 24; i++){
+ 							String hour = String.format("%02d", i);
+							out.print("<option value=\"" + hour + "\">" + hour + "</option>");
+ 						}
+ 					%>
+					</select>
+					
+					<select id="startMinutes">
+ 					<% 
+ 						for(int i = 0; i < 60; i++){
+ 							String minute = String.format("%02d", i);
+							out.print("<option value=\"" + minute + "\">" + minute + "</option>");
+ 						}
+ 					%>
+					</select>
+					
+					<span>to&thinsp; </span>
+					
+					<select id="endHour">
+ 					<% 
+ 						for(int i = 0; i < 24; i++){
+ 							String hour = String.format("%02d", i);
+							out.print("<option value=\"" + hour + "\">" + hour + "</option>");
+ 						}
+ 					%>
+					</select>
+					
+					<select id="endMinutes">
+ 					<% 
+ 						for(int i = 0; i < 60; i++){
+ 							String minute = String.format("%02d", i);
+							out.print("<option value=\"" + minute + "\">" + minute + "</option>");
+ 						}
+ 					%>
+					</select>
+					
+			
+
+					<div id="addVisitButton" class="smallPlusButton">+</div>
+					
+					<div id="addedVisits"></div>
+				</td>
+				
+			</tr>
+			
+		</table>
+		<br>
+	</fieldset>
+	
+	
 
 	<br />
 	<div>
-		<button type="submit">Update</button>
+		<button type="submit">Submit</button>
 		<button type="reset">Cancel</button>
 	</div>
 

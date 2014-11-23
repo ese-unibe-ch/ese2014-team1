@@ -8,14 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.UserService;
-import ch.unibe.ese.team1.model.User;
 
 /** Handles all requests concerning the search for ads. */
 @Controller
@@ -52,18 +49,6 @@ public class SearchController {
 			// go back
 			return searchAd();
 		}
-	}
-
-	// TODO why is this method here? The location does not make too much sense
-	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
-	public ModelAndView user(@RequestParam("id") long id) {
-		ModelAndView model = new ModelAndView("user");
-
-		User user = userService.findUserById(id);
-		model.addObject("user", user);
-		model.addObject("messageForm", new MessageForm());
-
-		return model;
 	}
 
 	@ModelAttribute

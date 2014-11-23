@@ -23,9 +23,6 @@ public class VisitEnquiry {
 	@ManyToOne
 	private User sender;
 
-	@ManyToOne
-	private User recipient;
-	
 	@JsonFormat(pattern = "HH:mm, dd.MM.yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateSent;
@@ -54,14 +51,6 @@ public class VisitEnquiry {
 		this.sender = sender;
 	}
 
-	public User getRecipient() {
-		return recipient;
-	}
-
-	public void setRecipient(User recipient) {
-		this.recipient = recipient;
-	}
-
 	public Date getDateSent() {
 		return dateSent;
 	}
@@ -76,6 +65,14 @@ public class VisitEnquiry {
 
 	public void setState(VisitEnquiryState state) {
 		this.state = state;
+	}
+
+	public Visit getVisit() {
+		return visit;
+	}
+
+	public void setVisit(Visit visit) {
+		this.visit = visit;
 	}
 	
 }

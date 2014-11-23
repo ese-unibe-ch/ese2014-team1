@@ -5,33 +5,36 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
+import ch.unibe.ese.team1.model.Alert;
 import ch.unibe.ese.team1.model.Gender;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.AdDao;
+import ch.unibe.ese.team1.model.dao.AlertDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
 /** This inserts six ad elements into the database. */
 @Service
-public class AdTestDataSeeder implements InitializingBean {
+public class AdTestDataSaver implements TestDataSaver {
 
 	@Autowired
 	private AdDao adDao;
 	@Autowired
 	private UserDao userDao;
 	@Autowired
-	private UserTestDataSeeder userSeeder;
+	private UserTestDataSaver userSeeder;
+	@Autowired
+	private AlertDao alertDao;
 
 	@Override
 	@Transactional
-	public void afterPropertiesSet() throws Exception {
+	public void saveTestData() throws Exception {
 		User user = userSeeder.createUser("user@bern.com", "password",
 				"Berner", "Bär", Gender.MALE);
 		UserPicture picture = new UserPicture();
@@ -57,6 +60,18 @@ public class AdTestDataSeeder implements InitializingBean {
 		Date date5 = formatter.parse(date5str);
 		Date date6 = formatter.parse(date6str);
 
+		//user "Berner Bär" has one alert.
+		Alert alert = new Alert();
+		alert.setBothRoomAndStudio(false);
+		alert.setRoom(true);
+		alert.setStudio(false);
+		alert.setCity("Bern");
+		alert.setPrice(555);
+		alert.setUser(user);
+		alert.setRadius(5);
+		alert.setZipcode(3005);
+		alertDao.save(alert);
+		
 		Ad adBern = new Ad();
 		adBern.setZipcode(3011);
 		adBern.setMoveInDate(date1);

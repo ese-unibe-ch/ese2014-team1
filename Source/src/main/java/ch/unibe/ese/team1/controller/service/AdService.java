@@ -1,5 +1,7 @@
 package ch.unibe.ese.team1.controller.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,15 +15,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+
+
+
+
+
+
 //import ch.unibe.ese.team1.controller.pojos.forms.ASearchForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
 //import ch.unibe.ese.team1.controller.pojos.forms.SearchForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
+import ch.unibe.ese.team1.model.Alert;
 import ch.unibe.ese.team1.model.Location;
+import ch.unibe.ese.team1.model.Message;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.Visit;
 import ch.unibe.ese.team1.model.dao.AdDao;
+import ch.unibe.ese.team1.model.dao.AlertDao;
 
 /** Handles all persistence operations concerning ad placement and retrieval. */
 @Service
@@ -29,6 +42,9 @@ public class AdService {
 
 	@Autowired
 	private AdDao adDao;
+	
+	@Autowired
+	private AlertDao alertDao;
 	
 	@Autowired
 	private UserService userService;
@@ -133,7 +149,36 @@ public class AdService {
 			}
 		}
 		ad.setRegisteredRoommates(registeredUserRommates);
-
+		
+		// visits
+		List<Visit> visits = new LinkedList<>();
+		List<String> visitStrings = placeAdForm.getVisits();
+		if(visitStrings !=  null){
+			for(String visitString : visitStrings){
+				Visit visit = new Visit();
+				visit.setAdvertiser(user);
+				// format is 28-02-2014;10:02;13:14
+				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+				String[] parts = visitString.split(";");
+				String startTime = parts[0] + " "+ parts[1];
+				String endTime = parts[0] + " "+ parts[2];
+				Date startDate = null;
+				Date endDate = null;
+				try{
+					startDate = dateFormat.parse(startTime);
+					endDate = dateFormat.parse(endTime);
+				}catch(ParseException ex){
+					ex.printStackTrace();
+				}
+				
+				visit.setStartTimestamp(startDate);
+				visit.setEndTimestamp(endDate);
+				visit.setAd(ad);
+				visits.add(visit);
+			}
+			ad.setVisits(visits);
+		}
+		
 		ad.setUser(user);
 
 		adDao.save(ad);
@@ -397,5 +442,16 @@ public class AdService {
 			}
 		}
 		return ads;
+	}
+
+	public void triggerAlerts(Ad ad) {
+		String adCity = ad.getCity();
+		int adPrice = ad.getPrizePerMonth();
+		Iterable<Alert> alerts = alertDao.findAlertsByCityAndPriceLessThan(adCity, adPrice + 1);
+		
+		Message message = new Message();
+		
+		// TODO Auto-generated method stub
+		
 	}
 }

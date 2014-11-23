@@ -3,7 +3,6 @@ package ch.unibe.ese.team1.test.testData;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ import ch.unibe.ese.team1.model.dao.MessageDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
 @Service
-public class MessageTestDataSeeder implements InitializingBean {
+public class MessageTestDataSaver implements TestDataSaver {
 	
 	@Autowired
 	private UserDao userDao;
@@ -26,7 +25,7 @@ public class MessageTestDataSeeder implements InitializingBean {
 	private User testerMuster;
 
 	@Override
-	public void afterPropertiesSet() throws Exception {
+	public void saveTestData() throws Exception {
 		// load users
 		bernerBaer = userDao.findOne(Long.valueOf(3));
 		testerMuster = userDao.findOne(Long.valueOf(2));

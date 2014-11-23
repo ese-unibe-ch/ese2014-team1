@@ -15,13 +15,13 @@ public class SearchForm {
 	private boolean studio;
 
 	@NotBlank(message = "Required")
-	@Pattern(regexp = "^[0-9]{4} - [-\\w\\s]*", message = "Please pick a city from the list")
+	@Pattern(regexp = "^[0-9]{4} - [-\\w\\s\\u00C0-\\u00FF]*", message = "Please pick a city from the list")
 	private String city;
 
 	@Min(value = 0, message = "Please enter a positive distance")
 	private int radius;
 
-	@Min(value = 0, message = "Don't think you will find something for that kind of money")
+	@Min(value = 0, message = "In your dreams.")
 	private int prize;
 
 	@AssertFalse(message = "Please select either or both types")

@@ -139,7 +139,7 @@ button {
 	font-size: 1.1em;
 }
 
-#addbutton {
+.smallPlusButton {
 	display: inline;
 	font-decoration: none;
 	background-color: #2dc16d;
@@ -182,7 +182,7 @@ button:hover {
 	border-color: #2dc16d;
 }
 
-#addbutton:hover {
+.smallPlusButton:hover {
 	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
@@ -247,8 +247,6 @@ button {
 	width: 30px;
 	margin-bottom: 20px;
 }
-
-
 
 /* -------------------------------------------------------------------- */
 /* Header & Footer */
@@ -390,7 +388,6 @@ footer nav ul li {
 	padding: 0px 15px;
 }
 
-
 /* -------------------------------------------------------------------- */
 /* ----------------------------Individual pages------------------------ */
 /* -------------------------------------------------------------------- */
@@ -447,14 +444,13 @@ footer nav ul li {
 
 /* -------------------------------------------------------------------- */
 /* editProfile.jsp */
-
 .editProfileTable input {
 	width: 30%;
 	font-size: 0.8em;
 }
 
 .editProfileTable textarea {
-	font-size: 0.9em;	
+	font-size: 0.9em;
 }
 
 .editProfileTable {
@@ -685,6 +681,35 @@ footer nav ul li {
 	padding: 15px;
 }
 
+.thinButton {
+	background-color: #2dc16d;
+	color: white;
+	padding: 2px 10px;
+	border-radius: 5px;
+	border-color: white;
+	border-style: solid;
+	font-size: 1.1em;
+	margin-left: 30px;
+}
+
+.thinInactiveButton {
+	background-color: #bbbbbb;
+	color: white;
+	padding: 2px 10px;
+	border-radius: 5px;
+	border-color: white;
+	border-style: solid;
+	font-size: 1.1em;
+	margin-left: 30px;
+}
+
+.thinInactiveButton:hover {
+	background-color: #bbbbbb;
+	color: white;
+	border-color: white;
+}
+
+
 /* -------------------------------------------------------------------- */
 /* messages.jsp */
 #messageList {
@@ -801,4 +826,29 @@ footer nav ul li {
 	float: right;
 	margin-top: -35px;
 	margin-right: -37px;
+}
+
+/* -------------------------------------------------------------------- */
+/* enquiries.jsp */
+#enquiryList {
+	width: 70%;
+	margin: auto;
+}
+
+#enquiryList hr {
+	margin-top: 30px;
+}
+
+#enquiryList table {
+	width: 60%;
+	margin: auto;
+}
+
+.declineButton{
+	background-color: #ff4a4f;
+}
+
+.declineButton:hover{
+	border-color: #ff4a4f;
+	color: #ff4a4f;
 }

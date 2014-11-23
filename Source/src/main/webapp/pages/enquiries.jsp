@@ -6,21 +6,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:import url="template/header.jsp" />
-<pre><a href="/">Home</a>   >   Messages</pre>
+<pre>
+	<a href="/">Home</a>   >   Enquiries</pre>
 
 <!-- format the dates -->
-<fmt:formatDate value="${messages[0].dateSent}" var="formattedDateSent"
+<fmt:formatDate value="${enquiries[0].dateSent}" var="formattedDateSent"
 	type="date" pattern="HH:mm, dd.MM.yyyy" />
 
 <script>
 	$(document).ready(function() {
-		var rows = $("#messageList table tr:gt(0)");
+		var rows = $("#enquiryList table tr:gt(0)");
 		$(rows).hover(function() {
 			$(this).children().css("background-color", "#ececec");
 		}, function() {
 			$(this).children().css("background-color", "white");
 		});
-		$(rows).click(function() {
+		/* $(rows).click(function() {
 			var id = $(this).attr("data-id");
 			$.get("/profile/messages/getMessage?id=" + id, function(data) {
 				var result = '<h2>' + data.subject + '</h2>';
@@ -28,54 +29,37 @@
 				var date = new Date(data.dateSent);
 				result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
 				result += '<br /><p>' + data.text + '</p>';
-				$("#messageDetail").html(result);
+				$("#enquiryDetail").html(result);
 			}, 'json');
-		});
+		}); */
 	});
 </script>
-<script src="/js/messages.js"></script>
+<!-- <script src="/js/messages.js"></script> -->
 
-<h1>Messages</h1>
+<h1>Enquiries</h1>
 <hr />
-<div id="folders">
-	<h2 id="inbox">Inbox</h2>
-	<h2 id="newMessage">New</h2>
-	<h2 id="sent">Sent</h2>
-</div>
-<div id="messageList">
+<div id="enquiryList">
 	<table class="styledTable">
 		<tr>
-			<th id="subjectColumn">Subject</th>
-			<th>Sender</th>
+			<th id="subjectColumn">Sender</th>
 			<th>Date sent</th>
+			<th>Actions</th>
 		</tr>
-		<c:forEach items="${messages }" var="message">
-			<fmt:formatDate value="${message.dateSent}"
+		<c:forEach items="${enquiries}" var="enquiry">
+			<fmt:formatDate value="${enquiry.dateSent}"
 				var="singleFormattedDateSent" type="date"
 				pattern="HH:mm, dd.MM.yyyy" />
 
-			<tr data-id="${message.id}">
-				<td>${message.subject }</td>
-				<td>${message.sender.email}</td>
+			<tr data-id="${enquiry.id}">
+				<td>${enquiry.sender.email}</td>
 				<td>${singleFormattedDateSent}</td>
+				<td>
+					<button class="acceptButton">Accept</button>
+					<button class="declineButton">Decline</button>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<hr />
-	<div id="messageDetail">
-		<h2>${messages[0].subject }</h2>
-		<h3>
-			<b>From: </b> ${messages[0].sender.email }
-		</h3>
-		<h3>
-			<b>Date sent:</b> ${formattedDateSent}
-		</h3>
-		<br />
-		<p>${messages[0].text }</p>
-	</div>
 </div>
-
-<c:import url="getMessageForm.jsp" />
-
 
 <c:import url="template/footer.jsp" />

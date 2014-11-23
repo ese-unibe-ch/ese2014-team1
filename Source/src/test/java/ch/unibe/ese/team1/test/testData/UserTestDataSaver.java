@@ -3,31 +3,28 @@ package ch.unibe.ese.team1.test.testData;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ch.unibe.ese.team1.model.dao.UserDao;
-// import ch.unibe.ese.team1.model.Ad;
-// import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.Gender;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.UserRole;
+import ch.unibe.ese.team1.model.dao.UserDao;
 
 /**
  * This inserts some user test data into the database.
  */
 @Service
-public class UserTestDataSeeder implements InitializingBean {
+public class UserTestDataSaver implements TestDataSaver {
 
 	@Autowired
 	private UserDao userDao;
 
 	@Override
 	@Transactional
-	public void afterPropertiesSet() throws Exception {
+	public void saveTestData() throws Exception {
 		User john = createUser("jane@doe.com", "password", "Jane", "Doe",
 				Gender.FEMALE);
 		john.setAboutMe(getDummyText());
