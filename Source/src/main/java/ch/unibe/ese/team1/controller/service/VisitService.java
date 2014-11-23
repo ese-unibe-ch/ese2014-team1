@@ -17,12 +17,16 @@ public class VisitService {
 	
 	/** 
 	 * Returns all possible visits of an advertisement.
-	 * @param id the AdId
 	 * @return an Iterable of all matching visits
 	 */
 	@Transactional
 	public Iterable<Visit> getVisitsByAd(Ad ad){
 		return visitDao.findByAd(ad);
+	}
+	
+	@Transactional
+	public Visit getVisitById(long id){
+		return visitDao.findOne(id);
 	}
 
 }

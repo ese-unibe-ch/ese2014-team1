@@ -5,11 +5,15 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.service.EnquiryService;
 import ch.unibe.ese.team1.controller.service.UserService;
+import ch.unibe.ese.team1.controller.service.VisitService;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.Visit;
 
 /**
  * Handles all requests concerning enquiries of type
@@ -23,6 +27,9 @@ public class EnquiryController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private VisitService visitService;
 
 	@RequestMapping(value = "/profile/enquiries")
 	public ModelAndView enquiriesPage(Principal principal) {
@@ -33,4 +40,12 @@ public class EnquiryController {
 		return new ModelAndView("enquiries");
 	}
 
+	@RequestMapping(value = "/profile/enquiries/sendEnquiryForVisit")
+	public @ResponseBody void sendEnquiryForVisit(@RequestParam("id") long id, Principal principal) {
+		Visit visit = visitService.getVisitById(id);
+		User user = userService.findUserByUsername(principal.getName());
+		
+		
+	}
+	
 }

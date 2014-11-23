@@ -654,6 +654,18 @@ footer nav ul li {
 	padding: 15px;
 }
 
+.thinButton {
+	background-color: #2dc16d;
+	color: white;
+	padding: 2px 10px;
+	border-radius: 5px;
+	border-color: white;
+	border-style: solid;
+	font-size: 1.1em;
+	margin-left: 30px;
+}
+
+
 /* -------------------------------------------------------------------- */
 /* messages.jsp */
 #messageList {

@@ -142,6 +142,31 @@
 			<h2>Preferences</h2>
 			<p>${shownAd.preferences}</p>
 		</div>
+		<br />
+		
+		<div id="visitList" class="adDescDiv">
+			<h2>Visiting times</h2>
+			<table>
+				<c:forEach items="${visits }" var="visit">
+					<tr>
+						<td>
+							<fmt:formatDate value="${visit.startTimestamp}" pattern="dd-MM-yyyy " />
+							&nbsp; from
+							<fmt:formatDate value="${visit.startTimestamp}" pattern=" HH:mm " />
+							until
+							<fmt:formatDate value="${visit.endTimestamp}" pattern=" HH:mm" />
+						</td>
+						<td>
+							<button class="thinButton" type="button" data-id="${visit.id}">Send enquiry to advertiser</button>
+							
+							
+							
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+
 	</div>
 
 	<table id="checkBoxTable" class="adDescDiv">
@@ -262,21 +287,6 @@
 		</td>
 	</tr>
 </table>
-
-
-
-<div id="visitList">
-	<table>
-		<c:forEach items="${visits }" var="visit">
-			<tr>
-				<td>${visit.startTimestamp}</td>
-			</tr>			
-
-		</c:forEach>	
-	</table>
-</div>
-
-
 
 <c:import url="getMessageForm.jsp" />
 
