@@ -796,6 +796,15 @@ footer nav ul li {
 }
 
 #enquiryList table {
-	width: 90%;
+	width: 60%;
 	margin: auto;
+}
+
+.declineButton{
+	background-color: #ff4a4f;
+}
+
+.declineButton:hover{
+	border-color: #ff4a4f;
+	color: #ff4a4f;
 }

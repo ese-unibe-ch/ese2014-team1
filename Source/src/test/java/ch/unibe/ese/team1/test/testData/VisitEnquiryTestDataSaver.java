@@ -32,6 +32,8 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 	private Visit visit1;
 	private Visit visit2;
 	private Visit visit3;
+	private Visit visit4;
+	private Visit visit5;
 
 	@Override
 	public void saveTestData() throws Exception {
@@ -45,6 +47,8 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 		visit1 = visitDao.findOne(4L);
 		visit2 = visitDao.findOne(5L);
 		visit3 = visitDao.findOne(6L);
+		visit4 = visitDao.findOne(1L);
+		visit5 = visitDao.findOne(2L);
 
 		// first enquiry
 		VisitEnquiry enquiry = new VisitEnquiry();
@@ -76,6 +80,22 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 		enquiry.setSender(bernerBaer);
 		enquiry.setState(VisitEnquiryState.OPEN);
 		enquiry.setVisit(visit3);
+		visitEnquiryDao.save(enquiry);
+		
+		// fifth enquiry
+		enquiry = new VisitEnquiry();
+		enquiry.setDateSent(dateFormat.parse("07:50 14.12.2014"));
+		enquiry.setSender(testerMuster);
+		enquiry.setState(VisitEnquiryState.OPEN);
+		enquiry.setVisit(visit5);
+		visitEnquiryDao.save(enquiry);
+		
+		// sixth enquiry
+		enquiry = new VisitEnquiry();
+		enquiry.setDateSent(dateFormat.parse("10:00 19.12.2014"));
+		enquiry.setSender(bernerBaer);
+		enquiry.setState(VisitEnquiryState.OPEN);
+		enquiry.setVisit(visit4);
 		visitEnquiryDao.save(enquiry);
 	}
 

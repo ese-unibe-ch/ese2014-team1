@@ -6,7 +6,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:import url="template/header.jsp" />
-<pre><a href="/">Home</a>   >   Enquiries</pre>
+<pre>
+	<a href="/">Home</a>   >   Enquiries</pre>
 
 <!-- format the dates -->
 <fmt:formatDate value="${enquiries[0].dateSent}" var="formattedDateSent"
@@ -40,9 +41,9 @@
 <div id="enquiryList">
 	<table class="styledTable">
 		<tr>
-			<th id="subjectColumn">Subject</th>
-			<th>Sender</th>
+			<th id="subjectColumn">Sender</th>
 			<th>Date sent</th>
+			<th>Actions</th>
 		</tr>
 		<c:forEach items="${enquiries}" var="enquiry">
 			<fmt:formatDate value="${enquiry.dateSent}"
@@ -52,21 +53,13 @@
 			<tr data-id="${enquiry.id}">
 				<td>${enquiry.sender.email}</td>
 				<td>${singleFormattedDateSent}</td>
+				<td>
+					<button class="acceptButton">Accept</button>
+					<button class="declineButton">Decline</button>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<hr />
-	<%-- <div id="enquiryDetail">
-		<h2>${enquiries[0].subject }</h2>
-		<h3>
-			<b>From: </b> ${enquiries[0].sender.email }
-		</h3>
-		<h3>
-			<b>Date sent:</b> ${formattedDateSent}
-		</h3>
-		<br />
-		<p>${enquiries[0].text }</p>
-	</div> --%>
 </div>
 
 <c:import url="template/footer.jsp" />

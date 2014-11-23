@@ -37,7 +37,7 @@ public class EnquiryController {
 		User user = userService.findUserByUsername(principal.getName());
 		model.addObject("enquiries",
 				enquiryService.getEnquiriesByRecipient(user));
-		return new ModelAndView("enquiries");
+		return model;
 	}
 
 	@RequestMapping(value = "/profile/enquiries/sendEnquiryForVisit")
