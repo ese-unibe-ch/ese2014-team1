@@ -11,6 +11,7 @@
 <pre><a href="/">Home</a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre>
 
 <script src="/js/image_slider.js"></script>
+<script src="/js/adDescription.js"></script>
 
 <!-- format the dates -->
 <fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"

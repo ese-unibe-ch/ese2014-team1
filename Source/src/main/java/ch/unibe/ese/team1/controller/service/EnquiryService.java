@@ -36,4 +36,9 @@ public class EnquiryService {
 		}
 		return enquiries;
 	}
+	
+	@Transactional
+	public void saveVisitEnquiry(VisitEnquiry visitEnquiry){
+		enquiryDao.save(visitEnquiry);
+	}
 }

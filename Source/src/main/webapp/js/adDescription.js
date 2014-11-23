@@ -1,22 +1,19 @@
-/**
- * 
- */
-
 $(document).ready(function() {
 	var buttons = $("#visitList table tr button");
 	
 	$(buttons).click(function() {
+		var buttonText = $(this).attr("class");
+		
+		if (buttonText == 'thinInactiveButton') {
+			return;
+		}
+		
 		var id = $(this).attr("data-id");
 		
-		
-		$.get("/profile/messages/getMessage?id=" + id, function(data) {
-			var result = '<h2>' + data.subject + '</h2>';
-			result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
-			var date = new Date(data.dateSent);
-			result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
-			result += '<br /><p>' + data.text + '</p>';
-			$("#messageDetail").html(result);
-		}, 'json');
+		$.get("/profile/enquiries/sendEnquiryForVisit?id=" + id);
+			
+		$(this).addClass('thinInactiveButton').removeClass('thinButton');
+		$(this).html('Enquiry sent');
 	});
 	
 });
