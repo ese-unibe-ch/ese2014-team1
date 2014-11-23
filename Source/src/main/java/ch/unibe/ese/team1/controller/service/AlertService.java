@@ -55,7 +55,6 @@ public class AlertService {
 	
 	@Transactional
 	public void triggerAlerts(Ad ad) {
-		System.out.println("triggering");
 		String adCity = ad.getCity();
 		int adPrice = ad.getPrizePerMonth();
 		Iterable<Alert> alerts = alertDao.findByCityAndPriceGreaterThan(adCity, adPrice - 1);
@@ -63,9 +62,8 @@ public class AlertService {
 		//loop through all ads with matching city and price range, throw out mismatches
 		Iterator<Alert> alertIterator = alerts.iterator();
 		while(alertIterator.hasNext()) {
-			System.out.println("next alert");
 			Alert alert = alertIterator.next();
-			if(typeMismatchWith(ad, alert) || radiusMismatchWith(ad, alert))
+			if(typeMismatchWith(ad, alert) || radiusMismatchWith(ad, alert) || ad.getUser().equals(alert.getUser()))
 				alertIterator.remove();
 		}
 		
@@ -74,7 +72,6 @@ public class AlertService {
 		for(Alert alert: alerts) {
 			User user = alert.getUser();
 			if(!users.contains(user)) {
-				System.out.println("next user");
 				users.add(user);
 			}
 		}
@@ -89,18 +86,17 @@ public class AlertService {
 			message.setRecipient(user);
 			message.setState(MessageState.UNREAD);
 			message.setDateSent(now);
-			System.out.println("saving...");
 			messageDao.save(message);	
-			System.out.println("saved");
 		}
 	}
 	
 	//returns an alert message
 	private String getAlertText(Ad ad) {
-		return "Dear user,\ngood news. A new ad matching one of your alerts has been " +
-				"entered into our system. You can visit it <a href=/ad?id=" + ad.getId() + ">here</a>.\n" +
-				"Good luck and enjoy, \n" +
-				"Your FlatFindr Crew";
+		return "Dear user,<br>good news. A new ad matching one of your alerts has been " +
+				"entered into our system. You can visit it here:<br><br>" +
+				"<a href=/ad?id=" + ad.getId() + ">" + ad.getTitle() + "</a><br><br>" +
+				"Good luck and enjoy,<br>" +
+				"Your FlatFindr crew";
 	}
 	
 	//checks if an ad is conform to the criteria in an alert.
