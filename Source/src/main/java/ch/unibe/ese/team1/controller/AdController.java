@@ -162,6 +162,9 @@ public class AdController {
 
 			List<String> fileNames = pictureUploader.getFileNames();
 			Ad ad = adService.saveFrom(placeAdForm, fileNames, user);
+			
+			//triggers all alerts that match the placed ad
+			adService.triggerAlerts(ad);
 
 			// reset the place ad form
 			this.placeAdForm = null;

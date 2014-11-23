@@ -16,7 +16,7 @@ public class AlertForm {
 	private boolean room;
 
 	@NotBlank(message = "Required")
-	@Pattern(regexp = "^[0-9]{4} - [-\\w\\s]*", message = "Please pick a city from the list")
+	@Pattern(regexp = "^[0-9]{4} - [-\\w\\s\\u00C0-\\u00FF]*", message = "Please pick a city from the list")
 	private String city;
 
 	@Min(value = 0, message = "Please enter a positive distance")

@@ -70,16 +70,13 @@ function typeOfAlert(Alert alert) {
 		
 		<form:checkbox style="display:none" name="neither" id="neither" path="noRoomNoStudio" />
 		<form:checkbox style="display:none" name="both" id="both" path="bothRoomAndStudio" />
-		<form:errors path="noRoomNoStudio" cssClass="validationErrorText" />
-		
-		<br />
+		<form:errors path="noRoomNoStudio" cssClass="validationErrorText" /><br />
 		
 		<label for="city">City / zip code:</label>
 		<form:input type="text" name="city" id="city" path="city"
 			placeholder="e.g. Bern" tabindex="3" />
 		<form:errors path="city" cssClass="validationErrorText" />
 		
-
 		<label for="radius">Within radius of (max.):</label>
 		<form:input id="radiusInput" type="number" path="radius"
 			placeholder="e.g. 5" step="5" value="5" />
@@ -136,6 +133,5 @@ function typeOfAlert(Alert alert) {
 		</div>
 	</c:otherwise>
 </c:choose>
-
 
 <c:import url="template/footer.jsp" />

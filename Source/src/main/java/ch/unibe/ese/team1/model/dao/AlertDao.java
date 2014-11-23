@@ -9,4 +9,6 @@ public interface AlertDao extends CrudRepository<Alert, Long>{
 
 	public Iterable<Alert> findAlertsByUser(User user);
 	
+	public Iterable<Alert> findAlertsByCityAndPriceLessThan(String city, int price);
+	
 }
