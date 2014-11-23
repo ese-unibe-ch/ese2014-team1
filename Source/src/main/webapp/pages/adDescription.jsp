@@ -12,6 +12,17 @@
 
 <script src="/js/image_slider.js"></script>
 
+<script>
+	$(document).ready(function() {
+		var shownAdvertisementID = "${shownAd.id}"
+		$("#bookmarkButton").click(function() {
+			$.post("/bookmark", {id: shownAdvertisementID}, function(data) {
+				alert(data);
+			});
+		});
+	});
+</script>
+
 <!-- format the dates -->
 <fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"
 	type="date" pattern="dd.MM.yyyy" />
@@ -28,7 +39,7 @@
 </c:choose>
 
 
-<h1>${shownAd.title}<a class="right" id="bookmarkButton">Bookmark Me</a></h1>
+<h1>${shownAd.title}<div class="right" id="bookmarkButton">Bookmark Me</div></h1>
 <hr />
 
 <section>

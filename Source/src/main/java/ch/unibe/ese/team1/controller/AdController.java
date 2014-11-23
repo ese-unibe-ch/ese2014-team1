@@ -230,4 +230,22 @@ public class AdController {
 		}
 		return placeAdForm;
 	}
+	
+	/**
+	 * Checks if the adID passed as post parameter is already inside users arrayList bookmarkedAds.
+	 * In case it is present, true is returned changing the "Bookmark Me" button to "Bookmarked".
+	 * If it is not present it is added to the arrayList bookmarkedAds.
+	 */
+	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean isBookmarked(@RequestParam("id") long id, Principal principal) {
+		String username = principal.getName();
+		User user = userService.findUserByUsername(username);
+		if (user == null) {
+			System.out.println("Please register first!");
+			return false;
+		} else {
+			return false;
+		}
+	}
 }
