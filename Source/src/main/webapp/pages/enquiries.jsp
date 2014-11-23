@@ -12,7 +12,7 @@
 <fmt:formatDate value="${enquiries[0].dateSent}" var="formattedDateSent"
 	type="date" pattern="HH:mm, dd.MM.yyyy" />
 
-<!-- <script>
+<script>
 	$(document).ready(function() {
 		var rows = $("#enquiryList table tr:gt(0)");
 		$(rows).hover(function() {
@@ -20,7 +20,7 @@
 		}, function() {
 			$(this).children().css("background-color", "white");
 		});
-		$(rows).click(function() {
+		/* $(rows).click(function() {
 			var id = $(this).attr("data-id");
 			$.get("/profile/messages/getMessage?id=" + id, function(data) {
 				var result = '<h2>' + data.subject + '</h2>';
@@ -30,7 +30,7 @@
 				result += '<br /><p>' + data.text + '</p>';
 				$("#enquiryDetail").html(result);
 			}, 'json');
-		});
+		}); */
 	});
 </script> -->
 <!-- <script src="/js/messages.js"></script> -->

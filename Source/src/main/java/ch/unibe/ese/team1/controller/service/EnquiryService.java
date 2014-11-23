@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.VisitEnquiry;
-import ch.unibe.ese.team1.model.dao.EnquiryDao;
+import ch.unibe.ese.team1.model.dao.VisitEnquiryDao;
 
 /** Provides access to enquiries saved in the database. */
 @Service
 public class EnquiryService {
 	
 	@Autowired
-	private EnquiryDao enquiryDao;
+	private VisitEnquiryDao enquiryDao;
 	
 	/** 
 	 * Returns all enquiries that were sent to the given user.
@@ -23,6 +23,7 @@ public class EnquiryService {
 	 */
 	@Transactional
 	public Iterable<VisitEnquiry> getEnquiriesByRecipient(User recipient){
-		return enquiryDao.findByRecipient(recipient);
+		// TODO complete
+		return null;
 	}
 }
