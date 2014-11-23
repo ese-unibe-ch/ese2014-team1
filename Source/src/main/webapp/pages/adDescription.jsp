@@ -15,9 +15,32 @@
 <script>
 	$(document).ready(function() {
 		var shownAdvertisementID = "${shownAd.id}"
+		$.post("/bookmark", {id: shownAdvertisementID}, function(dataFirst) {
+			if(dataFirst == 2) {
+				$('#bookmarkButton').replaceWith($('<div class="right" id="bookmarkedButton">' + "Bookmarked" + '</div>'));
+			}
+		});
 		$("#bookmarkButton").click(function() {
-			$.post("/bookmark", {id: shownAdvertisementID}, function(data) {
-				alert(data);
+			$.post("/bookmark", {id: shownAdvertisementID}, function(dataSecond) {
+				switch(dataSecond) {
+				case 0:
+					alert("You need to be logged in to bookmark ads.");
+					break;
+				case 1:
+					alert("ERROR 277489. Please contact the WebAdmin.");
+					break;
+				// Not necessary since new ID for Bookmarked Tag !!!
+				case 2:
+					alert("This ad is already bookmarked...");
+					break;
+				case 3:
+					alert("Has been bookmarked!");
+					$('#bookmarkButton').replaceWith($('<div class="right" id="bookmarkedButton">' + "Bookmarked" + '</div>'));
+					break;
+				default:
+					alert("ERROR 277411. Please contact the WebAdmin.");
+					
+				}
 			});
 		});
 	});

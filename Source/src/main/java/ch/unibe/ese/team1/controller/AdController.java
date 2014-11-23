@@ -2,6 +2,7 @@ package ch.unibe.ese.team1.controller;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,6 +32,7 @@ import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.PictureMeta;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.dao.UserDao;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,6 +54,10 @@ public class AdController {
 	private ServletContext servletContext;
 	@Autowired
 	private MessageService messageService;
+	
+	// TODO is that possilbe without a service? Or should I create a new service?
+	@Autowired
+	private UserDao userDao;
 
 	/** Used for generating a JSON representation of a given object. */
 	private ObjectMapper objectMapper;
@@ -238,14 +244,37 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean isBookmarked(@RequestParam("id") long id, Principal principal) {
+	public int isBookmarked(@RequestParam("id") long id, Principal principal) {
+		// TODO Possilbe refactoring needed... But hey!!! First make it work, no?
+		if(principal == null) {
+			System.out.println("Please register first!");
+			return 0;
+		}
 		String username = principal.getName();
 		User user = userService.findUserByUsername(username);
 		if (user == null) {
-			System.out.println("Please register first!");
-			return false;
-		} else {
-			return false;
+			// that should not happen...
+			System.out.println("ERROR: Principal does exist but could not be found in the DB");
+			return 1;
 		}
+		
+		// checking if ID is already in the arrayList.
+		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
+		Long longID = (Long) id;
+		if(bookmarkedAds == null) {
+			bookmarkedAds = new ArrayList<Long>();
+		} else {
+			for(long number : bookmarkedAds) {
+				if(number == id) {
+					return 2;
+				}
+			}
+		}
+		
+		// TODO: find another solution... logical error idiote ;)
+		bookmarkedAds.add(longID);
+		user.setBookmarkedAds(bookmarkedAds);
+		userDao.save(user);
+		return 3;
 	}
 }

@@ -165,6 +165,17 @@ button {
 	font-size: 0.9em;
 }
 
+#bookmarkedButton {
+	background-color: white;
+	padding: 0px 5px 0px 5px;
+	border-width: 2px;
+	border-radius: 10px;
+	border-color: #ff0000;
+	border-style: solid; 
+	color: grey;
+	font-size: 0.9em;
+}
+
 button:hover {
 	color: #2dc16d;
 	background-color: white;

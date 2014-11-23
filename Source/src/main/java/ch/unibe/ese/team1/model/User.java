@@ -60,7 +60,7 @@ public class User {
 	private String aboutMe;
 	
 	@Column(nullable = true)
-	private ArrayList<Integer> bookmarkedAds;
+	private ArrayList<Long> bookmarkedAds;
 
 	public long getId() {
 		return id;
@@ -150,11 +150,11 @@ public class User {
 		this.aboutMe = aboutMe;
 	}
 
-	public ArrayList<Integer> getBookmarkedAds() {
+	public ArrayList<Long> getBookmarkedAds() {
 		return bookmarkedAds;
 	}
 
-	public void setBookmarkedAds(ArrayList<Integer> bookmarkedAds) {
+	public void setBookmarkedAds(ArrayList<Long> bookmarkedAds) {
 		this.bookmarkedAds = bookmarkedAds;
 	}
 	
