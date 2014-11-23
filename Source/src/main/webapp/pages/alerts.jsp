@@ -9,6 +9,8 @@
 <pre><a href="/">Home</a>   >   Alerts</pre>
 	
 <script>
+function validateType(form)
+{
 	var room = document.getElementById('room');
 	var studio = document.getElementById('studio');
 	var neither = document.getElementById('neither');
@@ -26,6 +28,18 @@
 		both.checked = false;
 		neither.checked = false;
 	}
+}
+</script>
+
+<script>
+function typeOfAlert(Alert alert) {
+	if(alert.getBothRoomAndStudio())
+		return "Both"
+	else if(alert.getStudio())
+		return "Studio"
+		else
+			return "Room"
+}	
 </script>
 	
 <script>
@@ -91,13 +105,37 @@
 	</c:when>
 	<c:otherwise>
 		<div id="alertsDiv" class="alertsDiv">			
-			<c:forEach var="alert" items="${alerts}">
-				<div class="alert">
-					<p>${alert.price}
-				</div>
-			</c:forEach>
+		<table class="styledTable">
+			<tr>
+				<th>Type</th>
+				<th id="alertColumn">City</th>
+				<th>Radius</th>
+				<th>Price max.</th>
+			</tr>
+		<c:forEach var="alert" items="${alerts}">
+			<tr>
+				<td>
+				<c:choose>
+					<c:when test="${alert.bothRoomAndStudio}">
+						Both
+					</c:when>
+					<c:when test="${alert.studio}">
+						Studio
+					</c:when>
+					<c:otherwise>
+						Room
+					</c:otherwise>
+				</c:choose>
+				</td>
+				<td>${alert.city}</td>
+				<td>${alert.radius} km</td>
+				<td>${alert.price} Chf</td>
+			</tr>
+		</c:forEach>
+		</table>
 		</div>
 	</c:otherwise>
 </c:choose>
+
 
 <c:import url="template/footer.jsp" />
