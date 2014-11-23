@@ -2,8 +2,11 @@ package ch.unibe.ese.team1.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,8 +39,11 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value = "/profile/alerts", method = RequestMethod.POST)
-	public ModelAndView savedAlert(Principal principal, AlertForm alertForm) {
-		return prepareAlertPage(principal, true, alertForm);
+	public ModelAndView savedAlert(Principal principal, @Valid AlertForm alertForm, BindingResult result) {
+		if(!result.hasErrors())
+			return prepareAlertPage(principal, true, alertForm);
+		else
+			return new ModelAndView("alerts");
 	}
 	
 	private ModelAndView prepareAlertPage(Principal principal, boolean alreadySet, AlertForm alertForm) {

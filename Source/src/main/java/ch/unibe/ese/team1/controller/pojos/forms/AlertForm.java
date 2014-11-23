@@ -22,7 +22,7 @@ public class AlertForm {
 	@Min(value = 0, message = "Please enter a positive distance")
 	private int radius;
 
-	@Min(value = 0, message = "Don't think you will find something for that kind of money")
+	@Min(value = 0, message = "In your dreams.")
 	private int price;
 	
 	private int zipCode;

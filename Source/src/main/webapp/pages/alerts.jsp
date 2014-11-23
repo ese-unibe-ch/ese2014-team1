@@ -13,7 +13,6 @@
 	var studio = document.getElementById('studio');
 	var neither = document.getElementById('neither');
 	var both = document.getElementById('both');
-	var type = document.getElementById('type');
 	
 	if(room.checked && studio.checked) {
 		both.checked = true;
@@ -26,7 +25,6 @@
 	else {
 		both.checked = false;
 		neither.checked = false;
-		type.checked = studio.checked;
 	}
 </script>
 	
@@ -58,7 +56,6 @@
 		
 		<form:checkbox style="display:none" name="neither" id="neither" path="noRoomNoStudio" />
 		<form:checkbox style="display:none" name="both" id="both" path="bothRoomAndStudio" />
-		<form:checkbox style="display:none" name="type" id="type" path="studio" />
 		<form:errors path="noRoomNoStudio" cssClass="validationErrorText" />
 		
 		<br />
