@@ -40,8 +40,8 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");
 
 		// load users
-		bernerBaer = userDao.findOne(3L);
-		testerMuster = userDao.findOne(2L);
+		bernerBaer = userDao.findOne(4L);
+		testerMuster = userDao.findOne(3L);
 
 		// load visits
 		visit1 = visitDao.findOne(4L);

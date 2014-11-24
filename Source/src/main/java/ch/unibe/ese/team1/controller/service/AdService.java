@@ -153,7 +153,6 @@ public class AdService {
 		if(visitStrings !=  null){
 			for(String visitString : visitStrings){
 				Visit visit = new Visit();
-				visit.setAdvertiser(user);
 				// format is 28-02-2014;10:02;13:14
 				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 				String[] parts = visitString.split(";");

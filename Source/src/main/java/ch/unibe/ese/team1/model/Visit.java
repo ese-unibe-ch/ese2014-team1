@@ -23,9 +23,6 @@ public class Visit {
 	
 	@ManyToOne
 	private Ad ad;
-	
-	@ManyToOne
-	private User advertiser;
 
 	@ManyToMany
 	private List<User> searchers;
@@ -52,14 +49,6 @@ public class Visit {
 
 	public void setAd(Ad ad) {
 		this.ad = ad;
-	}
-
-	public User getAdvertiser() {
-		return advertiser;
-	}
-
-	public void setAdvertiser(User advertiser) {
-		this.advertiser = advertiser;
 	}
 
 	public List<User> getSearchers() {

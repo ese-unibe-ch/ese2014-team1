@@ -27,8 +27,8 @@ public class MessageTestDataSaver implements TestDataSaver {
 	@Override
 	public void saveTestData() throws Exception {
 		// load users
-		bernerBaer = userDao.findOne(Long.valueOf(3));
-		testerMuster = userDao.findOne(Long.valueOf(2));
+		bernerBaer = userDao.findOne(4L);
+		testerMuster = userDao.findOne(2L);
 		
 		Message message;
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");

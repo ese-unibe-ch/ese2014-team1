@@ -25,22 +25,23 @@ public class UserTestDataSaver implements TestDataSaver {
 	@Override
 	@Transactional
 	public void saveTestData() throws Exception {
-		//first user
+		// system account
+		User system = createUser("System", "1234", "FlatFindr", "Admin",
+				"/img/test/system.jpg", Gender.ADMIN);
+		system.setAboutMe("We keep you off the streets.");
+		userDao.save(system);
+
+		// first user
 		User john = createUser("jane@doe.com", "password", "Jane", "Doe",
 				Gender.FEMALE);
 		john.setAboutMe(getDummyText());
 		userDao.save(john);
-		
-		//second user
-		User tester = createUser("ese@unibe.ch", "ese", "Tester",
-				"Muster", "/img/test/portrait.jpg", Gender.MALE);
+
+		// second user
+		User tester = createUser("ese@unibe.ch", "ese", "Tester", "Muster",
+				"/img/test/portrait.jpg", Gender.MALE);
 		tester.setAboutMe(getDummyText());
-		userDao.save(tester);		
-		
-		//system account
-		User system = createUser("System", "1234", "FlatFindr", "Admin", "/img/test/system.jpg", Gender.ADMIN);
-		system.setAboutMe("We keep you off the streets.");
-		userDao.save(system);
+		userDao.save(tester);
 	}
 
 	public User createUser(String email, String password, String firstName,
@@ -84,7 +85,7 @@ public class UserTestDataSaver implements TestDataSaver {
 		user.setUserRoles(userRoles);
 		return user;
 	}
-	
+
 	private String getDummyText() {
 		return "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
 				+ "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "

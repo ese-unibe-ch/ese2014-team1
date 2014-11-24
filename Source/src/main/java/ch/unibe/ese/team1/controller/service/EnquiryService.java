@@ -30,7 +30,7 @@ public class EnquiryService {
 	public Iterable<VisitEnquiry> getEnquiriesByRecipient(User recipient) {
 		List<VisitEnquiry> enquiries = new LinkedList<VisitEnquiry>();
 		for (VisitEnquiry enquiry : enquiryDao.findAll()) {
-			if(enquiry.getVisit().getAdvertiser().getId() == recipient.getId()){
+			if(enquiry.getVisit().getAd().getUser().getId() == recipient.getId()){
 				enquiries.add(enquiry);
 			}
 		}
