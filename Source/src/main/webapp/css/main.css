@@ -511,10 +511,6 @@ footer nav ul li {
 	border-radius: 10px;
 }
 
-#userDiv {
-	width: 40%;
-	margin: 0 auto;
-}
 
 #resultsDiv {
 	width: 60%;
@@ -851,4 +847,15 @@ footer nav ul li {
 .declineButton:hover{
 	border-color: #ff4a4f;
 	color: #ff4a4f;
+}
+
+/* -------------------------------------------------------------------- */
+/* publicProfile.jsp */
+#userDiv {
+	width: 40%;
+	margin: 0 auto;
+}
+
+#userDiv img{
+	max-height: 200px;
 }

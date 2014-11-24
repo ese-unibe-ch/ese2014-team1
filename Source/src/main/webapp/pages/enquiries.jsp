@@ -40,7 +40,7 @@
 				pattern="HH:mm, dd.MM.yyyy" />
 
 			<tr data-id="${enquiry.id}">
-				<td>${enquiry.sender.email}</td>
+				<td><a href="/profile/user?id=${enquiry.sender.id}">${enquiry.sender.email}</a></td>
 				<td><a href="/ad?id=${enquiry.visit.ad.id }">${enquiry.visit.ad.title }</a></td>
 				<td>${singleFormattedDateSent}</td>
 				<td>
