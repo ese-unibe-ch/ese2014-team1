@@ -21,27 +21,16 @@
 		}, function() {
 			$(this).children().css("background-color", "white");
 		});
-		/* $(rows).click(function() {
-			var id = $(this).attr("data-id");
-			$.get("/profile/messages/getMessage?id=" + id, function(data) {
-				var result = '<h2>' + data.subject + '</h2>';
-				result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
-				var date = new Date(data.dateSent);
-				result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
-				result += '<br /><p>' + data.text + '</p>';
-				$("#enquiryDetail").html(result);
-			}, 'json');
-		}); */
 	});
 </script>
-<!-- <script src="/js/messages.js"></script> -->
 
 <h1>Enquiries</h1>
 <hr />
 <div id="enquiryList">
 	<table class="styledTable">
 		<tr>
-			<th id="subjectColumn">Sender</th>
+			<th>Sender</th>
+			<th>Ad</th>
 			<th>Date sent</th>
 			<th>Actions</th>
 		</tr>
@@ -52,6 +41,7 @@
 
 			<tr data-id="${enquiry.id}">
 				<td>${enquiry.sender.email}</td>
+				<td><a href="/ad?id=${enquiry.visit.ad.id }">${enquiry.visit.ad.title }</a></td>
 				<td>${singleFormattedDateSent}</td>
 				<td>
 					<button class="acceptButton">Accept</button>
