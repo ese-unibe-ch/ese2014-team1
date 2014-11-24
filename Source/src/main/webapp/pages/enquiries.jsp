@@ -21,6 +21,19 @@
 		}, function() {
 			$(this).children().css("background-color", "white");
 		});
+		
+		$(".acceptButton").click(function(){
+			var cell = $(this).parent();
+			var id = $(this).attr("data-id");
+			$.get("/profile/enquiries/acceptEnquiry?id=" + id);
+			$(cell).html("<p>Accepted</p>");
+		});
+		$(".declineButton").click(function(){
+			var cell = $(this).parent();
+			var id = $(this).attr("data-id");
+			$.get("/profile/enquiries/declineEnquiry?id=" + id);
+			$(cell).html("<p>Declined</p>");
+		});
 	});
 </script>
 
@@ -39,13 +52,13 @@
 				var="singleFormattedDateSent" type="date"
 				pattern="HH:mm, dd.MM.yyyy" />
 
-			<tr data-id="${enquiry.id}">
+			<tr >
 				<td><a href="/profile/user?id=${enquiry.sender.id}">${enquiry.sender.email}</a></td>
 				<td><a href="/ad?id=${enquiry.visit.ad.id }">${enquiry.visit.ad.title }</a></td>
 				<td>${singleFormattedDateSent}</td>
 				<td>
-					<button class="acceptButton">Accept</button>
-					<button class="declineButton">Decline</button>
+					<button class="acceptButton" data-id="${enquiry.id}">Accept</button>
+					<button class="declineButton"  data-id="${enquiry.id}">Decline</button>
 				</td>
 			</tr>
 		</c:forEach>

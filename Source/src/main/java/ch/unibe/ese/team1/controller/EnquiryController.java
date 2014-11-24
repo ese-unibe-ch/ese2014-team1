@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,6 +56,16 @@ public class EnquiryController {
 		visitEnquiry.setVisit(visit);
 		
 		enquiryService.saveVisitEnquiry(visitEnquiry);
+	}
+	
+	@RequestMapping(value="/profile/enquiries/acceptEnquiry" , method = RequestMethod.GET)
+	public @ResponseBody void acceptEnquiry(@RequestParam("id") long id){
+		enquiryService.acceptEnquiry(id);
+	}
+	
+	@RequestMapping(value="/profile/enquiries/declineEnquiry" , method = RequestMethod.GET)
+	public @ResponseBody void declineEnquiry(@RequestParam("id") long id){
+		enquiryService.declineEnquiry(id);
 	}
 	
 }

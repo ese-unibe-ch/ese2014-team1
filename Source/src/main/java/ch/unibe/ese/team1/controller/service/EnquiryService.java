@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.VisitEnquiry;
+import ch.unibe.ese.team1.model.VisitEnquiryState;
 import ch.unibe.ese.team1.model.dao.VisitEnquiryDao;
 
 /** Provides access to enquiries saved in the database. */
@@ -40,5 +41,21 @@ public class EnquiryService {
 	@Transactional
 	public void saveVisitEnquiry(VisitEnquiry visitEnquiry){
 		enquiryDao.save(visitEnquiry);
+	}
+	
+	/** Accepts the enquiry with the given id. */
+	@Transactional
+	public void acceptEnquiry(long enquiryId){
+		VisitEnquiry enquiry = enquiryDao.findOne(enquiryId);
+		enquiry.setState(VisitEnquiryState.ACCEPTED);
+		enquiryDao.save(enquiry);
+	}
+	
+	/** Declines the enquiry with the given id. */
+	@Transactional
+	public void declineEnquiry(long enquiryId){
+		VisitEnquiry enquiry = enquiryDao.findOne(enquiryId);
+		enquiry.setState(VisitEnquiryState.DECLINED);
+		enquiryDao.save(enquiry);
 	}
 }

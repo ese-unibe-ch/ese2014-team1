@@ -129,6 +129,12 @@ button {
 	font-size: 1.1em;
 }
 
+.inactiveButton {
+	background-color: #bbbbbb;
+	color: white;
+	border-color: white;
+}
+
 .button {
 	background-color: #2dc16d;
 	color: white;
