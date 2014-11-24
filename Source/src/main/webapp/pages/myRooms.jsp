@@ -3,15 +3,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <c:import url="template/header.jsp" />
 
-<body>
-<%-- profile/publicProfile not valid anymore... needs to be corrected: problem -> how to get the right user??? Maybe use a JS Script --%>
-<pre><a href="/">Home</a>   >   <a href="/profile/publicProfile">Public Profile</a>   >   <a href="/profile/editProfile">Edit Profile</a>    >    Profile Updated</pre>
+<script>
+	$(document).ready(function() {
+		
+		
+	});
 
-<h1>Your Profile has been updated!</h1>
+</script>
+
+
+<pre><a href="/">Home</a>   >   My Rooms</pre>
+
+<h1>My Advertisements</h1>
 <hr />
+
+
+
+<h1>My Bookmarks</h1>
+<hr />
+
 
 <c:import url="template/footer.jsp" />

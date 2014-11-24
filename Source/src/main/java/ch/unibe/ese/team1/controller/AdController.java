@@ -255,7 +255,7 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
 	@ResponseBody
-	public int isBookmarked(@RequestParam("id") long id, Principal principal) {
+	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening, Principal principal) {
 		// TODO Possilbe refactoring needed... But hey!!! First make it work, no?
 		if(principal == null) {
 			System.out.println("Please register first!");
@@ -282,10 +282,18 @@ public class AdController {
 			}
 		}
 		
-		// TODO: find another solution... logical error idiote ;)
-		bookmarkedAds.add(longID);
-		user.setBookmarkedAds(bookmarkedAds);
-		userDao.save(user);
+		if(screening != true) {
+			bookmarkedAds.add(longID);
+			user.setBookmarkedAds(bookmarkedAds);
+			userDao.save(user);
+		}
 		return 3;
 	}
+	
+	@RequestMapping(value = "/profile/myRooms", method = RequestMethod.GET)
+	public ModelAndView myRooms() {
+		ModelAndView model = new ModelAndView("myRooms");
+		return model;
+	}
+	
 }

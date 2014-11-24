@@ -188,6 +188,12 @@ button:hover {
 	border-color: #2dc16d;
 }
 
+.button:hover {
+	color: #2dc16d;
+	background-color: white;
+	border-color: #2dc16d;
+}
+
 .smallPlusButton:hover {
 	color: #2dc16d;
 	background-color: white;

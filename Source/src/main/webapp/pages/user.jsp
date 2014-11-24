@@ -11,6 +11,8 @@
 
 <script src="/js/messageForAdDescription.js"></script>
 
+<pre><a href="/">Home</a>   >   Profile</pre>
+
 <div id="userDiv">
 		<c:choose>
 			<c:when test="${user.picture.filePath != null}">
@@ -28,6 +30,7 @@
 		<hr class="slim">		
 		<form>
 			<button id="newMsg" type="button">Message</button>
+			<a class="button" href="/profile/editProfile">Edit Profile</a>
 		</form>
 </div>
 <c:import url="template/footer.jsp"/>

@@ -7,7 +7,7 @@
 
 <c:import url="template/header.jsp" />
 
-<pre><a href="/">Home</a>   >   Public Profile</pre>
+<pre><a href="/">Home</a>   >   Profile</pre>
 
 <h1>Edit your Profile</h1>
 <hr />

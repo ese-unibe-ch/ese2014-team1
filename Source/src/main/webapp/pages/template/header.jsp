@@ -57,7 +57,7 @@
 						%>
 						</a>
 							<ul>
-								<li><a href="#">My rooms</a></li>
+								<li><a href="/profile/myRooms">My rooms</a></li>
 								<li><a href="/profile/messages">Messages</a></li>
 								<li><a href="/profile/enquiries">Enquiries</a></li>
 								<li><a href="#">Calendar</a></li>
