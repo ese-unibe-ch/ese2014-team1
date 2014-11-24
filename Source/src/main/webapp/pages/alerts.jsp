@@ -9,6 +9,14 @@
 <pre><a href="/">Home</a>   >   Alerts</pre>
 	
 <script>
+function deleteRow(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("alerts").deleteRow(i);
+    if(document.getElementById("alerts").rows.length < 2)
+    	document.getElementById("alerts").deleteTHead();
+}</script>	
+	
+<script>
 function validateType(form)
 {
 	var room = document.getElementById('room');
@@ -37,8 +45,8 @@ function typeOfAlert(Alert alert) {
 		return "Both"
 	else if(alert.getStudio())
 		return "Studio"
-		else
-			return "Room"
+	else
+		return "Room"
 }	
 </script>
 	
@@ -102,13 +110,16 @@ function typeOfAlert(Alert alert) {
 	</c:when>
 	<c:otherwise>
 		<div id="alertsDiv" class="alertsDiv">			
-		<table class="styledTable">
+		<table class="styledTable" id="alerts">
+			<thead>
 			<tr>
 				<th>Type</th>
 				<th id="alertColumn">City</th>
 				<th>Radius</th>
-				<th>Price max.</th>
+				<th>max. Price</th>
+				<th>Action</th>
 			</tr>
+			</thead>
 		<c:forEach var="alert" items="${alerts}">
 			<tr>
 				<td>
@@ -127,6 +138,7 @@ function typeOfAlert(Alert alert) {
 				<td>${alert.city}</td>
 				<td>${alert.radius} km</td>
 				<td>${alert.price} Chf</td>
+				<td><input type="button" value="Delete" onclick="deleteRow(this)"></td>
 			</tr>
 		</c:forEach>
 		</table>
