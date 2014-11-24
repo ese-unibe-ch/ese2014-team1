@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.lang.Math;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ch.unibe.ese.team1.controller.pojos.forms.AlertForm;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.Alert;
+import ch.unibe.ese.team1.model.Location;
 import ch.unibe.ese.team1.model.Message;
 import ch.unibe.ese.team1.model.MessageState;
 import ch.unibe.ese.team1.model.User;
@@ -30,6 +32,10 @@ public class AlertService {
 	
 	@Autowired
 	MessageDao messageDao;
+	
+	@Autowired
+	private GeoDataService geoDataService;
+
 	
 	@Transactional
 	public void saveFrom(AlertForm alertForm, User user) {
@@ -55,9 +61,8 @@ public class AlertService {
 	
 	@Transactional
 	public void triggerAlerts(Ad ad) {
-		String adCity = ad.getCity();
 		int adPrice = ad.getPrizePerMonth();
-		Iterable<Alert> alerts = alertDao.findByCityAndPriceGreaterThan(adCity, adPrice - 1);
+		Iterable<Alert> alerts = alertDao.findByPriceGreaterThan(adPrice - 1);
 
 		//loop through all ads with matching city and price range, throw out mismatches
 		Iterator<Alert> alertIterator = alerts.iterator();
@@ -94,12 +99,12 @@ public class AlertService {
 	private String getAlertText(Ad ad) {
 		return "Dear user,<br>good news. A new ad matching one of your alerts has been " +
 				"entered into our system. You can visit it here:<br><br>" +
-				"<a href=/ad?id=" + ad.getId() + ">" + ad.getTitle() + "</a><br><br>" +
+				"<u><a href=/ad?id=" + ad.getId() + ">" + ad.getTitle() + "</a></u><br><br>" +
 				"Good luck and enjoy,<br>" +
 				"Your FlatFindr crew";
 	}
 	
-	//checks if an ad is conform to the criteria in an alert.
+	//checks if an ad is conforming to the criteria in an alert.
 	private boolean typeMismatchWith(Ad ad, Alert alert) {
 		boolean mismatch = false;
 		if(!alert.getBothRoomAndStudio() && ad.getStudio() != alert.getStudio())
@@ -107,8 +112,23 @@ public class AlertService {
 		return mismatch;
 	}
 	
-	//STUB. So far, we don't check for radius mismatches
+	//Checks whether an ad is for a place too far away from the alert
+	//true = too far, false = close enough
 	private boolean radiusMismatchWith(Ad ad, Alert alert) {
-		return false;
+		final int earthRadiusKm = 6380;
+		Location adLocation = geoDataService.getLocationsByCity(ad.getCity()).get(0);
+		Location alertLocation = geoDataService.getLocationsByCity(alert.getCity()).get(0);
+		
+		double radSinLat = Math.sin(Math.toRadians(adLocation.getLatitude()));
+		double radCosLat = Math.cos(Math.toRadians(adLocation.getLatitude()));
+		double radLong = Math.toRadians(adLocation.getLongitude());
+		double radLongitude = Math.toRadians(alertLocation.getLongitude());
+		double radLatitude = Math.toRadians(alertLocation.getLatitude());
+		double distance = Math.acos(radSinLat
+				* Math.sin(radLatitude) + radCosLat
+				* Math.cos(radLatitude)
+				* Math.cos(radLong - radLongitude))
+				* earthRadiusKm;
+		return (distance > alert.getRadius());
 	}
 }

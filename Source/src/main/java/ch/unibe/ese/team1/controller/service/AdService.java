@@ -233,10 +233,6 @@ public class AdService {
 
 		// create a list of the results and of their locations
 		List<Ad> locatedResults = new ArrayList<>();
-
-		// results with correct place now called locatedResults to avoid
-		// confusion
-		// vis-à-vis filteredResults
 		for (Ad ad : results) {
 			locatedResults.add(ad);
 		}
