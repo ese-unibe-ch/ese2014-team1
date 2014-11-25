@@ -22,7 +22,7 @@ function deleteRow(r) {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById("alerts").deleteRow(i);
     if(document.getElementById("alerts").rows.length < 2)
-    	document.getElementById("alerts").deleteTHead();
+    	document.getElementById("alertsDiv").remove();
 }
 </script>
 
