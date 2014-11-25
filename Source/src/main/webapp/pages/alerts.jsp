@@ -7,15 +7,25 @@
 <c:import url="template/header.jsp" />
 
 <pre><a href="/">Home</a>   >   Alerts</pre>
-	
+
+<script>
+$(document).ready(function() {
+	$(".deleteButton").click(function(){
+		var id = $(this).attr("data-id");
+		$.get("/profile/alerts/deleteAlert?id=" + id);
+	});
+});
+</script>
+
 <script>
 function deleteRow(r) {
     var i = r.parentNode.parentNode.rowIndex;
     document.getElementById("alerts").deleteRow(i);
     if(document.getElementById("alerts").rows.length < 2)
     	document.getElementById("alerts").deleteTHead();
-}</script>	
-	
+}
+</script>
+
 <script>
 function validateType(form)
 {
@@ -114,7 +124,7 @@ function typeOfAlert(Alert alert) {
 			<thead>
 			<tr>
 				<th>Type</th>
-				<th id="alertColumn">City</th>
+				<th>City</th>
 				<th>Radius</th>
 				<th>max. Price</th>
 				<th>Action</th>
@@ -138,7 +148,7 @@ function typeOfAlert(Alert alert) {
 				<td>${alert.city}</td>
 				<td>${alert.radius} km</td>
 				<td>${alert.price} Chf</td>
-				<td><input type="button" value="Delete" onclick="deleteRow(this)"></td>
+				<td><button class="deleteButton" data-id="${alert.id}" onClick="deleteRow(this)">Delete</button></td>
 			</tr>
 		</c:forEach>
 		</table>

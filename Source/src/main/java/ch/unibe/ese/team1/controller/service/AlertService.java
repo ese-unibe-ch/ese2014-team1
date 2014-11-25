@@ -60,6 +60,11 @@ public class AlertService {
 	}
 	
 	@Transactional
+	public void deleteAlert(Long id) {
+		alertDao.delete(id);
+	}
+	
+	@Transactional
 	public void triggerAlerts(Ad ad) {
 		int adPrice = ad.getPrizePerMonth();
 		Iterable<Alert> alerts = alertDao.findByPriceGreaterThan(adPrice - 1);
