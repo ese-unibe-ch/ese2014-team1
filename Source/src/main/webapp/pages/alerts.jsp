@@ -19,10 +19,7 @@ $(document).ready(function() {
 
 <script>
 function deleteRow(r) {
-    var i = r.parentNode.parentNode.rowIndex;
-    document.getElementById("alerts").deleteRow(i);
-    if(document.getElementById("alerts").rows.length < 2)
-    	document.getElementById("alertsDiv").remove();
+	$( "#alertsDiv" ).load(document.URL + " #alertsDiv" );
 }
 </script>
 
@@ -50,7 +47,7 @@ function validateType(form)
 </script>
 
 <script>
-function typeOfAlert(Alert alert) {
+function typeOfAlert(alert) {
 	if(alert.getBothRoomAndStudio())
 		return "Both"
 	else if(alert.getStudio())
@@ -114,12 +111,12 @@ function typeOfAlert(Alert alert) {
 </form:form> <br />
 <h2>Your active alerts</h2>
 
+<div id="alertsDiv" class="alertsDiv">			
 <c:choose>
 	<c:when test="${empty alerts}">
 		<p>You currently aren't subscribed to any alerts.
 	</c:when>
 	<c:otherwise>
-		<div id="alertsDiv" class="alertsDiv">			
 		<table class="styledTable" id="alerts">
 			<thead>
 			<tr>
@@ -152,8 +149,8 @@ function typeOfAlert(Alert alert) {
 			</tr>
 		</c:forEach>
 		</table>
-		</div>
 	</c:otherwise>
 </c:choose>
+</div>
 
 <c:import url="template/footer.jsp" />
