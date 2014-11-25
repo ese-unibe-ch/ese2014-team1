@@ -15,14 +15,15 @@
 
 <script>
 	$(document).ready(function() {
-		var shownAdvertisementID = "${shownAd.id}"
-		$.post("/bookmark", {id: shownAdvertisementID, screening: true}, function(dataFirst) {
+		var shownAdvertisementID = "${shownAd.id}";
+		var shownAdvertisement = "${shownAd}";
+		$.post("/bookmark", {id: shownAdvertisementID, shownAdver: shownAdvertisement, screening: true}, function(dataFirst) {
 			if(dataFirst == 2) {
 				$('#bookmarkButton').replaceWith($('<div class="right" id="bookmarkedButton">' + "Bookmarked" + '</div>'));
 			}
 		});
 		$("#bookmarkButton").click(function() {
-			$.post("/bookmark", {id: shownAdvertisementID, screening: false}, function(dataSecond) {
+			$.post("/bookmark", {id: shownAdvertisementID, shownAdver: shownAdvertisement, screening: false}, function(dataSecond) {
 				switch(dataSecond) {
 				case 0:
 					alert("You need to be logged in to bookmark ads.");

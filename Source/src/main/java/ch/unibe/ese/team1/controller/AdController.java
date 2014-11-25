@@ -255,7 +255,7 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
 	@ResponseBody
-	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening, Principal principal) {
+	public int isBookmarked(@RequestParam("id") long id, @RequestParam("shownAdver") Ad shownAdver, @RequestParam("screening") boolean screening, Principal principal) {
 		// TODO Possilbe refactoring needed... But hey!!! First make it work, no?
 		if(principal == null) {
 			System.out.println("Please register first!");
@@ -269,30 +269,62 @@ public class AdController {
 			return 1;
 		}
 		
-		// checking if ID is already in the arrayList.
-		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
-		Long longID = (Long) id;
-		if(bookmarkedAds == null) {
-			bookmarkedAds = new ArrayList<Long>();
+//		// checking if ID is already in the arrayList.
+//		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
+//		Long longID = (Long) id;
+//		if(bookmarkedAds == null) {
+//			bookmarkedAds = new ArrayList<Long>();
+//		} else {
+//			for(long number : bookmarkedAds) {
+//				if(number == id) {
+//					return 2;
+//				}
+//			}
+//		}
+		
+		// checking if AD is already in the LinkedList.
+		LinkedList<Ad> bookmarkedAdvertisement = user.getBookmarkedAdvertisement();
+		Ad ad = (Ad) shownAdver;
+		if(bookmarkedAdvertisement == null) {
+			bookmarkedAdvertisement = new LinkedList<Ad>();
 		} else {
-			for(long number : bookmarkedAds) {
-				if(number == id) {
+			for(Ad adver : bookmarkedAdvertisement) {
+				if(adver.equals(bookmarkedAdvertisement)) {
 					return 2;
 				}
 			}
 		}
 		
 		if(screening != true) {
-			bookmarkedAds.add(longID);
-			user.setBookmarkedAds(bookmarkedAds);
+			bookmarkedAdvertisement.add(ad);
+			user.setBookmarkedAdvertisement(bookmarkedAdvertisement);
 			userDao.save(user);
 		}
 		return 3;
+		
+//		if(screening != true) {
+//			bookmarkedAds.add(longID);
+//			user.setBookmarkedAds(bookmarkedAds);
+//			userDao.save(user);
+//		}
+//		return 3;
 	}
 	
 	@RequestMapping(value = "/profile/myRooms", method = RequestMethod.GET)
-	public ModelAndView myRooms() {
-		ModelAndView model = new ModelAndView("myRooms");
+	public ModelAndView myRooms(Principal principal) {
+		ModelAndView model;
+		User user;
+		if(principal != null) {
+			model = new ModelAndView("myRooms");
+			String username = principal.getName();
+			user = userService.findUserByUsername(username);
+			// model.addObject("ownAds", user.getOwnAds();
+			model.addObject("bookmarkedAds", user.getBookmarkedAds());
+			return model;
+		} else {
+			model = new ModelAndView("home");
+		}
+		
 		return model;
 	}
 	
