@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -254,8 +255,9 @@ public class AdController {
 	 * If it is not present it is added to the arrayList bookmarkedAds.
 	 */
 	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
+	@Transactional
 	@ResponseBody
-	public int isBookmarked(@RequestParam("id") long id, @RequestParam("shownAdver") Ad shownAdver, @RequestParam("screening") boolean screening, Principal principal) {
+	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening, Principal principal) {
 		// TODO Possilbe refactoring needed... But hey!!! First make it work, no?
 		if(principal == null) {
 			System.out.println("Please register first!");
@@ -268,6 +270,8 @@ public class AdController {
 			System.out.println("ERROR: Principal does exist but could not be found in the DB");
 			return 1;
 		}
+		
+		Ad ad = adService.getAdById(id);
 		
 //		// checking if ID is already in the arrayList.
 //		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
@@ -284,17 +288,16 @@ public class AdController {
 		
 		// checking if AD is already in the LinkedList.
 		LinkedList<Ad> bookmarkedAdvertisement = user.getBookmarkedAdvertisement();
-		Ad ad = (Ad) shownAdver;
 		if(bookmarkedAdvertisement == null) {
 			bookmarkedAdvertisement = new LinkedList<Ad>();
 		} else {
 			for(Ad adver : bookmarkedAdvertisement) {
-				if(adver.equals(bookmarkedAdvertisement)) {
+				if(adver.equals(ad)) {
 					return 2;
 				}
 			}
 		}
-		
+	
 		if(screening != true) {
 			bookmarkedAdvertisement.add(ad);
 			user.setBookmarkedAdvertisement(bookmarkedAdvertisement);

@@ -1,5 +1,6 @@
 package ch.unibe.ese.team1.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import javax.persistence.TemporalType;
 
 /** Describes an advertisement that users can place and search for. */
 @Entity
-public class Ad {
+public class Ad implements Serializable{
 
 	@Id
 	@GeneratedValue
