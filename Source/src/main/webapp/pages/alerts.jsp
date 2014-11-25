@@ -7,15 +7,22 @@
 <c:import url="template/header.jsp" />
 
 <pre><a href="/">Home</a>   >   Alerts</pre>
-	
+
+<script>
+$(document).ready(function() {
+	$(".deleteButton").click(function(){
+		var id = $(this).attr("data-id");
+		$.get("/profile/alerts/deleteAlert?id=" + id);
+	});
+});
+</script>
+
 <script>
 function deleteRow(r) {
-    var i = r.parentNode.parentNode.rowIndex;
-    document.getElementById("alerts").deleteRow(i);
-    if(document.getElementById("alerts").rows.length < 2)
-    	document.getElementById("alerts").deleteTHead();
-}</script>	
-	
+	$( "#alertsDiv" ).load(document.URL + " #alertsDiv" );
+}
+</script>
+
 <script>
 function validateType(form)
 {
@@ -40,7 +47,7 @@ function validateType(form)
 </script>
 
 <script>
-function typeOfAlert(Alert alert) {
+function typeOfAlert(alert) {
 	if(alert.getBothRoomAndStudio())
 		return "Both"
 	else if(alert.getStudio())
@@ -104,17 +111,17 @@ function typeOfAlert(Alert alert) {
 </form:form> <br />
 <h2>Your active alerts</h2>
 
+<div id="alertsDiv" class="alertsDiv">			
 <c:choose>
 	<c:when test="${empty alerts}">
 		<p>You currently aren't subscribed to any alerts.
 	</c:when>
 	<c:otherwise>
-		<div id="alertsDiv" class="alertsDiv">			
 		<table class="styledTable" id="alerts">
 			<thead>
 			<tr>
 				<th>Type</th>
-				<th id="alertColumn">City</th>
+				<th>City</th>
 				<th>Radius</th>
 				<th>max. Price</th>
 				<th>Action</th>
@@ -138,12 +145,12 @@ function typeOfAlert(Alert alert) {
 				<td>${alert.city}</td>
 				<td>${alert.radius} km</td>
 				<td>${alert.price} Chf</td>
-				<td><input type="button" value="Delete" onclick="deleteRow(this)"></td>
+				<td><button class="deleteButton" data-id="${alert.id}" onClick="deleteRow(this)">Delete</button></td>
 			</tr>
 		</c:forEach>
 		</table>
-		</div>
 	</c:otherwise>
 </c:choose>
+</div>
 
 <c:import url="template/footer.jsp" />

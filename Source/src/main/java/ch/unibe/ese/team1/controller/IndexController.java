@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.pojos.forms.AlertForm;
@@ -44,6 +46,11 @@ public class IndexController {
 			return prepareAlertPage(principal, true, alertForm);
 		else
 			return new ModelAndView("alerts");
+	}
+	
+	@RequestMapping(value="/profile/alerts/deleteAlert" , method = RequestMethod.GET)
+	public @ResponseBody void acceptEnquiry(@RequestParam("id") long id){
+		alertService.deleteAlert(id);
 	}
 	
 	private ModelAndView prepareAlertPage(Principal principal, boolean alreadySet, AlertForm alertForm) {
