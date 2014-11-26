@@ -9,17 +9,10 @@
 <pre><a href="/">Home</a>   >   Alerts</pre>
 
 <script>
-$(document).ready(function() {
-	$(".deleteButton").click(function(){
-		var id = $(this).attr("data-id");
-		$.get("/profile/alerts/deleteAlert?id=" + id);
-	});
-});
-</script>
-
-<script>
-function deleteRow() {
-	$( "#alertsDiv" ).load(document.URL + " #alertsDiv" );
+function deleteAlert(button) {
+	var id = $(button).attr("data-id");
+	$.get("/profile/alerts/deleteAlert?id=" + id);
+	$("#alertsDiv").load(document.URL + " #alertsDiv");
 }
 </script>
 
@@ -145,7 +138,7 @@ function typeOfAlert(alert) {
 				<td>${alert.city}</td>
 				<td>${alert.radius} km</td>
 				<td>${alert.price} Chf</td>
-				<td><button class="deleteButton" data-id="${alert.id}" onClick="deleteRow()">Delete</button></td>
+				<td><button class="deleteButton" data-id="${alert.id}" onClick="deleteAlert(this)">Delete</button></td>
 			</tr>
 		</c:forEach>
 		</table>
