@@ -273,44 +273,44 @@ public class AdController {
 		
 		Ad ad = adService.getAdById(id);
 		
-//		// checking if ID is already in the arrayList.
-//		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
-//		Long longID = (Long) id;
-//		if(bookmarkedAds == null) {
-//			bookmarkedAds = new ArrayList<Long>();
-//		} else {
-//			for(long number : bookmarkedAds) {
-//				if(number == id) {
-//					return 2;
-//				}
-//			}
-//		}
-		
-		// checking if AD is already in the LinkedList.
-		LinkedList<Ad> bookmarkedAdvertisement = user.getBookmarkedAdvertisement();
-		if(bookmarkedAdvertisement == null) {
-			bookmarkedAdvertisement = new LinkedList<Ad>();
+		// checking if ID is already in the arrayList.
+		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
+		Long longID = (Long) id;
+		if(bookmarkedAds == null) {
+			bookmarkedAds = new ArrayList<Long>();
 		} else {
-			for(Ad adver : bookmarkedAdvertisement) {
-				if(adver.equals(ad)) {
+			for(long number : bookmarkedAds) {
+				if(number == id) {
 					return 2;
 				}
 			}
 		}
-	
-		if(screening != true) {
-			bookmarkedAdvertisement.add(ad);
-			user.setBookmarkedAdvertisement(bookmarkedAdvertisement);
-			userDao.save(user);
-		}
-		return 3;
 		
+//		// checking if AD is already in the LinkedList.
+//		LinkedList<Ad> bookmarkedAdvertisement = user.getBookmarkedAdvertisement();
+//		if(bookmarkedAdvertisement == null) {
+//			bookmarkedAdvertisement = new LinkedList<Ad>();
+//		} else {
+//			for(Ad adver : bookmarkedAdvertisement) {
+//				if(adver.equals(ad)) {
+//					return 2;
+//				}
+//			}
+//		}
+	
 //		if(screening != true) {
-//			bookmarkedAds.add(longID);
-//			user.setBookmarkedAds(bookmarkedAds);
+//			bookmarkedAdvertisement.add(ad);
+//			user.setBookmarkedAdvertisement(bookmarkedAdvertisement);
 //			userDao.save(user);
 //		}
 //		return 3;
+		
+		if(screening != true) {
+			bookmarkedAds.add(longID);
+			user.setBookmarkedAds(bookmarkedAds);
+			userDao.save(user);
+		}
+		return 3;
 	}
 	
 	@RequestMapping(value = "/profile/myRooms", method = RequestMethod.GET)
@@ -321,8 +321,17 @@ public class AdController {
 			model = new ModelAndView("myRooms");
 			String username = principal.getName();
 			user = userService.findUserByUsername(username);
+			
+			ArrayList<Long> ads = user.getBookmarkedAds();
+			LinkedList<Ad> adsLinked = new LinkedList<Ad>();
+			for(Long adID : ads) {
+				Ad ad = adService.getAdById(adID);
+				adsLinked.add(ad);
+			}
+			
 			// model.addObject("ownAds", user.getOwnAds();
 			model.addObject("bookmarkedAds", user.getBookmarkedAds());
+			model.addObject("bookmarkedAdvertisements", adsLinked);
 			return model;
 		} else {
 			model = new ModelAndView("home");

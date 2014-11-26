@@ -33,19 +33,28 @@
 	<c:otherwise>
 	
 		<div id="resultsDiv" class="resultsDiv">			
-			<c:forEach var="id" items="${bookmarkedAds}">
-				<div class="resultAd">
+			<c:forEach var="ad" items="${bookmarkedAdvertisements}">
+				<div class="resultAd" data-price="${ad.prizePerMonth}" 
+								data-moveIn="${ad.moveInDate}" data-age="${ad.moveInDate}">
 					<div class="resultLeft">
-						<p> Tester </p>
-					
-						
+						<a href="<c:url value='/ad?id=${ad.id}' />"><img
+							src="${ad.pictures[0].filePath}" /></a>
+						<h2>
+							<a href="<c:url value='/ad?id=${ad.id}' />">${ad.title }</a>
+						</h2>
+						<p>${ad.street}, ${ad.zipcode} ${ad.city}</p>
 						<br />
 						<p>
+							<i><c:choose>
+									<c:when test="${ad.studio}">Studio</c:when>
+									<c:otherwise>Room</c:otherwise>
+								</c:choose></i>
+						</p>
 					</div>
 					<div class="resultRight">
-						<h2>CHF</h2>
+						<h2>CHF ${ad.prizePerMonth }</h2>
 						<br /> <br />
-						<p>Move-in date:</p>
+						<p>Move-in date: ${ad.moveInDate }</p>
 					</div>
 				</div>
 			</c:forEach>

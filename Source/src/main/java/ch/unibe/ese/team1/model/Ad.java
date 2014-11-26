@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 
 /** Describes an advertisement that users can place and search for. */
 @Entity
-public class Ad implements Serializable{
+public class Ad{
 
 	@Id
 	@GeneratedValue
