@@ -31,8 +31,8 @@ public class TestDataSeeder implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		// save test data in the correct order
 		userDataSaver.saveTestData();
-		messageDataSaver.saveTestData();
 		adDataSaver.saveTestData();
+		messageDataSaver.saveTestData();
 		visitDataSaver.saveTestData();
 		visitEnquiryDataSaver.saveTestData();
 	}
