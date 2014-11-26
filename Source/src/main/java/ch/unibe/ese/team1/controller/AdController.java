@@ -305,7 +305,7 @@ public class AdController {
 //		}
 //		return 3;
 		
-		if(screening != true) {
+		if(!screening) {
 			bookmarkedAds.add(longID);
 			user.setBookmarkedAds(bookmarkedAds);
 			userDao.save(user);
