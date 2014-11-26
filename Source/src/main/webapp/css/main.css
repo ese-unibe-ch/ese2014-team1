@@ -205,6 +205,11 @@ button:hover {
 	border-style: dashed;
 }
 
+#bookmarkedButton:hover {
+	border-color: green;
+	border-style: dashed;
+}
+
 fieldset {
 	padding: 20px;
 	margin-bottom: 10px;

@@ -258,7 +258,7 @@ public class AdController {
 	@Transactional
 	@ResponseBody
 	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening, Principal principal) {
-		// TODO Possilbe refactoring needed... But hey!!! First make it work, no?
+		// TODO Possible refactoring needed... But hey!!! First make it work, no?
 		if(principal == null) {
 			System.out.println("Please register first!");
 			return 0;
@@ -274,15 +274,19 @@ public class AdController {
 		Ad ad = adService.getAdById(id);
 		
 		// checking if ID is already in the arrayList.
+		// if yes bookmarking will be undone
 		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
 		Long longID = (Long) id;
 		if(bookmarkedAds == null) {
 			bookmarkedAds = new ArrayList<Long>();
 		} else {
+			int index = 0;
 			for(long number : bookmarkedAds) {
 				if(number == id) {
+					bookmarkedAds.remove(index);
 					return 2;
 				}
+				index++;
 			}
 		}
 		
@@ -322,7 +326,12 @@ public class AdController {
 			String username = principal.getName();
 			user = userService.findUserByUsername(username);
 			
-			ArrayList<Long> ads = user.getBookmarkedAds();
+			ArrayList<Long> ads;
+			if(user.getBookmarkedAds() == null) {
+				ads = new ArrayList<Long>();
+			} else {
+				ads = user.getBookmarkedAds();
+			}
 			LinkedList<Ad> adsLinked = new LinkedList<Ad>();
 			for(Long adID : ads) {
 				Ad ad = adService.getAdById(adID);
