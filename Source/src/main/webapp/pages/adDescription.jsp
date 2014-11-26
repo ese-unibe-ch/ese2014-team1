@@ -314,7 +314,7 @@
 			</c:choose>
 		</td>
 
-		<td>${shownAd.user.username}</td>
+		<td><a href=/profile/user?id=${shownAd.user.id}>${shownAd.user.username}</a></td>
 
 		<td>
 			<form>

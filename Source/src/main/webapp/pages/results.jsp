@@ -34,8 +34,6 @@ function validateType(form)
 }
 </script>
 
-
-
 <script>
 /*
  * This script takes all the resultAd divs and sorts them by a parameter specified by the user.
@@ -252,7 +250,7 @@ function sort_div_attribute() {
 		</table>
 			
 		
-		<button type="submit" onClick="validateType(this.form)">Search</button>	
+		<button type="submit" onClick="validateType(this.form)">Filter</button>	
 		<button type="reset">Cancel</button>
 	</div>
 </form:form>
