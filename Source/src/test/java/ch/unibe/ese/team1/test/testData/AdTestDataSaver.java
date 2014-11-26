@@ -37,7 +37,12 @@ public class AdTestDataSaver implements TestDataSaver {
 		picture.setFilePath("/img/test/berner_baer.png");
 		picture.setUser(user);
 		user.setPicture(picture);
-		user.setAboutMe(getDummyText());
+		user.setAboutMe("I am a PhD student and I am Italian. I am 26,"
+				+ "I like winter-sports, hiking, traveling and cooking."
+				+ "I enjoy spending time with friends, watching movies, "
+				+ "going for drinks and organizing dinners. I have lived in Milan,"
+				+ "London and Zurich, always in flatshares and i have never had"
+				+ "problems with my flatmates.");
 		userDao.save(user);
 		
 		String date1str = "01.11.2014";
