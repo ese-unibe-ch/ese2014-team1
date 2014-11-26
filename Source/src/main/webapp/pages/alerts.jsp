@@ -18,7 +18,7 @@ $(document).ready(function() {
 </script>
 
 <script>
-function deleteRow(r) {
+function deleteRow() {
 	$( "#alertsDiv" ).load(document.URL + " #alertsDiv" );
 }
 </script>
@@ -145,7 +145,7 @@ function typeOfAlert(alert) {
 				<td>${alert.city}</td>
 				<td>${alert.radius} km</td>
 				<td>${alert.price} Chf</td>
-				<td><button class="deleteButton" data-id="${alert.id}" onClick="deleteRow(this)">Delete</button></td>
+				<td><button class="deleteButton" data-id="${alert.id}" onClick="deleteRow()">Delete</button></td>
 			</tr>
 		</c:forEach>
 		</table>
