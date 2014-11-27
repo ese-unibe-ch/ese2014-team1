@@ -32,6 +32,7 @@ import ch.unibe.ese.team1.controller.service.AlertService;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.controller.service.VisitService;
+import ch.unibe.ese.team1.controller.service.BookmarkService;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.PictureMeta;
 import ch.unibe.ese.team1.model.User;
@@ -65,6 +66,8 @@ public class AdController {
 	private UserDao userDao;
 	@Autowired
 	private VisitService visitService;
+	@Autowired
+	private BookmarkService bookmarkService;
 
 	/** Used for generating a JSON representation of a given object. */
 	private ObjectMapper objectMapper;
@@ -257,8 +260,8 @@ public class AdController {
 	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
 	@Transactional
 	@ResponseBody
-	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening, Principal principal) {
-		// TODO Possible refactoring needed... But hey!!! First make it work, no?
+	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening,
+			@RequestParam("bookmarked") boolean bookmarked, Principal principal) {
 		if(principal == null) {
 			System.out.println("Please register first!");
 			return 0;
@@ -273,22 +276,22 @@ public class AdController {
 		
 		Ad ad = adService.getAdById(id);
 		
-		// checking if ID is already in the arrayList.
-		// if yes bookmarking will be undone
 		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
 		Long longID = (Long) id;
 		if(bookmarkedAds == null) {
 			bookmarkedAds = new ArrayList<Long>();
-		} else {
-			int index = 0;
+		}
+		if(screening) {
 			for(long number : bookmarkedAds) {
 				if(number == id) {
-					bookmarkedAds.remove(index);
-					return 2;
-				}
-				index++;
+					return 3;
+				} 
 			}
+			return 2;
 		}
+			
+		
+		return bookmarkService.getBookmarkStatus(id, bookmarked, bookmarkedAds, user);
 		
 //		// checking if AD is already in the LinkedList.
 //		LinkedList<Ad> bookmarkedAdvertisement = user.getBookmarkedAdvertisement();
@@ -309,12 +312,6 @@ public class AdController {
 //		}
 //		return 3;
 		
-		if(!screening) {
-			bookmarkedAds.add(longID);
-			user.setBookmarkedAds(bookmarkedAds);
-			userDao.save(user);
-		}
-		return 3;
 	}
 	
 	@RequestMapping(value = "/profile/myRooms", method = RequestMethod.GET)

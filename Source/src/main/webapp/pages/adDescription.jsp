@@ -15,15 +15,13 @@
 
 <script>
 
-// ich habe die zwei click funktionen in funktionen ausgelagert, damit sie immer dann aufgerufen werden können, wenn ein element replaced wird 
-
 var shownAdvertisementID = "${shownAd.id}";
 var shownAdvertisement = "${shownAd}";
 
 function attachBookmarkClickHandler(){
 	$("#bookmarkButton").click(function() {
 		
-		$.post("/bookmark", {id: shownAdvertisementID, screening: false}, function(dataSecond) {
+		$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: false}, function(dataSecond) {
 			$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
 			switch(dataSecond) {
 			case 0:
@@ -32,21 +30,17 @@ function attachBookmarkClickHandler(){
 			case 1:
 				alert("ERROR 277489. Please contact the WebAdmin.");
 				break;
-			 case 2:
+			 /* case 2:
 				alert("Bookmark already exists.");
 				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
-				break;
+				break; */
 			case 3:
-				alert("Has been bookmarked!");
 				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
 				break;
 			default:
-				alert("ERROR 277411. Please contact the WebAdmin.");	
+				alert("ERROR 99782. Please contact the WebAdmin.");	
 			}
-			// funktioniert auch nicht...
-			// $.get("/adDescription");
 			
-			// falls ein neues element mit id bookmarkedbutton eingefügt wurde, wird hier die click funktion angehängt
 			attachBookmarkedClickHandler();
 		});
 	});
@@ -54,31 +48,28 @@ function attachBookmarkClickHandler(){
 
 function attachBookmarkedClickHandler(){
 	$("#bookmarkedButton").click(function() {
-		
-		$.post("/bookmark", {id: shownAdvertisementID, screening: false}, function(dataThird) {
+		$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: true}, function(dataThird) {
 			$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmark Me" + '</a>'));
 			switch(dataThird) {
 			case 0:
+				// should not be possible
 				alert("You need to be logged in to undo the bookmarks.");
 				break;
 			case 1:
+				// Something went wrong with the principal object
 				alert("ERROR 277489. Please contact the WebAdmin.");
 				break;
 			case 2:
-				alert("Bookmarking was undone.");
 				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
 				break;
-			case 3:
+			/* case 3:
 				alert("Has been bookmarked!");
 				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
-				break;
+				break; */
 			default:
-				alert("ERROR 277411. Please contact the WebAdmin.");
+				alert("ERROR 99712. Please contact the WebAdmin.");
 				
-			}
-			// funktioniert auch nicht...
-			// $.get("/adDescription");
-			
+			}			
 			attachBookmarkClickHandler();
 		});
 	});
@@ -90,10 +81,13 @@ function attachBookmarkedClickHandler(){
 		attachBookmarkClickHandler();
 		attachBookmarkedClickHandler();
 		
-		$.post("/bookmark", {id: shownAdvertisementID, screening: true}, function(dataFirst) {
-			if(dataFirst == 2) {
+		$.post("/bookmark", {id: shownAdvertisementID, screening: true, bookmarked: true}, function(dataFirst) {
+			if(dataFirst == 3) {
 				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
 				attachBookmarkedClickHandler();
+			}
+			if(dataFirst == 2) {
+				// nothing needs to be done
 			}
 		});
 	
