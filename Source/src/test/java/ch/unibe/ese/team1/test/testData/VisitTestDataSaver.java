@@ -55,6 +55,7 @@ public class VisitTestDataSaver implements TestDataSaver {
 		visit = new Visit();
 		visit.setAd(ad1);
 		searchers = new LinkedList<>();
+		searchers.add(testerMuster);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("14:00 26.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("16:00 26.12.2014"));
@@ -64,7 +65,6 @@ public class VisitTestDataSaver implements TestDataSaver {
 		visit = new Visit();
 		visit.setAd(ad2);
 		searchers = new LinkedList<>();
-		searchers.add(testerMuster);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("09:00 20.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("11:00 20.12.2014"));
@@ -82,7 +82,7 @@ public class VisitTestDataSaver implements TestDataSaver {
 		visit = new Visit();
 		visit.setAd(ad3);
 		searchers = new LinkedList<>();
-		searchers.add(bernerBaer);
+		searchers.add(testerMuster);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("10:00 21.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("11:00 21.12.2014"));
