@@ -62,6 +62,14 @@ function typeOfAlert(alert) {
 			enabled : true,
 			autoFocus : true
 		});
+		
+		var price = document.getElementById('priceInput');
+		var radius = document.getElementById('radiusInput');
+		
+		if(price.value == null || price.value == "" || price.value == "0")
+			price.value = "500";
+		if(radius.value == null || radius.value == "" || radius.value == "0")
+			radius.value = "5";
 	});
 </script>
 
@@ -87,12 +95,12 @@ function typeOfAlert(alert) {
 		
 		<label for="radius">Within radius of (max.):</label>
 		<form:input id="radiusInput" type="number" path="radius"
-			placeholder="e.g. 5" step="5" value="5" />
+			placeholder="e.g. 5" step="5" />
 		km
 		<form:errors path="radius" cssClass="validationErrorText" />
 		<br /> <label for="price">Price (max.):</label>
 		<form:input id="priceInput" type="number" path="price"
-			placeholder="e.g. 5" step="50" value="500" />
+			placeholder="e.g. 5" step="50" />
 		CHF
 		<form:errors path="price" cssClass="validationErrorText" />
 		<br />

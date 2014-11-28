@@ -24,8 +24,10 @@
 		var price = document.getElementById('prizeInput');
 		var radius = document.getElementById('radiusInput');
 		
-		price.value = "500";
-		radius.value = "5";
+		if(price.value == null || price.value == "" || price.value == "0")
+			price.value = "500";
+		if(radius.value == null || radius.value == "" || radius.value == "0")
+			radius.value = "5";
 	});
 </script>
 

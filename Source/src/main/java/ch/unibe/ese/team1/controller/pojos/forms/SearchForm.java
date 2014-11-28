@@ -2,6 +2,7 @@ package ch.unibe.ese.team1.controller.pojos.forms;
 
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -17,12 +18,14 @@ public class SearchForm {
 	@NotBlank(message = "Required")
 	@Pattern(regexp = "^[0-9]{4} - [-\\w\\s\\u00C0-\\u00FF]*", message = "Please pick a city from the list")
 	private String city;
-
+	
+	@NotNull(message = "Requires a number")
 	@Min(value = 0, message = "Please enter a positive distance")
-	private int radius;
-
+	private Integer radius;
+	
+	@NotNull(message = "Requires a number")
 	@Min(value = 0, message = "In your dreams.")
-	private int prize;
+	private Integer prize;
 
 	@AssertFalse(message = "Please select either or both types")
 	private boolean noRoomNoStudio;
@@ -37,19 +40,19 @@ public class SearchForm {
 		this.city = city;
 	}
 
-	public int getRadius() {
+	public Integer getRadius() {
 		return radius;
 	}
 
-	public void setRadius(int radius) {
+	public void setRadius(Integer radius) {
 		this.radius = radius;
 	}
 
-	public int getPrize() {
+	public Integer getPrize() {
 		return prize;
 	}
 
-	public void setPrize(int prize) {
+	public void setPrize(Integer prize) {
 		this.prize = prize;
 	}
 
