@@ -39,7 +39,7 @@
 
 <header>
 	<div class="left">
-		<a href="/"><img src="/img/home-page-icon.png"></a>
+		<a href="/"><img src="/img/logo.png"></a>
 	</div>
 	<div class="right">
 		<nav>
