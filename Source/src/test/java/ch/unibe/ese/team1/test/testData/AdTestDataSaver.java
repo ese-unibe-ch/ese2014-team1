@@ -45,21 +45,29 @@ public class AdTestDataSaver implements TestDataSaver {
 				+ "problems with my flatmates.");
 		userDao.save(user);
 		
-		String date1str = "01.11.2014";
-		String date2str = "01.12.2014";
-		String date3str = "01.10.2013";
-		String date4str = "01.11.2012";
-		String date5str = "06.06.2010";
-		String date6str = "01.01.1999";
-		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 		
-		Date date1 = formatter.parse(date1str);
-		Date date2 = formatter.parse(date2str);
-		Date date3 = formatter.parse(date3str);
-		Date date4 = formatter.parse(date4str);
-		Date date5 = formatter.parse(date5str);
-		Date date6 = formatter.parse(date6str);
+		Date creationDate1 = formatter.parse("03.10.2014");
+		Date creationDate2 = formatter.parse("11.10.2014");
+		Date creationDate3 = formatter.parse("25.10.2014");
+		Date creationDate4 = formatter.parse("02.11.2014");
+		Date creationDate5 = formatter.parse("25.11.2014");
+		Date creationDate6 = formatter.parse("01.12.2014");
+		Date creationDate7 = formatter.parse("16.11.2014");
+		Date creationDate8 = formatter.parse("27.11.2014");
+		
+		Date moveInDate1 = formatter.parse("15.12.2014");
+		Date moveInDate2 = formatter.parse("21.12.2014");
+		Date moveInDate3 = formatter.parse("01.01.2015");
+		Date moveInDate4 = formatter.parse("15.01.2015");
+		Date moveInDate5 = formatter.parse("01.02.2015");
+		Date moveInDate6 = formatter.parse("01.03.2015");
+		
+		Date moveOutDate1 = formatter.parse("31.03.2015");
+		Date moveOutDate2 = formatter.parse("30.04.2015");
+		Date moveOutDate3 = formatter.parse("31.03.2016");
+		Date moveOutDate4 = formatter.parse("01.07.2015");
+		Date moveOutDate5 = formatter.parse("30.09.2016");
 		
 		String roomDescription1 = "The room is a part of 3.5 rooms apartment completely renovated"
 				+ "in 2010 at Kramgasse, Bern. The apartment is about 50 m2 on 1st floor."
@@ -75,8 +83,9 @@ public class AdTestDataSaver implements TestDataSaver {
 
 		Ad adBern = new Ad();
 		adBern.setZipcode(3011);
-		adBern.setMoveInDate(date1);
-		adBern.setCreationDate(date4);
+		adBern.setMoveInDate(moveInDate1);
+		adBern.setCreationDate(creationDate1);
+		adBern.setMoveOutDate(moveOutDate1);
 		adBern.setPrizePerMonth(400);
 		adBern.setSquareFootage(50);
 		adBern.setStudio(false);
@@ -119,8 +128,8 @@ public class AdTestDataSaver implements TestDataSaver {
 		
 		Ad adBern2 = new Ad();
 		adBern2.setZipcode(3012);
-		adBern2.setMoveInDate(date2);
-		adBern2.setCreationDate(date5);
+		adBern2.setMoveInDate(moveInDate2);
+		adBern2.setCreationDate(creationDate2);
 		adBern2.setPrizePerMonth(700);
 		adBern2.setSquareFootage(60);
 		adBern2.setStudio(true);
@@ -161,8 +170,9 @@ public class AdTestDataSaver implements TestDataSaver {
 		
 		Ad adBasel = new Ad();
 		adBasel.setZipcode(4051);
-		adBasel.setMoveInDate(date3);
-		adBasel.setCreationDate(date6);
+		adBasel.setMoveInDate(moveInDate3);
+		adBasel.setMoveOutDate(moveOutDate2);
+		adBasel.setCreationDate(creationDate3);
 		adBasel.setPrizePerMonth(480);
 		adBasel.setSquareFootage(10);
 		adBasel.setStudio(true);
@@ -200,8 +210,8 @@ public class AdTestDataSaver implements TestDataSaver {
 		
 		Ad adOlten = new Ad();
 		adOlten.setZipcode(4600);
-		adOlten.setMoveInDate(date4);
-		adOlten.setCreationDate(date3);
+		adOlten.setMoveInDate(moveInDate4);
+		adOlten.setCreationDate(creationDate4);
 		adOlten.setPrizePerMonth(430);
 		adOlten.setSquareFootage(60);
 		adOlten.setStudio(false);
@@ -237,8 +247,9 @@ public class AdTestDataSaver implements TestDataSaver {
 		
 		Ad adNeuchâtel = new Ad();
 		adNeuchâtel.setZipcode(2000);
-		adNeuchâtel.setMoveInDate(date5);
-		adNeuchâtel.setCreationDate(date1);
+		adNeuchâtel.setMoveInDate(moveInDate5);
+		adNeuchâtel.setMoveOutDate(moveOutDate3);
+		adNeuchâtel.setCreationDate(creationDate5);
 		adNeuchâtel.setPrizePerMonth(410);
 		adNeuchâtel.setSquareFootage(40);
 		adNeuchâtel.setStudio(true);
@@ -272,8 +283,9 @@ public class AdTestDataSaver implements TestDataSaver {
 		
 		Ad adBiel = new Ad();
 		adBiel.setZipcode(2503);
-		adBiel.setMoveInDate(date6);
-		adBiel.setCreationDate(date2);
+		adBiel.setMoveInDate(moveInDate6);
+		adBiel.setMoveOutDate(moveOutDate5);
+		adBiel.setCreationDate(creationDate6);
 		adBiel.setPrizePerMonth(480);
 		adBiel.setSquareFootage(10);
 		adBiel.setStudio(true);
@@ -299,6 +311,8 @@ public class AdTestDataSaver implements TestDataSaver {
 		pictures.add(createPicture(adBiel, "/img/test/ad6_3.png"));
 		adBiel.setPictures(pictures);
 		adDao.save(adBiel);
+	
+
 	}
 
 	private AdPicture createPicture(Ad ad, String filePath) {
@@ -307,14 +321,5 @@ public class AdTestDataSaver implements TestDataSaver {
 		picture.setFilePath(filePath);
 		return picture;
 	}
-
-//	private String getDummyText() {
-//		return "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
-//				+ "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "
-//				+ "voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "
-//				+ "clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
-//				+ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod "
-//				+ "tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ";
-//	}
 
 }
