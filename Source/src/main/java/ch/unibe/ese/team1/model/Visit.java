@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -24,7 +25,7 @@ public class Visit {
 	@ManyToOne
 	private Ad ad;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<User> searchers;
 	
 	@JsonFormat(pattern = "HH:mm, dd.MM.yyyy")

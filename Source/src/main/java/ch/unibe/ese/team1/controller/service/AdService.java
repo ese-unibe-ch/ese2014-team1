@@ -435,4 +435,8 @@ public class AdService {
 		}
 		return ads;
 	}
+
+	public Iterable<Ad> getAdsByUser(User user) {
+		return adDao.findByUser(user);
+	}
 }
