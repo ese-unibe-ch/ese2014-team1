@@ -54,7 +54,7 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 		VisitEnquiry enquiry = new VisitEnquiry();
 		enquiry.setDateSent(dateFormat.parse("14:00 20.12.2014"));
 		enquiry.setSender(testerMuster);
-		enquiry.setState(VisitEnquiryState.OPEN);
+		enquiry.setState(VisitEnquiryState.ACCEPTED);
 		enquiry.setVisit(visit1);
 		visitEnquiryDao.save(enquiry);
 

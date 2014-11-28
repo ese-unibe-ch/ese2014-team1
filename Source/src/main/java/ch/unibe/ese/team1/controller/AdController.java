@@ -61,7 +61,7 @@ public class AdController {
 	@Autowired
 	private MessageService messageService;
 	
-	// TODO is that possilbe without a service? Or should I create a new service?
+	// TODO is that possible without a service? Or should I create a new service?
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -274,6 +274,7 @@ public class AdController {
 			return 1;
 		}
 		
+		//TODO: this stuff is not used. Can we delete it?
 		Ad ad = adService.getAdById(id);
 		
 		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();

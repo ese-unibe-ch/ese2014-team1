@@ -64,9 +64,17 @@ public class IndexController {
 	public ModelAndView visitors(@RequestParam("visit") long id) {
 		ModelAndView model = new ModelAndView("visitors");
 		Visit visit = visitService.getVisitById(id);
+		Iterable<User> visitors = visit.getSearchers();
+		
+		//due to some strange bug every visitor appeared 3 times. So we hack it.
+		ArrayList<User> distinctVisitors = new ArrayList<User>();
+		for(User visitor: visitors) {
+			if(!distinctVisitors.contains(visitor))
+				distinctVisitors.add(visitor);
+		}
+		model.addObject("visitors", distinctVisitors);
+		
 		Ad ad = visit.getAd();
-		Iterable<User> visitors = visit.getSearchers(); //visitService.getVisitorsForVisit(id);
-		model.addObject("visitors", visitors);
 		model.addObject("ad", ad);
 		return model;
 	}	

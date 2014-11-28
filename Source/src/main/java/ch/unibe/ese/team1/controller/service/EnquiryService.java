@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.Visit;
 import ch.unibe.ese.team1.model.VisitEnquiry;
 import ch.unibe.ese.team1.model.VisitEnquiryState;
+import ch.unibe.ese.team1.model.dao.VisitDao;
 import ch.unibe.ese.team1.model.dao.VisitEnquiryDao;
 
 /** Provides access to enquiries saved in the database. */
@@ -19,6 +21,9 @@ public class EnquiryService {
 
 	@Autowired
 	private VisitEnquiryDao enquiryDao;
+	
+	@Autowired
+	private VisitDao visitDao;
 
 	/**
 	 * Returns all enquiries that were sent to the given user.
@@ -49,6 +54,11 @@ public class EnquiryService {
 		VisitEnquiry enquiry = enquiryDao.findOne(enquiryId);
 		enquiry.setState(VisitEnquiryState.ACCEPTED);
 		enquiryDao.save(enquiry);
+		
+		//add the user to the visitor list
+		Visit visit = enquiry.getVisit();
+		visit.addToSearchers(enquiry.getSender());
+		visitDao.save(visit);
 	}
 	
 	/** Declines the enquiry with the given id. */

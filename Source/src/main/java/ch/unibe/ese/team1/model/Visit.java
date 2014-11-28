@@ -60,6 +60,7 @@ public class Visit {
 		this.searchers = searchers;
 	}
 	
+	//used when an enquiry gets accepted
 	public void addToSearchers(User user) {
 		searchers.add(user);
 	}

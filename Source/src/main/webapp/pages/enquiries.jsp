@@ -54,7 +54,8 @@
 
 			<tr>
 				<td><a href="/profile/user?id=${enquiry.sender.id}">${enquiry.sender.email}</a></td>
-				<td><a href="/ad?id=${enquiry.visit.ad.id }">${enquiry.visit.ad.title }</a></td>
+				<td><a href="/ad?id=${enquiry.visit.ad.id }">${enquiry.visit.ad.street }, 
+					${enquiry.visit.ad.zipcode } ${enquiry.visit.ad.city }</a></td>
 				<td>${singleFormattedDateSent}</td>
 				<td><c:choose>
 						<c:when test="${enquiry.state == 'ACCEPTED'}">
