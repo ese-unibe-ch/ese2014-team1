@@ -31,21 +31,21 @@ public class AdTestDataSaver implements TestDataSaver {
 	@Override
 	@Transactional
 	public void saveTestData() throws Exception {
-		User user = userSeeder.createUser("user@bern.com", "password",
+		User bernerBaer = userSeeder.createUser("user@bern.com", "password",
 				"Berner", "Bär", Gender.MALE);
 		UserPicture picture = new UserPicture();
 		picture.setFilePath("/img/test/berner_baer.png");
-		picture.setUser(user);
-		user.setPicture(picture);
-		user.setAboutMe("I am a PhD student and I am Italian. I am 26,"
+		picture.setUser(bernerBaer);
+		bernerBaer.setPicture(picture);
+		bernerBaer.setAboutMe("I am a PhD student and I am Italian. I am 26,"
 				+ "I like winter-sports, hiking, traveling and cooking."
 				+ "I enjoy spending time with friends, watching movies, "
 				+ "going for drinks and organizing dinners. I have lived in Milan,"
 				+ "London and Zurich, always in flatshares and i have never had"
 				+ "problems with my flatmates.");
-		userDao.save(user);
+		userDao.save(bernerBaer);
 		
-		User user2 = userDao.findByUsername("ese@unibe.ch");
+		User ese = userDao.findByUsername("ese@unibe.ch");
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 		
@@ -97,7 +97,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBern.setRoomDescription(roomDescription1);
 		adBern.setPreferences(preferences1);
 		adBern.setRoommates("One roommate");
-		adBern.setUser(user);
+		adBern.setUser(bernerBaer);
 		adBern.setTitle("Roommate wanted in Bern");
 		adBern.setStreet("Kramgasse 22");
 		adBern.setCity("Bern");
@@ -141,7 +141,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBern2.setRoomDescription(studioDescription2);
 		adBern2.setPreferences(roomPreferences2);
 		adBern2.setRoommates("None");
-		adBern2.setUser(user2);
+		adBern2.setUser(ese);
 		adBern2.setTitle("Cheap studio in Bern!");
 		adBern2.setStreet("Längassstr. 40");
 		adBern2.setCity("Bern");
@@ -184,7 +184,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBasel.setRoomDescription(studioDescription3);
 		adBasel.setPreferences(roomPreferences3);
 		adBasel.setRoommates("None");
-		adBasel.setUser(user);
+		adBasel.setUser(bernerBaer);
 		adBasel.setTitle("Nice, bright studio in the center of Basel");
 		adBasel.setStreet("Bruderholzstrasse 32");
 		adBasel.setCity("Basel");
@@ -223,7 +223,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adOlten.setRoomDescription(studioDescription4);
 		adOlten.setPreferences(roomPreferences4);
 		adOlten.setRoommates("One roommate");
-		adOlten.setUser(user2);
+		adOlten.setUser(ese);
 		adOlten.setTitle("Roommate wanted in Olten City");
 		adOlten.setStreet("Zehnderweg 5");
 		adOlten.setCity("Olten");
@@ -261,7 +261,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adNeuchâtel.setRoomDescription(studioDescription5);
 		adNeuchâtel.setPreferences(roomPreferences5);
 		adNeuchâtel.setRoommates("None");
-		adNeuchâtel.setUser(user);
+		adNeuchâtel.setUser(bernerBaer);
 		adNeuchâtel.setTitle("Studio extrèmement bon marché à Neuchâtel");
 		adNeuchâtel.setStreet("Rue de l'Hôpital 11");
 		adNeuchâtel.setCity("Neuchâtel");
@@ -297,7 +297,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBiel.setRoomDescription(studioDescription6);
 		adBiel.setPreferences(roomPreferences6);
 		adBiel.setRoommates("None");
-		adBiel.setUser(user2);
+		adBiel.setUser(ese);
 		adBiel.setTitle("Direkt am Quai: hübsches Studio");
 		adBiel.setStreet("Oberer Quai 12");
 		adBiel.setCity("Biel/Bienne");
@@ -340,7 +340,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adZurich.setRoomDescription(roomDescription7);
 		adZurich.setPreferences(preferences7);
 		adZurich.setRoommates("One roommate");
-		adZurich.setUser(user);
+		adZurich.setUser(bernerBaer);
 		adZurich.setTitle("Roommate wanted in Zürich");
 		adZurich.setStreet("Hauptstrasse 61");
 		adZurich.setCity("Zürich");
@@ -385,7 +385,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adLuzern.setRoomDescription(studioDescription8);
 		adLuzern.setPreferences(roomPreferences8);
 		adLuzern.setRoommates("None");
-		adLuzern.setUser(user2);
+		adLuzern.setUser(ese);
 		adLuzern.setTitle("Elegant Studio in Lucerne");
 		adLuzern.setStreet("Schwanenplatz 61");
 		adLuzern.setCity("Luzern");
@@ -428,7 +428,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adAarau.setRoomDescription(studioDescription9);
 		adAarau.setPreferences(roomPreferences9);
 		adAarau.setRoommates("None");
-		adAarau.setUser(user);
+		adAarau.setUser(bernerBaer);
 		adAarau.setTitle("Beautiful studio in Aarau");
 		adAarau.setStreet("Bruderholzstrasse 32");
 		adAarau.setCity("Aarau");
@@ -470,7 +470,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adDavos.setRoomDescription(studioDescription10);
 		adDavos.setPreferences(roomPreferences10);
 		adDavos.setRoommates("One roommate");
-		adDavos.setUser(user2);
+		adDavos.setUser(ese);
 		adDavos.setTitle("Free room in Davos City");
 		adDavos.setStreet("Kathrinerweg 5");
 		adDavos.setCity("Davos");
@@ -508,7 +508,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adLausanne.setRoomDescription(studioDescription11);
 		adLausanne.setPreferences(roomPreferences11);
 		adLausanne.setRoommates("None");
-		adLausanne.setUser(user);
+		adLausanne.setUser(bernerBaer);
 		adLausanne.setTitle("Studio extrèmement bon marché à Lausanne");
 		adLausanne.setStreet("Rue de l'Eglise 26");
 		adLausanne.setCity("Lausanne");
@@ -544,7 +544,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adLocarno.setRoomDescription(studioDescription12);
 		adLocarno.setPreferences(roomPreferences12);
 		adLocarno.setRoommates("None");
-		adLocarno.setUser(user2);
+		adLocarno.setUser(ese);
 		adLocarno.setTitle("Malibu-style Beachhouse");
 		adLocarno.setStreet("Kirchweg 12");
 		adLocarno.setCity("Locarno");

@@ -32,16 +32,16 @@ public class UserTestDataSaver implements TestDataSaver {
 		userDao.save(system);
 
 		// first user
-		User john = createUser("jane@doe.com", "password", "Jane", "Doe",
+		User janeDoe = createUser("jane@doe.com", "password", "Jane", "Doe",
 				Gender.FEMALE);
-		john.setAboutMe(getDummyText());
-		userDao.save(john);
+		janeDoe.setAboutMe(getDummyText());
+		userDao.save(janeDoe);
 
 		// second user
-		User tester = createUser("ese@unibe.ch", "ese", "Tester", "Muster",
+		User ese = createUser("ese@unibe.ch", "ese", "Tester", "Muster",
 				"/img/test/portrait.jpg", Gender.MALE);
-		tester.setAboutMe(getDummyText());
-		userDao.save(tester);
+		ese.setAboutMe(getDummyText());
+		userDao.save(ese);
 	}
 
 	public User createUser(String email, String password, String firstName,

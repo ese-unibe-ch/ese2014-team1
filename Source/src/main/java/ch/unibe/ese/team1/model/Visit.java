@@ -59,6 +59,10 @@ public class Visit {
 	public void setSearchers(List<User> searchers) {
 		this.searchers = searchers;
 	}
+	
+	public void addToSearchers(User user) {
+		searchers.add(user);
+	}
 
 	public Date getStartTimestamp() {
 		return startTimestamp;

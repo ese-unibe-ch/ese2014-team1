@@ -26,8 +26,8 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 	@Autowired
 	private VisitDao visitDao;
 
-	private User bernerBaer;
-	private User testerMuster;
+	private User bernerBaer; // = user@bern.com
+	private User testerMuster; // = ese
 
 	private Visit visit1;
 	private Visit visit2;
@@ -40,15 +40,15 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");
 
 		// load users
-		bernerBaer = userDao.findOne(4L);
-		testerMuster = userDao.findOne(3L);
+		bernerBaer = userDao.findByUsername("user@bern.com");
+		testerMuster = userDao.findByUsername("ese@unibe.ch");
 
 		// load visits
-		visit1 = visitDao.findOne(4L);
-		visit2 = visitDao.findOne(5L);
-		visit3 = visitDao.findOne(6L);
-		visit4 = visitDao.findOne(1L);
-		visit5 = visitDao.findOne(2L);
+		visit1 = visitDao.findOne(1L);
+		visit2 = visitDao.findOne(2L);
+		visit3 = visitDao.findOne(3L);
+		visit4 = visitDao.findOne(4L);
+		visit5 = visitDao.findOne(5L);
 
 		// first enquiry
 		VisitEnquiry enquiry = new VisitEnquiry();
@@ -63,13 +63,13 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 		enquiry.setDateSent(dateFormat.parse("15:00 21.12.2014"));
 		enquiry.setSender(testerMuster);
 		enquiry.setState(VisitEnquiryState.ACCEPTED);
-		enquiry.setVisit(visit2);
+		enquiry.setVisit(visit4);
 		visitEnquiryDao.save(enquiry);
 
 		// third enquiry
 		enquiry = new VisitEnquiry();
 		enquiry.setDateSent(dateFormat.parse("16:24 21.12.2014"));
-		enquiry.setSender(testerMuster);
+		enquiry.setSender(bernerBaer);
 		enquiry.setState(VisitEnquiryState.DECLINED);
 		enquiry.setVisit(visit2);
 		visitEnquiryDao.save(enquiry);
@@ -86,17 +86,10 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 		enquiry = new VisitEnquiry();
 		enquiry.setDateSent(dateFormat.parse("07:50 14.12.2014"));
 		enquiry.setSender(testerMuster);
-		enquiry.setState(VisitEnquiryState.OPEN);
+		enquiry.setState(VisitEnquiryState.ACCEPTED);
 		enquiry.setVisit(visit5);
 		visitEnquiryDao.save(enquiry);
 		
-		// sixth enquiry
-		enquiry = new VisitEnquiry();
-		enquiry.setDateSent(dateFormat.parse("10:00 19.12.2014"));
-		enquiry.setSender(bernerBaer);
-		enquiry.setState(VisitEnquiryState.OPEN);
-		enquiry.setVisit(visit4);
-		visitEnquiryDao.save(enquiry);
 	}
 
 }
