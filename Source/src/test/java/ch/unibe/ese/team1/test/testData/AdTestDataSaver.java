@@ -45,6 +45,8 @@ public class AdTestDataSaver implements TestDataSaver {
 				+ "problems with my flatmates.");
 		userDao.save(user);
 		
+		User user2 = userDao.findByUsername("ese@unibe.ch");
+		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 		
 		Date creationDate1 = formatter.parse("03.10.2014");
@@ -62,6 +64,8 @@ public class AdTestDataSaver implements TestDataSaver {
 		Date moveInDate4 = formatter.parse("15.01.2015");
 		Date moveInDate5 = formatter.parse("01.02.2015");
 		Date moveInDate6 = formatter.parse("01.03.2015");
+		Date moveInDate7 = formatter.parse("15.03.2015");
+		Date moveInDate8 = formatter.parse("16.02.2015");
 		
 		Date moveOutDate1 = formatter.parse("31.03.2015");
 		Date moveOutDate2 = formatter.parse("30.04.2015");
@@ -79,7 +83,6 @@ public class AdTestDataSaver implements TestDataSaver {
 				+ "non-smoker, can speak English, which of course fits in the WG, and who likes dogs."
 				+ "Cleanliness is must. Apart from personal life, sometimes glass of wine,"
 				+ "eat and cook together and go out in the evenings.";
-		
 
 		Ad adBern = new Ad();
 		adBern.setZipcode(3011);
@@ -138,7 +141,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBern2.setRoomDescription(studioDescription2);
 		adBern2.setPreferences(roomPreferences2);
 		adBern2.setRoommates("None");
-		adBern2.setUser(user);
+		adBern2.setUser(user2);
 		adBern2.setTitle("Cheap studio in Bern!");
 		adBern2.setStreet("Längassstr. 40");
 		adBern2.setCity("Bern");
@@ -220,7 +223,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adOlten.setRoomDescription(studioDescription4);
 		adOlten.setPreferences(roomPreferences4);
 		adOlten.setRoommates("One roommate");
-		adOlten.setUser(user);
+		adOlten.setUser(user2);
 		adOlten.setTitle("Roommate wanted in Olten City");
 		adOlten.setStreet("Zehnderweg 5");
 		adOlten.setCity("Olten");
@@ -294,7 +297,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBiel.setRoomDescription(studioDescription6);
 		adBiel.setPreferences(roomPreferences6);
 		adBiel.setRoommates("None");
-		adBiel.setUser(user);
+		adBiel.setUser(user2);
 		adBiel.setTitle("Direkt am Quai: hübsches Studio");
 		adBiel.setStreet("Oberer Quai 12");
 		adBiel.setCity("Biel/Bienne");
@@ -311,7 +314,253 @@ public class AdTestDataSaver implements TestDataSaver {
 		pictures.add(createPicture(adBiel, "/img/test/ad6_3.png"));
 		adBiel.setPictures(pictures);
 		adDao.save(adBiel);
+		
+		
+		String roomDescription7 = "The room is a part of 3.5 rooms apartment completely renovated"
+				+ "in 2010 at Kramgasse, Bern. The apartment is about 50 m2 on 1st floor."
+				+ "Apt is equipped modern kitchen, hall and balcony. Near to shops and public"
+				+ "transportation. Monthly rent is 500 CHF including charges. Internet + TV + landline"
+				+ "charges are separate. If you are interested, feel free to drop me a message"
+				+ "to have an appointment for a visit or can write me for any further information";
+		String preferences7 = "Uncomplicated, open minded and easy going person (m / w),"
+				+ "non-smoker, can speak English, which of course fits in the WG, and who likes dogs."
+				+ "Cleanliness is must. Apart from personal life, sometimes glass of wine,"
+				+ "eat and cook together and go out in the evenings.";
+
+		Ad adZurich = new Ad();
+		adZurich.setZipcode(8000);
+		adZurich.setMoveInDate(moveInDate7);
+		adZurich.setCreationDate(creationDate7);
+		adZurich.setMoveOutDate(moveOutDate5);
+		adZurich.setPrizePerMonth(480);
+		adZurich.setSquareFootage(32);
+		adZurich.setStudio(false);
+		adZurich.setSmokers(false);
+		adZurich.setAnimals(false);
+		adZurich.setRoomDescription(roomDescription7);
+		adZurich.setPreferences(preferences7);
+		adZurich.setRoommates("One roommate");
+		adZurich.setUser(user);
+		adZurich.setTitle("Roommate wanted in Zürich");
+		adZurich.setStreet("Hauptstrasse 61");
+		adZurich.setCity("Zürich");
+		adZurich.setGarden(false);
+		adZurich.setBalcony(true);
+		adZurich.setCellar(false);
+		adZurich.setFurnished(true);
+		adZurich.setCable(true);
+		adZurich.setGarage(true);
+		adZurich.setInternet(true);
+		pictures = new ArrayList<>();
+		pictures.add(createPicture(adZurich, "/img/test/ad1_3.jpg"));
+		pictures.add(createPicture(adZurich, "/img/test/ad1_2.jpg"));
+		pictures.add(createPicture(adZurich, "/img/test/ad1_1.jpg"));
+		adZurich.setPictures(pictures);
+		adDao.save(adZurich);
 	
+		
+		String studioDescription8 = "It is small studio close to the"
+				+ "university and the bahnhof. The lovely neighbourhood"
+				+ "Langgasse makes it an easy place to feel comfortable."
+				+ "The studio is close to a Migross, Denner and the Coop."
+				+ "The studio is 60m2. It has it own Badroom and kitchen."
+				+ "Nothing is shared. The studio is fully furnished. The"
+				+ "studio is also provided with a balcony. So if you want to"
+				+ "have a privat space this could totally be good place for you."
+				+ "Be aware it is only till the end of March. The price is from"
+				+ "550- 700 CHF, But there is always room to talk about it.";
+		String roomPreferences8 = "I would like to have an easy going person who"
+				+ "is trustworthy and can take care of the flat. No animals please."
+				+ "Non smoker preferred.";
+		
+		Ad adLuzern = new Ad();
+		adLuzern.setZipcode(3012);
+		adLuzern.setMoveInDate(moveInDate8);
+		adLuzern.setCreationDate(creationDate2);
+		adLuzern.setPrizePerMonth(700);
+		adLuzern.setSquareFootage(60);
+		adLuzern.setStudio(true);
+		adLuzern.setSmokers(false);
+		adLuzern.setAnimals(false);
+		adLuzern.setRoomDescription(studioDescription8);
+		adLuzern.setPreferences(roomPreferences8);
+		adLuzern.setRoommates("None");
+		adLuzern.setUser(user2);
+		adLuzern.setTitle("Elegant Studio in Lucerne");
+		adLuzern.setStreet("Schwanenplatz 61");
+		adLuzern.setCity("Luzern");
+		adLuzern.setGarden(false);
+		adLuzern.setBalcony(false);
+		adLuzern.setCellar(false);
+		adLuzern.setFurnished(false);
+		adLuzern.setCable(false);
+		adLuzern.setGarage(false);
+		adLuzern.setInternet(true);
+		pictures = new ArrayList<>();
+		pictures.add(createPicture(adLuzern, "/img/test/ad2_3.jpg"));
+		pictures.add(createPicture(adLuzern, "/img/test/ad2_2.jpg"));
+		pictures.add(createPicture(adLuzern, "/img/test/ad2_1.jpg"));
+		adLuzern.setPictures(pictures);
+		adDao.save(adLuzern);
+
+		String studioDescription9 = " In the center of Gundeli (5 Min. away from the"
+				+ "station, close to Tellplatz) there is a lovely house, covered with"
+				+ "savage wine stocks, without any neighbours but with a garden. The"
+				+ "house has two storey, on the first floor your new room is waiting"
+				+ "for you. The house is totally equipped with everything a household "
+				+ ": washing machine, kitchen, batroom, W-Lan...if you don´t have any"
+				+ "furniture, don´t worry, I am sure, we will find something around"
+				+ "the house. The price for the room and all included is 480 CHF /month. "
+				+ " (29, Graphic designer) and Linda (31, curator) are looking for a"
+				+ "new female flatmate from December on.";
+		String roomPreferences9 = "smoking female flatmate";
+		
+		Ad adAarau = new Ad();
+		adAarau.setZipcode(5000);
+		adAarau.setMoveInDate(moveInDate3);
+		adAarau.setMoveOutDate(moveOutDate4);
+		adAarau.setCreationDate(creationDate8);
+		adAarau.setPrizePerMonth(800);
+		adAarau.setSquareFootage(26);
+		adAarau.setStudio(true);
+		adAarau.setSmokers(true);
+		adAarau.setAnimals(false);
+		adAarau.setRoomDescription(studioDescription9);
+		adAarau.setPreferences(roomPreferences9);
+		adAarau.setRoommates("None");
+		adAarau.setUser(user);
+		adAarau.setTitle("Beautiful studio in Aarau");
+		adAarau.setStreet("Bruderholzstrasse 32");
+		adAarau.setCity("Aarau");
+		adAarau.setGarden(false);
+		adAarau.setBalcony(true);
+		adAarau.setCellar(false);
+		adAarau.setFurnished(true);
+		adAarau.setCable(false);
+		adAarau.setGarage(false);
+		adAarau.setInternet(false);
+		pictures = new ArrayList<>();
+		pictures.add(createPicture(adAarau, "/img/test/ad3_3.jpg"));
+		pictures.add(createPicture(adAarau, "/img/test/ad3_2.jpg"));
+		pictures.add(createPicture(adAarau, "/img/test/ad3_1.jpg"));
+		pictures.add(createPicture(adAarau, "/img/test/ad2_2.jpg"));
+		pictures.add(createPicture(adAarau, "/img/test/ad2_3.jpg"));
+		
+		adAarau.setPictures(pictures);
+		adDao.save(adAarau);
+		
+		String studioDescription10 = "Flatshare of 3 persons. Flat with 5 rooms"
+				+ "on the second floor. The bedroom is about 60 square meters"
+				+ "with access to a nice balcony. In addition to the room, the"
+				+ "flat has: a living room, a kitchen, a bathroom, a seperate WC,"
+				+ "a storage in the basement, a balcony, a laundry room in the basement."
+				+ "The bedroom is big and bright and has a nice parquet floor."
+				+ "Possibility to keep some furnitures like the bed.";
+		String roomPreferences10 = "an easy going flatmate man or woman between 20 and 30";
+		
+		Ad adDavos = new Ad();
+		adDavos.setZipcode(7260);
+		adDavos.setMoveInDate(moveInDate2);
+		adDavos.setCreationDate(creationDate4);
+		adDavos.setPrizePerMonth(1100);
+		adDavos.setSquareFootage(74);
+		adDavos.setStudio(false);
+		adDavos.setSmokers(true);
+		adDavos.setAnimals(false);
+		adDavos.setRoomDescription(studioDescription10);
+		adDavos.setPreferences(roomPreferences10);
+		adDavos.setRoommates("One roommate");
+		adDavos.setUser(user2);
+		adDavos.setTitle("Free room in Davos City");
+		adDavos.setStreet("Kathrinerweg 5");
+		adDavos.setCity("Davos");
+		adDavos.setGarden(false);
+		adDavos.setBalcony(true);
+		adDavos.setCellar(true);
+		adDavos.setFurnished(true);
+		adDavos.setCable(true);
+		adDavos.setGarage(false);
+		adDavos.setInternet(false);
+		pictures = new ArrayList<>();
+		pictures.add(createPicture(adDavos, "/img/test/ad4_3.png"));
+		pictures.add(createPicture(adDavos, "/img/test/ad4_2.png"));
+		pictures.add(createPicture(adDavos, "/img/test/ad4_1.png"));
+		adDavos.setPictures(pictures);
+		adDao.save(adDavos);
+
+		String studioDescription11 = "Studio meublé au 3ème étage, comprenant"
+				+ "une kitchenette entièrement équipée (frigo, plaques,"
+				+ "four et hotte), une pièce à vivre donnant sur un balcon,"
+				+ "une salle de bains avec wc. Cave, buanderie et site satellite"
+				+ "à disposition.";
+		String roomPreferences11 = "tout le monde est bienvenu";
+		
+		Ad adLausanne = new Ad();
+		adLausanne.setZipcode(1000);
+		adLausanne.setMoveInDate(moveInDate5);
+		adLausanne.setMoveOutDate(moveOutDate3);
+		adLausanne.setCreationDate(creationDate5);
+		adLausanne.setPrizePerMonth(360);
+		adLausanne.setSquareFootage(8);
+		adLausanne.setStudio(false);
+		adLausanne.setSmokers(true);
+		adLausanne.setAnimals(false);
+		adLausanne.setRoomDescription(studioDescription11);
+		adLausanne.setPreferences(roomPreferences11);
+		adLausanne.setRoommates("None");
+		adLausanne.setUser(user);
+		adLausanne.setTitle("Studio extrèmement bon marché à Lausanne");
+		adLausanne.setStreet("Rue de l'Eglise 26");
+		adLausanne.setCity("Lausanne");
+		adLausanne.setGarden(true);
+		adLausanne.setBalcony(false);
+		adLausanne.setCellar(true);
+		adLausanne.setFurnished(true);
+		adLausanne.setCable(false);
+		adLausanne.setGarage(false);
+		adLausanne.setInternet(false);
+		pictures = new ArrayList<>();
+		pictures.add(createPicture(adLausanne, "/img/test/ad5_3.jpg"));
+		pictures.add(createPicture(adLausanne, "/img/test/ad5_2.jpg"));
+		pictures.add(createPicture(adLausanne, "/img/test/ad5_1.jpg"));
+		adLausanne.setPictures(pictures);
+		adDao.save(adLausanne);
+
+		String studioDescription12 = "A place just for yourself in a very nice part of Biel."
+				+ "A studio for 1-2 persons with a big balcony, bathroom, kitchen and furniture already there."
+				+ "It's quiet and nice, very close to the old city of Biel.";
+		String roomPreferences12 = "A nice and easy going person. Minimum rent is two months";
+		
+		Ad adLocarno = new Ad();
+		adLocarno.setZipcode(6600);
+		adLocarno.setMoveInDate(moveInDate6);
+		adLocarno.setMoveOutDate(moveOutDate5);
+		adLocarno.setCreationDate(creationDate6);
+		adLocarno.setPrizePerMonth(960);
+		adLocarno.setSquareFootage(42);
+		adLocarno.setStudio(false);
+		adLocarno.setSmokers(true);
+		adLocarno.setAnimals(false);
+		adLocarno.setRoomDescription(studioDescription12);
+		adLocarno.setPreferences(roomPreferences12);
+		adLocarno.setRoommates("None");
+		adLocarno.setUser(user2);
+		adLocarno.setTitle("Malibu-style Beachhouse");
+		adLocarno.setStreet("Kirchweg 12");
+		adLocarno.setCity("Locarno");
+		adLocarno.setGarden(false);
+		adLocarno.setBalcony(false);
+		adLocarno.setCellar(false);
+		adLocarno.setFurnished(false);
+		adLocarno.setCable(false);
+		adLocarno.setGarage(false);
+		adLocarno.setInternet(false);
+		pictures = new ArrayList<>();
+		pictures.add(createPicture(adLocarno, "/img/test/ad6_3.png"));
+		pictures.add(createPicture(adLocarno, "/img/test/ad6_2.png"));
+		pictures.add(createPicture(adLocarno, "/img/test/ad6_1.png"));
+		adLocarno.setPictures(pictures);
+		adDao.save(adLocarno);
 
 	}
 

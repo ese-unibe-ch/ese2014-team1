@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <c:import url="template/header.jsp" />
 <pre><a href="/">Home</a>   >   <a href="/searchAd/">Search</a>   >   Results</pre>
@@ -159,7 +161,11 @@ function sort_div_attribute() {
 					<div class="resultRight">
 						<h2>CHF ${ad.prizePerMonth }</h2>
 						<br /> <br />
-						<p>Move-in date: ${ad.moveInDate }</p>
+
+						<fmt:formatDate value="${ad.moveInDate}" var="formattedMoveInDate"
+							type="date" pattern="dd.MM.yyyy" />
+
+						<p>Move-in date: ${formattedMoveInDate }</p>
 					</div>
 				</div>
 			</c:forEach>
