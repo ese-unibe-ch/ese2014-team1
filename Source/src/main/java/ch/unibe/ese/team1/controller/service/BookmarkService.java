@@ -13,8 +13,6 @@ import ch.unibe.ese.team1.model.dao.UserDao;
 public class BookmarkService {
 	
 	@Autowired
-	User user;
-	@Autowired
 	UserDao userDao;
 	
 	/**
@@ -34,15 +32,16 @@ public class BookmarkService {
 	 * 
 	 */
 	public int getBookmarkStatus(Long id, boolean bookmarked, ArrayList<Long> bookmarkedAds, User user) {
+		int counter = 0;
 		int index = 0;
 		if(bookmarked) {
-			index = 0;
 			for(long listedID : bookmarkedAds) {
 				if(listedID == id) {
-					bookmarkedAds.remove(index);
-					index++;
+					index = counter;
+					counter++;
 				}
 			}
+			bookmarkedAds.remove(index);
 			updateUser(bookmarkedAds, user);
 			return 2;
 		}
