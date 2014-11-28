@@ -44,7 +44,6 @@ public class AlertController {
 	@RequestMapping(value="/profile/alerts/deleteAlert" , method = RequestMethod.GET)
 	public @ResponseBody void deleteAlert(@RequestParam("id") long id){
 		alertService.deleteAlert(id);
-		System.out.println("Deleted alert nr. " + id);
 	}
 	
 	private ModelAndView prepareAlertPage(Principal principal, boolean alreadySet, AlertForm alertForm) {

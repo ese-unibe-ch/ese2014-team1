@@ -8,6 +8,8 @@
 
 <h2>Visitors for your property:</h2>
 
+<p>Information about the property: <u><a href="/ad?id=${ad.id }">${ad.street }, ${ad.zipcode } ${ad.city }</a></u></p>
+
 <div id="visitorsDiv">			
 <c:choose>
 	<c:when test="${empty visitors}">

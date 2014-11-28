@@ -36,7 +36,7 @@
 		</table>
 	</c:otherwise>
 </c:choose>
-</div>
+</div><br />
 
 <h2>Your visits</h2>
 

@@ -63,8 +63,11 @@ public class IndexController {
 	@RequestMapping(value= "/profile/visitors", method = RequestMethod.GET)
 	public ModelAndView visitors(@RequestParam("visit") long id) {
 		ModelAndView model = new ModelAndView("visitors");
-		Iterable<User> visitors = visitService.getVisitorsForVisit(id);
+		Visit visit = visitService.getVisitById(id);
+		Ad ad = visit.getAd();
+		Iterable<User> visitors = visit.getSearchers(); //visitService.getVisitorsForVisit(id);
 		model.addObject("visitors", visitors);
+		model.addObject("ad", ad);
 		return model;
 	}	
 }

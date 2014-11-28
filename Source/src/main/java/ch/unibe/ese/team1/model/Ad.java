@@ -245,17 +245,6 @@ public class Ad{
 		this.squareFootage = squareFootage;
 	}
 
-	// public String getType() {
-	// return type;
-	// }
-	//
-	// // "both" type only used for searches
-	// public void setType(String type) {
-	// assert (type.equals("Room") || type.equals("Studio") || type
-	// .equals("both"));
-	// this.type = type;
-	// }
-
 	public String getRoom_friends() {
 		return this.room_friends;
 	}
