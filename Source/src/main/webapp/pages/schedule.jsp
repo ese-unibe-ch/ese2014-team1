@@ -81,7 +81,7 @@
 						type="date" pattern="hh.mm" />
 					${formattedStartTime} - ${formattedEndTime}
 				</td>
-				<td><a href="/ad?id=${presentation.ad.id}"><button>Visit</button></a></td>
+				<td><a href="/ad?id=${visit.ad.id}"><button>Visit</button></a></td>
 			</tr>
 		</c:forEach>
 		</table>
