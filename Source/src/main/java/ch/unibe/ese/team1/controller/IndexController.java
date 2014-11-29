@@ -48,7 +48,6 @@ public class IndexController {
 		Iterable<Ad> usersAds = adService.getAdsByUser(user);
 		ArrayList<Visit> usersPresentations = new ArrayList<Visit>();
 		
-		//try-catch block is pro forma
 		for(Ad ad: usersAds){
 			try{
 				usersPresentations.addAll((ArrayList<Visit>)visitService.getVisitsByAd(ad));

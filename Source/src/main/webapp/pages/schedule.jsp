@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:import url="template/header.jsp" />
 
@@ -18,17 +19,27 @@
 			<thead>
 			<tr>
 				<th>Address</th>
-				<th>From</th>
-				<th>Until</th>
+				<th>Date</th>
+				<th>Time</th>
 				<th>Visit Ad</th>
 				<th>Visitors</th>
 			</tr>
 			</thead>
 		<c:forEach var="presentation" items="${presentations}">
 			<tr>
-				<td>${presentation.ad.street} </td>
-				<td>${presentation.startTimestamp}</td>
-				<td>${presentation.endTimestamp}</td>
+				<td>${presentation.ad.street}, ${presentation.ad.zipcode} ${presentation.ad.city}</td>
+				<td>
+					<fmt:formatDate value="${presentation.startTimestamp}" var="formattedVisitDay"
+						type="date" pattern="dd.MM.yyyy" />
+					${formattedVisitDay}
+				</td>
+				<td>	
+					<fmt:formatDate value="${presentation.startTimestamp}" var="formattedStartTime"
+						type="date" pattern="hh.mm" />
+					<fmt:formatDate value="${presentation.endTimestamp}" var="formattedEndTime"
+						type="date" pattern="hh.mm" />
+					${formattedStartTime} - ${formattedEndTime}
+				</td>
 				<td><a href="/ad?id=${presentation.ad.id}"><button>Visit</button></a></td>
 				<td><a href="/profile/visitors?visit=${presentation.id}"><button>See List</button></a></td>
 			</tr>
@@ -50,17 +61,27 @@
 			<thead>
 			<tr>
 				<th>Address</th>
-				<th>From</th>
-				<th>Until</th>
+				<th>Date</th>
+				<th>Time</th>
 				<th>Visit Ad</th>
 			</tr>
 			</thead>
 		<c:forEach var="visit" items="${visits}">
 			<tr>
-				<td>${visit.ad.street} </td>
-				<td>${visit.startTimestamp}</td>
-				<td>${visit.endTimestamp}</td>
-				<td><a href="/ad?id=${visit.ad.id}"><button>Visit</button></a></td>
+				<td>${visit.ad.street}, ${visit.ad.zipcode} ${visit.ad.city}</td>
+				<td>
+					<fmt:formatDate value="${visit.startTimestamp}" var="formattedVisitDay"
+						type="date" pattern="dd.MM.yyyy" />
+					${formattedVisitDay}
+				</td>
+				<td>	
+					<fmt:formatDate value="${visit.startTimestamp}" var="formattedStartTime"
+						type="date" pattern="hh.mm" />
+					<fmt:formatDate value="${visit.endTimestamp}" var="formattedEndTime"
+						type="date" pattern="hh.mm" />
+					${formattedStartTime} - ${formattedEndTime}
+				</td>
+				<td><a href="/ad?id=${presentation.ad.id}"><button>Visit</button></a></td>
 			</tr>
 		</c:forEach>
 		</table>
