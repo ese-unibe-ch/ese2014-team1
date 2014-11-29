@@ -876,3 +876,30 @@ footer nav ul li {
 #userDiv img{
 	max-height: 200px;
 }
+
+/* -------------------------------------------------------------------- */
+/* visitors.jsp */
+
+.rating {
+  text-align: center;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating:hover > span {
+	color: transparent;
+}
+.rating > span:hover ~ span {
+	color: gray;
+}
+.rating:hover > span:before {
+	content: "\2605";
+	position: absolute;
+	left: 0; 
+	color: #2dc16d;
+}
+.rating > span:hover ~ span:before {
+	color: transparent;
+}

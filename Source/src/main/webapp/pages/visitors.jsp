@@ -22,6 +22,7 @@
 				<th>Name</th>
 				<th>Username</th>
 				<th>Profile</th>
+				<th>Rating</th>
 			</tr>
 			</thead>
 		<c:forEach var="visitor" items="${visitors}">
@@ -29,6 +30,11 @@
 				<td>${visitor.firstName} ${visitor.lastName }</td>
 				<td>${visitor.username}</td>
 				<td><a href="/profile/user?id=${visitor.id}"><button>Visit</button></a></td>
+				<td>
+				<div class="rating">
+					<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+				</div>
+				</td>
 			</tr>
 		</c:forEach>
 		</table>
