@@ -31,17 +31,38 @@ public class UserTestDataSaver implements TestDataSaver {
 		system.setAboutMe("We keep you off the streets.");
 		userDao.save(system);
 
-		// first user
+		// Main test-user for the assistants (advertiser)
+		User ese = createUser("ese@unibe.ch", "ese", "John", "Wayne",
+				"/img/test/portrait.jpg", Gender.MALE);
+		ese.setAboutMe(getDummyText());
+		userDao.save(ese);
+		
+		// Searcher
 		User janeDoe = createUser("jane@doe.com", "password", "Jane", "Doe",
 				Gender.FEMALE);
 		janeDoe.setAboutMe(getDummyText());
 		userDao.save(janeDoe);
 
-		// second user
-		User ese = createUser("ese@unibe.ch", "ese", "Tester", "Muster",
-				"/img/test/portrait.jpg", Gender.MALE);
-		ese.setAboutMe(getDummyText());
-		userDao.save(ese);
+		// Another advertiser & searcher
+		User bernerBaer = createUser("user@bern.com", "password",
+				"Berner", "Bär", Gender.MALE);
+		UserPicture picture = new UserPicture();
+		picture.setFilePath("/img/test/berner_baer.png");
+		picture.setUser(bernerBaer);
+		bernerBaer.setPicture(picture);
+		bernerBaer.setAboutMe("I am a PhD student and I am Italian. I am 26,"
+				+ "I like winter-sports, hiking, traveling and cooking."
+				+ "I enjoy spending time with friends, watching movies, "
+				+ "going for drinks and organizing dinners. I have lived in Milan,"
+				+ "London and Zurich, always in flatshares and i have never had"
+				+ "problems with my flatmates.");
+		userDao.save(bernerBaer);
+		
+		// Another advertiser & searcher
+		User oprah = createUser("oprah@winfrey.com", "password", "Oprah", "Winfrey",
+				"/img/test/oprah.jpg", Gender.FEMALE);
+		oprah.setAboutMe(getDummyText());
+		userDao.save(oprah);
 	}
 
 	public User createUser(String email, String password, String firstName,
@@ -87,12 +108,12 @@ public class UserTestDataSaver implements TestDataSaver {
 	}
 
 	private String getDummyText() {
-		return "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
-				+ "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "
-				+ "voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "
-				+ "clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
-				+ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod "
-				+ "tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ";
+		return "I am a Master student from switzerland. I am 25 years old,"
+				+ "I like summer-sports, hiking, traveling and cooking."
+				+ "I enjoy spending time with friends, watching movies, "
+				+ "going for drinks and organizing dinners. I have lived in Fräkmündegg,"
+				+ "London and Zurich, always in flatshares and i have never had"
+				+ "problems with my flatmates because I am a nice person.";
 	}
 
 }

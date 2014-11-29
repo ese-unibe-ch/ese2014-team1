@@ -27,8 +27,8 @@ public class MessageTestDataSaver implements TestDataSaver {
 	@Override
 	public void saveTestData() throws Exception {
 		// load users
-		bernerBaer = userDao.findOne(4L);
-		testerMuster = userDao.findOne(2L);
+		bernerBaer = userDao.findByUsername("user@bern.com");
+		testerMuster = userDao.findByUsername("ese@unibe.ch");
 		
 		Message message;
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");
@@ -48,8 +48,8 @@ public class MessageTestDataSaver implements TestDataSaver {
 		message = new Message();
 		message.setSubject("I agree");
 		message.setText("Hello Mr. Bär\n " + getDummyText());
-		message.setSender(testerMuster);
-		message.setRecipient(bernerBaer);
+		message.setSender(bernerBaer);
+		message.setRecipient(testerMuster);
 		message.setState(MessageState.UNREAD);
 		message.setDateSent(dateFormat.parse("12:30 24.02.2014"));
 		
@@ -68,12 +68,12 @@ public class MessageTestDataSaver implements TestDataSaver {
 	}
 	
 	private String getDummyText() {
-		return "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
+		return "Hey \n "
 				+ "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "
 				+ "voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "
 				+ "clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
 				+ "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod "
 				+ "tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ";
 	}
-
+	
 }
