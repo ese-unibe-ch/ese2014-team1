@@ -34,6 +34,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		User bernerBaer = userDao.findByUsername("user@bern.com");
 		User ese = userDao.findByUsername("ese@unibe.ch");
 		User oprah = userDao.findByUsername("oprah@winfrey.com");
+		User jane = userDao.findByUsername("jane@doe.com");
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 		
@@ -532,7 +533,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		adLocarno.setRoomDescription(studioDescription12);
 		adLocarno.setPreferences(roomPreferences12);
 		adLocarno.setRoommates("None");
-		adLocarno.setUser(oprah);
+		adLocarno.setUser(jane);
 		adLocarno.setTitle("Malibu-style Beachhouse");
 		adLocarno.setStreet("Kirchweg 12");
 		adLocarno.setCity("Locarno");

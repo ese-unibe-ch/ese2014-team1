@@ -493,7 +493,6 @@ public class VisitTestDataSaver implements TestDataSaver {
 		visit = new Visit();
 		visit.setAd(ad12);
 		searchers = new LinkedList<>();
-		searchers.add(janeDoe);
 		searchers.add(bernerBaer);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("14:00 26.12.2014"));

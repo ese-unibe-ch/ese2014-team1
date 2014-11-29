@@ -781,6 +781,10 @@ footer nav ul li {
 	margin: auto;
 }
 
+#messageDetail p {
+	white-space: pre-line;
+}
+
 #folders a:hover {
 	background-color: #2dc16d;
 	color: white;
