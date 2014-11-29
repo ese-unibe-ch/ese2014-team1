@@ -17,7 +17,7 @@ import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.AdDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
-/** This inserts six ad elements into the database. */
+/** This inserts several ad elements into the database. */
 @Service
 public class AdTestDataSaver implements TestDataSaver {
 

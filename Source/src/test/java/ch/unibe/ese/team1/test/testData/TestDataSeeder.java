@@ -26,6 +26,9 @@ public class TestDataSeeder implements InitializingBean {
 	@Autowired
 	private VisitTestDataSaver visitDataSaver;
 	
+	@Autowired
+	private AlertTestDataSaver alertDataSaver;
+	
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
@@ -35,6 +38,7 @@ public class TestDataSeeder implements InitializingBean {
 		messageDataSaver.saveTestData();
 		visitDataSaver.saveTestData();
 		visitEnquiryDataSaver.saveTestData();
+		alertDataSaver.saveTestData();
 	}
 
 }
