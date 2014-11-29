@@ -841,6 +841,10 @@ footer nav ul li {
 	margin-right: -37px;
 }
 
+.divWithLineBreaks {
+	white-space: pre-line;
+}
+
 /* -------------------------------------------------------------------- */
 /* enquiries.jsp */
 #enquiryList {

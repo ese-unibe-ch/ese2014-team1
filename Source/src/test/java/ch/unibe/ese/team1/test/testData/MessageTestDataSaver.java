@@ -36,7 +36,7 @@ public class MessageTestDataSaver implements TestDataSaver {
 		// first message
 		message = new Message();
 		message.setSubject("Cool ad");
-		message.setText("Hello Mr. Muster\n " + getDummyText());
+		message.setText("Hello Mr. Muster\n " + getDummyText1());
 		message.setSender(bernerBaer);
 		message.setRecipient(testerMuster);
 		message.setState(MessageState.UNREAD);
@@ -47,7 +47,7 @@ public class MessageTestDataSaver implements TestDataSaver {
 		// second message
 		message = new Message();
 		message.setSubject("I agree");
-		message.setText("Hello Mr. Bär\n " + getDummyText());
+		message.setText("Hello Mr. Bär\n " + getDummyText1());
 		message.setSender(bernerBaer);
 		message.setRecipient(testerMuster);
 		message.setState(MessageState.UNREAD);
@@ -58,7 +58,7 @@ public class MessageTestDataSaver implements TestDataSaver {
 		// third message
 		message = new Message();
 		message.setSubject("Check this out");
-		message.setText("Hello Mr. Bär\n " + getDummyText());
+		message.setText("Hello Mr. Bär\n " + getDummyText1());
 		message.setSender(testerMuster);
 		message.setRecipient(bernerBaer);
 		message.setState(MessageState.READ);
@@ -67,7 +67,7 @@ public class MessageTestDataSaver implements TestDataSaver {
 		messageDao.save(message);
 	}
 	
-	private String getDummyText() {
+	private String getDummyText1() {
 		return "Hey \n "
 				+ "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "
 				+ "voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "

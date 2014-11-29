@@ -506,7 +506,6 @@ public class VisitTestDataSaver implements TestDataSaver {
 		visit.setStartTimestamp(dateFormat.parse("18:30 27.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("20:00 27.12.2014"));
 		visitDao.save(visit);
-
 	}
 
 }

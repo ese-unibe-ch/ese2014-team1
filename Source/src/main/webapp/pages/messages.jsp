@@ -62,7 +62,7 @@
 		</c:forEach>
 	</table>
 	<hr />
-	<div id="messageDetail">
+	<div id="messageDetail" class="divWithLineBreaks">
 		<h2>${messages[0].subject }</h2>
 		<h3>
 			<b>From: </b> ${messages[0].sender.email }
