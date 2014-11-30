@@ -15,70 +15,67 @@
 <script src="/js/adDescription.js"></script>
 
 <script>
-
-var shownAdvertisementID = "${shownAd.id}";
-var shownAdvertisement = "${shownAd}";
-
-function attachBookmarkClickHandler(){
-	$("#bookmarkButton").click(function() {
-		
-		$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: false}, function(dataSecond) {
-			$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
-			switch(dataSecond) {
-			case 0:
-				alert("You need to be logged in to bookmark ads.");
-				break;
-			case 1:
-				alert("ERROR 277489. Please contact the WebAdmin.");
-				break;
-			 /* case 2:
-				alert("Bookmark already exists.");
-				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
-				break; */
-			case 3:
-				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
-				break;
-			default:
-				alert("ERROR 99782. Please contact the WebAdmin.");	
-			}
+	var shownAdvertisementID = "${shownAd.id}";
+	var shownAdvertisement = "${shownAd}";
+	
+	function attachBookmarkClickHandler(){
+		$("#bookmarkButton").click(function() {
 			
-			attachBookmarkedClickHandler();
-		});
-	});
-}
-
-function attachBookmarkedClickHandler(){
-	$("#bookmarkedButton").click(function() {
-		$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: true}, function(dataThird) {
-			$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmark Me" + '</a>'));
-			switch(dataThird) {
-			case 0:
-				// should not be possible
-				alert("You need to be logged in to undo the bookmarks.");
-				break;
-			case 1:
-				// Something went wrong with the principal object
-				alert("ERROR 277489. Please contact the WebAdmin.");
-				break;
-			case 2:
-				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
-				break;
-			/* case 3:
-				alert("Has been bookmarked!");
-				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
-				break; */
-			default:
-				alert("ERROR 99712. Please contact the WebAdmin.");
+			$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: false}, function(dataSecond) {
+				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
+				switch(dataSecond) {
+				case 0:
+					alert("You need to be logged in to bookmark ads.");
+					break;
+				case 1:
+					alert("ERROR 277489. Please contact the WebAdmin.");
+					break;
+				 /* case 2:
+					alert("Bookmark already exists.");
+					$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
+					break; */
+				case 3:
+					$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
+					break;
+				default:
+					alert("ERROR 99782. Please contact the WebAdmin.");	
+				}
 				
-			}			
-			attachBookmarkClickHandler();
+				attachBookmarkedClickHandler();
+			});
 		});
-	});
-}
-
+	}
+	
+	function attachBookmarkedClickHandler(){
+		$("#bookmarkedButton").click(function() {
+			$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: true}, function(dataThird) {
+				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmark Me" + '</a>'));
+				switch(dataThird) {
+				case 0:
+					// should not be possible
+					alert("You need to be logged in to undo the bookmarks.");
+					break;
+				case 1:
+					// Something went wrong with the principal object
+					alert("ERROR 277489. Please contact the WebAdmin.");
+					break;
+				case 2:
+					$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
+					break;
+				/* case 3:
+					alert("Has been bookmarked!");
+					$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
+					break; */
+				default:
+					alert("ERROR 99712. Please contact the WebAdmin.");
+					
+				}			
+				attachBookmarkClickHandler();
+			});
+		});
+	}
 
 	$(document).ready(function() {
-	
 		attachBookmarkClickHandler();
 		attachBookmarkedClickHandler();
 		
@@ -91,10 +88,12 @@ function attachBookmarkedClickHandler(){
 				// nothing needs to be done
 			}
 		});
-	
 	});
 		
 </script>
+
+<!-- check if user is logged in -->
+<security:authorize var="loggedIn" url="/profile" />
 
 <!-- format the dates -->
 <fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"
@@ -227,10 +226,6 @@ function attachBookmarkedClickHandler(){
 			<p>${shownAd.preferences}</p>
 		</div>
 		<br />
-		
-		
-		<!-- check if user is logged in -->
-		<security:authorize var="loggedIn" url="/profile" />
 
 		<div id="visitList" class="adDescDiv">
 			<h2>Visiting times</h2>
@@ -254,7 +249,8 @@ function attachBookmarkedClickHandler(){
 									<button class="thinInactiveButton" type="button" data-id="${visit.id}">
 									Login to send enquiries</button>
 								</c:otherwise>
-							</c:choose></td>
+							</c:choose>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -375,7 +371,14 @@ function attachBookmarkedClickHandler(){
 
 		<td>
 			<form>
-				<button id="newMsg" type="button">Contact Advertiser</button>
+				<c:choose>
+					<c:when test="${loggedIn}">
+						<button id="newMsg" type="button">Contact Advertiser</button>
+					</c:when>
+					<c:otherwise>
+						<button class="thinInactiveButton" type="button">Login to contact advertiser</button>
+					</c:otherwise>
+				</c:choose>
 			</form>
 		</td>
 	</tr>
