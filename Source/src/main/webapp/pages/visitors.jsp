@@ -6,6 +6,21 @@
 
 <c:import url="template/header.jsp" />
 
+<script>
+function star(starnr, rating) {
+    if(starnr <= rating)
+        return "&#9733";
+    else
+        return "&#9734";
+}
+</script>
+
+<script>
+function stars(id, rating) {
+	document.getElementById(id).innerHTML = "<span>" + star(1, rating) + "</span><span>" + star(2, rating) + "</span><span>" + star(3, rating) + "</span><span>" + star(4, rating) + "</span><span>" + star(5, rating) + "</span>";
+}
+</script>
+
 <h2>Visitors for your property</h2>
 
 <p>Information about the property: <u><a href="/ad?id=${ad.id }">${ad.street }, ${ad.zipcode } ${ad.city }</a></u></p>
@@ -31,8 +46,8 @@
 				<td>${visitor.username}</td>
 				<td><a href="/profile/user?id=${visitor.id}"><button>Visit</button></a></td>
 				<td>
-				<div class="rating">
-					<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+				<div class="rating" id="${visitor.id}">
+					<script>stars(${visitor.id}, 3)</script>
 				</div>
 				</td>
 			</tr>
