@@ -108,11 +108,11 @@ public class UserTestDataSaver implements TestDataSaver {
 	}
 
 	private String getDummyText() {
-		return "I am a Master student from switzerland. I am 25 years old,"
-				+ "I like summer-sports, hiking, traveling and cooking."
+		return "I am a Master student from switzerland. I'm 25 years old, "
+				+ "my hobbies are summer-sports, hiking, traveling and cooking. "
 				+ "I enjoy spending time with friends, watching movies, "
-				+ "going for drinks and organizing dinners. I have lived in Fräkmündegg,"
-				+ "London and Zurich, always in flatshares and i have never had"
+				+ "going for drinks and organizing dinners. I have lived in Fräkmündegg, "
+				+ "London and Zurich, always in flatshares and i have never had "
 				+ "problems with my flatmates because I am a nice person.";
 	}
 

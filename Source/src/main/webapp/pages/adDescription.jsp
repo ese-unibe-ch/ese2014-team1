@@ -5,6 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <c:import url="template/header.jsp" />
 
@@ -227,6 +228,10 @@ function attachBookmarkedClickHandler(){
 		</div>
 		<br />
 		
+		
+		<!-- check if user is logged in -->
+		<security:authorize var="loggedIn" url="/profile" />
+
 		<div id="visitList" class="adDescDiv">
 			<h2>Visiting times</h2>
 			<table>
@@ -240,11 +245,16 @@ function attachBookmarkedClickHandler(){
 							<fmt:formatDate value="${visit.endTimestamp}" pattern=" HH:mm" />
 						</td>
 						<td>
-							<button class="thinButton" type="button" data-id="${visit.id}">Send enquiry to advertiser</button>
-							
-							
-							
-						</td>
+							<c:choose>
+								<c:when test="${loggedIn}">
+									<button class="thinButton" type="button" data-id="${visit.id}">Send
+										enquiry to advertiser</button>
+								</c:when>
+								<c:otherwise>
+									<button class="thinInactiveButton" type="button" data-id="${visit.id}">
+									Login to send enquiries</button>
+								</c:otherwise>
+							</c:choose></td>
 					</tr>
 				</c:forEach>
 			</table>
