@@ -48,15 +48,16 @@ $(document).ready(function() {
 	});
 	
 	$("#newMessage").click(function(){
-		var children = $("#content").children().hide();
-		
-		$("#msgDiv").css("display", "block");
+		$("#content").children().animate({opacity: 0.4}, 300, function(){
+			$("#msgDiv").css("display", "block");
+			$("#msgDiv").css("opacity", "1");
+		});
 	});
 	
 	$("#messageCancel").click(function(){
-		var children = $("#content").children().show();
-		
 		$("#msgDiv").css("display", "none");
+		$("#msgDiv").css("opacity", "0");
+		$("#content").children().animate({opacity: 1}, 300);
 	});
 	
 	

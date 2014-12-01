@@ -97,4 +97,14 @@ public class MessageController {
 		}
 	}
 
+	/** Sends a message with the passed parameters */
+	@RequestMapping(value = "/profile/messages/sendMessage", method = RequestMethod.POST)
+	public @ResponseBody void sendMessage(@RequestParam String subject,
+			@RequestParam String text, @RequestParam String recipientEmail,
+			Principal principal) {
+		User recipient = userService.findUserByUsername(recipientEmail);
+		User sender = userService.findUserByUsername(principal.getName());
+		messageService.sendMessage(sender, recipient, subject, text);
+	}
+
 }

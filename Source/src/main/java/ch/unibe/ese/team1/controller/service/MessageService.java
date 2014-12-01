@@ -1,6 +1,7 @@
 package ch.unibe.ese.team1.controller.service;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
@@ -75,6 +76,26 @@ public class MessageService {
 		messageDao.save(message);
 
 		return message;
+	}
+
+	/** Saves a new message with the given parameters in the DB.
+	 * 
+	 * @param sender the user who sends the message
+	 * @param recipient the user who should receive the message
+	 * @param subject the subject of the message
+	 * @param text the text of the message
+	 */
+	public void sendMessage(User sender, User recipient, String subject,
+			String text) {
+		Message message = new Message();
+		message.setDateSent(new Date());
+		message.setSender(sender);
+		message.setRecipient(recipient);
+		message.setSubject(subject);
+		message.setText(text);
+		message.setState(MessageState.UNREAD);
+		
+		messageDao.save(message);
 	}
 
 }

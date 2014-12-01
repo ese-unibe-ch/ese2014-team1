@@ -88,6 +88,43 @@
 				// nothing needs to be done
 			}
 		});
+		
+		$("#newMsg").click(function(){
+			$("#content").children().animate({opacity: 0.4}, 300, function(){
+				$("#msgDiv").css("display", "block");
+				$("#msgDiv").css("opacity", "1");
+			});
+		});
+		
+		$("#messageCancel").click(function(){
+			$("#msgDiv").css("display", "none");
+			$("#msgDiv").css("opacity", "0");
+			$("#content").children().animate({opacity: 1}, 300);
+		});
+		
+		$("#receiverEmail").focusout(function() {
+			var text = $("#receiverEmail").val();
+			
+			$.post("/profile/messages/validateEmail", {email:text}, function(data) {
+				if (data != text) {
+					alert(data);
+					$("#receiverEmail").val("");
+				}
+			});
+		});
+		
+		$("#messageSend").click(function (){
+			if($("#msgSubject").val() != "" && $("#msgTextarea").val() != ""){
+				var subject = $("#msgSubject").val();
+				var text = $("#msgTextarea").val();
+				var recipientEmail = $("#advertiserEmail").val();
+				$.post("profile/messages/sendMessage", {subject : subject, text: text, recipientEmail : recipientEmail}, function(){
+					$("#msgDiv").css("display", "none");
+					$("#msgDiv").css("opacity", "0");
+					$("#content").children().animate({opacity: 1}, 300);
+				})
+			}
+		});
 	});
 		
 </script>
@@ -367,7 +404,7 @@
 			</c:choose>
 		</td>
 
-		<td><a href=/profile/user?id=${shownAd.user.id}>${shownAd.user.username}</a></td>
+		<td id="advertiserEmail"><a href=/profile/user?id=${shownAd.user.id}>${shownAd.user.username}</a></td>
 
 		<td>
 			<form>
@@ -384,7 +421,21 @@
 	</tr>
 </table>
 
-<c:import url="getMessageForm.jsp" />
+<div id="msgDiv">
+<form class="msgForm">
+	<h2>Contact the advertiser</h2>
+	<br>
+	<br>
+	<label>Subject: <span>*</span></label>
+	<input  class="msgInput" type="text" id="msgSubject" placeholder="Subject" />
+	<br><br>
+	<label>Message: </label>
+	<textarea id="msgTextarea" placeholder="Message" ></textarea>
+	<br/>
+	<button type="button" id="messageSend">Send</button>
+	<button type="button" id="messageCancel">Cancel</button>
+	</form>
+</div>
 
 <script src="/js/messageForAdDescription.js"></script>
 

@@ -830,12 +830,11 @@ footer nav ul li {
 
 #msgDiv {
 	opacity: 1.0;
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: 0px;
 	height: 100%;
 	width: 100%;
-	background: #fff;
 	display: none;
 }
 
