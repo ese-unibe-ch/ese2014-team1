@@ -32,6 +32,9 @@ public class TestDataSeeder implements InitializingBean {
 	@Autowired
 	private BookmarkTestDataSaver bookmarkTestDataSaver;
 	
+	@Autowired
+	private RatingTestDataSaver ratingTestDataSaver;
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		// save test data in the correct order
@@ -42,6 +45,7 @@ public class TestDataSeeder implements InitializingBean {
 		visitEnquiryDataSaver.saveTestData();
 		alertDataSaver.saveTestData();
 		bookmarkTestDataSaver.saveTestData();
+		ratingTestDataSaver.saveTestData();
 	}
 
 }
