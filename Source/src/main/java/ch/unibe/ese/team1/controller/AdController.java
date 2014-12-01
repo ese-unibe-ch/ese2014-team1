@@ -275,6 +275,8 @@ public class AdController {
 		}
 		
 		//TODO: this stuff is not used. Can we delete it?
+		//RESPONSE: NOOOOOOOOOOO I should refactor it and use the list instead of the long ID number...
+		// just didn't find the time to do it ;)
 		Ad ad = adService.getAdById(id);
 		
 		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
@@ -319,10 +321,12 @@ public class AdController {
 	public ModelAndView myRooms(Principal principal) {
 		ModelAndView model;
 		User user;
+		Long userID;
 		if(principal != null) {
 			model = new ModelAndView("myRooms");
 			String username = principal.getName();
 			user = userService.findUserByUsername(username);
+			userID = user.getId();
 			
 			ArrayList<Long> ads;
 			if(user.getBookmarkedAds() == null) {
@@ -330,15 +334,25 @@ public class AdController {
 			} else {
 				ads = user.getBookmarkedAds();
 			}
+			
 			LinkedList<Ad> adsLinked = new LinkedList<Ad>();
 			for(Long adID : ads) {
 				Ad ad = adService.getAdById(adID);
 				adsLinked.add(ad);
 			}
 			
+			Iterable<Ad> ownAds = adService.getAllAds();
+			LinkedList<Ad> ownAdsLinked = new LinkedList<Ad>();
+			for(Ad ownAd : ownAds) {
+				if(userID == ownAd.getUser().getId()) {
+					ownAdsLinked.add(ownAd);
+				}
+			}
+			
 			// model.addObject("ownAds", user.getOwnAds();
 			model.addObject("bookmarkedAds", user.getBookmarkedAds());
 			model.addObject("bookmarkedAdvertisements", adsLinked);
+			model.addObject("ownAdvertisements", ownAdsLinked);
 			return model;
 		} else {
 			model = new ModelAndView("home");
