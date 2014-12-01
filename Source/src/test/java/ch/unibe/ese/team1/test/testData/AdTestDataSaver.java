@@ -11,9 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.AdPicture;
-import ch.unibe.ese.team1.model.Gender;
 import ch.unibe.ese.team1.model.User;
-import ch.unibe.ese.team1.model.UserPicture;
 import ch.unibe.ese.team1.model.dao.AdDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 

@@ -12,27 +12,6 @@
 <fmt:formatDate value="${messages[0].dateSent}" var="formattedDateSent"
 	type="date" pattern="HH:mm, dd.MM.yyyy" />
 
-<script>
-	$(document).ready(function() {
-		var rows = $("#messageList table tr:gt(0)");
-		$(rows).hover(function() {
-			$(this).children().css("background-color", "#ececec");
-		}, function() {
-			$(this).children().css("background-color", "white");
-		});
-		$(rows).click(function() {
-			var id = $(this).attr("data-id");
-			$.get("/profile/messages/getMessage?id=" + id, function(data) {
-				var result = '<h2>' + data.subject + '</h2>';
-				result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
-				var date = new Date(data.dateSent);
-				result += '<h3><b>Date sent: </b>' + date.dateSent + '</h3>';
-				result += '<br /><p>' + data.text + '</p>';
-				$("#messageDetail").html(result);
-			}, 'json');
-		});
-	});
-</script>
 <script src="/js/messages.js"></script>
 
 <h1>Messages</h1>

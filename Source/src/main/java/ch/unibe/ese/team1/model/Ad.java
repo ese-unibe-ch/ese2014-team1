@@ -1,6 +1,5 @@
 package ch.unibe.ese.team1.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 

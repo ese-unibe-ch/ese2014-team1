@@ -31,7 +31,7 @@ public class Message {
 	@Lob
 	private String text;
 
-	@JsonFormat(pattern = "HH:mm, dd.MM.yyyy")
+	@JsonFormat(pattern = "HH:mm, dd.MM.yyyy", timezone = "CET" )
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateSent;
 
