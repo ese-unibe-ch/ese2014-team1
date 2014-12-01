@@ -18,21 +18,55 @@
 
 <pre><a href="/">Home</a>   >   My Rooms</pre>
 
-<h1>My Advertisements</h1>
-<hr />
-
-
-
-<h1>My Bookmarks</h1>
-<hr />
-
 <c:choose>
-	<c:when test="${empty bookmarkedAds}">
-		<p>No results found!
+	<c:when test="${empty ownAdvertisements}">
+		<p>You have not advertised anything yet.
 	</c:when>
 	<c:otherwise>
 	
-		<div id="resultsDiv" class="resultsDiv">			
+		<div id="resultsDiv" class="resultsDiv">
+		<h1>My Advertisements</h1>
+		<hr />			
+			<c:forEach var="ad" items="${ownAdvertisements}">
+				<div class="resultAd" data-price="${ad.prizePerMonth}" 
+								data-moveIn="${ad.moveInDate}" data-age="${ad.moveInDate}">
+					<div class="resultLeft">
+						<a href="<c:url value='/ad?id=${ad.id}' />"><img
+							src="${ad.pictures[0].filePath}" /></a>
+						<h2>
+							<a href="<c:url value='/ad?id=${ad.id}' />">${ad.title }</a>
+						</h2>
+						<p>${ad.street}, ${ad.zipcode} ${ad.city}</p>
+						<br />
+						<p>
+							<i><c:choose>
+									<c:when test="${ad.studio}">Studio</c:when>
+									<c:otherwise>Room</c:otherwise>
+								</c:choose></i>
+						</p>
+					</div>
+					<div class="resultRight">
+						<h2>CHF ${ad.prizePerMonth }</h2>
+						<br /> <br />
+						<p>Move-in date: ${ad.moveInDate }</p>
+					</div>
+				</div>
+			</c:forEach>
+			<br /> <br />
+		</div>		
+	</c:otherwise>
+</c:choose>
+
+
+<c:choose>
+	<c:when test="${empty bookmarkedAds}">
+		<p>You have not bookmarked anything yet.
+	</c:when>
+	<c:otherwise>
+		
+		<div id="resultsDiv" class="resultsDiv">
+		<h1>My Bookmarks</h1>
+		<hr />			
 			<c:forEach var="ad" items="${bookmarkedAdvertisements}">
 				<div class="resultAd" data-price="${ad.prizePerMonth}" 
 								data-moveIn="${ad.moveInDate}" data-age="${ad.moveInDate}">
@@ -58,8 +92,7 @@
 					</div>
 				</div>
 			</c:forEach>
-		</div>
-		
+		</div>		
 	</c:otherwise>
 </c:choose>
 

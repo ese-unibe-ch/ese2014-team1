@@ -199,7 +199,7 @@ public class AdService {
 	public Iterable<Ad> getAllAds() {
 		return adDao.findAll();
 	}
-
+	
 	/**
 	 * Returns all ads that match the parameters given by the form. This list
 	 * can possibly be empty.
