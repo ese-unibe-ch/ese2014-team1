@@ -9,8 +9,6 @@
 
 <script>
 	$(document).ready(function() {
-		
-		
 	});
 
 </script>
@@ -20,7 +18,10 @@
 
 <c:choose>
 	<c:when test="${empty ownAdvertisements}">
-		<p>You have not advertised anything yet.
+		<h1>My Advertisements</h1>
+		<hr />
+		<p>You have not advertised anything yet.</p>
+		<br /><br />
 	</c:when>
 	<c:otherwise>
 	
@@ -59,8 +60,10 @@
 
 
 <c:choose>
-	<c:when test="${empty bookmarkedAds}">
-		<p>You have not bookmarked anything yet.
+	<c:when test="${empty bookmarkedAdvertisements}">
+		<h1>My Bookmarks</h1>
+		<hr />
+		<p>You have not bookmarked anything yet.</p><br /><br />
 	</c:when>
 	<c:otherwise>
 		
