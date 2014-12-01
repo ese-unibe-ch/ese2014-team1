@@ -895,6 +895,7 @@ footer nav ul li {
   display: inline-block;
   position: relative;
   width: 1.1em;
+  
 }
 .rating:hover > span {
 	color: transparent;
@@ -907,6 +908,7 @@ footer nav ul li {
 	position: absolute;
 	left: 0; 
 	color: #2dc16d;
+	width: 1.1em;
 }
 .rating > span:hover ~ span:before {
 	color: transparent;
