@@ -2,6 +2,7 @@ package ch.unibe.ese.team1.model;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -64,7 +65,7 @@ public class User {
 	private ArrayList<Long> bookmarkedAds;
 	
 	@Column(nullable = true)
-	private LinkedList<Ad> bookmarkedAdvertisement;
+	private List<Ad> bookmarkedAdvertisementIterable;
 
 	public long getId() {
 		return id;
@@ -162,12 +163,12 @@ public class User {
 		this.bookmarkedAds = bookmarkedAds;
 	}
 	
-	public LinkedList<Ad> getBookmarkedAdvertisement() {
-		return bookmarkedAdvertisement;
+	public List<Ad> getBookmarkedAdvertisementIterable() {
+		return bookmarkedAdvertisementIterable;
 	}
 	
-	public void setBookmarkedAdvertisement(LinkedList<Ad> bookmarkedAdvertisement) {
-		this.bookmarkedAdvertisement = bookmarkedAdvertisement;
+	public void setBookmarkedAdvertisementIterable(List<Ad> bookmarkedAdvertisementIterable) {
+		this.bookmarkedAdvertisementIterable = bookmarkedAdvertisementIterable;
 	}
 	
 }
