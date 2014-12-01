@@ -57,6 +57,7 @@
 						%>
 						</a>
 							<ul>
+								<li><a href="/profile/placeAd">Place an ad</a></li>
 								<li><a href="/profile/myRooms">My rooms</a></li>
 								<li><a href="/profile/messages">Messages</a></li>
 								<li><a href="/profile/enquiries">Enquiries</a></li>
@@ -67,8 +68,6 @@
 								<li>
 								<% out.print("<a href=\"/profile/user?id=" + realUser.getId() + "\">Public Profile</a>"); %>
 								</li>
-								<li><a href="/profile/placeAd">Place an ad</a></li>
-								<li><a href="#">Settings</a></li>
 								<li><a href="/logout">Logout</a></li>
 							</ul></li>
 					</c:when>
