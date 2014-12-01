@@ -5,6 +5,7 @@
 .classpath
 .project
 .settings/
+.externalToolBuilders/
 
 # Mac
 .DS_Store
