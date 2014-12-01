@@ -17,13 +17,32 @@ function star(starnr, rating) {
 
 <script>
 function stars(id, rating) {
-	document.getElementById(id).innerHTML = "<span>" + star(1, rating) + "</span><span>" + star(2, rating) + "</span><span>" + star(3, rating) + "</span><span>" + star(4, rating) + "</span><span>" + star(5, rating) + "</span>";
+	document.getElementById(id).innerHTML = 
+	"<span onClick=\"rate(" + id + ", 1)\">" + star(1, rating) + "</span>" +
+	"<span onClick=\"rate(" + id + ", 2)\">" + star(2, rating) + "</span>" +
+	"<span onClick=\"rate(" + id + ", 3)\">" + star(3, rating) + "</span>" +
+	"<span onClick=\"rate(" + id + ", 4)\">" + star(4, rating) + "</span>" +
+	"<span onClick=\"rate(" + id + ", 5)\">" + star(5, rating) + "</span>";
+}
+</script>
+
+<script>
+function ratingFor(id) {
+	$.get("/profile/ratingFor?user=" + id, function(data){stars(id, data)});
+}
+</script>
+
+<script>
+function rate(id, rating) {
+	$.get("/profile/rateUser?rate=" + id + "&stars=" + rating, function(){
+		ratingFor(id);
+	});
 }
 </script>
 
 <h2>Visitors for your property</h2>
 
-<p>Information about the property: <u><a href="/ad?id=${ad.id }">${ad.street }, ${ad.zipcode } ${ad.city }</a></u></p>
+<p>Information about the property: <a href="/ad?id=${ad.id }">${ad.street }, ${ad.zipcode } ${ad.city }</a></p>
 
 <div id="visitorsDiv">			
 <c:choose>
@@ -47,7 +66,7 @@ function stars(id, rating) {
 				<td><a href="/profile/user?id=${visitor.id}"><button>Visit</button></a></td>
 				<td>
 				<div class="rating" id="${visitor.id}">
-					<script>stars(${visitor.id}, 3)</script>
+					<script>ratingFor(${visitor.id})</script>
 				</div>
 				</td>
 			</tr>

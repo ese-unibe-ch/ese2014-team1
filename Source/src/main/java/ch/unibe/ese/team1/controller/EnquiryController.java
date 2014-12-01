@@ -68,4 +68,17 @@ public class EnquiryController {
 		enquiryService.declineEnquiry(id);
 	}
 	
+	@RequestMapping(value="/profile/rateUser", method = RequestMethod.GET)
+	public @ResponseBody void rateUser(Principal principal, @RequestParam("rate") long id,
+		   @RequestParam("stars") int rating) {
+		User user = userService.findUserByUsername(principal.getName());
+		enquiryService.rate(user, userService.findUserById(id), rating);
+	}
+	
+	@RequestMapping(value="/profile/ratingFor", method = RequestMethod.GET)
+	public @ResponseBody int ratingFor(Principal principal, @RequestParam("user") long id) {
+		User principe = userService.findUserByUsername(principal.getName());
+		User ratee = userService.findUserById(id);
+		return enquiryService.getRatingByRaterAndRatee(principe, ratee).getRating();
+	}
 }

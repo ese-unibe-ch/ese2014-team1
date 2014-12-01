@@ -11,8 +11,9 @@
 <script>
 function deleteAlert(button) {
 	var id = $(button).attr("data-id");
-	$.get("/profile/alerts/deleteAlert?id=" + id);
-	$("#alertsDiv").load(document.URL + " #alertsDiv");
+	$.get("/profile/alerts/deleteAlert?id=" + id, function(){
+		$("#alertsDiv").load(document.URL + " #alertsDiv");
+	});
 }
 </script>
 
