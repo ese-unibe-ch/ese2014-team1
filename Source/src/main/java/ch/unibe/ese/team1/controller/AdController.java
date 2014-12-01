@@ -349,8 +349,6 @@ public class AdController {
 				}
 			}
 			
-			// model.addObject("ownAds", user.getOwnAds();
-			model.addObject("bookmarkedAds", user.getBookmarkedAds());
 			model.addObject("bookmarkedAdvertisements", adsLinked);
 			model.addObject("ownAdvertisements", ownAdsLinked);
 			return model;
