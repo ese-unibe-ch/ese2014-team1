@@ -430,6 +430,14 @@
 	</form>
 </div>
 
+<div id="confirmationDialog">
+	<form>
+	<p>Send enquiry to advertiser?</p>
+	<button type="button" id="confirmationDialogSend">Send</button>
+	<button type="button" id="confirmationDialogCancel">Cancel</button>
+	</form>
+</div>
+
 <script src="/js/messageForAdDescription.js"></script>
 
 <c:import url="template/footer.jsp" />
