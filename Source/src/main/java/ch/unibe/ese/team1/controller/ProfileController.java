@@ -82,17 +82,19 @@ public class ProfileController {
 	/** Handles the request for editing the user profile. */
 	@RequestMapping(value = "/profile/editProfile", method = RequestMethod.POST)
 	public ModelAndView editProfileResultPage(
-			@Valid EditProfileForm editProfileForm, BindingResult bindingResult) {
+			@Valid EditProfileForm editProfileForm, BindingResult bindingResult, Principal principal) {
 		ModelAndView model;
-		// TODO remove test code
+		String username = principal.getName();
+		User user = userService.findUserByUsername(username);
 		if (!bindingResult.hasErrors()) {
 			userUpdateService.updateFrom(editProfileForm);
 			model = new ModelAndView("updatedProfile");
-			model.addObject("negativeMessage", "Update successful!");
+			model.addObject("message", "Your Profile has been updated!");
+			model.addObject("currentUser", user);
 			return model;
 		} else {
-			model = new ModelAndView("nonUpdatedProfile");
-			model.addObject("negativeMessage", "Update successful!");
+			model = new ModelAndView("updatedProfile");
+			model.addObject("message", "Something went wrong, please contact the WebAdmin if the problem persists!");
 			return model;
 		}
 	}

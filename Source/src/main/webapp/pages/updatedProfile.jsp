@@ -12,7 +12,7 @@
 <pre><a href="/">Home</a>   >   <a href="/profile/user?id=${currentUser.id}">Public Profile</a>   >   <a
 			href="/profile/editProfile">Edit Profile</a>    >    Profile Updated</pre>
 
-<h1>Your Profile has been updated!</h1>
+<h1>${message}</h1>
 <hr />
 
 <c:import url="template/footer.jsp" />

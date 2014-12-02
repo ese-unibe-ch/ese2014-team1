@@ -50,7 +50,7 @@ public class User {
 	private boolean enabled;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<UserRole> userRoles;
 
 	@JsonIgnore

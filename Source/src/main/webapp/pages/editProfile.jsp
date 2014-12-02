@@ -7,8 +7,6 @@
 
 <c:import url="template/header.jsp" />
 
-<%-- <% out.print("<a href=\"/profile/user?id=" + ${currentUser.username} + "\">Public Profile</a>"); %> --%>
-
 <script>
 	$(document).ready(function() {
 		$("#about-me").val("${currentUser.aboutMe}")
@@ -58,7 +56,7 @@
 		<form:input type="password" id="password" path="password" value="${currentUser.password}" /></td>
 	</tr>
 	
-<%-- TODO: TO BE IMPLEMTED LATER	
+<%-- TODO: NICE FEATURE TO HAVE	
  	<tr>	
 		<td class="spacingTable"><label for="gender">Gender:</label><a>&emsp;&emsp;&thinsp;</a>
 		<form:input id="gender" path="gender" value="${currentUser.gender}" /></td>
