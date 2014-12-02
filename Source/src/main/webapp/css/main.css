@@ -900,6 +900,10 @@ footer nav ul li {
 	color: #ff4a4f;
 }
 
+.undoButton{
+	margin-left: 20px;
+}
+
 /* -------------------------------------------------------------------- */
 /* publicProfile.jsp */
 #userDiv {

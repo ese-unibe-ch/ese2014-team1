@@ -85,6 +85,18 @@ public class EnquiryService {
 		enquiryDao.save(enquiry);
 	}
 	
+	/** Resets the enquiry with the given id, meaning that its state will be set to open again. */
+	@Transactional
+	public void reopenEnquiry(long enquiryId){
+		VisitEnquiry enquiry = enquiryDao.findOne(enquiryId);
+		enquiry.setState(VisitEnquiryState.OPEN);
+		enquiryDao.save(enquiry);
+		
+		Visit visit = enquiry.getVisit();
+		visit.removeFromSearchers(enquiry.getSender());
+		visitDao.save(visit);
+	}
+	
 	@Transactional
 	public void rate(User rater, User ratee, int rating) {
 		Rating newRating = getRatingByRaterAndRatee(rater, ratee);

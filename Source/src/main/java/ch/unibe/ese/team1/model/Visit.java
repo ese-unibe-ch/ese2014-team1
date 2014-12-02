@@ -64,6 +64,10 @@ public class Visit {
 	public void addToSearchers(User user) {
 		searchers.add(user);
 	}
+	
+	public void removeFromSearchers(User user){
+		searchers.remove(user);
+	}
 
 	public Date getStartTimestamp() {
 		return startTimestamp;

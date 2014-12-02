@@ -21,19 +21,36 @@
 		}, function() {
 			$(this).children().css("background-color", "white");
 		});
-
-		$(".acceptButton").click(function() {
-			var cell = $(this).parent();
-			var id = $(this).attr("data-id");
-			$.get("/profile/enquiries/acceptEnquiry?id=" + id);
-			$(cell).html("<p>Accepted</p>");
-		});
-		$(".declineButton").click(function() {
-			var cell = $(this).parent();
-			var id = $(this).attr("data-id");
-			$.get("/profile/enquiries/declineEnquiry?id=" + id);
-			$(cell).html("<p>Declined</p>");
-		});
+		
+		function attachHandlers(){
+			$(".acceptButton").click(function() {
+				var cell = $(this).parent();
+				var id = $(this).attr("data-id");
+				$.get("/profile/enquiries/acceptEnquiry?id=" + id);
+				$(cell).html("Accepted <button class='undoButton' data-id='"+ id+ "'>Undo</button>");
+				attachUndoHandler();
+			});
+			$(".declineButton").click(function() {
+				var cell = $(this).parent();
+				var id = $(this).attr("data-id");
+				$.get("/profile/enquiries/declineEnquiry?id=" + id);
+				$(cell).html("Declined <button class='undoButton' data-id='"+ id+ "'>Undo</button>");
+				attachUndoHandler();
+			});
+		}
+		
+		function attachUndoHandler(){
+			$(".undoButton").click(function(){
+				var cell = $(this).parent();
+				var id = $(this).attr("data-id");
+				$.get("/profile/enquiries/reopenEnquiry?id=" + id);
+				$(cell).html("<button class='acceptButton' data-id='"+ id + "'>Accept</button><button class='declineButton' data-id='" + id + "'>Decline</button>");
+				attachHandlers();
+			});
+		}
+		
+		attachHandlers();
+	
 	});
 </script>
 

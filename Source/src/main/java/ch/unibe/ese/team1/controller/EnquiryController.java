@@ -68,6 +68,11 @@ public class EnquiryController {
 		enquiryService.declineEnquiry(id);
 	}
 	
+	@RequestMapping(value = "/profile/enquiries/reopenEnquiry", method = RequestMethod.GET)
+	public @ResponseBody void reopenEnquiry(@RequestParam("id") long id) {
+		enquiryService.reopenEnquiry(id);
+	}
+	
 	@RequestMapping(value="/profile/rateUser", method = RequestMethod.GET)
 	public @ResponseBody void rateUser(Principal principal, @RequestParam("rate") long id,
 		   @RequestParam("stars") int rating) {
