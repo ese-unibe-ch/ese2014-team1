@@ -1,12 +1,12 @@
 package ch.unibe.ese.team1.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -61,10 +61,7 @@ public class User {
 	@Lob
 	private String aboutMe;
 	
-	@Column(nullable = true)
-	private ArrayList<Long> bookmarkedAds;
-	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Ad> bookmarkedAdvertisementIterable;
 
 	public long getId() {
@@ -153,14 +150,6 @@ public class User {
 
 	public void setAboutMe(String aboutMe) {
 		this.aboutMe = aboutMe;
-	}
-
-	public ArrayList<Long> getBookmarkedAds() {
-		return bookmarkedAds;
-	}
-
-	public void setBookmarkedAds(ArrayList<Long> bookmarkedAds) {
-		this.bookmarkedAds = bookmarkedAds;
 	}
 	
 	public List<Ad> getBookmarkedAdvertisementIterable() {

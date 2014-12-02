@@ -1,6 +1,5 @@
 package ch.unibe.ese.team1.test.testData;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,49 +31,42 @@ public class BookmarkTestDataSaver implements TestDataSaver {
 		User oprah = userDao.findByUsername("oprah@winfrey.com");
 
 		// 5 bookmarks for Ese test-user
-		ArrayList<Long> bookmarkedAds = new ArrayList<>();
-		bookmarkedAds.add(1L);
-		bookmarkedAds.add(3L);
-		bookmarkedAds.add(5L);
-		bookmarkedAds.add(7L);
-		bookmarkedAds.add(8L);
-		ese.setBookmarkedAds(bookmarkedAds);
-		LinkedList<Ad> bookmarkedAdsLinkedList = new LinkedList<>();
-		bookmarkedAdsLinkedList.add(adService.getAdById(1));
-		bookmarkedAdsLinkedList.add(adService.getAdById(3));
-		bookmarkedAdsLinkedList.add(adService.getAdById(5));
-		bookmarkedAdsLinkedList.add(adService.getAdById(7));
-		bookmarkedAdsLinkedList.add(adService.getAdById(8));
-		ese.setBookmarkedAdvertisementIterable(bookmarkedAdsLinkedList);
+		LinkedList<Ad> bookmarkedAds = new LinkedList<>();
+		bookmarkedAds.add(adService.getAdById(1));
+		bookmarkedAds.add(adService.getAdById(3));
+		bookmarkedAds.add(adService.getAdById(5));
+		bookmarkedAds.add(adService.getAdById(7));
+		bookmarkedAds.add(adService.getAdById(8));
+		ese.setBookmarkedAdvertisementIterable(bookmarkedAds);
 		
 		userDao.save(ese);
 
 		// 4 bookmarks for Jane Doe
-		bookmarkedAds = new ArrayList<>();
-		bookmarkedAds.add(6L);
-		bookmarkedAds.add(9L);
-		bookmarkedAds.add(10L);
-		bookmarkedAds.add(11L);
-		jane.setBookmarkedAds(bookmarkedAds);
+		bookmarkedAds = new LinkedList<>();
+		bookmarkedAds.add(adService.getAdById(6));
+		bookmarkedAds.add(adService.getAdById(9));
+		bookmarkedAds.add(adService.getAdById(10));
+		bookmarkedAds.add(adService.getAdById(11));
+		jane.setBookmarkedAdvertisementIterable(bookmarkedAds);
 		userDao.save(jane);
 
 		// 5 bookmarks for user berner bear
-		bookmarkedAds = new ArrayList<>();
-		bookmarkedAds.add(2L);
-		bookmarkedAds.add(4L);
-		bookmarkedAds.add(6L);
-		bookmarkedAds.add(8L);
-		bookmarkedAds.add(12L);
-		bernerBaer.setBookmarkedAds(bookmarkedAds);
+		bookmarkedAds = new LinkedList<>();
+		bookmarkedAds.add(adService.getAdById(2));
+		bookmarkedAds.add(adService.getAdById(4));
+		bookmarkedAds.add(adService.getAdById(6));
+		bookmarkedAds.add(adService.getAdById(8));
+		bookmarkedAds.add(adService.getAdById(12));
+		bernerBaer.setBookmarkedAdvertisementIterable(bookmarkedAds);
 		userDao.save(bernerBaer);
 
 		// 4 bookmarks for Oprah
-		bookmarkedAds = new ArrayList<>();
-		bookmarkedAds.add(2L);
-		bookmarkedAds.add(3L);
-		bookmarkedAds.add(6L);
-		bookmarkedAds.add(12L);
-		oprah.setBookmarkedAds(bookmarkedAds);
+		bookmarkedAds = new LinkedList<>();
+		bookmarkedAds.add(adService.getAdById(2));
+		bookmarkedAds.add(adService.getAdById(3));
+		bookmarkedAds.add(adService.getAdById(6));
+		bookmarkedAds.add(adService.getAdById(12));
+		oprah.setBookmarkedAdvertisementIterable(bookmarkedAds);
 		userDao.save(oprah);
 	}
 

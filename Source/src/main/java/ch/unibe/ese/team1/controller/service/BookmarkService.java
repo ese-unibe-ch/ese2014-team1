@@ -1,10 +1,11 @@
 package ch.unibe.ese.team1.controller.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
@@ -31,32 +32,25 @@ public class BookmarkService {
 	 *                            2 undo the bookmark
 	 * 
 	 */
-	public int getBookmarkStatus(Long id, boolean bookmarked, ArrayList<Long> bookmarkedAds, User user) {
-		int counter = 0;
-		int index = 0;
+	public int getBookmarkStatus(Ad ad, boolean bookmarked, User user) {
+		List<Ad> tempAdList = user.getBookmarkedAdvertisementIterable();
 		if(bookmarked) {
-			for(long listedID : bookmarkedAds) {
-				if(listedID == id) {
-					index = counter;
-					counter++;
-				}
-			}
-			bookmarkedAds.remove(index);
-			updateUser(bookmarkedAds, user);
+			tempAdList.remove(ad);
+			updateUser(tempAdList, user);
 			return 2;
 		}
 		
 		if(!bookmarked) {
-			bookmarkedAds.add(id);
-			updateUser(bookmarkedAds, user);
+			tempAdList.add(ad);
+			updateUser(tempAdList, user);
 			return 3;
 		}
 		
 		return 1;
 	}
 	
-	private void updateUser(ArrayList<Long> bookmarkedAds, User user) {
-		user.setBookmarkedAds(bookmarkedAds);
+	private void updateUser(List<Ad> bookmarkedAds, User user) {
+		user.setBookmarkedAdvertisementIterable(bookmarkedAds);
 		userDao.save(user);
 	
 	}

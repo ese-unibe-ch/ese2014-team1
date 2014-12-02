@@ -275,59 +275,22 @@ public class AdController {
 			return 1;
 		}
 		
-		//TODO: this stuff is not used. Can we delete it?
-		//RESPONSE: NOOOOOOOOOOO I should refactor it and use the list instead of the long ID number...
-		// just didn't find the time to do it ;)
-		Ad ad = adService.getAdById(id);
-		
 		List<Ad> bookmarkedAdsIterable = user.getBookmarkedAdvertisementIterable();
-		if(bookmarkedAdsIterable == null) {
-			bookmarkedAdsIterable = new LinkedList<Ad>();
-		}
 		if(screening) {
 			for(Ad adIterable : bookmarkedAdsIterable) {
-				if(adIterable.equals(ad)) {
+				if(adIterable.getId() == id) {
 					return 3;
 				}
 			}
 			return 2;
 		}
 		
-		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
-		Long longID = (Long) id;
-		if(bookmarkedAds == null) {
-			bookmarkedAds = new ArrayList<Long>();
-		}
-//		if(screening) {
-//			for(long number : bookmarkedAds) {
-//				if(number == id) {
-//					return 3;
-//				} 
-//			}
-//			return 2;
-//		}
-			
+		Ad ad = adService.getAdById(id);
+
 		
-		return bookmarkService.getBookmarkStatus(id, bookmarked, bookmarkedAds, user);
+		return bookmarkService.getBookmarkStatus(ad, bookmarked, user);
 		
-//		// checking if AD is already in the LinkedList.
-//		LinkedList<Ad> bookmarkedAdvertisement = user.getBookmarkedAdvertisement();
-//		if(bookmarkedAdvertisement == null) {
-//			bookmarkedAdvertisement = new LinkedList<Ad>();
-//		} else {
-//			for(Ad adver : bookmarkedAdvertisement) {
-//				if(adver.equals(ad)) {
-//					return 2;
-//				}
-//			}
-//		}
-	
-//		if(screening != true) {
-//			bookmarkedAdvertisement.add(ad);
-//			user.setBookmarkedAdvertisement(bookmarkedAdvertisement);
-//			userDao.save(user);
-//		}
-//		return 3;
+
 		
 	}
 	
@@ -342,29 +305,35 @@ public class AdController {
 			user = userService.findUserByUsername(username);
 			userID = user.getId();
 			
-			ArrayList<Long> ads;
-			if(user.getBookmarkedAds() == null) {
-				ads = new ArrayList<Long>();
-			} else {
-				ads = user.getBookmarkedAds();
-			}
+//			List<Ad> listTesterAds = new LinkedList<Ad>();
+//			Iterable<Ad> tester = adService.getAllAds();
+//			for(Ad ad : tester) {
+//				if(ad.getUser().getId() == user.getId()) {
+//					listTesterAds.add(ad);
+//				}
+//			}
+//			
+//			for(Ad ad : listTesterAds) {
+//				System.out.println(ad.getId());
+//			}
+//			
+//			ArrayList<Long> ads;
+//			if(user.getBookmarkedAds() == null) {
+//				ads = new ArrayList<Long>();
+//			} else {
+//				ads = user.getBookmarkedAds();
+//			}
+//			
+//			LinkedList<Ad> adsLinked = new LinkedList<Ad>();
+//			for(Long adID : ads) {
+//				Ad ad = adService.getAdById(adID);
+//				adsLinked.add(ad);
+//			}
 			
-			LinkedList<Ad> adsLinked = new LinkedList<Ad>();
-			for(Long adID : ads) {
-				Ad ad = adService.getAdById(adID);
-				adsLinked.add(ad);
-			}
-			
-			Iterable<Ad> ownAds = adService.getAllAds();
-			LinkedList<Ad> ownAdsLinked = new LinkedList<Ad>();
-			for(Ad ownAd : ownAds) {
-				if(userID == ownAd.getUser().getId()) {
-					ownAdsLinked.add(ownAd);
-				}
-			}
-			
-			model.addObject("bookmarkedAdvertisements", adsLinked);
-			model.addObject("ownAdvertisements", ownAdsLinked);
+			Iterable<Ad> ownAds = adService.getAdsByUser(user);
+					
+			model.addObject("bookmarkedAdvertisements", user.getBookmarkedAdvertisementIterable());
+			model.addObject("ownAdvertisements", ownAds);
 			return model;
 		} else {
 			model = new ModelAndView("home");
