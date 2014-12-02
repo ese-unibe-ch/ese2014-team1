@@ -79,8 +79,8 @@
 				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
 				attachBookmarkedClickHandler();
 			}
-			if(dataFirst == 2) {
-				// nothing needs to be done
+			if(data == 4) {
+				$('#shownAdTitle').replaceWith($('<h1>' + "${shownAd.title}" + '</h1>'));
 			}
 		});
 		
@@ -141,7 +141,7 @@
 </c:choose>
 
 
-<h1>${shownAd.title}<c:choose><c:when test="${loggedIn}"><a class="right" id="bookmarkButton">Bookmark Me</a></c:when></c:choose></h1>
+<h1 id="shownAdTitle">${shownAd.title}<c:choose><c:when test="${loggedIn}"><a class="right" id="bookmarkButton">Bookmark Me</a></c:when></c:choose></h1>
 <hr />
 
 <section>

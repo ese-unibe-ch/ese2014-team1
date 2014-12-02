@@ -256,6 +256,10 @@ public class AdController {
 	 * Checks if the adID passed as post parameter is already inside users arrayList bookmarkedAds.
 	 * In case it is present, true is returned changing the "Bookmark Me" button to "Bookmarked".
 	 * If it is not present it is added to the arrayList bookmarkedAds.
+	 * 
+	 * @return 0 and 1 for errors; 3 to update the button to bookmarked
+	 *         3 and 2 for bookmarking or undo bookmarking respectively
+	 *         4 for removing button completly (because its the users ad)
 	 */
 	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
 	@Transactional
@@ -273,10 +277,14 @@ public class AdController {
 			// that should not happen...
 			System.out.println("ERROR: Principal does exist but could not be found in the DB");
 			return 1;
-		}
-		
+		}		
 		List<Ad> bookmarkedAdsIterable = user.getBookmarkedAdvertisementIterable();
 		if(screening) {
+			for(Ad ownAdIterable : adService.getAdsByUser(user)) {
+				if(ownAdIterable.getId() == id) {
+					return 4;
+				}
+			}
 			for(Ad adIterable : bookmarkedAdsIterable) {
 				if(adIterable.getId() == id) {
 					return 3;
@@ -287,48 +295,21 @@ public class AdController {
 		
 		Ad ad = adService.getAdById(id);
 
-		
 		return bookmarkService.getBookmarkStatus(ad, bookmarked, user);
-		
-
-		
 	}
 	
+	/**
+	 * Fetches information about bookmarked rooms and own ads and attaches
+	 * this information to the myRooms page in order to be displayed.
+	 */
 	@RequestMapping(value = "/profile/myRooms", method = RequestMethod.GET)
 	public ModelAndView myRooms(Principal principal) {
 		ModelAndView model;
 		User user;
-		Long userID;
 		if(principal != null) {
 			model = new ModelAndView("myRooms");
 			String username = principal.getName();
 			user = userService.findUserByUsername(username);
-			userID = user.getId();
-			
-//			List<Ad> listTesterAds = new LinkedList<Ad>();
-//			Iterable<Ad> tester = adService.getAllAds();
-//			for(Ad ad : tester) {
-//				if(ad.getUser().getId() == user.getId()) {
-//					listTesterAds.add(ad);
-//				}
-//			}
-//			
-//			for(Ad ad : listTesterAds) {
-//				System.out.println(ad.getId());
-//			}
-//			
-//			ArrayList<Long> ads;
-//			if(user.getBookmarkedAds() == null) {
-//				ads = new ArrayList<Long>();
-//			} else {
-//				ads = user.getBookmarkedAds();
-//			}
-//			
-//			LinkedList<Ad> adsLinked = new LinkedList<Ad>();
-//			for(Long adID : ads) {
-//				Ad ad = adService.getAdById(adID);
-//				adsLinked.add(ad);
-//			}
 			
 			Iterable<Ad> ownAds = adService.getAdsByUser(user);
 					

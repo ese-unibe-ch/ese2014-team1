@@ -12,11 +12,10 @@
 <script>
 	$(document).ready(function() {
 		$("#about-me").val("${currentUser.aboutMe}")
-		$('#toBeChanged').replaceWith($('<a href="/profile/user?id=">' + "blabla" + '</a'));
 		});		
 </script>
 
-<pre><a href="/">Home</a>   >   <a id="toBeChanged" href="/profile/user?id=${currentUser.id}">Public Profile</a>   >   Edit profile</pre>
+<pre><a href="/">Home</a>   >   <a href="/profile/user?id=${currentUser.id}">Public Profile</a>   >   Edit profile</pre>
 
 <h1>Edit your Profile</h1>
 <hr />
