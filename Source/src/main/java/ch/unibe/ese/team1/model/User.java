@@ -1,7 +1,6 @@
 package ch.unibe.ese.team1.model;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -11,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -64,7 +64,7 @@ public class User {
 	@Column(nullable = true)
 	private ArrayList<Long> bookmarkedAds;
 	
-	@Column(nullable = true)
+	@ManyToMany
 	private List<Ad> bookmarkedAdvertisementIterable;
 
 	public long getId() {
