@@ -1,11 +1,14 @@
 package ch.unibe.ese.team1.test.testData;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ch.unibe.ese.team1.controller.service.AdService;
+import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
@@ -17,6 +20,8 @@ public class BookmarkTestDataSaver implements TestDataSaver {
 
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private AdService adService;
 
 	@Override
 	@Transactional
@@ -34,6 +39,14 @@ public class BookmarkTestDataSaver implements TestDataSaver {
 		bookmarkedAds.add(7L);
 		bookmarkedAds.add(8L);
 		ese.setBookmarkedAds(bookmarkedAds);
+		LinkedList<Ad> bookmarkedAdsLinkedList = new LinkedList<>();
+		bookmarkedAdsLinkedList.add(adService.getAdById(1));
+		bookmarkedAdsLinkedList.add(adService.getAdById(3));
+		bookmarkedAdsLinkedList.add(adService.getAdById(5));
+		bookmarkedAdsLinkedList.add(adService.getAdById(7));
+		bookmarkedAdsLinkedList.add(adService.getAdById(8));
+		ese.setBookmarkedAdvertisementIterable(bookmarkedAdsLinkedList);
+		
 		userDao.save(ese);
 
 		// 4 bookmarks for Jane Doe

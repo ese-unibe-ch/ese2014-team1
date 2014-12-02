@@ -7,6 +7,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
+<!-- check if user is logged in -->
+<security:authorize var="loggedIn" url="/profile" />
+
 <c:import url="template/header.jsp" />
 
 <pre><a href="/">Home</a>   >   <a href="/profile/placeAd">Place ad</a>   >   Ad Description</pre>
@@ -21,24 +24,21 @@
 	function attachBookmarkClickHandler(){
 		$("#bookmarkButton").click(function() {
 			
-			$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: false}, function(dataSecond) {
+			$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: false}, function(data) {
 				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
-				switch(dataSecond) {
+				switch(data) {
 				case 0:
-					alert("You need to be logged in to bookmark ads.");
+					alert("You must be logged in to bookmark ads.");
 					break;
 				case 1:
-					alert("ERROR 277489. Please contact the WebAdmin.");
+					// Something went wrong with the principal object
+					alert("Return value 1. Please contact the WebAdmin.");
 					break;
-				 /* case 2:
-					alert("Bookmark already exists.");
-					$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
-					break; */
 				case 3:
 					$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
 					break;
 				default:
-					alert("ERROR 99782. Please contact the WebAdmin.");	
+					alert("Default error. Please contact the WebAdmin.");	
 				}
 				
 				attachBookmarkedClickHandler();
@@ -48,26 +48,21 @@
 	
 	function attachBookmarkedClickHandler(){
 		$("#bookmarkedButton").click(function() {
-			$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: true}, function(dataThird) {
+			$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: true}, function(data) {
 				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmark Me" + '</a>'));
-				switch(dataThird) {
+				switch(data) {
 				case 0:
-					// should not be possible
-					alert("You need to be logged in to undo the bookmarks.");
+					alert("You must be logged in to bookmark ads.");
 					break;
 				case 1:
 					// Something went wrong with the principal object
-					alert("ERROR 277489. Please contact the WebAdmin.");
+					alert("Return value 1. Please contact the WebAdmin.");
 					break;
 				case 2:
 					$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
 					break;
-				/* case 3:
-					alert("Has been bookmarked!");
-					$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
-					break; */
 				default:
-					alert("ERROR 99712. Please contact the WebAdmin.");
+					alert("Default error. Please contact the WebAdmin.");
 					
 				}			
 				attachBookmarkClickHandler();
@@ -79,8 +74,8 @@
 		attachBookmarkClickHandler();
 		attachBookmarkedClickHandler();
 		
-		$.post("/bookmark", {id: shownAdvertisementID, screening: true, bookmarked: true}, function(dataFirst) {
-			if(dataFirst == 3) {
+		$.post("/bookmark", {id: shownAdvertisementID, screening: true, bookmarked: true}, function(data) {
+			if(data == 3) {
 				$('#bookmarkButton').replaceWith($('<a class="right" id="bookmarkedButton">' + "Bookmarked" + '</a>'));
 				attachBookmarkedClickHandler();
 			}
@@ -129,8 +124,6 @@
 		
 </script>
 
-<!-- check if user is logged in -->
-<security:authorize var="loggedIn" url="/profile" />
 
 <!-- format the dates -->
 <fmt:formatDate value="${shownAd.moveInDate}" var="formattedMoveInDate"
@@ -148,7 +141,7 @@
 </c:choose>
 
 
-<h1>${shownAd.title}<a class="right" id="bookmarkButton">Bookmark Me</a></h1>
+<h1>${shownAd.title}<c:choose><c:when test="${loggedIn}"><a class="right" id="bookmarkButton">Bookmark Me</a></c:when></c:choose></h1>
 <hr />
 
 <section>

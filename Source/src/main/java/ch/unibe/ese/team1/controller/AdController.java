@@ -262,6 +262,7 @@ public class AdController {
 	@ResponseBody
 	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening,
 			@RequestParam("bookmarked") boolean bookmarked, Principal principal) {
+		// should never happen since no bookmark button when not logged in
 		if(principal == null) {
 			System.out.println("Please register first!");
 			return 0;
@@ -279,19 +280,32 @@ public class AdController {
 		// just didn't find the time to do it ;)
 		Ad ad = adService.getAdById(id);
 		
+		List<Ad> bookmarkedAdsIterable = user.getBookmarkedAdvertisementIterable();
+		if(bookmarkedAdsIterable == null) {
+			bookmarkedAdsIterable = new LinkedList<Ad>();
+		}
+		if(screening) {
+			for(Ad adIterable : bookmarkedAdsIterable) {
+				if(adIterable.equals(ad)) {
+					return 3;
+				}
+			}
+			return 2;
+		}
+		
 		ArrayList<Long> bookmarkedAds = user.getBookmarkedAds();
 		Long longID = (Long) id;
 		if(bookmarkedAds == null) {
 			bookmarkedAds = new ArrayList<Long>();
 		}
-		if(screening) {
-			for(long number : bookmarkedAds) {
-				if(number == id) {
-					return 3;
-				} 
-			}
-			return 2;
-		}
+//		if(screening) {
+//			for(long number : bookmarkedAds) {
+//				if(number == id) {
+//					return 3;
+//				} 
+//			}
+//			return 2;
+//		}
 			
 		
 		return bookmarkService.getBookmarkStatus(id, bookmarked, bookmarkedAds, user);
