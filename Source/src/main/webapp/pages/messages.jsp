@@ -26,6 +26,7 @@
 		<tr>
 			<th id="subjectColumn">Subject</th>
 			<th>Sender</th>
+			<th>Recipient</th>
 			<th>Date sent</th>
 		</tr>
 		<c:forEach items="${messages }" var="message">
@@ -36,6 +37,7 @@
 			<tr data-id="${message.id}">
 				<td>${message.subject }</td>
 				<td>${message.sender.email}</td>
+				<td>${message.recipient.email }</td>
 				<td>${singleFormattedDateSent}</td>
 			</tr>
 		</c:forEach>
@@ -43,6 +45,9 @@
 	<hr />
 	<div id="messageDetail">
 		<h2>${messages[0].subject }</h2>
+		<h3>
+			<b>To: </b>${messages[0].recipient.email }
+		</h3>
 		<h3>
 			<b>From: </b> ${messages[0].sender.email }
 		</h3>

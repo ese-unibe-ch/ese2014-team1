@@ -5,6 +5,7 @@ function loadMessages(data) {
 		var result = '<tr data-id="' + message.id + '" >';
 		result += '<td>' + message.subject + '</td>';
 		result += '<td>' + message.sender.email + '</td>';
+		result += '<td>' + message.recipient.email + '</td>';
 		result += '<td>' + message.dateSent + '</td></tr>';
 
 		$("#messageList table").append(result);
@@ -22,6 +23,7 @@ function prepareRows() {
 		var id = $(this).attr("data-id");
 		$.get("/profile/messages/getMessage?id=" + id, function(data) {
 			var result = '<h2>' + data.subject + '</h2>';
+			result += '<h3><b>To: </b>' + data.recipient.email + '</h3>';
 			result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
 			result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
 			result += '<br /><p>' + data.text + '</p>';
