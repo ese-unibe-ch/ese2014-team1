@@ -55,7 +55,9 @@ public class ProfileController {
 	public ModelAndView signupResultPage(@Valid SignupForm signupForm,
 			BindingResult bindingResult) {
 		ModelAndView model;
-		if (!bindingResult.hasErrors()) {
+		if (!bindingResult.hasErrors()
+				&& !signupService.doesUserWithUsernameExist(signupForm
+						.getEmail())) {
 			signupService.saveFrom(signupForm);
 			model = new ModelAndView("login");
 			model.addObject("confirmationMessage", "Signup complete!");
@@ -82,7 +84,8 @@ public class ProfileController {
 	/** Handles the request for editing the user profile. */
 	@RequestMapping(value = "/profile/editProfile", method = RequestMethod.POST)
 	public ModelAndView editProfileResultPage(
-			@Valid EditProfileForm editProfileForm, BindingResult bindingResult, Principal principal) {
+			@Valid EditProfileForm editProfileForm,
+			BindingResult bindingResult, Principal principal) {
 		ModelAndView model;
 		String username = principal.getName();
 		User user = userService.findUserByUsername(username);
@@ -94,11 +97,12 @@ public class ProfileController {
 			return model;
 		} else {
 			model = new ModelAndView("updatedProfile");
-			model.addObject("message", "Something went wrong, please contact the WebAdmin if the problem persists!");
+			model.addObject("message",
+					"Something went wrong, please contact the WebAdmin if the problem persists!");
 			return model;
 		}
 	}
-	
+
 	@RequestMapping(value = "/profile/publicProfile")
 	public ModelAndView publicProfile(Principal principal) {
 		ModelAndView model = new ModelAndView("publicProfile");
@@ -107,13 +111,13 @@ public class ProfileController {
 		model.addObject("currentUser", user);
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
 	public ModelAndView user(@RequestParam("id") long id) {
 		ModelAndView model = new ModelAndView("user");
-			User user = userService.findUserById(id);
+		User user = userService.findUserById(id);
 		model.addObject("user", user);
 		model.addObject("messageForm", new MessageForm());
-			return model;
+		return model;
 	}
 }

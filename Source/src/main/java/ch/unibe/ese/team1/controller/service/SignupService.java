@@ -43,4 +43,14 @@ public class SignupService {
 		
 		userDao.save(user);
 	}
+	
+	/**
+	 * Returns whether a user with the given username already exists.
+	 * @param username the username to check for
+	 * @return true if the user already exists, false otherwise
+	 */
+	@Transactional
+	public boolean doesUserWithUsernameExist(String username){
+		return userDao.findByUsername(username) != null;
+	}
 }
