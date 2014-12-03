@@ -31,6 +31,10 @@ hr {
 	margin-bottom: 40px;
 }
 
+.greenText{
+	color: #2dc16d; 
+}
+
 .slim {
 	height: 2px;
 	margin-bottom: 10px

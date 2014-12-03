@@ -85,4 +85,9 @@
 	<!-- will be closed in footer-->
 	<div id="content">
 
-		<c:import url="/pages/template/getConfirmationMessage.jsp"></c:import>
+		<c:if test="${not empty confirmationMessage }">
+			<div class="confirmation-message">
+				<img src="/img/check-mark.png" />
+				<p>${confirmationMessage }</p>
+			</div>
+		</c:if>
