@@ -147,7 +147,7 @@ function sort_div_attribute() {
 						<a href="<c:url value='/ad?id=${ad.id}' />"><img
 							src="${ad.pictures[0].filePath}" /></a>
 						<h2>
-							<a href="<c:url value='/ad?id=${ad.id}' />">${ad.title }</a>
+							<a class="link" href="<c:url value='/ad?id=${ad.id}' />">${ad.title }</a>
 						</h2>
 						<p>${ad.street}, ${ad.zipcode} ${ad.city}</p>
 						<br />

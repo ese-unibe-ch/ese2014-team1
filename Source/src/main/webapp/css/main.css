@@ -31,8 +31,13 @@ hr {
 	margin-bottom: 40px;
 }
 
-.greenText{
-	color: #2dc16d; 
+.link {
+	color: #48db88;
+	text-decoration: none;
+}
+
+.link:hover {
+	color: #62f4a1;
 }
 
 .slim {
@@ -40,7 +45,7 @@ hr {
 	margin-bottom: 10px
 }
 
-a {
+a {    /* really necessary? */
 	text-decoration: none;
 	color: graytext;
 }
@@ -138,6 +143,7 @@ button {
 	color: white;
 	border-color: white;
 }
+
 
 .button {
 	background-color: #2dc16d;
@@ -419,6 +425,16 @@ footer nav ul li {
 	margin-left: 30px;
 	line-height: 1.5;
 }
+
+/* about.jsp*/
+#about {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -365px;
+  margin-left: -486px;
+}
+
 /* -------------------------------------------------------------------- */
 /* placeAd.jsp */
 #placeAdForm {
@@ -579,6 +595,7 @@ footer nav ul li {
 
 /* -------------------------------------------------------------------- */
 /* adDescription.jsp */
+
 #adDescTable {
 	width: 40%;
 	float: left;
@@ -590,10 +607,6 @@ footer nav ul li {
 
 #adDescTable td {
 	margin: 10px;
-}
-
-#adDescTable td a {
-	text-decoration: underline;
 }
 
 #checkBoxTable {
@@ -614,7 +627,7 @@ footer nav ul li {
 }
 
 #advertiserTable {
-	width: 40%;
+	width: 55%;;
 }
 
 #advertiserTable img {
@@ -721,11 +734,10 @@ footer nav ul li {
 }
 
 .thinInactiveButton:hover {
-	background-color: #bbbbbb;
-	color: white;
-	border-color: white;
+	background-color: #white;
+	color: #bbbbbb;
+	border-color: #bbbbbb;
 }
-
 
 /* -------------------------------------------------------------------- */
 /* messages.jsp */

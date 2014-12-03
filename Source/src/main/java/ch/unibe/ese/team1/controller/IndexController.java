@@ -35,6 +35,18 @@ public class IndexController {
 		return new ModelAndView("index");
 	}
 	
+	/** Displays the about us page. */
+	@RequestMapping(value="/about")
+	public ModelAndView about(){
+		return new ModelAndView("about");
+	}
+	
+	/** Displays the disclaimer page. */
+	@RequestMapping(value="/disclaimer")
+	public ModelAndView disclaimer(){
+		return new ModelAndView("disclaimer");
+	}
+	
 	@RequestMapping(value = "/profile/schedule", method = RequestMethod.GET)
 	public ModelAndView schedule(@RequestParam("user") long id) {
 		ModelAndView model = new ModelAndView("schedule");

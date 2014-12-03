@@ -9,12 +9,12 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Welcome to FlatFindr</title>
+<title>The FlatFoundrs</title>
 </head>
 <body>
 
-<pre>Home</pre>
+<pre>About us</pre>
 
-<h1>Welcome to FlatFindr!</h1>
+<img id="about" src="/img/about.jpg">
 
 <c:import url="template/footer.jsp" /><br />

@@ -141,7 +141,7 @@
 </c:choose>
 
 
-<h1 id="shownAdTitle">${shownAd.title}<c:choose><c:when test="${loggedIn}"><a class="right" id="bookmarkButton">Bookmark Me</a></c:when></c:choose></h1>
+<h1 id="shownAdTitle">${shownAd.title}<c:choose><c:when test="${loggedIn}"><a class="right" id="bookmarkButton">Bookmark Ad</a></c:when></c:choose></h1>
 <hr />
 
 <section>
@@ -159,7 +159,7 @@
 		<tr>
 			<td><h2>Address</h2></td>
 			<td>
-				<a href="http://maps.google.com/?q=${shownAd.street},${shownAd.zipcode},${shownAd.city}">${shownAd.street},
+				<a class="link" href="http://maps.google.com/?q=${shownAd.street}, ${shownAd.zipcode}, ${shownAd.city}">${shownAd.street},
 						${shownAd.zipcode} ${shownAd.city}</a>
 			</td>
 		</tr>
@@ -176,12 +176,12 @@
 
 		<tr>
 			<td><h2>Monthly Rent</h2></td>
-			<td>${shownAd.prizePerMonth}CHF</td>
+			<td>${shownAd.prizePerMonth}&#32;CHF</td>
 		</tr>
 
 		<tr>
 			<td><h2>Square Meters</h2></td>
-			<td>${shownAd.squareFootage}m²</td>
+			<td>${shownAd.squareFootage}&#32;m²</td>
 		</tr>
 		<tr>
 			<td><h2>Ad created on</h2></td>
@@ -277,8 +277,8 @@
 									</c:if>
 								</c:when>
 								<c:otherwise>
-									<button class="thinInactiveButton" type="button"
-										data-id="${visit.id}">Login to send enquiries</button>
+									<a href="/login"><button class="thinInactiveButton" type="button"
+										data-id="${visit.id}">Login to send enquiries</button></a>
 								</c:otherwise>
 							</c:choose></td>
 					</tr>
@@ -399,9 +399,18 @@
 					<img src="/img/avatar.png">
 				</c:otherwise>
 			</c:choose></td>
-
-		<td id="advertiserEmail"><a
-			href=/profile/user?id=${shownAd.user.id}>${shownAd.user.username}</a></td>
+		
+		<td>${shownAd.user.username}</td>
+		
+		<td id="advertiserEmail">
+		<c:choose>
+			<c:when test="${loggedIn}">
+				<a href="/profile/user?id=${shownAd.user.id}"><button type="button">Visit profile</button></a>
+			</c:when>
+			<c:otherwise>
+				<a href="/login"><button class="thinInactiveButton" type="button">Login to visit profile</button></a>
+			</c:otherwise>
+		</c:choose>
 
 		<td>
 			<form>
@@ -412,8 +421,7 @@
 						</c:if>
 					</c:when>
 					<c:otherwise>
-						<button class="thinInactiveButton" type="button">Login to
-							contact advertiser</button>
+						<a href="/login"><button class="thinInactiveButton" type="button">Login to contact advertiser</button></a>
 					</c:otherwise>
 				</c:choose>
 			</form>

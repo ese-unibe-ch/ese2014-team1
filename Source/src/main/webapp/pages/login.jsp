@@ -42,10 +42,9 @@
 			<li>Email: <i>oprah@winfrey.com</i>, password: <i>password</i></li>
 		</ul>
 		<br />
-		<h3 class="greenText">
-			<a class="greenText" href="<c:url value="/signup" />">Sign up as a new user</a>
-			instead.
-		</h3>
+		
+			Or <a class="link" href="<c:url value="/signup" />">sign up</a> as a new user.
+		
 	</c:otherwise>
 </c:choose>
 
