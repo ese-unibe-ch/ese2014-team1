@@ -269,18 +269,18 @@
 							until
 							<fmt:formatDate value="${visit.endTimestamp}" pattern=" HH:mm" />
 						</td>
-						<td>
-							<c:choose>
+						<td><c:choose>
 								<c:when test="${loggedIn}">
-									<button class="thinButton" type="button" data-id="${visit.id}">Send
-										enquiry to advertiser</button>
+									<c:if test="${loggedInUserEmail != shownAd.user.username}">
+										<button class="thinButton" type="button" data-id="${visit.id}">Send
+											enquiry to advertiser</button>
+									</c:if>
 								</c:when>
 								<c:otherwise>
-									<button class="thinInactiveButton" type="button" data-id="${visit.id}">
-									Login to send enquiries</button>
+									<button class="thinInactiveButton" type="button"
+										data-id="${visit.id}">Login to send enquiries</button>
 								</c:otherwise>
-							</c:choose>
-						</td>
+							</c:choose></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -387,6 +387,10 @@
 
 <table id="advertiserTable" class="adDescDiv">
 	<tr>
+	<td><h2>Advertiser</h2><br /></td>
+	</tr>
+
+	<tr>
 		<td><c:choose>
 				<c:when test="${shownAd.user.picture.filePath != null}">
 					<img src="${shownAd.user.picture.filePath}">
@@ -394,19 +398,22 @@
 				<c:otherwise>
 					<img src="/img/avatar.png">
 				</c:otherwise>
-			</c:choose>
-		</td>
+			</c:choose></td>
 
-		<td id="advertiserEmail"><a href=/profile/user?id=${shownAd.user.id}>${shownAd.user.username}</a></td>
+		<td id="advertiserEmail"><a
+			href=/profile/user?id=${shownAd.user.id}>${shownAd.user.username}</a></td>
 
 		<td>
 			<form>
 				<c:choose>
 					<c:when test="${loggedIn}">
-						<button id="newMsg" type="button">Contact Advertiser</button>
+						<c:if test="${loggedInUserEmail != shownAd.user.username }">
+							<button id="newMsg" type="button">Contact Advertiser</button>
+						</c:if>
 					</c:when>
 					<c:otherwise>
-						<button class="thinInactiveButton" type="button">Login to contact advertiser</button>
+						<button class="thinInactiveButton" type="button">Login to
+							contact advertiser</button>
 					</c:otherwise>
 				</c:choose>
 			</form>

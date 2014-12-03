@@ -2,7 +2,6 @@ package ch.unibe.ese.team1.controller;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,10 +28,10 @@ import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.AlertService;
+import ch.unibe.ese.team1.controller.service.BookmarkService;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.controller.service.VisitService;
-import ch.unibe.ese.team1.controller.service.BookmarkService;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.PictureMeta;
 import ch.unibe.ese.team1.model.User;
@@ -60,8 +59,9 @@ public class AdController {
 	private ServletContext servletContext;
 	@Autowired
 	private MessageService messageService;
-	
-	// TODO is that possible without a service? Or should I create a new service?
+
+	// TODO is that possible without a service? Or should I create a new
+	// service?
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -174,8 +174,8 @@ public class AdController {
 
 			List<String> fileNames = pictureUploader.getFileNames();
 			Ad ad = adService.saveFrom(placeAdForm, fileNames, user);
-			
-			//triggers all alerts that match the placed ad
+
+			// triggers all alerts that match the placed ad
 			alertService.triggerAlerts(ad);
 
 			// reset the place ad form
@@ -196,15 +196,16 @@ public class AdController {
 	@RequestMapping(value = "/ad", method = RequestMethod.GET)
 	public ModelAndView ad(@RequestParam("id") long id, Principal principal) {
 		ModelAndView model = new ModelAndView("adDescription");
-		// take principal, test if principal here or not
-		// get the list from user
-		// check ID of both
 		Ad ad = adService.getAdById(id);
 		model.addObject("shownAd", ad);
 		model.addObject("messageForm", new MessageForm());
-		
+
+		String loggedInUserEmail = (principal == null) ? "" : principal
+				.getName();
+		model.addObject("loggedInUserEmail", loggedInUserEmail);
+
 		model.addObject("visits", visitService.getVisitsByAd(ad));
-		
+
 		return model;
 	}
 
@@ -214,8 +215,7 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/ad", method = RequestMethod.POST)
 	public ModelAndView messageSent(@RequestParam("id") long id,
-			@Valid MessageForm messageForm, BindingResult bindingResult,
-			Principal principal) {
+			@Valid MessageForm messageForm, BindingResult bindingResult) {
 
 		ModelAndView model = new ModelAndView("adDescription");
 		Ad ad = adService.getAdById(id);
@@ -251,23 +251,25 @@ public class AdController {
 		}
 		return placeAdForm;
 	}
-	
+
 	/**
-	 * Checks if the adID passed as post parameter is already inside users arrayList bookmarkedAds.
-	 * In case it is present, true is returned changing the "Bookmark Me" button to "Bookmarked".
-	 * If it is not present it is added to the arrayList bookmarkedAds.
+	 * Checks if the adID passed as post parameter is already inside users
+	 * arrayList bookmarkedAds. In case it is present, true is returned changing
+	 * the "Bookmark Me" button to "Bookmarked". If it is not present it is
+	 * added to the arrayList bookmarkedAds.
 	 * 
-	 * @return 0 and 1 for errors; 3 to update the button to bookmarked
-	 *         3 and 2 for bookmarking or undo bookmarking respectively
-	 *         4 for removing button completly (because its the users ad)
+	 * @return 0 and 1 for errors; 3 to update the button to bookmarked 3 and 2
+	 *         for bookmarking or undo bookmarking respectively 4 for removing
+	 *         button completly (because its the users ad)
 	 */
 	@RequestMapping(value = "/bookmark", method = RequestMethod.POST)
 	@Transactional
 	@ResponseBody
-	public int isBookmarked(@RequestParam("id") long id, @RequestParam("screening") boolean screening,
+	public int isBookmarked(@RequestParam("id") long id,
+			@RequestParam("screening") boolean screening,
 			@RequestParam("bookmarked") boolean bookmarked, Principal principal) {
 		// should never happen since no bookmark button when not logged in
-		if(principal == null) {
+		if (principal == null) {
 			System.out.println("Please register first!");
 			return 0;
 		}
@@ -275,52 +277,55 @@ public class AdController {
 		User user = userService.findUserByUsername(username);
 		if (user == null) {
 			// that should not happen...
-			System.out.println("ERROR: Principal does exist but could not be found in the DB");
+			System.out
+					.println("ERROR: Principal does exist but could not be found in the DB");
 			return 1;
-		}		
-		List<Ad> bookmarkedAdsIterable = user.getBookmarkedAdvertisementIterable();
-		if(screening) {
-			for(Ad ownAdIterable : adService.getAdsByUser(user)) {
-				if(ownAdIterable.getId() == id) {
+		}
+		List<Ad> bookmarkedAdsIterable = user
+				.getBookmarkedAdvertisementIterable();
+		if (screening) {
+			for (Ad ownAdIterable : adService.getAdsByUser(user)) {
+				if (ownAdIterable.getId() == id) {
 					return 4;
 				}
 			}
-			for(Ad adIterable : bookmarkedAdsIterable) {
-				if(adIterable.getId() == id) {
+			for (Ad adIterable : bookmarkedAdsIterable) {
+				if (adIterable.getId() == id) {
 					return 3;
 				}
 			}
 			return 2;
 		}
-		
+
 		Ad ad = adService.getAdById(id);
 
 		return bookmarkService.getBookmarkStatus(ad, bookmarked, user);
 	}
-	
+
 	/**
-	 * Fetches information about bookmarked rooms and own ads and attaches
-	 * this information to the myRooms page in order to be displayed.
+	 * Fetches information about bookmarked rooms and own ads and attaches this
+	 * information to the myRooms page in order to be displayed.
 	 */
 	@RequestMapping(value = "/profile/myRooms", method = RequestMethod.GET)
 	public ModelAndView myRooms(Principal principal) {
 		ModelAndView model;
 		User user;
-		if(principal != null) {
+		if (principal != null) {
 			model = new ModelAndView("myRooms");
 			String username = principal.getName();
 			user = userService.findUserByUsername(username);
-			
+
 			Iterable<Ad> ownAds = adService.getAdsByUser(user);
-					
-			model.addObject("bookmarkedAdvertisements", user.getBookmarkedAdvertisementIterable());
+
+			model.addObject("bookmarkedAdvertisements",
+					user.getBookmarkedAdvertisementIterable());
 			model.addObject("ownAdvertisements", ownAds);
 			return model;
 		} else {
 			model = new ModelAndView("home");
 		}
-		
+
 		return model;
 	}
-	
+
 }
