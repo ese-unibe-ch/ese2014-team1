@@ -18,5 +18,3 @@
 <h1>Welcome to FlatFindr!</h1>
 
 <c:import url="template/footer.jsp" /><br />
-
-</div>
