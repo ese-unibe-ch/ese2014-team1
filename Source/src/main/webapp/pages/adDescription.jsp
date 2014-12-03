@@ -112,7 +112,7 @@
 			if($("#msgSubject").val() != "" && $("#msgTextarea").val() != ""){
 				var subject = $("#msgSubject").val();
 				var text = $("#msgTextarea").val();
-				var recipientEmail = $("#advertiserEmail").val();
+				var recipientEmail = "${shownAd.user.username}";
 				$.post("profile/messages/sendMessage", {subject : subject, text: text, recipientEmail : recipientEmail}, function(){
 					$("#msgDiv").css("display", "none");
 					$("#msgDiv").css("opacity", "0");

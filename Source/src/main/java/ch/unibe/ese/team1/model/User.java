@@ -61,6 +61,7 @@ public class User {
 	@Lob
 	private String aboutMe;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Ad> bookmarkedAdvertisementIterable;
 
