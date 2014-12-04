@@ -15,6 +15,9 @@ import ch.unibe.ese.team1.model.dao.AdDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 import ch.unibe.ese.team1.model.dao.VisitDao;
 
+/**
+ * This inserts some visits test data into the database.
+ */
 @Service
 public class VisitTestDataSaver implements TestDataSaver {
 

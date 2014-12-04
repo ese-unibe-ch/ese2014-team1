@@ -19,6 +19,9 @@ import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.model.Alert;
 import ch.unibe.ese.team1.model.User;
 
+/**
+ * This controller handles all requests concerning creating and deleting alerts.
+ */
 @Controller
 public class AlertController {
 

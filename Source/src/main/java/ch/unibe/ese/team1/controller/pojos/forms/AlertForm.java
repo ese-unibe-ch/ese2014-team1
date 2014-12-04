@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import ch.unibe.ese.team1.model.User;
 
+/** This form is used when a user wants to create a new alert. */
 public class AlertForm {
 	
 	private User user;

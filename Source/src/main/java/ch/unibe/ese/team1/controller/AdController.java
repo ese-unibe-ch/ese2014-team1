@@ -41,8 +41,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * This controllers handles all requests concerning placing ads and displaying
- * ads.
+ * This controller handles all requests concerning placing ads and displaying ads.
  */
 @Controller
 public class AdController {
@@ -59,15 +58,14 @@ public class AdController {
 	private ServletContext servletContext;
 	@Autowired
 	private MessageService messageService;
-
-	// TODO is that possible without a service? Or should I create a new
-	// service?
-	@Autowired
-	private UserDao userDao;
 	@Autowired
 	private VisitService visitService;
 	@Autowired
 	private BookmarkService bookmarkService;
+
+	@Autowired
+	private UserDao userDao;
+	
 
 	/** Used for generating a JSON representation of a given object. */
 	private ObjectMapper objectMapper;
