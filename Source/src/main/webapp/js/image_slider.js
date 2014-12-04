@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 function getVisiblePicture() {
 	var visiblePicture = $("#images img").filter(function() {
 		return $(this).hasClass('visible');

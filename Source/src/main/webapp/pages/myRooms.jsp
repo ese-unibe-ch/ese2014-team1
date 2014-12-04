@@ -14,7 +14,7 @@
 </script>
 
 
-<pre><a href="/">Home</a>   >   My Rooms</pre>
+<pre><a href="/">Home</a>   &gt;   My Rooms</pre>
 
 <c:choose>
 	<c:when test="${empty ownAdvertisements}">

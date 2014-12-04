@@ -12,6 +12,9 @@ import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.MessageDao;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
+/**
+ * This inserts some messages test data into the database.
+ */
 @Service
 public class MessageTestDataSaver implements TestDataSaver {
 

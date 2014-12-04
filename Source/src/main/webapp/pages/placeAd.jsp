@@ -105,7 +105,7 @@
 	});
 </script>
 
-<pre><a href="/">Home</a>   >   Place ad</pre>
+<pre><a href="/">Home</a>   &gt;   Place ad</pre>
 
 <h1>Place an ad</h1>
 <hr />

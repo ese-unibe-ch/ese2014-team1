@@ -6,7 +6,7 @@
 
 <c:import url="template/header.jsp" />
 
-<pre><a href="/">Home</a>   >   Alerts</pre>
+<pre><a href="/">Home</a>   &gt;   Alerts</pre>
 
 <script>
 function deleteAlert(button) {

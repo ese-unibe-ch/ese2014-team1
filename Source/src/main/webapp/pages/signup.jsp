@@ -7,7 +7,7 @@
 <c:import url="template/header.jsp" />
 
 <pre>
-	<a href="/">Home</a>   >   Sign up</pre>
+	<a href="/">Home</a>   &gt;   Sign up</pre>
 
 <h1>Sign up</h1>
 <form:form id="signupForm" method="post" modelAttribute="signupForm"

@@ -7,7 +7,7 @@
 
 
 <c:import url="template/header.jsp" />
-<pre><a href="/">Home</a>   >   <a href="/searchAd/">Search</a>   >   Results</pre>
+<pre><a href="/">Home</a>   &gt;   <a href="/searchAd/">Search</a>   &gt;   Results</pre>
 
 <script>
 function validateType(form)

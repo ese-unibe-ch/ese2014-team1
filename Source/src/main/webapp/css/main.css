@@ -45,7 +45,7 @@ hr {
 	margin-bottom: 10px
 }
 
-a {    /* really necessary? */
+a {
 	text-decoration: none;
 	color: graytext;
 }
@@ -548,7 +548,6 @@ footer nav ul li {
 	border-radius: 10px;
 }
 
-
 #resultsDiv {
 	width: 60%;
 	margin-top: 10px;
@@ -933,22 +932,25 @@ footer nav ul li {
 
 /* -------------------------------------------------------------------- */
 /* visitors.jsp */
-
 .rating {
   text-align: center;
 }
+
 .rating > span {
   display: inline-block;
   position: relative;
   width: 1.1em;
   
 }
+
 .rating:hover > span {
 	color: transparent;
 }
+
 .rating > span:hover ~ span {
 	color: gray;
 }
+
 .rating:hover > span:before {
 	content: "\2605";
 	position: absolute;
@@ -956,6 +958,7 @@ footer nav ul li {
 	color: #2dc16d;
 	width: 1.1em;
 }
+
 .rating > span:hover ~ span:before {
 	color: transparent;
 }

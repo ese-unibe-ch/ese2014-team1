@@ -11,7 +11,7 @@
 
 <script src="/js/messageForAdDescription.js"></script>
 
-<pre><a href="/">Home</a>   >   Profile</pre>
+<pre><a href="/">Home</a>   &gt;   Profile</pre>
 
 <div id="userDiv">
 		<c:choose>

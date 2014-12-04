@@ -6,7 +6,7 @@
 
 <c:import url="template/header.jsp" />
 
-<pre><a href="/">Home</a>   >   Search</pre>
+<pre><a href="/">Home</a>   &gt;   Search</pre>
 
 <script>
 	$(document).ready(function() {

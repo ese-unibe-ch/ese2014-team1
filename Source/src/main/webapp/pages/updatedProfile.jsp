@@ -9,8 +9,8 @@
 
 <body>
 <%-- profile/publicProfile not valid anymore... needs to be corrected: problem -> how to get the right user??? Maybe use a JS Script --%>
-<pre><a href="/">Home</a>   >   <a href="/profile/user?id=${currentUser.id}">Public Profile</a>   >   <a
-			href="/profile/editProfile">Edit Profile</a>    >    Profile Updated</pre>
+<pre><a href="/">Home</a>   &gt;   <a href="/profile/user?id=${currentUser.id}">Public Profile</a>   &gt;   <a
+			href="/profile/editProfile">Edit Profile</a>    &gt;    Profile Updated</pre>
 
 <h1>${message}</h1>
 <hr />
