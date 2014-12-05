@@ -1,3 +1,4 @@
+
 function loadMessages(data) {
 	$("#messageList table tr:gt(0)").remove();
 	$.each(data, function(index, message) {
@@ -12,7 +13,6 @@ function loadMessages(data) {
 }
 
 function prepareRows() {
-	//handles coloring of the rows: green if unread, grey if hovered over
 	var rows = $("#messageList table tr:gt(0)");
 	$(rows).hover(function() {
 		$(this).children().css("background-color", "#ececec");
@@ -24,8 +24,6 @@ function prepareRows() {
 			color = "white";
 		$(this).children().css("background-color", color);
 	});
-	
-	//shows a single message, updates the status to read
 	$(rows).click(function() {
 		var id = $(this).attr("data-id");
 		$(this).removeClass("UNREAD");
@@ -38,10 +36,6 @@ function prepareRows() {
 				result += '<br /><p>' + data.text + '</p>';
 				$("#messageDetail").html(result);
 			}, 'json');
-			
-			//writes the new number of unread messages on the left and in header
-			unreadMessages("header");
-			unreadMessages("messages");
 		});
 	});
 }

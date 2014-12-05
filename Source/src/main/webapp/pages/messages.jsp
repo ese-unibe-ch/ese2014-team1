@@ -12,17 +12,12 @@
 <fmt:formatDate value="${messages[0].dateSent}" var="formattedDateSent"
 	type="date" pattern="HH:mm, dd.MM.yyyy" />
 
-<script src="/js/unreadMessages.js"></script>
 <script src="/js/messages.js"></script>
-
-<script>
-$(document).ready(unreadMessages("messages"));
-</script>
 
 <h1>Messages</h1>
 <hr />
 <div id="folders">
-	<h2 id="countInbox"></h2>
+	<h2 id="inbox">Inbox</h2>
 	<h2 id="newMessage">New</h2>
 	<h2 id="sent">Sent</h2>
 </div>

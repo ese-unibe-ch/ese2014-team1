@@ -145,8 +145,8 @@ function typeOfAlert(alert) {
 				</c:choose>
 				</td>
 				<td>${alert.city}</td>
-				<td>${alert.radius}&#32;km</td>
-				<td>${alert.price}&#32;Chf</td>
+				<td>${alert.radius} km</td>
+				<td>${alert.price} Chf</td>
 				<td><button class="deleteButton" data-id="${alert.id}" onClick="deleteAlert(this)">Delete</button></td>
 			</tr>
 		</c:forEach>
