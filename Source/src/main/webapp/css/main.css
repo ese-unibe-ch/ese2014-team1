@@ -961,3 +961,29 @@ footer nav ul li {
 .rating > span:hover ~ span:before {
 	color: transparent;
 }
+
+/* -------------------------------------------------------------------- */
+/* editAd.jsp */
+
+.pictureThumbnail{
+	width: 200px;
+	border-style: dashed;
+	border-color: #2dc16d;
+	border-width: 2px;
+	text-align:center;
+	float: left;
+	margin-right: 10px;
+}
+
+.pictureThumbnail div{
+	width: 100%;
+}
+
+.pictureThumbnail img{
+	height: 130px;
+	margin-top: 10px;
+}
+
+.pictureThumbnail button{
+	margin: 10px 0;
+}

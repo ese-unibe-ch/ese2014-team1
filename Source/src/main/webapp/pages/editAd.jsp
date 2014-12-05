@@ -153,19 +153,7 @@
 			placeholder="Preferences"></form:textarea>
 	</fieldset>
 
-	<fieldset>
-		<legend>Pictures (optional)</legend>
-		<br /> <label for="field-pictures">Pictures</label> <input
-			type="file" id="field-pictures" accept="image/*" multiple="multiple" />
-		<table id="uploaded-pictures" class="styledTable">
-			<tr>
-				<th id="name-column">Uploaded picture</th>
-				<th>Size</th>
-				<th>Delete</th>
-			</tr>
-		</table>
-		<br>
-	</fieldset>
+	
 	
 	<fieldset>
 		<legend>Visiting times (optional)</legend>
@@ -233,7 +221,41 @@
 		<button type="submit">Submit</button>
 		<button type="reset">Cancel</button>
 	</div>
+	<br />
+	<br />
+
+	<fieldset>
+		<legend>Pictures</legend>
+		<h3>Delete existing pictures</h3>
+		<br />
+		<div>
+			<c:forEach items="${ad.pictures }" var="picture">
+				<div class="pictureThumbnail">
+					<div>
+					<img src="${picture.filePath}" />
+					</div>
+					<button type="button">Delete</button>
+				</div>
+			</c:forEach>
+		</div>
+		<p class="clearBoth"></p>
+		<br /><br />
+		<hr />
+		<h3>Add new pictures</h3>
+		<br />
+		<label for="field-pictures">Pictures</label> <input
+			type="file" id="field-pictures" accept="image/*" multiple="multiple" />
+		<table id="uploaded-pictures" class="styledTable">
+			<tr>
+				<th id="name-column">Uploaded picture</th>
+				<th>Size</th>
+				<th>Delete</th>
+			</tr>
+		</table>
+		<br>
+	</fieldset>
 
 </form:form>
+
 
 <c:import url="template/footer.jsp" />
