@@ -268,7 +268,6 @@ public class AdController {
 			@RequestParam("bookmarked") boolean bookmarked, Principal principal) {
 		// should never happen since no bookmark button when not logged in
 		if (principal == null) {
-			System.out.println("Please register first!");
 			return 0;
 		}
 		String username = principal.getName();

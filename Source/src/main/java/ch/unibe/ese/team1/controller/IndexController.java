@@ -21,13 +21,13 @@ import ch.unibe.ese.team1.model.Visit;
 public class IndexController {
 	
 	@Autowired
-	AdService adService;
+	private AdService adService;
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	@Autowired
-	VisitService visitService;
+	private VisitService visitService;
 	
 	/** Displays the home page. */
 	@RequestMapping(value="/")

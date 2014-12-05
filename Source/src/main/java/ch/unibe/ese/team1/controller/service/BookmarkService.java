@@ -14,7 +14,7 @@ import ch.unibe.ese.team1.model.dao.UserDao;
 public class BookmarkService {
 	
 	@Autowired
-	UserDao userDao;
+	private UserDao userDao;
 	
 	/**
 	 * This method adds or removes ads from the ArrayList.
