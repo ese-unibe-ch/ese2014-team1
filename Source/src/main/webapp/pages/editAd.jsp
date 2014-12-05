@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:import url="template/header.jsp" />
 
@@ -11,13 +12,110 @@
 <script src="/js/jquery.fileupload.js"></script>
 
 <script src="/js/pictureUpload.js"></script>
+
 <script src="/js/editAd.js"></script>
 
 
+<script>
+	$(document).ready(function() {
+		
+		// Go to controller take what you need from user
+		// save it to a hidden field
+		// iterate through it
+		// if there is id == x then make "Bookmark Me" to "bookmarked"
+		
+		$("#field-city").autocomplete({
+			minLength : 2
+		});
+		$("#field-city").autocomplete({
+			source : <c:import url="getzipcodes.jsp" />
+		});
+		$("#field-city").autocomplete("option", {
+			enabled : true,
+			autoFocus : true
+		});
+		$("#field-moveInDate").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+		$("#field-moveOutDate").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+		
+		$("#field-visitDay").datepicker({
+			dateFormat : 'dd-mm-yy'
+		});
+		
 
-<pre><a href="/">Home</a>   &gt;   <a href="/profile/myRooms">My Rooms</a>   &gt;
-   <a href="/profile/myRooms/editAd">Ad Description</a>   &gt;   Edit Ad</pre>
 
+		
+		$("#addbutton").click(function() {
+			var text = $("#room_friends").val();
+			if(validateForm(text)) {
+				$.post("/profile/placeAd/validateEmail",{email: text}, function(data) {
+					if(validateForm(data)) {
+						var index = $("#roommateCell input.roommateInput").length;
+						$("#roommateCell").append("<input class='roommateInput' type='hidden' name='registeredRoommateEmails[" + index + "]' value='" + data + "' />");
+					} else {
+						alert(data);
+					}});
+			}
+			else {
+				alert("Please enter an e-mail adress");
+			}
+			 
+			// Validates the input for Email Syntax
+			function validateForm(text) {
+			    var positionAt = text.indexOf("@");
+			    var positionDot = text.lastIndexOf(".");
+			    if (positionAt< 1 || positionDot<positionAt+2 || positionDot+2>=text.length) {
+			        return false;
+			    } else {
+			    	return true;
+			    }
+			}
+		});
+		
+		$("#addVisitButton").click(function() {
+			var date = $("#field-visitDay").val();
+			if(date == ""){
+				return;
+			}
+			
+			var startHour = $("#startHour").val();
+			var startMinutes = $("#startMinutes").val();
+			var endHour = $("#endHour").val();
+			var endMinutes = $("#endMinutes").val();
+			
+			if (startHour > endHour) {
+				alert("Invalid times. The visit can't end before being started.");
+				return;
+			} else if (startHour == endHour && startMinutes >= endMinutes) {
+				alert("Invalid times. The visit can't end before being started.");
+				return;
+			}
+			
+			var newVisit = date + ";" + startHour + ":" + startMinutes + 
+				";" + endHour + ":" + endMinutes; 
+			var newVisitLabel = date + " " + startHour + ":" + startMinutes + 
+			" to " + endHour + ":" + endMinutes; 
+			
+			var index = $("#addedVisits input").length;
+			
+			var label = "<p>" + newVisitLabel + "</p>";
+			var input = "<input type='hidden' value='" + newVisit + "' name='visits[" + index + "]' />";
+			
+			$("#addedVisits").append(label + input);
+		});
+	});
+</script>
+
+<!-- format the dates -->
+<fmt:formatDate value="${ad.moveInDate}" var="formattedMoveInDate"
+	type="date" pattern="dd-MM-yyyy" />
+<fmt:formatDate value="${ad.moveOutDate}" var="formattedMoveOutDate"
+	type="date" pattern="dd-MM-yyyy" />
+
+<pre><a href="/">Home</a>   &gt;   <a href="/profile/myRooms">My Rooms</a>   &gt;   Edit Ad</pre>
 
 <h1>Edit Ad</h1>
 <hr />
@@ -35,8 +133,7 @@
 			</tr>
 
 			<tr>
-				<td><form:input id="field-title" path="title"
-						placeholder="Ad Title" /></td>
+				<td><form:input id="field-title" path="title" value="${ad.title}" /></td>
 				<td><form:radiobutton id="type-room" path="studio" value="0"
 						checked="checked" />Room <form:radiobutton id="type-studio"
 						path="studio" value="1" />Studio</td>
@@ -49,8 +146,8 @@
 
 			<tr>
 				<td><form:input id="field-street" path="street"
-						placeholder="Street" /></td>
-				<td><form:input id="field-city" path="city" placeholder="City" />
+						value="${ad.street}" /></td>
+				<td><form:input id="field-city" path="city" value="${ad.zipcode} - ${ad.city}" />
 					<form:errors path="city" cssClass="validationErrorText" /></td>
 			</tr>
 
@@ -60,9 +157,9 @@
 			</tr>
 			<tr>
 				<td><form:input type="text" id="field-moveInDate"
-						path="moveInDate" /></td>
+						path="moveInDate" value="${formattedMoveInDate }"/></td>
 				<td><form:input type="text" id="field-moveOutDate"
-						path="moveOutDate" /></td>
+						path="moveOutDate" value="${formattedMoveOutDate }"/></td>
 			</tr>
 
 			<tr>
@@ -71,10 +168,11 @@
 			</tr>
 			<tr>
 				<td><form:input id="field-Prize" type="number" path="prize"
-						placeholder="Prize per month" step="50" /> <form:errors
+						placeholder="Prize per month" step="50" value="${ad.prizePerMonth }"/> <form:errors
 						path="prize" cssClass="validationErrorText" /></td>
 				<td><form:input id="field-SquareFootage" type="number"
-						path="squareFootage" placeholder="Prize per month" step="5" /> <form:errors
+						path="squareFootage" placeholder="Prize per month" step="5" 
+						value="${ad.squareFootage }"/> <form:errors
 						path="squareFootage" cssClass="validationErrorText" /></td>
 			</tr>
 		</table>
