@@ -1,5 +1,7 @@
 package ch.unibe.ese.team1.controller.service;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,7 +34,7 @@ public class EnquiryService {
 	private VisitDao visitDao;
 
 	/**
-	 * Returns all enquiries that were sent to the given user.
+	 * Returns all enquiries that were sent to the given user sorted by date sent
 	 * 
 	 * @param recipient
 	 *            the user to search for
@@ -46,6 +48,12 @@ public class EnquiryService {
 				enquiries.add(enquiry);
 			}
 		}
+		Collections.sort(enquiries, new Comparator<VisitEnquiry>() {
+			@Override
+			public int compare(VisitEnquiry enquiry1, VisitEnquiry enquiry2) {
+				return enquiry2.getDateSent().compareTo(enquiry1.getDateSent());
+			}
+		});
 		return enquiries;
 	}
 	

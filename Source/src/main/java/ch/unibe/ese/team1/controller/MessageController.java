@@ -80,6 +80,23 @@ public class MessageController {
 		}
 		return model;
 	}
+	
+	/**
+	 * Sets the MessageState of a given Message to "READ".
+	 */
+	@RequestMapping(value="/profile/readMessage", method = RequestMethod.GET)
+	public @ResponseBody void readMessage(@RequestParam("id") long id) {
+		messageService.readMessage(id);
+	}
+	
+	/**
+	 * Returns the number of unread messages of the logged in user.
+	 */
+	@RequestMapping(value="/profile/unread", method = RequestMethod.GET)
+	public @ResponseBody int unread(Principal principal) {
+		long id = userService.findUserByUsername(principal.getName()).getId();
+		return messageService.unread(id);
+	}
 
 	/**
 	 * Checks if the email passed as post parameter is a valid email. In case it

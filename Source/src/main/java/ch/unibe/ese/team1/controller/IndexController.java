@@ -79,7 +79,7 @@ public class IndexController {
 		Visit visit = visitService.getVisitById(id);
 		Iterable<User> visitors = visit.getSearchers();
 		
-		//due to some strange bug every visitor appeared 3 times. So we hack it.
+		//due to some strange bug every visitor appeared 3 times. So we hacked it.
 		ArrayList<User> distinctVisitors = new ArrayList<User>();
 		for(User visitor: visitors) {
 			if(!distinctVisitors.contains(visitor))

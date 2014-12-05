@@ -34,7 +34,7 @@
 				var="singleFormattedDateSent" type="date"
 				pattern="HH:mm, dd.MM.yyyy" />
 
-			<tr data-id="${message.id}">
+			<tr data-id="${message.id}" class="${message.state}">
 				<td>${message.subject }</td>
 				<td>${message.sender.email}</td>
 				<td>${message.recipient.email }</td>

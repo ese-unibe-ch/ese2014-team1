@@ -17,18 +17,26 @@ function prepareRows() {
 	$(rows).hover(function() {
 		$(this).children().css("background-color", "#ececec");
 	}, function() {
-		$(this).children().css("background-color", "white");
+		var color;
+		if($(this).hasClass("UNREAD"))
+			color = "#AFFFEE;";
+		else
+			color = "white";
+		$(this).children().css("background-color", color);
 	});
 	$(rows).click(function() {
 		var id = $(this).attr("data-id");
-		$.get("/profile/messages/getMessage?id=" + id, function(data) {
-			var result = '<h2>' + data.subject + '</h2>';
-			result += '<h3><b>To: </b>' + data.recipient.email + '</h3>';
-			result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
-			result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
-			result += '<br /><p>' + data.text + '</p>';
-			$("#messageDetail").html(result);
-		}, 'json');
+		$(this).removeClass("UNREAD");
+		$.get("/profile/readMessage?id=" + id, function (data) {
+			$.get("/profile/messages/getMessage?id=" + id, function(data) {
+				var result = '<h2>' + data.subject + '</h2>';
+				result += '<h3><b>To: </b>' + data.recipient.email + '</h3>';
+				result += '<h3><b>From: </b>' + data.sender.email + '</h3>';
+				result += '<h3><b>Date sent: </b>' + data.dateSent + '</h3>';
+				result += '<br /><p>' + data.text + '</p>';
+				$("#messageDetail").html(result);
+			}, 'json');
+		});
 	});
 }
 
