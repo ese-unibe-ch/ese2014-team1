@@ -22,8 +22,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "users")
 public class User {
 	
-	// Branch tester
-	
 	@Id
 	@GeneratedValue
 	private long id;
