@@ -39,8 +39,8 @@ public class EnquiryController {
 	public ModelAndView enquiriesPage(Principal principal) {
 		ModelAndView model = new ModelAndView("enquiries");
 		User user = userService.findUserByUsername(principal.getName());
-		model.addObject("enquiries",
-				enquiryService.getEnquiriesByRecipient(user));
+		Iterable<VisitEnquiry> usersEnquiries = enquiryService.getEnquiriesByRecipient(user);
+		model.addObject("enquiries", usersEnquiries);
 		return model;
 	}
 

@@ -202,7 +202,7 @@ public class AdService {
 		return adDao.findAll();
 	}
 	
-	/** Returns the newest ads in the database. Parameter newest says how many. */
+	/** Returns the newest ads in the database. Parameter 'newest' says how many. */
 	@Transactional
 	public Iterable<Ad> getNewestAds(int newest) {
 		Iterable<Ad> allAds = adDao.findAll();

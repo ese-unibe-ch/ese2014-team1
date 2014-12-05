@@ -739,6 +739,7 @@ footer nav ul li {
 
 /* -------------------------------------------------------------------- */
 /* messages.jsp */
+
 #messageList {
 	float: right;
 	width: 70%;
@@ -756,6 +757,10 @@ footer nav ul li {
 
 #messageList table tr:hover {
 	cursor: pointer;
+}
+
+#messageList table tr.UNREAD td {
+	background-color: #AFFFEE;
 }
 
 #subjectColumn {

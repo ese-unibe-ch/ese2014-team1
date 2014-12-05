@@ -20,6 +20,18 @@
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <link rel="stylesheet"
 	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<!-- 
+<script>
+$(document).ready(function() {
+	$.get("/profile/unread", function(data){ 
+		var message = "Messages"
+		if(data > 0)
+			message += " (" + data + ")";
+		$("#messageLink").html(message);
+	});
+});
+</script>
+ -->
 
 <style>
 /* ensure that autocomplete lists are not too long and have a scrollbar */
@@ -59,7 +71,7 @@
 							<ul>
 								<li><a href="/profile/placeAd">Place an ad</a></li>
 								<li><a href="/profile/myRooms">My rooms</a></li>
-								<li><a href="/profile/messages">Messages</a></li>
+								<li><a id="messageLink" href="/profile/messages"></a></li>
 								<li><a href="/profile/enquiries">Enquiries</a></li>
 								<li>
 								<% out.print("<a href=\"/profile/schedule?user=" + realUser.getId() + "\">Schedule</a>"); %>

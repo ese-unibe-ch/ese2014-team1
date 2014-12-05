@@ -1,7 +1,11 @@
 package ch.unibe.ese.team1.controller.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
+import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.Message;
 import ch.unibe.ese.team1.model.MessageState;
 import ch.unibe.ese.team1.model.User;
@@ -26,10 +31,22 @@ public class MessageService {
 	@Autowired
 	private MessageDao messageDao;
 
-	/** Gets all messages in the inbox of the given user. */
+	/** Gets all messages in the inbox of the given user, sorted newest to oldest */
 	@Transactional
 	public Iterable<Message> getInboxForUser(User user) {
-		return messageDao.findByRecipient(user);
+		Iterable<Message> usersMessages = messageDao.findByRecipient(user);
+		List<Message> messages = new ArrayList<Message>();
+		for(Message message: usersMessages)
+			messages.add(message);
+		Collections.sort(messages, new Comparator<Message>(){
+			@Override
+			public int compare(Message message1, Message message2) {
+				return message2.getDateSent().compareTo(message1.getDateSent());
+			}
+		});
+		messages.get(0).setState(MessageState.READ);
+		messageDao.save(messages.get(0));
+		return messages;
 	}
 
 	/** Gets all messages in the sent folder for the given user. */
@@ -96,6 +113,30 @@ public class MessageService {
 		message.setState(MessageState.UNREAD);
 		
 		messageDao.save(message);
+	}
+
+	/**
+	 * Sets the MessageState of a given Message to "READ".
+	 * @param id
+	 */
+	@Transactional
+	public void readMessage(long id) {
+		Message message = messageDao.findOne(id);
+		message.setState(MessageState.READ);
+		messageDao.save(message);
+	}
+	
+	/** Returns the number of unread messages a user has. */
+	@Transactional
+	public int unread(long id) {
+		User user = userDao.findOne(id);
+		Iterable<Message> usersMessages = messageDao.findByRecipient(user);
+		int i = 0;
+		for(Message message: usersMessages) {
+			if(message.getState().equals(MessageState.UNREAD))
+				i++;
+		}
+		return i;
 	}
 
 }
