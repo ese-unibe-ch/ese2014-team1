@@ -457,7 +457,7 @@ public class AdService {
 		return ads;
 	}
 
-	//returns all ads by a user
+	/** Returns all ads that were placed by the given user. */
 	public Iterable<Ad> getAdsByUser(User user) {
 		return adDao.findByUser(user);
 	}

@@ -11,7 +11,7 @@
 <script src="/js/jquery.fileupload.js"></script>
 
 <script src="/js/pictureUpload.js"></script>
-
+<script src="/js/editAd.js"></script>
 
 
 
@@ -234,7 +234,7 @@
 					<div>
 					<img src="${picture.filePath}" />
 					</div>
-					<button type="button">Delete</button>
+					<button type="button" data-ad-id="${ad.id }" data-picture-id="${picture.id }">Delete</button>
 				</div>
 			</c:forEach>
 		</div>
