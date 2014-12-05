@@ -225,6 +225,27 @@ public class AdController {
 		}
 		return model;
 	}
+	
+	/** 
+	 * Serves the page that allows the user to edit the ad with the given id.
+	 */
+	@RequestMapping(value ="/profile/editAd", method = RequestMethod.GET)
+	public ModelAndView editAdPage(@RequestParam long id){
+		ModelAndView model = new ModelAndView("editAd");
+		Ad ad = adService.getAdById(id);
+		model.addObject("ad", ad);
+		
+		return model;
+	}
+	
+	/** 
+	 * Processes the edit ad form and displays the result page to the user.
+	 */
+	@RequestMapping(value ="/profile/editAd", method = RequestMethod.POST)
+	public ModelAndView editAdPageWithForm(){
+		// TODO add form handling here
+		return new ModelAndView("index");
+	}
 
 	/**
 	 * Checks if the email passed as post parameter is a valid email. In case it
