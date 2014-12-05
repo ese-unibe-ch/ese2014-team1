@@ -36,6 +36,8 @@ function prepareRows() {
 				result += '<br /><p>' + data.text + '</p>';
 				$("#messageDetail").html(result);
 			}, 'json');
+			unreadMessages("header");
+			unreadMessages("messages");
 		});
 	});
 }
