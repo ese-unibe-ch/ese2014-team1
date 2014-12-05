@@ -44,15 +44,14 @@
 		$("#field-visitDay").datepicker({
 			dateFormat : 'dd-mm-yy'
 		});
-		
-
-
+	
 		
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
 			if(validateForm(text)) {
 				$.post("/profile/placeAd/validateEmail",{email: text}, function(data) {
 					if(validateForm(data)) {
+						// length gibt die Anzahl der Elemente im input.roommateInput an. Dieser wird in index geschrieben und iteriert.
 						var index = $("#roommateCell input.roommateInput").length;
 						$("#roommateCell").append("<input class='roommateInput' type='hidden' name='registeredRoommateEmails[" + index + "]' value='" + data + "' />");
 					} else {
@@ -336,6 +335,10 @@
 						path="room_friends" placeholder="email" /> 
 
 					<div id="addbutton" class="smallPlusButton">+</div></td>
+			</tr>
+			<tr>
+				<td>
+				</td>
 			</tr>
 		</table>
 
