@@ -64,7 +64,7 @@ public class MessageTestDataSaver implements TestDataSaver {
 		message.setText("Hello Mr. Bär\n " + getDummyText3());
 		message.setSender(oprah);
 		message.setRecipient(testerMuster);
-		message.setState(MessageState.READ);
+		message.setState(MessageState.UNREAD);
 		message.setDateSent(dateFormat.parse("11:30 24.02.2014"));
 		messageDao.save(message);
 

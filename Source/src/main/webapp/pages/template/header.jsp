@@ -20,18 +20,12 @@
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <link rel="stylesheet"
 	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-<!-- 
+
+<script src="/js/unreadMessages.js"></script>
+
 <script>
-$(document).ready(function() {
-	$.get("/profile/unread", function(data){ 
-		var message = "Messages"
-		if(data > 0)
-			message += " (" + data + ")";
-		$("#messageLink").html(message);
-	});
-});
+$(document).ready(unreadMessages("header"));
 </script>
- -->
 
 <style>
 /* ensure that autocomplete lists are not too long and have a scrollbar */

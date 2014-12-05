@@ -30,7 +30,12 @@
 		<hr class="slim">		
 		<form>
 			<button id="newMsg" type="button">Message</button>
-			<a class="button" href="/profile/editProfile">Edit Profile</a>
+			<c:choose>
+				<c:when test="${principalID eq user.id}">
+					<a class="button" href="/profile/editProfile">Edit Profile</a>
+				</c:when>
+				<c:otherwise></c:otherwise>
+			</c:choose>
 		</form>
 </div>
 <c:import url="template/footer.jsp"/>
