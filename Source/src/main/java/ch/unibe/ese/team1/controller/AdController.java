@@ -29,6 +29,7 @@ import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.AlertService;
 import ch.unibe.ese.team1.controller.service.BookmarkService;
+import ch.unibe.ese.team1.controller.service.CheckRoommateService;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.controller.service.VisitService;
@@ -62,6 +63,8 @@ public class AdController {
 	private VisitService visitService;
 	@Autowired
 	private BookmarkService bookmarkService;
+	@Autowired
+	private CheckRoommateService checkRoommateService;
 
 	@Autowired
 	private UserDao userDao;
@@ -235,10 +238,16 @@ public class AdController {
 	 */
 	@RequestMapping(value = "/profile/placeAd/validateEmail", method = RequestMethod.POST)
 	@ResponseBody
-	public String validateEmail(@RequestParam String email) {
-		User user = userService.findUserByUsername(email);
+	public String validateEmail(@RequestParam String email, @RequestParam String alreadyIn) {
+		User user = userService.findUserByUsername(email);	
+		
+		Boolean isAdded = checkRoommateService.checkIfAlreadyAdded(email, alreadyIn);
+		
 		if (user == null) {
 			return "This user does not exist, did your roommate register?";
+		}
+		if(isAdded) {
+			return "You already added this person.";
 		} else {
 			return user.getEmail();
 		}
@@ -276,8 +285,7 @@ public class AdController {
 		User user = userService.findUserByUsername(username);
 		if (user == null) {
 			// that should not happen...
-			System.out
-					.println("ERROR: Principal does exist but could not be found in the DB");
+			System.out.println("ERROR: Principal does exist but could not be found in the DB");
 			return 1;
 		}
 		List<Ad> bookmarkedAdsIterable = user

@@ -43,14 +43,15 @@
 		});
 		
 
-		
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
+			var alreadyAdded = $("#addedRoommates").html();
 			if(validateForm(text)) {
-				$.post("/profile/placeAd/validateEmail",{email: text}, function(data) {
+				$.post("/profile/placeAd/validateEmail",{email: text, alreadyIn: alreadyAdded}, function(data) {
 					if(validateForm(data)) {
 						var index = $("#roommateCell input.roommateInput").length;
 						$("#roommateCell").append("<input class='roommateInput' type='hidden' name='registeredRoommateEmails[" + index + "]' value='" + data + "' />");
+						$("#addedRoommates").append(data + "; ");
 					} else {
 						alert(data);
 					}});
@@ -225,6 +226,9 @@
 						path="room_friends" placeholder="email" /> 
 
 					<div id="addbutton" class="smallPlusButton">+</div></td>
+			</tr>
+			<tr>
+				<td><p id="addedRoommates">Your: </p></td>
 			</tr>
 		</table>
 
