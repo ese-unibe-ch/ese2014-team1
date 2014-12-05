@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -198,6 +200,25 @@ public class AdService {
 	@Transactional
 	public Iterable<Ad> getAllAds() {
 		return adDao.findAll();
+	}
+	
+	/** Returns the newest ads in the database. Parameter newest says how many. */
+	@Transactional
+	public Iterable<Ad> getNewestAds(int newest) {
+		Iterable<Ad> allAds = adDao.findAll();
+		List<Ad> ads = new ArrayList<Ad>();
+		for(Ad ad: allAds)
+			ads.add(ad);
+		Collections.sort(ads, new Comparator<Ad>() {
+			@Override
+			public int compare(Ad ad1, Ad ad2) {
+				return ad2.getCreationDate().compareTo(ad1.getCreationDate());
+			}
+		});
+		List<Ad> fourNewest = new ArrayList<Ad>();
+		for(int i = 0; i < newest; i++)
+			fourNewest.add(ads.get(i));
+		return fourNewest;
 	}
 	
 	/**
@@ -436,6 +457,7 @@ public class AdService {
 		return ads;
 	}
 
+	//returns all ads by a user
 	public Iterable<Ad> getAdsByUser(User user) {
 		return adDao.findByUser(user);
 	}

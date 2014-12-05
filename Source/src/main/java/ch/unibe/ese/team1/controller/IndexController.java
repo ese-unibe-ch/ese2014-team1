@@ -32,7 +32,9 @@ public class IndexController {
 	/** Displays the home page. */
 	@RequestMapping(value="/")
 	public ModelAndView index(){
-		return new ModelAndView("index");
+		ModelAndView model = new ModelAndView("index");
+		model.addObject("newest", adService.getNewestAds(4));
+		return model;
 	}
 	
 	/** Displays the about us page. */
