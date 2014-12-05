@@ -141,8 +141,26 @@
 </c:choose>
 
 
-<h1 id="shownAdTitle">${shownAd.title}<c:choose><c:when test="${loggedIn}"><a class="right" id="bookmarkButton">Bookmark Ad</a></c:when></c:choose></h1>
+<h1 id="shownAdTitle">${shownAd.title}
+	<c:choose>
+		<c:when test="${loggedIn}">
+			<a class="right" id="bookmarkButton">Bookmark Ad</a>
+		</c:when>
+	</c:choose>
+</h1>
+
+
 <hr />
+
+<c:choose>
+	<c:when test="${loggedIn}">
+		<c:if test="${loggedInUserEmail == shownAd.user.username }">
+			<a href="<c:url value='/profile/editAd?id=${shownAd.id}' />">
+				<button type="button">Edit Ad</button>
+			</a>
+		</c:if>
+	</c:when>
+</c:choose>
 
 <section>
 	<table id="adDescTable" class="adDescDiv">

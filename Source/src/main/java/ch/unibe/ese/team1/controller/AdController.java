@@ -230,7 +230,7 @@ public class AdController {
 	 * Serves the page that allows the user to edit the ad with the given id.
 	 */
 	@RequestMapping(value ="/profile/editAd", method = RequestMethod.GET)
-	public ModelAndView editAdPage(@RequestParam long id){
+	public ModelAndView editAdPage(@RequestParam long id, Principal principal){
 		ModelAndView model = new ModelAndView("editAd");
 		Ad ad = adService.getAdById(id);
 		model.addObject("ad", ad);
