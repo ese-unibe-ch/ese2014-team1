@@ -113,9 +113,13 @@ public class ProfileController {
 	}
 
 	@RequestMapping(value = "/profile/user", method = RequestMethod.GET)
-	public ModelAndView user(@RequestParam("id") long id) {
+	public ModelAndView user(@RequestParam("id") long id, Principal principal) {
 		ModelAndView model = new ModelAndView("user");
 		User user = userService.findUserById(id);
+		String username = principal.getName();
+		User user2 = userService.findUserByUsername(username);
+		long principalID = user2.getId();
+		model.addObject("principalID", principalID);
 		model.addObject("user", user);
 		model.addObject("messageForm", new MessageForm());
 		return model;

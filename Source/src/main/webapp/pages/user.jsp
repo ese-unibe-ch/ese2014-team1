@@ -14,23 +14,30 @@
 <pre><a href="/">Home</a>   &gt;   Profile</pre>
 
 <div id="userDiv">
-		<c:choose>
-			<c:when test="${user.picture.filePath != null}">
-				<img src="${user.picture.filePath}">
-			</c:when>
-			<c:otherwise>
-				<img src="/img/avatar.png">
-			</c:otherwise>
-		</c:choose>
+	<c:choose>
+		<c:when test="${user.picture.filePath != null}">
+			<img src="${user.picture.filePath}">
+		</c:when>
+		<c:otherwise>
+			<img src="/img/avatar.png">
+		</c:otherwise>
+	</c:choose>
 	<p>
-		<h2>Username</h2>${user.email}<p>
-		<h2>Name</h2>${user.firstName} ${user.lastName}<p>
-		<hr class="slim">		
-		<h2>About me</h2>${user.aboutMe}
-		<hr class="slim">		
-		<form>
-			<button id="newMsg" type="button">Message</button>
-			<a class="button" href="/profile/editProfile">Edit Profile</a>
-		</form>
+	<h2>Username</h2>${user.email}<p>
+	<h2>Name</h2>${user.firstName}
+	${user.lastName}
+	<p>
+	<hr class="slim">
+	<h2>About me</h2>${user.aboutMe}
+	<hr class="slim">
+	<form>
+		<button id="newMsg" type="button">Message</button>
+		<c:choose>
+			<c:when test="${principalID eq user.id}">
+				<a class="button" href="/profile/editProfile">Edit Profile</a>
+			</c:when>
+			<c:otherwise></c:otherwise>
+		</c:choose>
+	</form>
 </div>
-<c:import url="template/footer.jsp"/>
+<c:import url="template/footer.jsp" />
