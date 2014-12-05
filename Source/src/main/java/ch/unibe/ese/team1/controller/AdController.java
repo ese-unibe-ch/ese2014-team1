@@ -324,5 +324,5 @@ public class AdController {
 
 		return model;
 	}
-
+	
 }
