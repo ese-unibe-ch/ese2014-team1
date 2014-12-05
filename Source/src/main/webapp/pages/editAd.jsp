@@ -114,6 +114,7 @@
 	type="date" pattern="dd-MM-yyyy" />
 <fmt:formatDate value="${ad.moveOutDate}" var="formattedMoveOutDate"
 	type="date" pattern="dd-MM-yyyy" />
+	
 
 <pre><a href="/">Home</a>   &gt;   <a href="/profile/myRooms">My Rooms</a>   &gt;   Edit Ad</pre>
 
@@ -134,9 +135,19 @@
 
 			<tr>
 				<td><form:input id="field-title" path="title" value="${ad.title}" /></td>
-				<td><form:radiobutton id="type-room" path="studio" value="0"
-						checked="checked" />Room <form:radiobutton id="type-studio"
-						path="studio" value="1" />Studio</td>
+				<td>
+					<c:choose>
+						<c:when test="${ad.studio == 'true'}">
+							<form:radiobutton id="type-room" path="studio" value="1"
+								checked="checked" />Room <form:radiobutton id="type-studio"
+								path="studio" value="0" />Studio
+						</c:when>
+						<c:otherwise>
+							<form:radiobutton id="type-room" path="studio" value="0"
+								checked="checked" />Room <form:radiobutton id="type-studio"
+								path="studio" value="1" />Studio
+						</c:otherwise>
+					</c:choose>
 			</tr>
 
 			<tr>
@@ -185,40 +196,130 @@
 
 		<table class="placeAdTable">
 			<tr>
-				<td><form:checkbox id="field-smoker" path="smokers" value="1" /><label>Animals
-						allowed</label></td>
-				<td><form:checkbox id="field-animals" path="animals" value="1" /><label>Smoking
-						inside allowed</label></td>
-			</tr>
-			<tr>
-				<td><form:checkbox id="field-garden" path="garden" value="1" /><label>Garden
-						(co-use)</label></td>
-				<td><form:checkbox id="field-balcony" path="balcony" value="1" /><label>Balcony
-						or Patio</label></td>
-			</tr>
-			<tr>
-				<td><form:checkbox id="field-cellar" path="cellar" value="1" /><label>Cellar
-						or Attic</label></td>
-				<td><form:checkbox id="field-furnished" path="furnished"
-						value="1" /><label>Furnished</label></td>
-			</tr>
-			<tr>
-				<td><form:checkbox id="field-cable" path="cable" value="1" /><label>Cable
-						TV</label></td>
-				<td><form:checkbox id="field-garage" path="garage" value="1" /><label>Garage</label>
+				<td>
+					<c:choose>
+						<c:when test="${ad.smokers}">
+							<form:checkbox id="field-smoker" path="smokers" checked="checked" /><label>Smoking
+							inside allowed</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-smoker" path="smokers" /><label>Smoking
+							inside allowed</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
+				
+				<td>
+					<c:choose>
+						<c:when test="${ad.animals}">
+							<form:checkbox id="field-animals" path="animals"  checked="checked" /><label>Animals
+						allowed</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-animals" path="animals" /><label>Animals
+						allowed</label>
+						</c:otherwise>
+					</c:choose>
 				</td>
 			</tr>
 			<tr>
-				<td><form:checkbox id="field-internet" path="internet"
-						value="1" /><label>WiFi available</label></td>
+				<td>
+					<c:choose>
+						<c:when test="${ad.garden}">
+							<form:checkbox id="field-garden" path="garden" checked="checked" /><label>Garden
+							(co-use)</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-garden" path="garden" /><label>Garden
+							(co-use)</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
+				
+				<td>
+					<c:choose>
+						<c:when test="${ad.balcony}">
+							<form:checkbox id="field-balcony" path="balcony"  checked="checked" /><label>Balcony
+						or Patio</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-balcony" path="balcony" /><label>Balcony
+						or Patio</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<c:choose>
+						<c:when test="${ad.cellar}">
+							<form:checkbox id="field-cellar" path="cellar" checked="checked" /><label>Cellar
+						or Attic</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-cellar" path="cellar" /><label>Cellar
+						or Atticd</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
+				
+				<td>
+					<c:choose>
+						<c:when test="${ad.furnished}">
+							<form:checkbox id="field-furnished" path="furnished"  checked="checked" /><label>Furnished
+							</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-furnished" path="furnished" /><label>Furnished</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<c:choose>
+						<c:when test="${ad.cable}">
+							<form:checkbox id="field-cable" path="cable" checked="checked" /><label>Cable TV</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-cable" path="cable" /><label>Cable TV</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
+				
+				<td>
+					<c:choose>
+						<c:when test="${ad.garage}">
+							<form:checkbox id="field-garage" path="garage"  checked="checked" /><label>Garage
+							</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-garage" path="garage" /><label>Garage</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<c:choose>
+						<c:when test="${ad.internet}">
+							<form:checkbox id="field-internet" path="internet"  checked="checked" /><label>WiFi available
+							</label>
+						</c:when>
+						<c:otherwise>
+							<form:checkbox id="field-internet" path="internet" /><label>WiFi available</label>
+						</c:otherwise>
+					</c:choose>
+				</td>
 			</tr>
 
 		</table>
 		<br />
-		<form:textarea path="roomDescription" rows="10" cols="100"
-			placeholder="Room Description" />
+		<form:textarea path="roomDescription" rows="10" cols="100" value="${ad.roomDescription}" />
 		<form:errors path="roomDescription" cssClass="validationErrorText" />
 	</fieldset>
+
+
 
 	<br />
 	<fieldset>
@@ -248,10 +349,9 @@
 	<fieldset>
 		<legend>Preferences (optional)</legend>
 		<form:textarea path="preferences" rows="5" cols="100"
-			placeholder="Preferences"></form:textarea>
+			value="${ad.preferences}" ></form:textarea>
 	</fieldset>
 
-	
 	
 	<fieldset>
 		<legend>Visiting times (optional)</legend>

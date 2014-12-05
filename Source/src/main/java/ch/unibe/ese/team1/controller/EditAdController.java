@@ -36,8 +36,9 @@ public class EditAdController {
 		Ad ad = adService.getAdById(id);
 		model.addObject("ad", ad);
 		
-		// TODO remove or change
-		model.addObject("placeAdForm", new PlaceAdForm());
+		PlaceAdForm form = editAdService.fillForm(ad);
+		
+		model.addObject("placeAdForm", form);
 		
 		return model;
 	}

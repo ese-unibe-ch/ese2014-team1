@@ -120,11 +120,12 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBern2.setZipcode(3012);
 		adBern2.setMoveInDate(moveInDate2);
 		adBern2.setCreationDate(creationDate2);
+		adBern2.setMoveOutDate(moveOutDate4);
 		adBern2.setPrizePerMonth(700);
 		adBern2.setSquareFootage(60);
 		adBern2.setStudio(true);
 		adBern2.setSmokers(false);
-		adBern2.setAnimals(false);
+		adBern2.setAnimals(true);
 		adBern2.setRoomDescription(studioDescription2);
 		adBern2.setPreferences(roomPreferences2);
 		adBern2.setRoommates("None");
