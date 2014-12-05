@@ -152,17 +152,19 @@
 
 <hr />
 
-<c:choose>
-	<c:when test="${loggedIn}">
-		<c:if test="${loggedInUserEmail == shownAd.user.username }">
-			<a href="<c:url value='/profile/editAd?id=${shownAd.id}' />">
-				<button type="button">Edit Ad</button>
-			</a>
-		</c:if>
-	</c:when>
-</c:choose>
-
 <section>
+	<c:choose>
+		<c:when test="${loggedIn}">
+			<c:if test="${loggedInUserEmail == shownAd.user.username }">
+				<a href="<c:url value='/profile/editAd?id=${shownAd.id}' />">
+					<button type="button">Edit Ad</button>
+				</a>
+			</c:if>
+		</c:when>
+	</c:choose>
+	<br>
+	<br>
+
 	<table id="adDescTable" class="adDescDiv">
 		<tr>
 			<td><h2>Type</h2></td>

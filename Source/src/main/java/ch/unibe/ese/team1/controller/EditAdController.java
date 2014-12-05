@@ -74,7 +74,6 @@ public class EditAdController {
 			// triggers all alerts that match the placed ad
 			alertService.triggerAlerts(ad);
 
-
 			model = new ModelAndView("redirect:/ad?id=" + ad.getId());
 		}
 		

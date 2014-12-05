@@ -120,7 +120,7 @@
 <hr />
 
 <form:form method="post" modelAttribute="placeAdForm"
-	action="/profile/placeAd" id="placeAdForm" autocomplete="off"
+	action="/profile/editAd" id="placeAdForm" autocomplete="off"
 	enctype="multipart/form-data">
 
 	<fieldset>
@@ -156,8 +156,10 @@
 			<tr>
 				<td><form:input id="field-street" path="street"
 						value="${ad.street}" /></td>
-				<td><form:input id="field-city" path="city" value="${ad.zipcode} - ${ad.city}" />
-					<form:errors path="city" cssClass="validationErrorText" /></td>
+				<td>
+					<form:input id="field-city" path="city" value="${ad.zipcode} - ${ad.city}" />
+					<form:errors path="city" cssClass="validationErrorText" />
+				</td>
 			</tr>
 
 			<tr>
@@ -165,10 +167,14 @@
 				<td><label for="moveOutDate">Move-out date (optional)</label></td>
 			</tr>
 			<tr>
-				<td><form:input type="text" id="field-moveInDate"
-						path="moveInDate" value="${formattedMoveInDate }"/></td>
-				<td><form:input type="text" id="field-moveOutDate"
-						path="moveOutDate" value="${formattedMoveOutDate }"/></td>
+				<td>
+					<form:input type="text" id="field-moveInDate"
+						path="moveInDate" value="${formattedMoveInDate }"/>
+				</td>
+				<td>
+					<form:input type="text" id="field-moveOutDate"
+						path="moveOutDate" value="${formattedMoveOutDate }"/>
+				</td>
 			</tr>
 
 			<tr>
@@ -176,13 +182,17 @@
 				<td><label for="field-SquareFootage">Square Meters</label></td>
 			</tr>
 			<tr>
-				<td><form:input id="field-Prize" type="number" path="prize"
+				<td>
+					<form:input id="field-Prize" type="number" path="prize"
 						placeholder="Prize per month" step="50" value="${ad.prizePerMonth }"/> <form:errors
-						path="prize" cssClass="validationErrorText" /></td>
-				<td><form:input id="field-SquareFootage" type="number"
+						path="prize" cssClass="validationErrorText" />
+				</td>
+				<td>
+					<form:input id="field-SquareFootage" type="number"
 						path="squareFootage" placeholder="Prize per month" step="5" 
 						value="${ad.squareFootage }"/> <form:errors
-						path="squareFootage" cssClass="validationErrorText" /></td>
+						path="squareFootage" cssClass="validationErrorText" />
+				</td>
 			</tr>
 		</table>
 	</fieldset>
@@ -318,7 +328,6 @@
 	</fieldset>
 
 
-
 	<br />
 	<fieldset>
 		<legend>Roommates (optional)</legend>
@@ -333,7 +342,7 @@
 				<td id="roommateCell"><form:input type="text" id="room_friends"
 						path="room_friends" placeholder="email" /> 
 
-					<div id="addbutton" class="smallPlusButton">+</div></td>
+				<div id="addbutton" class="smallPlusButton">+</div></td>
 			</tr>
 		</table>
 
@@ -396,7 +405,6 @@
  						}
  					%>
 					</select>
-					
 			
 
 					<div id="addVisitButton" class="smallPlusButton">+</div>
@@ -409,15 +417,7 @@
 		</table>
 		<br>
 	</fieldset>
-	
-	
 
-	<br />
-	<div>
-		<button type="submit">Submit</button>
-		<button type="reset">Cancel</button>
-	</div>
-	<br />
 	<br />
 
 	<fieldset>
@@ -450,6 +450,13 @@
 		</table>
 		<br>
 	</fieldset>
+
+	<div>
+		<button type="submit">Submit</button>
+		<a href="<c:url value='/ad?id=${ad.id}' />"> 
+			<button type="button">Cancel</button>
+		</a>
+	</div>
 
 </form:form>
 
