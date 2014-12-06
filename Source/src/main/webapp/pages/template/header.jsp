@@ -23,9 +23,6 @@
 
 <script src="/js/unreadMessages.js"></script>
 
-<script>
-$(document).ready(unreadMessages("header"));
-</script>
 
 <style>
 /* ensure that autocomplete lists are not too long and have a scrollbar */
@@ -52,6 +49,10 @@ $(document).ready(unreadMessages("header"));
 			<ul>
 				<c:choose>
 					<c:when test="${loggedIn}">
+					<script>
+						$(document).ready(unreadMessages("header"));
+					</script>
+					
 					<!-- include user details -->
 					<%@include file='/pages/getUserPicture.jsp' %>
 						<li id="profile_picture"><a href="#">
