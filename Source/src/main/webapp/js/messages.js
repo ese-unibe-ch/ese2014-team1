@@ -2,7 +2,7 @@
 function loadMessages(data) {
 	$("#messageList table tr:gt(0)").remove();
 	$.each(data, function(index, message) {
-		var result = '<tr data-id="' + message.id + '" >';
+		var result = '<tr data-id="' + message.id + '" class="' + message.state + '" >';
 		result += '<td>' + message.subject + '</td>';
 		result += '<td>' + message.sender.email + '</td>';
 		result += '<td>' + message.recipient.email + '</td>';
