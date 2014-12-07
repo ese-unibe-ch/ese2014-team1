@@ -5,6 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <c:import url="template/header.jsp" />
 <c:import url="getMessageForm.jsp" />
@@ -32,7 +33,7 @@
 	<hr class="slim">
 	<form>
 		<c:choose>
-			<c:when test="${loggedIn}">
+			<c:when test="${principalID != null}">
 			
 			
 			

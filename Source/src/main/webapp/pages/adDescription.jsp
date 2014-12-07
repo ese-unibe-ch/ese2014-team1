@@ -241,8 +241,8 @@
 				<div class="roommate">
 				<table id="mate">
 					<tr>
-					<!-- Link auf Profil -->
 						<td>
+						<a href="/user?id=${mate.id}">
 						<c:choose>
 							<c:when test="${mate.picture.filePath != null}">
 								<img src="${mate.picture.filePath}">
@@ -251,6 +251,7 @@
 								<img src="/img/avatar.png">
 							</c:otherwise>
 						</c:choose>
+						</a>
 						</td>
 						<td>${mate.firstName} ${mate.lastName}</td>
 						<td>${mate.username}</td>
@@ -263,7 +264,6 @@
 								female
 							</c:otherwise>
 						</c:choose></td>
-					<!-- /Link auf Profil -->
 					</tr>
 				</table>
 			</div>
