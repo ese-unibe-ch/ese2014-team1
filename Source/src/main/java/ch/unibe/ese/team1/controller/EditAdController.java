@@ -39,7 +39,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class EditAdController {
 	
-	private final static String IMAGE_DIRECTORY = AdController.IMAGE_DIRECTORY;
+	private final static String IMAGE_DIRECTORY = PlaceAdController.IMAGE_DIRECTORY;
 
 	@Autowired
 	private ServletContext servletContext;
