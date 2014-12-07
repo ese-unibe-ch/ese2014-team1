@@ -228,7 +228,7 @@
 					<div id="addbutton" class="smallPlusButton">+</div></td>
 			</tr>
 			<tr>
-				<td><p id="addedRoommates">Your: </p></td>
+				<td><p id="addedRoommates" path="addedRoommates">Your roommates: </p></td>
 			</tr>
 		</table>
 

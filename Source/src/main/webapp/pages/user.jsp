@@ -5,7 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <c:import url="template/header.jsp" />
 <c:import url="getMessageForm.jsp" />
@@ -34,9 +33,6 @@
 	<form>
 		<c:choose>
 			<c:when test="${principalID != null}">
-			
-			
-			
 			<button id="newMsg" type="button">Message</button>
 			<c:choose>
 				<c:when test="${principalID eq user.id}">

@@ -104,6 +104,16 @@
 			
 			$("#addedVisits").append(label + input);
 		});
+		
+		$(".deleteRoommateButton").click(function()  {
+			var userId = $(this).attr("data-user-id");
+			var adId = $(this).attr("data-ad-id");
+			var row = $(this).parent().parent();
+			$.post("/profile/editAd/deleteRoommate", {userId: userId, adId: adId}, function() {
+				$(row).animate({opacity: 0}, 300, function() {$(row).remove(); } );
+			});
+		
+		});
 	});
 </script>
 
@@ -346,14 +356,26 @@
 
 				<div id="addbutton" class="smallPlusButton">+</div></td>
 			</tr>
+			
+			
+			
+			
 			<tr>
-				
+				<td><table class="styledTable">
+					<tr>
+						<th>Username</th>
+						<th>Delete</th>
+					</tr>
+					
 					<c:forEach var="user" items="${ad.registeredRoommates}">
-						<td>
-							<p>${user.username}</p>
-						</td>
+							<tr>
+								<td>${user.username}</td>
+								<td><button type="button" data-user-id="${user.id}" data-ad-id="${ad.id}" class="deleteRoommateButton">Delete</button></td>
+							</tr>
+							<tr>
 					</c:forEach>
-				
+					</table><br/>
+				</td>
 			</tr>
 		</table>
 

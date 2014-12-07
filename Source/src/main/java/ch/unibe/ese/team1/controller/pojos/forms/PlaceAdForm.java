@@ -43,7 +43,7 @@ public class PlaceAdForm {
 	// TODO look one down and optional
 	private List<Ad> addedRoommates;
 
-	// TODO look one up and optional
+	// optional
 	private List<String> registeredRoommateEmails;
 	
 	// TODO look one up and optional
