@@ -425,7 +425,7 @@
 		<td id="advertiserEmail">
 		<c:choose>
 			<c:when test="${loggedIn}">
-				<a href="/profile/user?id=${shownAd.user.id}"><button type="button">Visit profile</button></a>
+				<a href="/user?id=${shownAd.user.id}"><button type="button">Visit profile</button></a>
 			</c:when>
 			<c:otherwise>
 				<a href="/login"><button class="thinInactiveButton" type="button">Login to visit profile</button></a>

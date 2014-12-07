@@ -31,12 +31,22 @@
 	<h2>About me</h2>${user.aboutMe}
 	<hr class="slim">
 	<form>
-		<button id="newMsg" type="button">Message</button>
 		<c:choose>
-			<c:when test="${principalID eq user.id}">
-				<a class="button" href="/profile/editProfile">Edit Profile</a>
+			<c:when test="${loggedIn}">
+			
+			
+			
+			<button id="newMsg" type="button">Message</button>
+			<c:choose>
+				<c:when test="${principalID eq user.id}">
+					<a class="button" href="/profile/editProfile">Edit Profile</a>
+				</c:when>
+				<c:otherwise></c:otherwise>
+			</c:choose>
 			</c:when>
-			<c:otherwise></c:otherwise>
+			<c:otherwise>
+				<p>Please log in to contact this person.</p>
+			</c:otherwise>
 		</c:choose>
 	</form>
 </div>

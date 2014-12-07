@@ -348,7 +348,7 @@
 				
 					<c:forEach var="user" items="${ad.registeredRoommates}">
 						<td>
-							<p>${user}</p>
+							<p>${user.username}</p>
 						</td>
 					</c:forEach>
 				

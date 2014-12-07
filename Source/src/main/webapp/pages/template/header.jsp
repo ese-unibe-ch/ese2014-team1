@@ -73,7 +73,7 @@
 								</li>
 								<li><a href="/profile/alerts">Alerts</a></li>
 								<li>
-								<% out.print("<a href=\"/profile/user?id=" + realUser.getId() + "\">Public Profile</a>"); %>
+								<% out.print("<a href=\"/user?id=" + realUser.getId() + "\">Public Profile</a>"); %>
 								</li>
 								<li><a href="/logout">Logout</a></li>
 							</ul></li>

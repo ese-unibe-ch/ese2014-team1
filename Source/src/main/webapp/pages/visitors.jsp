@@ -63,7 +63,7 @@ function rate(id, rating) {
 			<tr>
 				<td>${visitor.firstName} ${visitor.lastName }</td>
 				<td>${visitor.username}</td>
-				<td><a href="/profile/user?id=${visitor.id}"><button>Visit</button></a></td>
+				<td><a href="/user?id=${visitor.id}"><button>Visit</button></a></td>
 				<td>
 				<div class="rating" id="${visitor.id}">
 					<script>ratingFor(${visitor.id})</script>
