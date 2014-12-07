@@ -116,6 +116,10 @@ public class AdController {
 			pictures.add(request.getFile(iter.next()));
 		}
 
+		if(pictureUploader == null){
+			String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);
+			pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
+		}
 		List<PictureMeta> uploadedPicturesMeta = pictureUploader
 				.upload(pictures);
 
