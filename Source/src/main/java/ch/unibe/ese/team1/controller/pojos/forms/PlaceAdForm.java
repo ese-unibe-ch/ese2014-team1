@@ -7,6 +7,8 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import ch.unibe.ese.team1.model.Ad;
+
 /** This form is used when a user wants to place a new ad. */
 public class PlaceAdForm {
 	
@@ -35,12 +37,16 @@ public class PlaceAdForm {
 
 	private String preferences;
 
-	// optional
+	// TODO look one down and optional
 	private String roommates;
 	
+	// TODO look one down and optional
+	private List<Ad> addedRoommates;
+
+	// TODO look one up and optional
 	private List<String> registeredRoommateEmails;
 	
-	// optional
+	// TODO look one up and optional
 	private String room_friends;
 	
 	//true if studio, false if room
@@ -240,6 +246,14 @@ public class PlaceAdForm {
 
 	public void setVisits(List<String> visits) {
 		this.visits = visits;
+	}
+
+	public List<Ad> getAddedRoommates() {
+		return addedRoommates;
+	}
+
+	public void setAddedRoommates(List<Ad> addedRoommates) {
+		this.addedRoommates = addedRoommates;
 	}
 	
 }

@@ -3,6 +3,7 @@ package ch.unibe.ese.team1.test.testData;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class AdTestDataSaver implements TestDataSaver {
 		User ese = userDao.findByUsername("ese@unibe.ch");
 		User oprah = userDao.findByUsername("oprah@winfrey.com");
 		User jane = userDao.findByUsername("jane@doe.com");
+		User hans = userDao.findByUsername("hans@unibe.ch");
+		User mathilda = userDao.findByUsername("mathilda@unibe.ch");
+		List<User> regRoommatesAdBern = new LinkedList<User>();
+		regRoommatesAdBern.add(hans);
+		regRoommatesAdBern.add(mathilda);
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 		
@@ -85,6 +91,8 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBern.setPreferences(preferences1);
 		adBern.setRoommates("One roommate");
 		adBern.setUser(bernerBaer);
+		// Test
+		adBern.setRegisteredRoommates(regRoommatesAdBern);
 		adBern.setTitle("Roommate wanted in Bern");
 		adBern.setStreet("Kramgasse 22");
 		adBern.setCity("Bern");
