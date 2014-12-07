@@ -42,7 +42,7 @@ public class TestDataSeeder implements InitializingBean {
 		adDataSaver.saveTestData();
 		messageDataSaver.saveTestData();
 		visitDataSaver.saveTestData();
-//		visitEnquiryDataSaver.saveTestData();
+		visitEnquiryDataSaver.saveTestData();
 		alertDataSaver.saveTestData();
 		bookmarkTestDataSaver.saveTestData();
 		ratingTestDataSaver.saveTestData();

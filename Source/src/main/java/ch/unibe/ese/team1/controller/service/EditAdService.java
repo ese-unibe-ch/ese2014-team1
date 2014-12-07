@@ -167,6 +167,11 @@ public class EditAdService {
 				visit.setAd(ad);
 				visits.add(visit);
 			}
+			
+			// add existing visit
+			for(Visit visit : ad.getVisits()){
+				visits.add(visit);
+			}
 			ad.setVisits(visits);
 		}
 		

@@ -68,6 +68,7 @@ public class Ad {
 	@Column(nullable = false)
 	private String roommates;
 
+	@Fetch(FetchMode.SELECT)
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<User> registeredRoommates;
 
@@ -113,7 +114,7 @@ public class Ad {
 	@ManyToOne(optional = false)
 	private User user;
 	
-	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Visit> visits;
 
 	public Date getCreationDate() {

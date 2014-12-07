@@ -420,7 +420,7 @@ footer nav ul li {
 
 /* -------------------------------------------------------------------- */
 /* login.jsp */
-#test-users {
+.test-users {
 	margin-left: 30px;
 	line-height: 1.5;
 }
@@ -897,7 +897,7 @@ footer nav ul li {
 /* -------------------------------------------------------------------- */
 /* enquiries.jsp */
 #enquiryList {
-	width: 70%;
+	width: 85%;
 	margin: auto;
 }
 

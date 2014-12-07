@@ -97,17 +97,6 @@
 			$("#content").children().animate({opacity: 1}, 300);
 		});
 		
-		$("#receiverEmail").focusout(function() {
-			var text = $("#receiverEmail").val();
-			
-			$.post("/profile/messages/validateEmail", {email:text}, function(data) {
-				if (data != text) {
-					alert(data);
-					$("#receiverEmail").val("");
-				}
-			});
-		});
-		
 		$("#messageSend").click(function (){
 			if($("#msgSubject").val() != "" && $("#msgTextarea").val() != ""){
 				var subject = $("#msgSubject").val();
@@ -116,6 +105,8 @@
 				$.post("profile/messages/sendMessage", {subject : subject, text: text, recipientEmail : recipientEmail}, function(){
 					$("#msgDiv").css("display", "none");
 					$("#msgDiv").css("opacity", "0");
+					$("#msgSubject").val("");
+					$("#msgTextarea").val("");
 					$("#content").children().animate({opacity: 1}, 300);
 				})
 			}
@@ -473,6 +464,5 @@
 	</form>
 </div>
 
-<script src="/js/messageForAdDescription.js"></script>
 
 <c:import url="template/footer.jsp" />

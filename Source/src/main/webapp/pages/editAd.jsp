@@ -342,7 +342,7 @@
 
 	<br />
 	<fieldset>
-		<legend>Roommates (optional)</legend>
+		<legend>Change roommates</legend>
 		<p>If your roommates have an account, simply add them by email.</p>
 
 		<table class="placeAdTable">
@@ -387,14 +387,14 @@
 
 	<br />
 	<fieldset>
-		<legend>Preferences (optional)</legend>
+		<legend>Preferences</legend>
 		<form:textarea path="preferences" rows="5" cols="100"
 			value="${ad.preferences}" ></form:textarea>
 	</fieldset>
 
 	
 	<fieldset>
-		<legend>Visiting times (optional)</legend>
+		<legend>Add visiting times</legend>
 		
 		<table>
 			<tr>
@@ -454,7 +454,7 @@
 	<br />
 
 	<fieldset>
-		<legend>Pictures</legend>
+		<legend>Change pictures</legend>
 		<h3>Delete existing pictures</h3>
 		<br />
 		<div>
