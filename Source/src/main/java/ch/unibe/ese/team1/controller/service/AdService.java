@@ -135,7 +135,6 @@ public class AdService {
 		for (String filePath : filePaths) {
 			AdPicture picture = new AdPicture();
 			picture.setFilePath(filePath);
-			picture.setAd(ad);
 			pictures.add(picture);
 		}
 		ad.setPictures(pictures);

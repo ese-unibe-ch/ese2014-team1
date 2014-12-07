@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 /** Describes an advertisement that users can place and search for. */
 @Entity
 public class Ad {
@@ -103,7 +106,8 @@ public class Ad {
 	@Column(nullable = true)
 	private String room_friends;
 
-	@OneToMany(mappedBy = "ad", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<AdPicture> pictures;
 
 	@ManyToOne(optional = false)

@@ -562,7 +562,6 @@ public class AdTestDataSaver implements TestDataSaver {
 
 	private AdPicture createPicture(Ad ad, String filePath) {
 		AdPicture picture = new AdPicture();
-		picture.setAd(ad);
 		picture.setFilePath(filePath);
 		return picture;
 	}
