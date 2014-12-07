@@ -140,6 +140,11 @@ public class AdService {
 		}
 		ad.setPictures(pictures);
 		
+		/*
+		 * Roommates are saved in the form as strings. They need to be converted
+		 * into Users and saved as a List which will be accessible through the
+		 * ad object itself.
+		 */
 		List<User> registeredUserRommates = new LinkedList<>();
 		if (placeAdForm.getRegisteredRoommateEmails() != null) {
 			for (String userEmail : placeAdForm.getRegisteredRoommateEmails()) {

@@ -345,8 +345,13 @@
 				<div id="addbutton" class="smallPlusButton">+</div></td>
 			</tr>
 			<tr>
-				<td>
-				</td>
+				
+					<c:forEach var="user" items="${ad.registeredRoommates}">
+						<td>
+							<p>${user}</p>
+						</td>
+					</c:forEach>
+				
 			</tr>
 		</table>
 

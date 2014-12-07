@@ -37,7 +37,7 @@ public class PlaceAdForm {
 
 	private String preferences;
 
-	// TODO look one down and optional
+	// optional free text description
 	private String roommates;
 	
 	// TODO look one down and optional

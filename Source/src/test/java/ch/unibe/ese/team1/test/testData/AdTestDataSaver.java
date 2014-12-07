@@ -36,6 +36,7 @@ public class AdTestDataSaver implements TestDataSaver {
 		User jane = userDao.findByUsername("jane@doe.com");
 		User hans = userDao.findByUsername("hans@unibe.ch");
 		User mathilda = userDao.findByUsername("mathilda@unibe.ch");
+		
 		List<User> regRoommatesAdBern = new LinkedList<User>();
 		regRoommatesAdBern.add(hans);
 		regRoommatesAdBern.add(mathilda);
@@ -91,7 +92,6 @@ public class AdTestDataSaver implements TestDataSaver {
 		adBern.setPreferences(preferences1);
 		adBern.setRoommates("One roommate");
 		adBern.setUser(bernerBaer);
-		// Test
 		adBern.setRegisteredRoommates(regRoommatesAdBern);
 		adBern.setTitle("Roommate wanted in Bern");
 		adBern.setStreet("Kramgasse 22");
