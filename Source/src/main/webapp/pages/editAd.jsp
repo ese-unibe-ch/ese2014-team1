@@ -11,7 +11,7 @@
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
 
-<script src="/js/pictureUpload.js"></script>
+<script src="/js/pictureUploadEditAd.js"></script>
 
 <script src="/js/editAd.js"></script>
 
@@ -122,6 +122,8 @@
 <form:form method="post" modelAttribute="placeAdForm"
 	action="/profile/editAd" id="placeAdForm" autocomplete="off"
 	enctype="multipart/form-data">
+
+<input type="hidden" name="adId" value="${ad.id }" />
 
 	<fieldset>
 		<legend>General info</legend>
