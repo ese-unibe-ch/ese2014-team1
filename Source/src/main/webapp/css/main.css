@@ -684,6 +684,13 @@ footer nav ul li {
 	float: left;
 }
 
+#right-arrow {
+	height: 100%;
+	width: 40px;
+	margin-left: 10px;
+	float: left;
+}
+
 #left-arrow img {
 	width: 40px;
 	margin-top: 155px;
@@ -694,11 +701,16 @@ footer nav ul li {
 	margin-top: 155px;
 }
 
-#right-arrow {
-	height: 100%;
-	width: 40px;
-	margin-left: 10px;
-	float: left;
+#left-arrow img:hover {
+	cursor: pointer;
+	opacity: .7;
+    background-color: white;
+}
+
+#right-arrow img:hover {
+	cursor:pointer;
+	opacity: .7;
+    background-color: white;
 }
 
 .adDescDiv {
@@ -735,6 +747,7 @@ footer nav ul li {
 	background-color: #white;
 	color: #bbbbbb;
 	border-color: #bbbbbb;
+	cursor: pointer;
 }
 
 /* -------------------------------------------------------------------- */
