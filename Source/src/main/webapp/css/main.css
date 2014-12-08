@@ -617,6 +617,11 @@ footer nav ul li {
 	margin: 4px;
 }
 
+#checkBoxTable img {
+	width: 26px;
+	height: 26px;
+}
+
 #descriptionTexts {
 	width: 55%;
 	float: left
