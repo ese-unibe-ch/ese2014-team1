@@ -28,7 +28,7 @@ public class GeoDataServiceTest {
 
 	@Test
 	public void getAllLocations() {
-	 locations = geoDataService.getAllLocations();
+		locations = geoDataService.getAllLocations();
 		assertEquals(5000, locations.get(0).getZip());
 		assertEquals(3418, locations.size());
 	}

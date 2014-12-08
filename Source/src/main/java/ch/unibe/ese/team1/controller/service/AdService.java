@@ -64,7 +64,7 @@ public class AdService {
 	@Transactional
 	public Ad saveFrom(PlaceAdForm placeAdForm, List<String> filePaths,
 			User user) {
-
+		
 		Ad ad = new Ad();
 
 		Date now = new Date();
@@ -80,7 +80,7 @@ public class AdService {
 		String zip = placeAdForm.getCity().substring(0, 4);
 		ad.setZipcode(Integer.parseInt(zip));
 		ad.setCity(placeAdForm.getCity().substring(7));
-
+		
 		Calendar calendar = Calendar.getInstance();
 		// java.util.Calendar uses a month range of 0-11 instead of the
 		// XMLGregorianCalendar which uses 1-12
@@ -126,7 +126,7 @@ public class AdService {
 		ad.setCable(placeAdForm.getCable());
 		ad.setGarage(placeAdForm.getGarage());
 		ad.setInternet(placeAdForm.getInternet());
-
+		
 		/*
 		 * Save the paths to the picture files, the pictures are assumed to be
 		 * uploaded at this point!
@@ -182,7 +182,7 @@ public class AdService {
 		}
 
 		ad.setUser(user);
-
+		
 		adDao.save(ad);
 
 		return ad;

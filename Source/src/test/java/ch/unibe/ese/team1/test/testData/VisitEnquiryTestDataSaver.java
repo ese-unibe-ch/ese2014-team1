@@ -32,9 +32,9 @@ public class VisitEnquiryTestDataSaver {
 	private VisitDao visitDao;
 
 	private User bernerBaer; // = user@bern.com
-	private User testerMuster; // = ese
-	private User jane; // = user@bern.com
-	private User oprah; // = ese
+	private User testerMuster; // = ese@unibe.ch
+	private User jane; // = jane@doe.com
+	private User oprah; // = oprah@winfrey.com
 
 	private Visit visit;
 
