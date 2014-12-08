@@ -17,12 +17,11 @@ import ch.unibe.ese.team1.model.dao.UserDao;
  * This inserts some user test data into the database.
  */
 @Service
-public class UserTestDataSaver implements TestDataSaver {
+public class UserTestDataSaver {
 
 	@Autowired
 	private UserDao userDao;
 
-	@Override
 	@Transactional
 	public void saveTestData() throws Exception {
 		// system account

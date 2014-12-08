@@ -13,7 +13,7 @@ import ch.unibe.ese.team1.model.dao.RatingDao;
  * This inserts some alert test data into the database.
  */
 @Service
-public class RatingTestDataSaver implements TestDataSaver {
+public class RatingTestDataSaver {
 
 	@Autowired
 	RatingDao ratingDao;
@@ -21,7 +21,6 @@ public class RatingTestDataSaver implements TestDataSaver {
 	@Autowired
 	UserDao userDao;
 	
-	@Override
 	@Transactional
 	public void saveTestData() throws Exception {		
 		

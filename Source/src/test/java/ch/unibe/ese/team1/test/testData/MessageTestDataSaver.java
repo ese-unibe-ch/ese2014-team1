@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.model.Message;
 import ch.unibe.ese.team1.model.MessageState;
@@ -16,7 +17,7 @@ import ch.unibe.ese.team1.model.dao.UserDao;
  * This inserts some messages test data into the database.
  */
 @Service
-public class MessageTestDataSaver implements TestDataSaver {
+public class MessageTestDataSaver {
 
 	@Autowired
 	private UserDao userDao;
@@ -29,7 +30,7 @@ public class MessageTestDataSaver implements TestDataSaver {
 	private User jane;
 	private User oprah;
 
-	@Override
+	@Transactional
 	public void saveTestData() throws Exception {
 		// load users
 		bernerBaer = userDao.findByUsername("user@bern.com");

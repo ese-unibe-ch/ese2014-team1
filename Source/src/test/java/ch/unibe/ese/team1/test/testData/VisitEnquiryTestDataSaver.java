@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.Visit;
@@ -19,7 +20,7 @@ import ch.unibe.ese.team1.model.dao.VisitEnquiryDao;
  * This inserts some visit enquiries test data into the database.
  */
 @Service
-public class VisitEnquiryTestDataSaver implements TestDataSaver {
+public class VisitEnquiryTestDataSaver {
 
 	@Autowired
 	private UserDao userDao;
@@ -42,7 +43,7 @@ public class VisitEnquiryTestDataSaver implements TestDataSaver {
 	 * gets accepted, the Sender will be added to the searcher-List of visit the
 	 * enquiry belongs to.
 	 */
-	@Override
+	@Transactional
 	public void saveTestData() throws Exception {
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm dd.MM.yyyy");
 

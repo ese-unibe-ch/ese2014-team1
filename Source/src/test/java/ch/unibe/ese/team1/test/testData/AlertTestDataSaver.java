@@ -13,7 +13,7 @@ import ch.unibe.ese.team1.model.dao.UserDao;
  * This inserts some alert test data into the database.
  */
 @Service
-public class AlertTestDataSaver implements TestDataSaver {
+public class AlertTestDataSaver {
 
 	@Autowired
 	private AlertDao alertDao;
@@ -22,7 +22,6 @@ public class AlertTestDataSaver implements TestDataSaver {
 	private UserDao userDao;
 
 
-	@Override
 	@Transactional
 	public void saveTestData() throws Exception {
 		User ese = userDao.findByUsername("ese@unibe.ch");

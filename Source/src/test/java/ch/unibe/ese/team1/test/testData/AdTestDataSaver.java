@@ -18,16 +18,13 @@ import ch.unibe.ese.team1.model.dao.UserDao;
 
 /** This inserts several ad elements into the database. */
 @Service
-public class AdTestDataSaver implements TestDataSaver {
+public class AdTestDataSaver {
 
 	@Autowired
 	private AdDao adDao;
 	@Autowired
 	private UserDao userDao;
-	@Autowired
-	private UserTestDataSaver userSeeder;
 
-	@Override
 	@Transactional
 	public void saveTestData() throws Exception {
 		User bernerBaer = userDao.findByUsername("user@bern.com");

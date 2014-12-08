@@ -15,14 +15,13 @@ import ch.unibe.ese.team1.model.dao.UserDao;
  * This inserts some bookmark test data into the database.
  */
 @Service
-public class BookmarkTestDataSaver implements TestDataSaver {
+public class BookmarkTestDataSaver{
 
 	@Autowired
 	private UserDao userDao;
 	@Autowired
 	private AdService adService;
 
-	@Override
 	@Transactional
 	public void saveTestData() throws Exception {
 		User ese = userDao.findByUsername("ese@unibe.ch");

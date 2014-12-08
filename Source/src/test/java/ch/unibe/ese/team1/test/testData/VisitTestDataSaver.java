@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.User;
@@ -19,7 +20,7 @@ import ch.unibe.ese.team1.model.dao.VisitDao;
  * This inserts some visits test data into the database.
  */
 @Service
-public class VisitTestDataSaver implements TestDataSaver {
+public class VisitTestDataSaver{
 
 	private User testerMuster;
 	private User bernerBaer;
@@ -48,7 +49,7 @@ public class VisitTestDataSaver implements TestDataSaver {
 	@Autowired
 	private VisitDao visitDao;
 
-	@Override
+	@Transactional
 	public void saveTestData() throws Exception {
 		// load users
 		bernerBaer = userDao.findByUsername("user@bern.com");
