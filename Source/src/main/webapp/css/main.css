@@ -208,6 +208,7 @@ button:hover {
 	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
+	cursor: pointer;
 }
 
 #bookmarkButton:hover {
@@ -373,7 +374,7 @@ header ul li a {
 
 header ul li a:hover {
 	color: #fff;
-	background: #47a764;
+	background: #48db88;
 }
 
 /* it does hide the drop down menu */
