@@ -410,6 +410,14 @@ footer nav {
 	margin-top: 8px;
 }
 
+footer .link {
+	color: #AFFFEE;
+}
+
+footer .link:hover {
+	color: white;
+}
+
 footer nav ul li {
 	display: inline-block;
 	float: center;
