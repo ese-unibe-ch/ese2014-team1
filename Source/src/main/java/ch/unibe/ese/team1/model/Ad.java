@@ -103,10 +103,6 @@ public class Ad {
 	@Column(nullable = false)
 	private boolean studio;
 
-	// for adding roommates to an ad
-	@Column(nullable = true)
-	private String room_friends;
-
 	@Fetch(FetchMode.SELECT)
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<AdPicture> pictures;
@@ -247,14 +243,6 @@ public class Ad {
 
 	public void setSquareFootage(int squareFootage) {
 		this.squareFootage = squareFootage;
-	}
-
-	public String getRoom_friends() {
-		return this.room_friends;
-	}
-
-	public void setRoom_friends(String room_friends) {
-		this.room_friends = room_friends;
 	}
 
 	public String getRoomDescription() {

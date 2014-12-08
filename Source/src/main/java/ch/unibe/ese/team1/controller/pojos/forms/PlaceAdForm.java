@@ -40,14 +40,15 @@ public class PlaceAdForm {
 	// optional free text description
 	private String roommates;
 	
-	// TODO look one down and optional
-	private List<Ad> addedRoommates;
+//	// TODO look one down and optional
+//	private List<Ad> addedRoommates;
 
-	// optional
+	// First user are added as strings, then transformed
+	// to Users and added to the DB in through adService
 	private List<String> registeredRoommateEmails;
 	
-	// TODO look one up and optional
-	private String room_friends;
+	// optional for input
+	private String roomFriends;
 	
 	//true if studio, false if room
 	private boolean studio;
@@ -216,12 +217,12 @@ public class PlaceAdForm {
 		this.street = street;
 	}
 
-	public String getRoom_friends() {
-		return room_friends;
+	public String getRoomFriends() {
+		return roomFriends;
 	}
 
-	public void setRoom_friends(String room_friends) {
-		this.room_friends = room_friends;
+	public void setRoomFriends(String roomFriends) {
+		this.roomFriends = roomFriends;
 	}
 	
 	public boolean getStudio() {
@@ -248,12 +249,12 @@ public class PlaceAdForm {
 		this.visits = visits;
 	}
 
-	public List<Ad> getAddedRoommates() {
-		return addedRoommates;
-	}
-
-	public void setAddedRoommates(List<Ad> addedRoommates) {
-		this.addedRoommates = addedRoommates;
-	}
+//	public List<Ad> getAddedRoommates() {
+//		return addedRoommates;
+//	}
+//
+//	public void setAddedRoommates(List<Ad> addedRoommates) {
+//		this.addedRoommates = addedRoommates;
+//	}
 	
 }

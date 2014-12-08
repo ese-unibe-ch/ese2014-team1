@@ -33,7 +33,7 @@ public class BookmarkService {
 	 * 
 	 */
 	public int getBookmarkStatus(Ad ad, boolean bookmarked, User user) {
-		List<Ad> tempAdList = user.getBookmarkedAdvertisementIterable();
+		List<Ad> tempAdList = user.getBookmarkedAds();
 		if(bookmarked) {
 			tempAdList.remove(ad);
 			updateUser(tempAdList, user);
@@ -51,7 +51,7 @@ public class BookmarkService {
 	
 	// updates effectively the new List into DB
 	private void updateUser(List<Ad> bookmarkedAds, User user) {
-		user.setBookmarkedAdvertisementIterable(bookmarkedAds);
+		user.setBookmarkedAds(bookmarkedAds);
 		userDao.save(user);
 	
 	}

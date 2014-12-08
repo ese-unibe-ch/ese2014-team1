@@ -36,7 +36,7 @@ public class BookmarkTestDataSaver{
 		bookmarkedAds.add(adService.getAdById(5));
 		bookmarkedAds.add(adService.getAdById(7));
 		bookmarkedAds.add(adService.getAdById(8));
-		ese.setBookmarkedAdvertisementIterable(bookmarkedAds);
+		ese.setBookmarkedAds(bookmarkedAds);
 		
 		userDao.save(ese);
 
@@ -46,7 +46,7 @@ public class BookmarkTestDataSaver{
 		bookmarkedAds.add(adService.getAdById(9));
 		bookmarkedAds.add(adService.getAdById(10));
 		bookmarkedAds.add(adService.getAdById(11));
-		jane.setBookmarkedAdvertisementIterable(bookmarkedAds);
+		jane.setBookmarkedAds(bookmarkedAds);
 		userDao.save(jane);
 
 		// 5 bookmarks for user berner bear
@@ -56,7 +56,7 @@ public class BookmarkTestDataSaver{
 		bookmarkedAds.add(adService.getAdById(6));
 		bookmarkedAds.add(adService.getAdById(8));
 		bookmarkedAds.add(adService.getAdById(12));
-		bernerBaer.setBookmarkedAdvertisementIterable(bookmarkedAds);
+		bernerBaer.setBookmarkedAds(bookmarkedAds);
 		userDao.save(bernerBaer);
 
 		// 4 bookmarks for Oprah
@@ -65,7 +65,7 @@ public class BookmarkTestDataSaver{
 		bookmarkedAds.add(adService.getAdById(3));
 		bookmarkedAds.add(adService.getAdById(6));
 		bookmarkedAds.add(adService.getAdById(12));
-		oprah.setBookmarkedAdvertisementIterable(bookmarkedAds);
+		oprah.setBookmarkedAds(bookmarkedAds);
 		userDao.save(oprah);
 	}
 

@@ -83,10 +83,10 @@ public class AdController {
 	}
 
 	/**
-	 * Checks if the adID passed as post parameter is already inside users
-	 * arrayList bookmarkedAds. In case it is present, true is returned changing
-	 * the "Bookmark Me" button to "Bookmarked". If it is not present it is
-	 * added to the arrayList bookmarkedAds.
+	 * Checks if the adID passed as post parameter is already inside user's
+	 * List bookmarkedAds. In case it is present, true is returned changing
+	 * the "Bookmark Ad" button to "Bookmarked". If it is not present it is
+	 * added to the List bookmarkedAds.
 	 * 
 	 * @return 0 and 1 for errors; 3 to update the button to bookmarked 3 and 2
 	 *         for bookmarking or undo bookmarking respectively 4 for removing
@@ -106,12 +106,9 @@ public class AdController {
 		User user = userService.findUserByUsername(username);
 		if (user == null) {
 			// that should not happen...
-			System.out
-					.println("ERROR: Principal does exist but could not be found in the DB");
 			return 1;
 		}
-		List<Ad> bookmarkedAdsIterable = user
-				.getBookmarkedAdvertisementIterable();
+		List<Ad> bookmarkedAdsIterable = user.getBookmarkedAds();
 		if (screening) {
 			for (Ad ownAdIterable : adService.getAdsByUser(user)) {
 				if (ownAdIterable.getId() == id) {
@@ -146,8 +143,7 @@ public class AdController {
 
 			Iterable<Ad> ownAds = adService.getAdsByUser(user);
 
-			model.addObject("bookmarkedAdvertisements",
-					user.getBookmarkedAdvertisementIterable());
+			model.addObject("bookmarkedAdvertisements", user.getBookmarkedAds());
 			model.addObject("ownAdvertisements", ownAds);
 			return model;
 		} else {

@@ -49,7 +49,7 @@
 	function attachBookmarkedClickHandler(){
 		$("#bookmarkedButton").click(function() {
 			$.post("/bookmark", {id: shownAdvertisementID, screening: false, bookmarked: true}, function(data) {
-				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmark Me" + '</a>'));
+				$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmark Ad" + '</a>'));
 				switch(data) {
 				case 0:
 					alert("You must be logged in to bookmark ads.");
@@ -59,7 +59,7 @@
 					alert("Return value 1. Please contact the WebAdmin.");
 					break;
 				case 2:
-					$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmarke Me" + '</a>'));
+					$('#bookmarkedButton').replaceWith($('<a class="right" id="bookmarkButton">' + "Bookmark Ad" + '</a>'));
 					break;
 				default:
 					alert("Default error. Please contact the WebAdmin.");

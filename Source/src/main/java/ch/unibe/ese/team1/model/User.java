@@ -61,7 +61,7 @@ public class User {
 	
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Ad> bookmarkedAdvertisementIterable;
+	private List<Ad> bookmarkedAds;
 
 	public long getId() {
 		return id;
@@ -151,12 +151,12 @@ public class User {
 		this.aboutMe = aboutMe;
 	}
 	
-	public List<Ad> getBookmarkedAdvertisementIterable() {
-		return bookmarkedAdvertisementIterable;
+	public List<Ad> getBookmarkedAds() {
+		return bookmarkedAds;
 	}
 	
-	public void setBookmarkedAdvertisementIterable(List<Ad> bookmarkedAdvertisementIterable) {
-		this.bookmarkedAdvertisementIterable = bookmarkedAdvertisementIterable;
+	public void setBookmarkedAds(List<Ad> bookmarkedAds) {
+		this.bookmarkedAds = bookmarkedAds;
 	}
 
 	@Override

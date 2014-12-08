@@ -17,13 +17,7 @@
 
 
 <script>
-	$(document).ready(function() {
-		
-		// Go to controller take what you need from user
-		// save it to a hidden field
-		// iterate through it
-		// if there is id == x then make "Bookmark Me" to "bookmarked"
-		
+	$(document).ready(function() {		
 		$("#field-city").autocomplete({
 			minLength : 2
 		});
@@ -46,7 +40,7 @@
 		});
 		
 		$("#addbutton").click(function() {
-			var text = $("#room_friends").val();
+			var text = $("#roomFriends").val();
 			var alreadyAdded = $("#addedRoommates").html();
 			if(validateForm(text)) {
 				$.post("/profile/placeAd/validateEmail",{email: text, alreadyIn: alreadyAdded}, function(data) {
@@ -349,12 +343,12 @@
 
 		<table class="placeAdTable">
 			<tr>
-				<td><label for="room_friends">Add by email</label></td>
+				<td><label for="roomFriends">Add by email</label></td>
 			</tr>
 
 			<tr>
-				<td id="roommateCell"><form:input type="text" id="room_friends"
-						path="room_friends" placeholder="email" /> 
+				<td id="roommateCell"><form:input type="text" id="roomFriends"
+						path="roomFriends" placeholder="email" /> 
 
 				<div id="addbutton" class="smallPlusButton">+</div></td>
 			</tr>
