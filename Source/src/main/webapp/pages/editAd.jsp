@@ -47,12 +47,14 @@
 		
 		$("#addbutton").click(function() {
 			var text = $("#room_friends").val();
+			var alreadyAdded = $("#addedRoommates").html();
 			if(validateForm(text)) {
-				$.post("/profile/placeAd/validateEmail",{email: text}, function(data) {
+				$.post("/profile/placeAd/validateEmail",{email: text, alreadyIn: alreadyAdded}, function(data) {
 					if(validateForm(data)) {
 						// length gibt die Anzahl der Elemente im input.roommateInput an. Dieser wird in index geschrieben und iteriert.
 						var index = $("#roommateCell input.roommateInput").length;
 						$("#roommateCell").append("<input class='roommateInput' type='hidden' name='registeredRoommateEmails[" + index + "]' value='" + data + "' />");
+						$("#addedRoommates").append(data + "; ");
 					} else {
 						alert(data);
 					}});
@@ -342,7 +344,7 @@
 
 	<br />
 	<fieldset>
-		<legend>Change roommates</legend>
+		<legend>Roommates (optional)</legend>
 		<p>If your roommates have an account, simply add them by email.</p>
 
 		<table class="placeAdTable">
@@ -357,9 +359,9 @@
 				<div id="addbutton" class="smallPlusButton">+</div></td>
 			</tr>
 			
-			
-			
-			
+			<tr>
+				<td><p id="addedRoommates" path="addedRoommates">Newly added roommates: </p></td>
+			</tr>
 			<tr>
 				<td><table class="styledTable">
 					<tr>
@@ -387,14 +389,14 @@
 
 	<br />
 	<fieldset>
-		<legend>Preferences</legend>
+		<legend>Preferences (optional)</legend>
 		<form:textarea path="preferences" rows="5" cols="100"
 			value="${ad.preferences}" ></form:textarea>
 	</fieldset>
 
 	
 	<fieldset>
-		<legend>Add visiting times</legend>
+		<legend>Visiting times (optional)</legend>
 		
 		<table>
 			<tr>
@@ -454,7 +456,7 @@
 	<br />
 
 	<fieldset>
-		<legend>Change pictures</legend>
+		<legend>Pictures</legend>
 		<h3>Delete existing pictures</h3>
 		<br />
 		<div>

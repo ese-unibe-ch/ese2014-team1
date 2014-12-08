@@ -49,6 +49,7 @@ public class BookmarkService {
 		return 1;
 	}
 	
+	// updates effectively the new List into DB
 	private void updateUser(List<Ad> bookmarkedAds, User user) {
 		user.setBookmarkedAdvertisementIterable(bookmarkedAds);
 		userDao.save(user);

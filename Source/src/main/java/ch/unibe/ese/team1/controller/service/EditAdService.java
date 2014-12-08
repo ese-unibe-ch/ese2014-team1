@@ -141,6 +141,10 @@ public class EditAdService {
 				registeredUserRommates.add(roommateUser);
 			}
 		}
+		// add existing roommates
+		for (User roommates : ad.getRegisteredRoommates()) {
+			registeredUserRommates.add(roommates);
+		}
 		ad.setRegisteredRoommates(registeredUserRommates);
 
 		// visits

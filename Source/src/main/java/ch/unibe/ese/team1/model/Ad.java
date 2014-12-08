@@ -356,6 +356,7 @@ public class Ad {
 		return result;
 	}
 
+	// equals method is defined to check for id only
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
