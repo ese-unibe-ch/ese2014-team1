@@ -176,4 +176,14 @@ public class AlertService {
 				* earthRadiusKm;
 		return (distance > alert.getRadius());
 	}
+	
+	//for testing
+	public boolean radiusMismatch(Ad ad, Alert alert) {
+		return radiusMismatchWith(ad, alert);
+	}
+	
+	//for testing
+	public boolean typeMismatch(Ad ad, Alert alert) {
+		return typeMismatchWith(ad, alert);
+	}
 }

@@ -77,9 +77,6 @@ public class UserTestDataSaver implements TestDataSaver {
 				"at Kramgasse 22 and I am very very happy there.");
 		userDao.save(mathilda);
 	}
-	
-		
-		
 
 	public User createUser(String email, String password, String firstName,
 			String lastName, Gender gender) {
