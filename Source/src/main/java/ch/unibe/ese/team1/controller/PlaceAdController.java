@@ -22,21 +22,20 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import ch.unibe.ese.team1.controller.pojos.PictureUploader;
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
 import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.AlertService;
 import ch.unibe.ese.team1.controller.service.BookmarkService;
-import ch.unibe.ese.team1.controller.service.CheckRoommateService;
 import ch.unibe.ese.team1.controller.service.MessageService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.controller.service.VisitService;
 import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.PictureMeta;
 import ch.unibe.ese.team1.model.User;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * This controller handles all requests concerning placing ads.
@@ -78,9 +77,6 @@ public class PlaceAdController {
 
 	@Autowired
 	private BookmarkService bookmarkService;
-
-	@Autowired
-	private CheckRoommateService checkRoommateService;
 
 	@Autowired
 	private UserService userService;
@@ -209,8 +205,7 @@ public class PlaceAdController {
 			@RequestParam String alreadyIn) {
 		User user = userService.findUserByUsername(email);
 
-		Boolean isAdded = checkRoommateService.checkIfAlreadyAdded(email,
-				alreadyIn);
+		Boolean isAdded = adService.checkIfAlreadyAdded(email, alreadyIn);
 
 		if (user == null) {
 			return "This user does not exist, did your roommate register?";

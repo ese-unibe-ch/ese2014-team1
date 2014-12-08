@@ -43,24 +43,6 @@ public class EditProfileForm {
 		this.lastName = lastName;
 	}
 
-	// TODO complete or remove
-/*	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
-	}
-
-	
-	public UserPicture getUserPicture() {
-		return userPicture;
-	}
-
-	public void setUserPicture(UserPicture userPicture) {
-		this.userPicture = userPicture;
-	}
-*/
 	public String getAboutMe() {
 		return aboutMe;
 	}

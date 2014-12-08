@@ -35,16 +35,16 @@ public class AdService {
 
 	@Autowired
 	private AdDao adDao;
-	
+
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Autowired
 	private AlertDao alertDao;
-	
+
 	@Autowired
 	private MessageDao messageDao;
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -64,9 +64,9 @@ public class AdService {
 	@Transactional
 	public Ad saveFrom(PlaceAdForm placeAdForm, List<String> filePaths,
 			User user) {
-		
+
 		Ad ad = new Ad();
-		
+
 		Date now = new Date();
 		ad.setCreationDate(now);
 
@@ -75,7 +75,7 @@ public class AdService {
 		ad.setStreet(placeAdForm.getStreet());
 
 		ad.setStudio(placeAdForm.getStudio());
-		
+
 		// take the zipcode - first four digits
 		String zip = placeAdForm.getCity().substring(0, 4);
 		ad.setZipcode(Integer.parseInt(zip));
@@ -138,7 +138,7 @@ public class AdService {
 			pictures.add(picture);
 		}
 		ad.setPictures(pictures);
-		
+
 		/*
 		 * Roommates are saved in the form as strings. They need to be converted
 		 * into Users and saved as a List which will be accessible through the
@@ -152,27 +152,27 @@ public class AdService {
 			}
 		}
 		ad.setRegisteredRoommates(registeredUserRommates);
-		
+
 		// visits
 		List<Visit> visits = new LinkedList<>();
 		List<String> visitStrings = placeAdForm.getVisits();
-		if(visitStrings !=  null){
-			for(String visitString : visitStrings){
+		if (visitStrings != null) {
+			for (String visitString : visitStrings) {
 				Visit visit = new Visit();
 				// format is 28-02-2014;10:02;13:14
 				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 				String[] parts = visitString.split(";");
-				String startTime = parts[0] + " "+ parts[1];
-				String endTime = parts[0] + " "+ parts[2];
+				String startTime = parts[0] + " " + parts[1];
+				String endTime = parts[0] + " " + parts[2];
 				Date startDate = null;
 				Date endDate = null;
-				try{
+				try {
 					startDate = dateFormat.parse(startTime);
 					endDate = dateFormat.parse(endTime);
-				}catch(ParseException ex){
+				} catch (ParseException ex) {
 					ex.printStackTrace();
 				}
-				
+
 				visit.setStartTimestamp(startDate);
 				visit.setEndTimestamp(endDate);
 				visit.setAd(ad);
@@ -180,7 +180,7 @@ public class AdService {
 			}
 			ad.setVisits(visits);
 		}
-		
+
 		ad.setUser(user);
 
 		adDao.save(ad);
@@ -205,13 +205,15 @@ public class AdService {
 	public Iterable<Ad> getAllAds() {
 		return adDao.findAll();
 	}
-	
-	/** Returns the newest ads in the database. Parameter 'newest' says how many. */
+
+	/**
+	 * Returns the newest ads in the database. Parameter 'newest' says how many.
+	 */
 	@Transactional
 	public Iterable<Ad> getNewestAds(int newest) {
 		Iterable<Ad> allAds = adDao.findAll();
 		List<Ad> ads = new ArrayList<Ad>();
-		for(Ad ad: allAds)
+		for (Ad ad : allAds)
 			ads.add(ad);
 		Collections.sort(ads, new Comparator<Ad>() {
 			@Override
@@ -220,11 +222,11 @@ public class AdService {
 			}
 		});
 		List<Ad> fourNewest = new ArrayList<Ad>();
-		for(int i = 0; i < newest; i++)
+		for (int i = 0; i < newest; i++)
 			fourNewest.add(ads.get(i));
 		return fourNewest;
 	}
-	
+
 	/**
 	 * Returns all ads that match the parameters given by the form. This list
 	 * can possibly be empty.
@@ -237,18 +239,18 @@ public class AdService {
 	public Iterable<Ad> queryResults(SearchForm searchForm) {
 		Iterable<Ad> results = null;
 
-		//we use this method if we are looking for rooms AND studios
+		// we use this method if we are looking for rooms AND studios
 		if (searchForm.getBothRoomAndStudio()) {
 			results = adDao
 					.findByPrizePerMonthLessThan(searchForm.getPrize() + 1);
- 		}
+		}
 		// we use this method if we are looking EITHER for rooms OR for studios
 		else {
 			results = adDao.findByStudioAndPrizePerMonthLessThan(
 					searchForm.getStudio(), searchForm.getPrize() + 1);
 		}
-		
-		//filter out zipcode
+
+		// filter out zipcode
 		String city = searchForm.getCity().substring(7);
 
 		// get the location that the user searched for and take the one with the
@@ -293,169 +295,173 @@ public class AdService {
 		locatedResults = locatedResults.stream()
 				.filter(ad -> zipcodes.contains(ad.getZipcode()))
 				.collect(Collectors.toList());
-		
-		//filter for additional criteria
-		if(searchForm.getFiltered())
-		{
-			//prepare date filtering - by far the most difficult filter
-			Date earliestInDate = null;	
+
+		// filter for additional criteria
+		if (searchForm.getFiltered()) {
+			// prepare date filtering - by far the most difficult filter
+			Date earliestInDate = null;
 			Date latestInDate = null;
 			Date earliestOutDate = null;
 			Date latestOutDate = null;
-							
-			//parse move-in and move-out dates
+
+			// parse move-in and move-out dates
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 			try {
-		        earliestInDate = formatter.parse(searchForm.getEarliestMoveInDate());
+				earliestInDate = formatter.parse(searchForm
+						.getEarliestMoveInDate());
+			} catch (Exception e) {
 			}
-			catch (Exception e) {}
 			try {
-				latestInDate = formatter.parse(searchForm.getLatestMoveInDate());
+				latestInDate = formatter
+						.parse(searchForm.getLatestMoveInDate());
+			} catch (Exception e) {
 			}
-			catch (Exception e) {}
 			try {
-				earliestOutDate = formatter.parse(searchForm.getEarliestMoveOutDate());
+				earliestOutDate = formatter.parse(searchForm
+						.getEarliestMoveOutDate());
+			} catch (Exception e) {
 			}
-			catch (Exception e) {}
 			try {
-				latestOutDate = formatter.parse(searchForm.getLatestMoveOutDate());
+				latestOutDate = formatter.parse(searchForm
+						.getLatestMoveOutDate());
+			} catch (Exception e) {
 			}
-			catch (Exception e) {}
-						
-			//filtering by dates
-			locatedResults = validateDate(locatedResults, true, earliestInDate, latestInDate);
-			locatedResults = validateDate(locatedResults, false, earliestOutDate, latestOutDate);
-						
-			//filtering for the rest
-			//smokers
-			if(searchForm.getSmokers()) {
+
+			// filtering by dates
+			locatedResults = validateDate(locatedResults, true, earliestInDate,
+					latestInDate);
+			locatedResults = validateDate(locatedResults, false,
+					earliestOutDate, latestOutDate);
+
+			// filtering for the rest
+			// smokers
+			if (searchForm.getSmokers()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getSmokers())
+					if (!ad.getSmokers())
 						iterator.remove();
 				}
 			}
-			
-			//animals
-			if(searchForm.getAnimals()) {
+
+			// animals
+			if (searchForm.getAnimals()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getAnimals())
+					if (!ad.getAnimals())
 						iterator.remove();
 				}
 			}
-			
-			//garden
-			if(searchForm.getGarden()) {
+
+			// garden
+			if (searchForm.getGarden()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getGarden())
+					if (!ad.getGarden())
 						iterator.remove();
 				}
 			}
-			
-			//balcony
-			if(searchForm.getBalcony()) {
+
+			// balcony
+			if (searchForm.getBalcony()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getBalcony())
+					if (!ad.getBalcony())
 						iterator.remove();
 				}
 			}
-			
-			//cellar
-			if(searchForm.getCellar()) {
+
+			// cellar
+			if (searchForm.getCellar()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getCellar())
+					if (!ad.getCellar())
 						iterator.remove();
 				}
 			}
-			
-			//furnished
-			if(searchForm.getFurnished()) {
+
+			// furnished
+			if (searchForm.getFurnished()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getFurnished())
+					if (!ad.getFurnished())
 						iterator.remove();
 				}
 			}
-			
-			//cable
-			if(searchForm.getCable()) {
+
+			// cable
+			if (searchForm.getCable()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getCable())
+					if (!ad.getCable())
 						iterator.remove();
 				}
 			}
-			
-			//garage
-			if(searchForm.getGarage()) {
+
+			// garage
+			if (searchForm.getGarage()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getGarage())
+					if (!ad.getGarage())
 						iterator.remove();
 				}
 			}
-			
-			//internet
-			if(searchForm.getInternet()) {
+
+			// internet
+			if (searchForm.getInternet()) {
 				Iterator<Ad> iterator = locatedResults.iterator();
-				while(iterator.hasNext()) {
+				while (iterator.hasNext()) {
 					Ad ad = iterator.next();
-					if(!ad.getInternet())
+					if (!ad.getInternet())
 						iterator.remove();
 				}
 			}
 		}
 		return locatedResults;
 	}
-		
-	private List<Ad> validateDate(List<Ad> ads, boolean inOrOut, Date earliestDate, Date latestDate) {			
-		if(ads.size() > 0)
-		{
-			//Move-in dates
-			//Both an earliest AND a latest date to compare to
-			if(earliestDate != null) {
-				if(latestDate != null) {
+
+	private List<Ad> validateDate(List<Ad> ads, boolean inOrOut,
+			Date earliestDate, Date latestDate) {
+		if (ads.size() > 0) {
+			// Move-in dates
+			// Both an earliest AND a latest date to compare to
+			if (earliestDate != null) {
+				if (latestDate != null) {
 					Iterator<Ad> iterator = ads.iterator();
-					while(iterator.hasNext()) {
+					while (iterator.hasNext()) {
 						Ad ad = iterator.next();
-						if(ad.getDate(inOrOut).compareTo(earliestDate) < 0 ||
-								ad.getDate(inOrOut).compareTo(latestDate) > 0) {
+						if (ad.getDate(inOrOut).compareTo(earliestDate) < 0
+								|| ad.getDate(inOrOut).compareTo(latestDate) > 0) {
 							iterator.remove();
 						}
 					}
 				}
-				//only an earliest date
+				// only an earliest date
 				else {
 					Iterator<Ad> iterator = ads.iterator();
-					while(iterator.hasNext()) {
+					while (iterator.hasNext()) {
 						Ad ad = iterator.next();
-						if(ad.getDate(inOrOut).compareTo(earliestDate) < 0)
+						if (ad.getDate(inOrOut).compareTo(earliestDate) < 0)
 							iterator.remove();
-						}
-				}
-			}	
-			//only a latest date
-			else if(latestDate != null && earliestDate == null) {
-				Iterator<Ad> iterator = ads.iterator();
-				while(iterator.hasNext()) {
-					Ad ad = iterator.next();
-					if(ad.getDate(inOrOut).compareTo(latestDate) > 0)
-						iterator.remove();
+					}
 				}
 			}
-			else {
+			// only a latest date
+			else if (latestDate != null && earliestDate == null) {
+				Iterator<Ad> iterator = ads.iterator();
+				while (iterator.hasNext()) {
+					Ad ad = iterator.next();
+					if (ad.getDate(inOrOut).compareTo(latestDate) > 0)
+						iterator.remove();
+				}
+			} else {
 			}
 		}
 		return ads;
@@ -464,5 +470,29 @@ public class AdService {
 	/** Returns all ads that were placed by the given user. */
 	public Iterable<Ad> getAdsByUser(User user) {
 		return adDao.findByUser(user);
+	}
+
+	/**
+	 * Checks if the email of a user is already contained in the given string.
+	 * 
+	 * @param email
+	 *            the email string to search for
+	 * @param alreadyAdded
+	 *            the string of already added emails, which should be searched
+	 *            in
+	 * 
+	 * @return true if the email has been added already, false otherwise
+	 */
+	public Boolean checkIfAlreadyAdded(String email, String alreadyAdded) {
+		email = email.toLowerCase();
+		alreadyAdded = alreadyAdded.replaceAll("\\s+", "").toLowerCase();
+		String delimiter = "[:;]+";
+		String[] toBeTested = alreadyAdded.split(delimiter);
+		for (int i = 0; i < toBeTested.length; i++) {
+			if (email.equals(toBeTested[i])) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

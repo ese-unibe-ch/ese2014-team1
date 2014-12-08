@@ -68,9 +68,7 @@
 								<li><a href="/profile/myRooms">My rooms</a></li>
 								<li><a id="messageLink" href="/profile/messages"></a></li>
 								<li><a href="/profile/enquiries">Enquiries</a></li>
-								<li>
-								<% out.print("<a href=\"/profile/schedule?user=" + realUser.getId() + "\">Schedule</a>"); %>
-								</li>
+								<li><a href="/profile/schedule">Schedule</a></li>
 								<li><a href="/profile/alerts">Alerts</a></li>
 								<li>
 								<% out.print("<a href=\"/user?id=" + realUser.getId() + "\">Public Profile</a>"); %>

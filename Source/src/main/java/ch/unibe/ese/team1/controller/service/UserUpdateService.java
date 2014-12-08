@@ -34,14 +34,6 @@ public class UserUpdateService {
 		currentUser.setLastName(editProfileForm.getLastName());
 		currentUser.setPassword(editProfileForm.getPassword());
 		currentUser.setAboutMe(editProfileForm.getAboutMe());
-		
-		// TODO complete or remove
-		// Problem with the Picture ID which is set to NULL
-		// Therefore losing the current picture.
-		
-		// UserPicture userPicture = currentUser.getPicture();
-		// userPicture.setFilePath(editProfileForm.getUserPicture()); String instead of picture....
-		
 
 		userDao.save(currentUser);
 	}

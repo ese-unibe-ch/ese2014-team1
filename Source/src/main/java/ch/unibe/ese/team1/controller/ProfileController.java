@@ -43,7 +43,7 @@ public class ProfileController {
 
 	@Autowired
 	private VisitService visitService;
-	
+
 	@Autowired
 	private AdService adService;
 
@@ -77,10 +77,10 @@ public class ProfileController {
 		}
 		return model;
 	}
-	
+
 	/** Checks and returns whether a user with the given email already exists. */
-	@RequestMapping(value="/signup/doesEmailExist", method = RequestMethod.POST)
-	public @ResponseBody boolean doesEmailExist(@RequestParam String email){
+	@RequestMapping(value = "/signup/doesEmailExist", method = RequestMethod.POST)
+	public @ResponseBody boolean doesEmailExist(@RequestParam String email) {
 		return signupService.doesUserWithUsernameExist(email);
 	}
 
@@ -117,22 +117,12 @@ public class ProfileController {
 		}
 	}
 
-	// TODO this seems like dead code. Can we remove it?
-	@RequestMapping(value = "/profile/publicProfile")
-	public ModelAndView publicProfile(Principal principal) {
-		ModelAndView model = new ModelAndView("publicProfile");
-		String username = principal.getName();
-		User user = userService.findUserByUsername(username);
-		model.addObject("currentUser", user);
-		return model;
-	}
-
 	/** Displays the public profile of the user with the given id. */
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public ModelAndView user(@RequestParam("id") long id, Principal principal) {
 		ModelAndView model = new ModelAndView("user");
 		User user = userService.findUserById(id);
-		if(principal != null) {
+		if (principal != null) {
 			String username = principal.getName();
 			User user2 = userService.findUserByUsername(username);
 			long principalID = user2.getId();
@@ -142,13 +132,12 @@ public class ProfileController {
 		model.addObject("messageForm", new MessageForm());
 		return model;
 	}
-	
+
 	/** Displays the schedule page of the currently logged in user. */
-	// TODO show page for currently logged in user, security issue
 	@RequestMapping(value = "/profile/schedule", method = RequestMethod.GET)
-	public ModelAndView schedule(@RequestParam("user") long id) {
+	public ModelAndView schedule(Principal principal) {
 		ModelAndView model = new ModelAndView("schedule");
-		User user = userService.findUserById(id);
+		User user = userService.findUserByUsername(principal.getName());
 
 		// visits, i.e. when the user sees someone else's property
 		Iterable<Visit> visits = visitService.getVisitsForUser(user);
@@ -177,15 +166,7 @@ public class ProfileController {
 		Visit visit = visitService.getVisitById(id);
 		Iterable<User> visitors = visit.getSearchers();
 
-		// TODO remove hack, I had it elsewhere as well
-		// due to some strange bug every visitor appeared 3 times. So we hacked
-		// it.
-		ArrayList<User> distinctVisitors = new ArrayList<User>();
-		for (User visitor : visitors) {
-			if (!distinctVisitors.contains(visitor))
-				distinctVisitors.add(visitor);
-		}
-		model.addObject("visitors", distinctVisitors);
+		model.addObject("visitors", visitors);
 
 		Ad ad = visit.getAd();
 		model.addObject("ad", ad);
