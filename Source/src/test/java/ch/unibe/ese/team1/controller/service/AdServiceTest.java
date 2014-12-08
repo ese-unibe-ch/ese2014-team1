@@ -2,13 +2,14 @@ package ch.unibe.ese.team1.controller.service;
 
 import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
@@ -19,9 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import ch.unibe.ese.team1.controller.pojos.forms.PlaceAdForm;
-import ch.unibe.ese.team1.controller.pojos.forms.SignupForm;
 import ch.unibe.ese.team1.model.Ad;
-import ch.unibe.ese.team1.model.AdPicture;
 import ch.unibe.ese.team1.model.Gender;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.UserRole;
@@ -47,9 +46,10 @@ public class AdServiceTest {
 	 * two methods need to be tested together, normally we want to test things isolated of
 	 * course. Testing just the returned ad from saveFrom() wouldn't answer the question 
 	 * whether the ad has been saved correctly to the db.
+	 * @throws ParseException 
 	 */
 	@Test
-	public void saveFromAndGetById() {
+	public void saveFromAndGetById() throws ParseException {
 		//Preparation
 		PlaceAdForm placeAdForm = new PlaceAdForm();
 		placeAdForm.setCity("3018 - Bern");
@@ -104,6 +104,11 @@ public class AdServiceTest {
 		assertEquals(50, ad.getSquareFootage());
 		assertEquals("title", ad.getTitle());
 		assertEquals("Hauptstrasse 13", ad.getStreet());
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	    Date result =  df.parse("2015-02-27");
+		
+		assertEquals(0, result.compareTo(ad.getMoveInDate()));
 	}
 	
 	private User createUser(String email, String password, String firstName,

@@ -74,13 +74,13 @@ public class MessageService {
 		message.setSubject(messageForm.getSubject());
 		message.setText(messageForm.getText());
 		message.setState(MessageState.UNREAD);
-
+		
 		// get logged in user as the sender
 		org.springframework.security.core.userdetails.User securityUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder
 				.getContext().getAuthentication().getPrincipal();
 
 		User loggedInUser = userDao.findByUsername(securityUser.getUsername());
-
+		
 		message.setSender(loggedInUser);
 
 		Calendar calendar = Calendar.getInstance();
