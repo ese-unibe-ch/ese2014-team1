@@ -6,6 +6,21 @@
 
 <c:import url="template/header.jsp" />
 
+<script>
+	// Validate the email field
+	$(document).ready(function() {
+		$("#field-email").focusout(function() {
+			var text = $(this).val();
+			$.post("/signup/doesEmailExist", {email: text}, function(data){
+				if(data){
+					alert("This username is taken. Please choose another one!");
+					$("#field-email").val("");
+				}
+			});
+		});
+	});
+</script>
+
 <pre>
 	<a href="/">Home</a>   &gt;   Sign up</pre>
 

@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ch.unibe.ese.team1.controller.pojos.forms.EditProfileForm;
@@ -55,9 +56,7 @@ public class ProfileController {
 	public ModelAndView signupResultPage(@Valid SignupForm signupForm,
 			BindingResult bindingResult) {
 		ModelAndView model;
-		if (!bindingResult.hasErrors()
-				&& !signupService.doesUserWithUsernameExist(signupForm
-						.getEmail())) {
+		if (!bindingResult.hasErrors()) {
 			signupService.saveFrom(signupForm);
 			model = new ModelAndView("login");
 			model.addObject("confirmationMessage", "Signup complete!");
@@ -66,6 +65,12 @@ public class ProfileController {
 			model.addObject("signupForm", signupForm);
 		}
 		return model;
+	}
+	
+	/** Checks and returns whether a user with the given email already exists. */
+	@RequestMapping(value="/signup/doesEmailExist", method = RequestMethod.POST)
+	public @ResponseBody boolean doesEmailExist(@RequestParam String email){
+		return signupService.doesUserWithUsernameExist(email);
 	}
 
 	/** Shows the edit profile page. */
