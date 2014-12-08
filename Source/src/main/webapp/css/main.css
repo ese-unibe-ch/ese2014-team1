@@ -195,6 +195,7 @@ button:hover {
 	color: #2dc16d;
 	background-color: white;
 	border-color: #2dc16d;
+	cursor: pointer;
 }
 
 .button:hover {
@@ -708,7 +709,7 @@ footer nav ul li {
 }
 
 #right-arrow img:hover {
-	cursor:pointer;
+	cursor: pointer;
 	opacity: .7;
     background-color: white;
 }
