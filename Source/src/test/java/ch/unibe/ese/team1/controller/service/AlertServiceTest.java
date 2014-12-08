@@ -2,6 +2,7 @@ package ch.unibe.ese.team1.controller.service;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -43,14 +44,14 @@ public class AlertServiceTest {
 	@Autowired
 	AlertService alertService;
 	
-	private Iterable<Alert> alerts;
-	private List<Alert> alertList;
-	
 	@Test
 	public void createAlerts() {
+		ArrayList<Alert> alertList = new ArrayList<Alert>();
+		
 		// Create user Adolf Ogi
 		User adolfOgi = createUser("adolf@ogi.ch", "password", "Adolf", "Ogi",
 				Gender.MALE);
+		adolfOgi.setAboutMe("Wallis rocks");
 		userDao.save(adolfOgi);
 		
 		// Create 2 alerts for Adolf Ogi
@@ -77,7 +78,7 @@ public class AlertServiceTest {
 		alertDao.save(alert);
 		
 		//copy alerts to a list
-		alerts = alertService.getAlertsByUser(adolfOgi);
+		Iterable<Alert> alerts = alertService.getAlertsByUser(adolfOgi);
 		for(Alert returnedAlert: alerts)
 			alertList.add(returnedAlert);
 		
@@ -90,8 +91,37 @@ public class AlertServiceTest {
 	
 	@Test
 	public void mismatchChecks() {
-		//prepare the List<Alert>
-		alerts = alertService.getAlertsByUser(userDao.findByUsername("adolf@ogi.ch"));
+		ArrayList<Alert> alertList = new ArrayList<Alert>();
+		
+		User thomyF = createUser("thomy@f.ch", "password", "Thomy", "F",
+				Gender.MALE);
+		thomyF.setAboutMe("Supreme hustler");
+		userDao.save(thomyF);
+		
+		// Create 2 alerts for Thomy F
+		Alert alert = new Alert();
+		alert.setUser(thomyF);
+		alert.setBothRoomAndStudio(false);
+		alert.setRoom(false);
+		alert.setStudio(true);
+		alert.setCity("Bern");
+		alert.setZipcode(3000);
+		alert.setPrice(1500);
+		alert.setRadius(100);
+		alertDao.save(alert);
+		
+		alert = new Alert();
+		alert.setUser(thomyF);
+		alert.setBothRoomAndStudio(true);
+		alert.setRoom(true);
+		alert.setStudio(true);
+		alert.setCity("Bern");
+		alert.setZipcode(3002);
+		alert.setPrice(1000);
+		alert.setRadius(5);
+		alertDao.save(alert);
+		
+		Iterable<Alert> alerts = alertService.getAlertsByUser(userDao.findByUsername("thomy@f.ch"));
 		for(Alert returnedAlert: alerts)
 			alertList.add(returnedAlert);
 		
@@ -109,7 +139,7 @@ public class AlertServiceTest {
 		oltenResidence.setRoomDescription("blah");
 		oltenResidence.setPreferences("blah");
 		oltenResidence.setRoommates("None");
-		oltenResidence.setUser(userDao.findByUsername("adolf@ogi.ch"));
+		oltenResidence.setUser(thomyF);
 		oltenResidence.setTitle("Olten Residence");
 		oltenResidence.setStreet("Florastr. 100");
 		oltenResidence.setCity("Olten");
