@@ -44,7 +44,7 @@ import ch.unibe.ese.team1.model.User;
  */
 @Controller
 public class PlaceAdController {
-	
+
 	public static final String IMAGE_DIRECTORY = "/img/ads";
 
 	/** Used for generating a JSON representation of a given object. */
@@ -84,7 +84,7 @@ public class PlaceAdController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AdService adService;
 

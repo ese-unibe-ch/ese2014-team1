@@ -9,7 +9,7 @@ import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.User;
 import ch.unibe.ese.team1.model.dao.UserDao;
 
-/** Adds or removes ads from the user and updates the user accordingly */
+/** Adds or removes bookmarked ads from the user and updates the user accordingly */
 @Service
 public class BookmarkService {
 	

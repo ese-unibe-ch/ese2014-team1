@@ -55,20 +55,7 @@
 		<td class="spacingTable"><label for="password">Password:</label><a>&emsp;&thinsp;</a>
 		<form:input type="password" id="password" path="password" value="${currentUser.password}" /></td>
 	</tr>
-	
-<%-- TODO: NICE FEATURE TO HAVE	
- 	<tr>	
-		<td class="spacingTable"><label for="gender">Gender:</label><a>&emsp;&emsp;&thinsp;</a>
-		<form:input id="gender" path="gender" value="${currentUser.gender}" /></td>
-	</tr>
 
-
-	<tr>
-		<td class="spacingTable"><label for="changePicture">New picture:</label><a>&thinsp;</a>
-		<input type="file" id="changePicture" path="userPicture" accept="image/*" /></td>
-	</tr>
---%>	
-	
 	<tr>
 		<td class="spacingTable"><label for="about-me">About me:</label><a>&emsp;&thinsp;</a><br>
 		<form:textarea id="about-me" path="aboutMe" rows="10" cols="100" /></td>

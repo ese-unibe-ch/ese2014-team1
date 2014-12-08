@@ -6,37 +6,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * Describes an alert. An alert can be created by a user. If ads matching the
+ * criteria of the alert are added to the platform later, the user will be
+ * notified.
+ */
 @Entity
 public class Alert {
 
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@ManyToOne
 	private User user;
-	
+
 	@Column(nullable = false)
 	private int zipcode;
-	
+
 	@Column(nullable = false)
 	private String city;
-	
+
 	@Column(nullable = false)
 	private int price;
-	
+
 	@Column(nullable = false)
 	private int radius;
-	
+
 	@Column
 	private boolean studio;
-	
+
 	@Column
 	private boolean room;
-	
+
 	@Column
 	private boolean bothRoomAndStudio;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -107,5 +112,5 @@ public class Alert {
 
 	public void setBothRoomAndStudio(boolean bothRoomAndStudio) {
 		this.bothRoomAndStudio = bothRoomAndStudio;
-	}	
+	}
 }

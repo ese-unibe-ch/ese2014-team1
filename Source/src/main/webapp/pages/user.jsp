@@ -76,16 +76,6 @@
 	<form>
 		<c:choose>
 			<c:when test="${principalID != null}">
-<<<<<<< HEAD
-			<button id="newMsg" type="button">Message</button>
-			<c:choose>
-				<c:when test="${principalID eq user.id}">
-					<a class="button" href="/profile/editProfile">Edit Profile</a>
-				</c:when>
-				<c:otherwise></c:otherwise>
-			</c:choose>
-=======
-
 				<button id="newMsg" type="button">Message</button>
 				<c:choose>
 					<c:when test="${principalID eq user.id}">
@@ -93,7 +83,7 @@
 					</c:when>
 					<c:otherwise></c:otherwise>
 				</c:choose>
->>>>>>> origin/master
+
 			</c:when>
 			<c:otherwise>
 				<p>Please log in to contact this person.</p>

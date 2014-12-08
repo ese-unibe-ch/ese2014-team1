@@ -1,6 +1,7 @@
 package ch.unibe.ese.team1.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -16,10 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 import ch.unibe.ese.team1.controller.pojos.forms.EditProfileForm;
 import ch.unibe.ese.team1.controller.pojos.forms.MessageForm;
 import ch.unibe.ese.team1.controller.pojos.forms.SignupForm;
+import ch.unibe.ese.team1.controller.service.AdService;
 import ch.unibe.ese.team1.controller.service.SignupService;
 import ch.unibe.ese.team1.controller.service.UserService;
 import ch.unibe.ese.team1.controller.service.UserUpdateService;
+import ch.unibe.ese.team1.controller.service.VisitService;
+import ch.unibe.ese.team1.model.Ad;
 import ch.unibe.ese.team1.model.User;
+import ch.unibe.ese.team1.model.Visit;
 
 /**
  * Handles all requests concerning user accounts and profiles.
@@ -35,6 +40,12 @@ public class ProfileController {
 
 	@Autowired
 	private UserUpdateService userUpdateService;
+
+	@Autowired
+	private VisitService visitService;
+	
+	@Autowired
+	private AdService adService;
 
 	/** Returns the login page. */
 	@RequestMapping(value = "/login")
@@ -81,8 +92,6 @@ public class ProfileController {
 		User user = userService.findUserByUsername(username);
 		model.addObject("editProfileForm", new EditProfileForm());
 		model.addObject("currentUser", user);
-		// TODO remove test code
-		model.addObject("tester", "That should be displayed");
 		return model;
 	}
 
@@ -108,6 +117,7 @@ public class ProfileController {
 		}
 	}
 
+	// TODO this seems like dead code. Can we remove it?
 	@RequestMapping(value = "/profile/publicProfile")
 	public ModelAndView publicProfile(Principal principal) {
 		ModelAndView model = new ModelAndView("publicProfile");
@@ -117,6 +127,7 @@ public class ProfileController {
 		return model;
 	}
 
+	/** Displays the public profile of the user with the given id. */
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public ModelAndView user(@RequestParam("id") long id, Principal principal) {
 		ModelAndView model = new ModelAndView("user");
@@ -129,6 +140,55 @@ public class ProfileController {
 		}
 		model.addObject("user", user);
 		model.addObject("messageForm", new MessageForm());
+		return model;
+	}
+	
+	/** Displays the schedule page of the currently logged in user. */
+	// TODO show page for currently logged in user, security issue
+	@RequestMapping(value = "/profile/schedule", method = RequestMethod.GET)
+	public ModelAndView schedule(@RequestParam("user") long id) {
+		ModelAndView model = new ModelAndView("schedule");
+		User user = userService.findUserById(id);
+
+		// visits, i.e. when the user sees someone else's property
+		Iterable<Visit> visits = visitService.getVisitsForUser(user);
+		model.addObject("visits", visits);
+
+		// presentations, i.e. when the user presents a property
+		Iterable<Ad> usersAds = adService.getAdsByUser(user);
+		ArrayList<Visit> usersPresentations = new ArrayList<Visit>();
+
+		for (Ad ad : usersAds) {
+			try {
+				usersPresentations.addAll((ArrayList<Visit>) visitService
+						.getVisitsByAd(ad));
+			} catch (Exception e) {
+			}
+		}
+
+		model.addObject("presentations", usersPresentations);
+		return model;
+	}
+
+	/** Returns the visitors page for the visit with the given id. */
+	@RequestMapping(value = "/profile/visitors", method = RequestMethod.GET)
+	public ModelAndView visitors(@RequestParam("visit") long id) {
+		ModelAndView model = new ModelAndView("visitors");
+		Visit visit = visitService.getVisitById(id);
+		Iterable<User> visitors = visit.getSearchers();
+
+		// TODO remove hack, I had it elsewhere as well
+		// due to some strange bug every visitor appeared 3 times. So we hacked
+		// it.
+		ArrayList<User> distinctVisitors = new ArrayList<User>();
+		for (User visitor : visitors) {
+			if (!distinctVisitors.contains(visitor))
+				distinctVisitors.add(visitor);
+		}
+		model.addObject("visitors", distinctVisitors);
+
+		Ad ad = visit.getAd();
+		model.addObject("ad", ad);
 		return model;
 	}
 }

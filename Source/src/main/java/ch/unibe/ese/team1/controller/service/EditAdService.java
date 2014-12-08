@@ -21,21 +21,22 @@ import ch.unibe.ese.team1.model.Visit;
 import ch.unibe.ese.team1.model.dao.AdDao;
 import ch.unibe.ese.team1.model.dao.AdPictureDao;
 
+/** Provides services for editing ads in the database. */
 @Service
 public class EditAdService {
-	
+
 	@Autowired
 	private AdService adService;
-	
+
 	@Autowired
 	private AdDao adDao;
-	
+
 	@Autowired
 	private AdPictureDao adPictureDao;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	/**
 	 * Handles persisting an edited ad to the database.
 	 * 
@@ -49,9 +50,9 @@ public class EditAdService {
 	@Transactional
 	public Ad saveFrom(PlaceAdForm placeAdForm, List<String> filePaths,
 			User user, long adId) {
-		
+
 		Ad ad = adService.getAdById(adId);
-		
+
 		Date now = new Date();
 		ad.setCreationDate(now);
 
@@ -60,7 +61,7 @@ public class EditAdService {
 		ad.setStreet(placeAdForm.getStreet());
 
 		ad.setStudio(placeAdForm.getStudio());
-		
+
 		// take the zipcode - first four digits
 		String zip = placeAdForm.getCity().substring(0, 4);
 		ad.setZipcode(Integer.parseInt(zip));
@@ -123,11 +124,11 @@ public class EditAdService {
 			pictures.add(picture);
 		}
 		// add existing pictures
-		for(AdPicture picture : ad.getPictures()){
+		for (AdPicture picture : ad.getPictures()) {
 			pictures.add(picture);
 		}
 		ad.setPictures(pictures);
-		
+
 		/*
 		 * Roommates are saved in the form as strings. They need to be converted
 		 * into Users and saved as a List which will be accessible through the
@@ -141,40 +142,40 @@ public class EditAdService {
 			}
 		}
 		ad.setRegisteredRoommates(registeredUserRommates);
-		
+
 		// visits
 		List<Visit> visits = new LinkedList<>();
 		List<String> visitStrings = placeAdForm.getVisits();
-		if(visitStrings !=  null){
-			for(String visitString : visitStrings){
+		if (visitStrings != null) {
+			for (String visitString : visitStrings) {
 				Visit visit = new Visit();
 				// format is 28-02-2014;10:02;13:14
 				DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 				String[] parts = visitString.split(";");
-				String startTime = parts[0] + " "+ parts[1];
-				String endTime = parts[0] + " "+ parts[2];
+				String startTime = parts[0] + " " + parts[1];
+				String endTime = parts[0] + " " + parts[2];
 				Date startDate = null;
 				Date endDate = null;
-				try{
+				try {
 					startDate = dateFormat.parse(startTime);
 					endDate = dateFormat.parse(endTime);
-				}catch(ParseException ex){
+				} catch (ParseException ex) {
 					ex.printStackTrace();
 				}
-				
+
 				visit.setStartTimestamp(startDate);
 				visit.setEndTimestamp(endDate);
 				visit.setAd(ad);
 				visits.add(visit);
 			}
-			
+
 			// add existing visit
-			for(Visit visit : ad.getVisits()){
+			for (Visit visit : ad.getVisits()) {
 				visits.add(visit);
 			}
 			ad.setVisits(visits);
 		}
-		
+
 		ad.setUser(user);
 
 		adDao.save(ad);
@@ -195,7 +196,7 @@ public class EditAdService {
 		ad.setPictures(pictures);
 		adDao.save(ad);
 	}
-	
+
 	/**
 	 * Fills a Form with the data of an ad.
 	 */
@@ -205,16 +206,24 @@ public class EditAdService {
 		adForm.setRoomDescription(ad.getRoomDescription());
 		adForm.setPreferences(ad.getPreferences());
 		adForm.setRoommates(ad.getRoommates());
-		
+
 		return adForm;
 	}
 
+	/**
+	 * Deletes the roommate with the given id from the ad with the given id.
+	 * 
+	 * @param roommateId
+	 *            the user to delete as roommate
+	 * @param adId
+	 *            the ad to delete the roommate from
+	 */
 	public void deleteRoommate(long roommateId, long adId) {
 		Ad ad = adService.getAdById(adId);
 		User roommate = userService.findUserById(roommateId);
 		ad.getRegisteredRoommates().remove(roommate);
 		adDao.save(ad);
-		
+
 	}
 
 }

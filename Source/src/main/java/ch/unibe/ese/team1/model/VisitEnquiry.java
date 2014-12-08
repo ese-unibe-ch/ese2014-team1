@@ -12,14 +12,14 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-/** Models an enquiry for a visit between an advertiser and an ad searcher.  */
+/** Models an enquiry for a visit between an advertiser and an ad searcher. */
 @Entity
 public class VisitEnquiry {
 
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@ManyToOne
 	private User sender;
 
@@ -33,8 +33,7 @@ public class VisitEnquiry {
 	/** Which visit does the enquiry belong to? */
 	@ManyToOne
 	private Visit visit;
-	
-	
+
 	public long getId() {
 		return id;
 	}
@@ -74,5 +73,5 @@ public class VisitEnquiry {
 	public void setVisit(Visit visit) {
 		this.visit = visit;
 	}
-	
+
 }

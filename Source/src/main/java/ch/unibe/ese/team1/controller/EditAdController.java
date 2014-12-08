@@ -38,28 +38,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @Controller
 public class EditAdController {
-	
+
 	private final static String IMAGE_DIRECTORY = PlaceAdController.IMAGE_DIRECTORY;
 
 	@Autowired
 	private ServletContext servletContext;
-	
+
 	@Autowired
 	private AdService adService;
-	
+
 	@Autowired
 	private EditAdService editAdService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AlertService alertService;
 
 	private PictureUploader pictureUploader;
 
 	private ObjectMapper objectMapper;
-	
+
 	/**
 	 * Serves the page that allows the user to edit the ad with the given id.
 	 */
@@ -68,16 +68,16 @@ public class EditAdController {
 		ModelAndView model = new ModelAndView("editAd");
 		Ad ad = adService.getAdById(id);
 		model.addObject("ad", ad);
-		
+
 		PlaceAdForm form = editAdService.fillForm(ad);
-		
+
 		model.addObject("placeAdForm", form);
-		
+
 		String realPath = servletContext.getRealPath(IMAGE_DIRECTORY);
 		if (pictureUploader == null) {
 			pictureUploader = new PictureUploader(realPath, IMAGE_DIRECTORY);
 		}
-		
+
 		return model;
 	}
 
@@ -86,7 +86,8 @@ public class EditAdController {
 	 */
 	@RequestMapping(value = "/profile/editAd", method = RequestMethod.POST)
 	public ModelAndView editAdPageWithForm(@Valid PlaceAdForm placeAdForm,
-			BindingResult result, Principal principal, RedirectAttributes redirectAttributes, @RequestParam long adId) {
+			BindingResult result, Principal principal,
+			RedirectAttributes redirectAttributes, @RequestParam long adId) {
 		ModelAndView model = new ModelAndView("placeAd");
 		if (!result.hasErrors()) {
 			String username = principal.getName();
@@ -94,10 +95,10 @@ public class EditAdController {
 
 			List<String> fileNames = pictureUploader.getFileNames();
 			Ad ad = editAdService.saveFrom(placeAdForm, fileNames, user, adId);
-			
+
 			// triggers all alerts that match the placed ad
 			alertService.triggerAlerts(ad);
-			
+
 			// reset the picture uploader
 			this.pictureUploader = null;
 
@@ -105,19 +106,20 @@ public class EditAdController {
 			redirectAttributes.addFlashAttribute("confirmationMessage",
 					"Ad edited successfully. You can take a look at it below.");
 		}
-		
+
 		return model;
 	}
-	
+
 	/**
 	 * Deletes the ad picture with the given id from the list of pictures from
 	 * the ad, but not from the server.
 	 */
 	@RequestMapping(value = "/profile/editAd/deletePictureFromAd", method = RequestMethod.POST)
-	public @ResponseBody void deletePictureFromAd(@RequestParam long adId, @RequestParam long pictureId) {
+	public @ResponseBody void deletePictureFromAd(@RequestParam long adId,
+			@RequestParam long pictureId) {
 		editAdService.deletePictureFromAd(adId, pictureId);
 	}
-	
+
 	/**
 	 * Gets the descriptions for the pictures that were uploaded with the
 	 * current picture uploader.
@@ -132,7 +134,7 @@ public class EditAdController {
 		}
 		return pictureUploader.getUploadedPictureMetas();
 	}
-	
+
 	/**
 	 * Uploads the pictures that are attached as multipart files to the request.
 	 * The JSON representation, that is returned, is generated manually because
@@ -164,7 +166,7 @@ public class EditAdController {
 		jsonResponse += "}";
 		return jsonResponse;
 	}
-	
+
 	/**
 	 * Deletes the uploaded picture at the given relative url (relative to the
 	 * webapp folder).
@@ -176,9 +178,18 @@ public class EditAdController {
 			pictureUploader.deletePicture(url, realPath);
 		}
 	}
-	
+
+	/**
+	 * Deletes the roommate with the given id.
+	 * 
+	 * @param userId
+	 *            the id of the user to delete
+	 * @param adId
+	 *            the id of the ad to delete the user from
+	 */
 	@RequestMapping(value = "/profile/editAd/deleteRoommate", method = RequestMethod.POST)
-	public @ResponseBody void deleteRoommate(@RequestParam long userId, @RequestParam long adId) {
+	public @ResponseBody void deleteRoommate(@RequestParam long userId,
+			@RequestParam long adId) {
 		editAdService.deleteRoommate(userId, adId);
 	}
 }

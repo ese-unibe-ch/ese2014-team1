@@ -16,12 +16,6 @@ public class EditProfileForm {
 
 	@NotBlank(message = "Required")
 	private String lastName;
-
-	// TODO complete
-	// @NotBlank(message = "Required")
-	// private Gender gender;
-
-	// private UserPicture userPicture;
 	
 	private String aboutMe;
 

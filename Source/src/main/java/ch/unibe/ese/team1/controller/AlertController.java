@@ -27,32 +27,44 @@ public class AlertController {
 
 	@Autowired
 	private AlertService alertService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
+	/** Serves the page that allows the user to view their alerts. */
 	@RequestMapping(value = "/profile/alerts", method = RequestMethod.GET)
 	public ModelAndView alerts(Principal principal) {
 		return prepareAlertPage(principal, false, new AlertForm());
 	}
-	
+
+	/**
+	 * Serves the page that allow the user to view their alerts afert validating
+	 * and persisting the new alert through the alert form.
+	 */
 	@RequestMapping(value = "/profile/alerts", method = RequestMethod.POST)
-	public ModelAndView savedAlert(Principal principal, @Valid AlertForm alertForm, BindingResult result) {
-		if(!result.hasErrors())
+	public ModelAndView savedAlert(Principal principal,
+			@Valid AlertForm alertForm, BindingResult result) {
+		if (!result.hasErrors())
 			return prepareAlertPage(principal, true, alertForm);
 		else
 			return new ModelAndView("alerts");
 	}
-	
-	@RequestMapping(value="/profile/alerts/deleteAlert" , method = RequestMethod.GET)
-	public @ResponseBody void deleteAlert(@RequestParam("id") long id){
+
+	/** Deletes the alert with the given id */
+	@RequestMapping(value = "/profile/alerts/deleteAlert", method = RequestMethod.GET)
+	public @ResponseBody void deleteAlert(@RequestParam("id") long id) {
 		alertService.deleteAlert(id);
 	}
-	
-	private ModelAndView prepareAlertPage(Principal principal, boolean alreadySet, AlertForm alertForm) {
+
+	/**
+	 * Prepares the model for an alert page, filling in the user, an alert form
+	 * and the alerts of the user.
+	 */
+	private ModelAndView prepareAlertPage(Principal principal,
+			boolean alreadySet, AlertForm alertForm) {
 		String username = principal.getName();
 		User user = userService.findUserByUsername(username);
-		if(alreadySet)
+		if (alreadySet)
 			alertService.saveFrom(alertForm, user);
 		ModelAndView model = new ModelAndView("alerts");
 		Iterable<Alert> alerts = alertService.getAlertsByUser(user);

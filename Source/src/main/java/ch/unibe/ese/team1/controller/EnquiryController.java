@@ -31,59 +31,82 @@ public class EnquiryController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private VisitService visitService;
 
+	/** Serves the page that displays the enquiries for the logged in user. */
 	@RequestMapping(value = "/profile/enquiries")
 	public ModelAndView enquiriesPage(Principal principal) {
 		ModelAndView model = new ModelAndView("enquiries");
 		User user = userService.findUserByUsername(principal.getName());
-		Iterable<VisitEnquiry> usersEnquiries = enquiryService.getEnquiriesByRecipient(user);
+		Iterable<VisitEnquiry> usersEnquiries = enquiryService
+				.getEnquiriesByRecipient(user);
 		model.addObject("enquiries", usersEnquiries);
 		return model;
 	}
 
+	/**
+	 * Sends an enquiry for the visit with the given id. The sender of the
+	 * enquiry will be the currently logged in user.
+	 */
 	@RequestMapping(value = "/profile/enquiries/sendEnquiryForVisit")
-	public @ResponseBody void sendEnquiryForVisit(@RequestParam("id") long id, Principal principal) {
+	public @ResponseBody void sendEnquiryForVisit(@RequestParam("id") long id,
+			Principal principal) {
 		Visit visit = visitService.getVisitById(id);
 		User user = userService.findUserByUsername(principal.getName());
-		
+
 		VisitEnquiry visitEnquiry = new VisitEnquiry();
 		visitEnquiry.setDateSent(new Date());
 		visitEnquiry.setSender(user);
 		visitEnquiry.setState(VisitEnquiryState.OPEN);
 		visitEnquiry.setVisit(visit);
-		
+
 		enquiryService.saveVisitEnquiry(visitEnquiry);
 	}
-	
-	@RequestMapping(value="/profile/enquiries/acceptEnquiry" , method = RequestMethod.GET)
-	public @ResponseBody void acceptEnquiry(@RequestParam("id") long id){
+
+	/** Sets the state of the enquiry with the given id to accepted. */
+	@RequestMapping(value = "/profile/enquiries/acceptEnquiry", method = RequestMethod.GET)
+	public @ResponseBody void acceptEnquiry(@RequestParam("id") long id) {
 		enquiryService.acceptEnquiry(id);
 	}
-	
-	@RequestMapping(value="/profile/enquiries/declineEnquiry" , method = RequestMethod.GET)
-	public @ResponseBody void declineEnquiry(@RequestParam("id") long id){
+
+	/** Sets the state of the enquiry with the given id to declined. */
+	@RequestMapping(value = "/profile/enquiries/declineEnquiry", method = RequestMethod.GET)
+	public @ResponseBody void declineEnquiry(@RequestParam("id") long id) {
 		enquiryService.declineEnquiry(id);
 	}
-	
+
+	/**
+	 * Reopens the enquiry with the given id, meaning that its state is set to
+	 * open again.
+	 */
 	@RequestMapping(value = "/profile/enquiries/reopenEnquiry", method = RequestMethod.GET)
 	public @ResponseBody void reopenEnquiry(@RequestParam("id") long id) {
 		enquiryService.reopenEnquiry(id);
 	}
-	
-	@RequestMapping(value="/profile/rateUser", method = RequestMethod.GET)
-	public @ResponseBody void rateUser(Principal principal, @RequestParam("rate") long id,
-		   @RequestParam("stars") int rating) {
+
+	/**
+	 * Rates the user with the given id with the given rating. This rating is
+	 * associated to the user and persisted.
+	 */
+	@RequestMapping(value = "/profile/rateUser", method = RequestMethod.GET)
+	public @ResponseBody void rateUser(Principal principal,
+			@RequestParam("rate") long id, @RequestParam("stars") int rating) {
 		User user = userService.findUserByUsername(principal.getName());
 		enquiryService.rate(user, userService.findUserById(id), rating);
 	}
-	
-	@RequestMapping(value="/profile/ratingFor", method = RequestMethod.GET)
-	public @ResponseBody int ratingFor(Principal principal, @RequestParam("user") long id) {
+
+	/**
+	 * Returns the rating for the given user that the currently logged in user
+	 * has given them.
+	 */
+	@RequestMapping(value = "/profile/ratingFor", method = RequestMethod.GET)
+	public @ResponseBody int ratingFor(Principal principal,
+			@RequestParam("user") long id) {
 		User principe = userService.findUserByUsername(principal.getName());
 		User ratee = userService.findUserById(id);
-		return enquiryService.getRatingByRaterAndRatee(principe, ratee).getRating();
+		return enquiryService.getRatingByRaterAndRatee(principe, ratee)
+				.getRating();
 	}
 }

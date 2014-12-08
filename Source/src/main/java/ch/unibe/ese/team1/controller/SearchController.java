@@ -24,6 +24,10 @@ public class SearchController {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * The search form that is used for searching. It is saved between request
+	 * so that users don't have to enter their search parameters multiple times.
+	 */
 	private SearchForm searchForm;
 
 	/** Shows the search ad page. */
