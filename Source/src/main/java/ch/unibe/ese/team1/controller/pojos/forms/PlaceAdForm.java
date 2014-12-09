@@ -38,9 +38,6 @@ public class PlaceAdForm {
 	// optional free text description
 	private String roommates;
 	
-//	// TODO look one down and optional
-//	private List<Ad> addedRoommates;
-
 	// First user are added as strings, then transformed
 	// to Users and added to the DB in through adService
 	private List<String> registeredRoommateEmails;
@@ -246,13 +243,4 @@ public class PlaceAdForm {
 	public void setVisits(List<String> visits) {
 		this.visits = visits;
 	}
-
-//	public List<Ad> getAddedRoommates() {
-//		return addedRoommates;
-//	}
-//
-//	public void setAddedRoommates(List<Ad> addedRoommates) {
-//		this.addedRoommates = addedRoommates;
-//	}
-	
 }
