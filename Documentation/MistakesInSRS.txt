@@ -3,9 +3,6 @@
 0b.6 - 3
 I saw at lucas Apple machine that after updating the profile no confirmation message was shown on new page (updatedProfile.jsp)
 
-0c.6 does not work -> current password and reentering password !!!
-
-
 0d.6 - 1 No confirmation is shown after logout
 
 1a.8 Special Requirements
