@@ -159,7 +159,7 @@ public class AlertServiceTest {
 		assertFalse(alertService.typeMismatch(oltenResidence, alertList.get(1)));
 	}
 	
-	//Lean user constructor
+	//Lean user creating method
 	User createUser(String email, String password, String firstName,
 			String lastName, Gender gender) {
 		User user = new User();
