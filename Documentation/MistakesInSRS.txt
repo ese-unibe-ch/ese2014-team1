@@ -1,0 +1,28 @@
+0a.6 - 4 User gets redirected to start page, now logged in.
+
+0b.6 - 3
+I saw at lucas Apple machine that after updating the profile no confirmation message was shown on new page (updatedProfile.jsp)
+
+0c.6 does not work -> current password and reentering password !!!
+
+
+0d.6 - 1 No confirmation is shown after logout
+
+1a.8 Special Requirements
+Displaying a list of 30 or less flats with thumbnails and text must not take more than 5 seconds.
+Solche Zeitangaben sollten doch nicht mehr drinnen stehen oder?
+
+
+1d.7 1d'' not consistent since nobody needs to be logged in. You always click on something existing.
+	In my opinion we can delete the whole d'' Furthermore you can look at profiles without beeing looked in.
+
+2a.5 no copy is saved but it is under send
+2a.7 - 1 nothing happens... Subject has a * but message has no * indicating it is mandatory (although it is.)
+
+2b.5 - 1 no copy is saved -> it's NOT under sent
+
+3a.4 - 2 no real email is needed and if you refer to the username (email) then the first point being logged in is sufficent
+
+3b.4 - 3 nice one but certainly no precondition ;)
+
+3b.6 - 4 no notification is sent to user. The add is deleted though and gives visual feedback already...
