@@ -122,7 +122,7 @@ public class MessageTestDataSaver {
 		message.setText("Whats up Oprah?\n\n" + getDummyText2());
 		message.setSender(bernerBaer);
 		message.setRecipient(oprah);
-		message.setState(MessageState.READ);
+		message.setState(MessageState.UNREAD);
 		message.setDateSent(dateFormat.parse("11:30 24.02.2014"));
 		messageDao.save(message);
 	}
