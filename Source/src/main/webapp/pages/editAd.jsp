@@ -132,7 +132,7 @@
 <input type="hidden" name="adId" value="${ad.id }" />
 
 	<fieldset>
-		<legend>General info</legend>
+		<legend>Change General info</legend>
 		<table class="placeAdTable">
 			<tr>
 				<td><label for="field-title">Ad Title</label></td>
@@ -208,7 +208,7 @@
 
 	<br />
 	<fieldset>
-		<legend>Room Description</legend>
+		<legend>Change Room Description</legend>
 
 		<table class="placeAdTable">
 			<tr>
@@ -338,7 +338,10 @@
 
 	<br />
 	<fieldset>
-		<legend>Roommates (optional)</legend>
+		<legend>Change roommates</legend>
+		
+		<h3>Add new roommates</h3>
+		<br />
 		<p>If your roommates have an account, simply add them by email.</p>
 
 		<table class="placeAdTable">
@@ -356,8 +359,18 @@
 			<tr>
 				<td><p id="addedRoommates" path="addedRoommates">Newly added roommates: </p></td>
 			</tr>
-			<tr>
-				<td><table class="styledTable">
+		</table>
+
+
+		<p>Edit the description of the roommates:</p>
+		<br />
+		<form:textarea path="roommates" rows="10" cols="100"
+			placeholder="Roommates" />
+		<form:errors path="roommates" cssClass="validationErrorText" />
+		<hr />
+		<h3>Delete existing roommates</h3>
+		<br />
+		<table class="styledTable">
 					<tr>
 						<th>Username</th>
 						<th>Delete</th>
@@ -370,27 +383,19 @@
 							</tr>
 							<tr>
 					</c:forEach>
-					</table><br/>
-				</td>
-			</tr>
 		</table>
-
-
-		<form:textarea path="roommates" rows="10" cols="100"
-			placeholder="Roommates" />
-		<form:errors path="roommates" cssClass="validationErrorText" />
 	</fieldset>
 
 	<br />
 	<fieldset>
-		<legend>Preferences (optional)</legend>
+		<legend>Change preferences</legend>
 		<form:textarea path="preferences" rows="5" cols="100"
 			value="${ad.preferences}" ></form:textarea>
 	</fieldset>
 
 	
 	<fieldset>
-		<legend>Visiting times (optional)</legend>
+		<legend>Add visiting times</legend>
 		
 		<table>
 			<tr>
@@ -450,7 +455,7 @@
 	<br />
 
 	<fieldset>
-		<legend>Pictures</legend>
+		<legend>Change pictures</legend>
 		<h3>Delete existing pictures</h3>
 		<br />
 		<div>
