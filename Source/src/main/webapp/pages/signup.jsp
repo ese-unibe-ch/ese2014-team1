@@ -29,28 +29,42 @@
 	action="signup">
 	<fieldset>
 		<legend>Enter Your Information</legend>
-		<br /> <label for="field-firstName">First Name:</label>
-		<form:input path="firstName" id="field-firstName" />
-		<form:errors path="firstName" cssClass="validationErrorText" />
 
-		<br /> <label for="field-lastName">Last Name:</label>
-		<form:input path="lastName" id="field-lastName" />
-		<form:errors path="lastName" cssClass="validationErrorText" />
+		<table>
 
-		<br /> <label for="field-password">Password:</label>
-		<form:input path="password" id="field-password" type="password" />
-		<form:errors path="password" cssClass="validationErrorText" />
+			<tr>
+				<td class="signupDescription"><label for="field-firstName">First Name:</label></td>
+				<td><form:input path="firstName" id="field-firstName" /> <form:errors
+						path="firstName" cssClass="validationErrorText" /></td>
+			</tr>
 
-		<br /> <label for="field-email">Email:</label>
-		<form:input path="email" id="field-email" />
-		<form:errors path="email" cssClass="validationErrorText" />
+			<tr>
+				<td class="signupDescription"><label for="field-lastName">Last Name:</label></td>
+				<td><form:input path="lastName" id="field-lastName" /> <form:errors
+						path="lastName" cssClass="validationErrorText" /></td>
+			</tr>
 
-		<br /> <label for="field-gender">Gender:</label>
-		<form:select path="gender">
-			<form:option value="FEMALE" label="Female" />
-			<form:option value="MALE" label="Male" />
-		</form:select>
+			<tr>
+				<td class="signupDescription"><label for="field-password">Password:</label></td>
+				<td><form:input path="password" id="field-password"
+						type="password" /> <form:errors path="password"
+						cssClass="validationErrorText" /></td>
+			</tr>
 
+			<tr>
+				<td class="signupDescription"><label for="field-email">Email:</label></td>
+				<td><form:input path="email" id="field-email" /> <form:errors
+						path="email" cssClass="validationErrorText" /></td>
+			</tr>
+
+			<tr>
+				<td class="signupDescription"><label for="field-gender">Gender:</label></td>
+				<td><form:select path="gender">
+						<form:option value="FEMALE" label="Female" />
+						<form:option value="MALE" label="Male" />
+					</form:select></td>
+			</tr>
+		</table>
 		<br />
 		<button type="submit">Sign up</button>
 	</fieldset>

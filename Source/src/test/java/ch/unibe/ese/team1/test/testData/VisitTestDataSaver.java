@@ -89,7 +89,6 @@ public class VisitTestDataSaver{
 		visit.setAd(ad1);
 		searchers = new LinkedList<>();
 		searchers.add(testerMuster);
-		searchers.add(oprah);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("08:00 22.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("11:00 22.12.2014"));
@@ -99,7 +98,6 @@ public class VisitTestDataSaver{
 		visit.setAd(ad1);
 		searchers = new LinkedList<>();
 		searchers.add(testerMuster);
-		searchers.add(oprah);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("14:00 23.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("17:00 23.12.2014"));
@@ -109,7 +107,6 @@ public class VisitTestDataSaver{
 		visit = new Visit();
 		visit.setAd(ad2);
 		searchers = new LinkedList<>();
-		searchers.add(oprah);
 		searchers.add(bernerBaer);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("09:00 20.12.2014"));
@@ -137,7 +134,6 @@ public class VisitTestDataSaver{
 		visit.setAd(ad3);
 		searchers = new LinkedList<>();
 		searchers.add(testerMuster);
-		searchers.add(oprah);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("08:00 22.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("11:00 22.12.2014"));
@@ -147,7 +143,6 @@ public class VisitTestDataSaver{
 		visit.setAd(ad3);
 		searchers = new LinkedList<>();
 		searchers.add(testerMuster);
-		searchers.add(oprah);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("14:00 23.12.2014"));
 		visit.setEndTimestamp(dateFormat.parse("16:00 23.12.2014"));
@@ -157,7 +152,6 @@ public class VisitTestDataSaver{
 		visit = new Visit();
 		visit.setAd(ad4);
 		searchers = new LinkedList<>();
-		searchers.add(oprah);
 		searchers.add(bernerBaer);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("10:00 21.12.2014"));
@@ -176,7 +170,6 @@ public class VisitTestDataSaver{
 		visit = new Visit();
 		visit.setAd(ad4);
 		searchers = new LinkedList<>();
-		searchers.add(oprah);
 		searchers.add(bernerBaer);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("14:00 26.12.2014"));
@@ -203,7 +196,6 @@ public class VisitTestDataSaver{
 		visit = new Visit();
 		visit.setAd(ad5);
 		searchers = new LinkedList<>();
-		searchers.add(oprah);
 		searchers.add(testerMuster);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("13:00 13.12.2014"));
@@ -213,7 +205,6 @@ public class VisitTestDataSaver{
 		visit = new Visit();
 		visit.setAd(ad5);
 		searchers = new LinkedList<>();
-		searchers.add(oprah);
 		searchers.add(testerMuster);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("19:00 15.12.2014"));
@@ -259,7 +250,6 @@ public class VisitTestDataSaver{
 		visit = new Visit();
 		visit.setAd(ad6);
 		searchers = new LinkedList<>();
-		searchers.add(oprah);
 		searchers.add(bernerBaer);
 		visit.setSearchers(searchers);
 		visit.setStartTimestamp(dateFormat.parse("14:00 26.12.2014"));

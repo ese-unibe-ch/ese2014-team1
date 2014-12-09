@@ -482,6 +482,9 @@ footer nav ul li {
 	width: 350px;
 }
 
+.signupDescription{
+	vertical-align: top;
+}
 /* -------------------------------------------------------------------- */
 /* search.jsp */
 #searchForm {
